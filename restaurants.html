@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap" rel="stylesheet">
+  <style>
+
+    .brandfont {
+        font-family: 'Bree Serif', serif;
+        font-size: 25px;
+    }
+    .green-section {
+      background-color: #4C6444; /* dark green */
+      padding: 30px;
+      padding-top: 50px;
+      text-align: center;
+    }
+
+    .image-container {
+      position: relative;
+      display: inline-block;
+    }
+
+    .image-container img {
+      width: 800px; /* adjust as needed */
+      height: auto;
+      display: block;
+    }
+
+    .image-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+      font-size: 40px;
+      font-weight: bold;
+      text-shadow: 1px 1px 4px black;
+    }
+
+    .features-section {
+      display: flex;
+      justify-content: space-around;
+      padding: 40px;
+      background-color: #f2f2f2;
+      text-align: center;
+    }
+
+    .feature-card {
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      width: 250px;
+      padding: 20px;
+      transition: transform 0.2s;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .feature-card img {
+      width: 60px;
+      height: 60px;
+      margin-bottom: 15px;
+    }
+
+    .feature-title {
+      font-size: 18px;
+      font-weight: bold;
+      color: #4C6444;
+      margin-bottom: 10px;
+    }
+
+    .feature-caption {
+      font-size: 14px;
+      color: #555;
+    }
+
+    @media (max-width: 800px) {
+      .features-section {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+      }
+    }
+
+      .container {
+      display: flex;
+      justify-content: space-between; /* adds space between boxes */
+      padding: 20px;
+      }
+
+      .filterbox {
+          width: 20%;
+         
+      }
+
+      .resultbox {
+          width: 80%;
+          background-color: #E0E7E0;
+      }
+
+      .box {
+      background-color: #4C6444;
+      color: white;
+      padding: 30px;
+      width: 30%;
+      text-align: center;
+      border-radius: 10px;
+    }
+  
+  </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Safe Serve - Allergy-Friendly Restaurants</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
+</head>
+<body>
+  
+  <header style="box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);">
+  <header style="background-color: #eeeee4;">
+  <nav style="display: flex; justify-content: space-between; margin: auto;">
+    <div>
+      <h1 class="brandfont" style="padding-left: 10px;">
+        <span style="color: #4C6444;">Safe</span><span style="color: #85200C;">Serve</span>
+      </h1>
+    </div>
+    <ul style="list-style: none; display: flex; gap: 1.5rem; margin: 0; padding-top: 30px; font-size: 20px; padding-right: 30px;">
+      <li><a href="index.html" style="color: #465C47;; text-decoration: none;">Home</a></li>
+      <li><a href="signup.html" style="color: #427544; text-decoration: bold;">Search Restaurants</a></li>
+      <li><a href="login.html" style="color: #465C47; text-decoration: none;">User Reviews</a></li>
+      <li><a href="#" style="color: #465C47; text-decoration: none;">My Profile</a></li>
+    </ul>
+  </nav>
+</header>
+  </header>
+  <!-- FILTER/RESTAURANT PORTION -->
+  <div class="container";>
+  <!-- LEFT SIDE FILTERS -->
+  <div class="filterbox";>
+    <h2 style="font-family: 'poppins'; font-weight: bold; font-size: 28;">Filter by Allergens</h2>
+    <form>
+        <label><input type="checkbox" name="allergy" value="gluten"> Gluten-Free</label><br>
+        <label><input type="checkbox" name="allergy" value="nuts"> Nut-Free</label><br>
+        <label><input type="checkbox" name="allergy" value="dairy"> Dairy-Free</label><br>
+    </form>
+
+  </div>
+  <div class="resultbox";>
+    <h2>Results</h2>
+  </div>
+
+  </div>
+  <span><span
+
+  <main>
+  <div>
+
+  </div>
+
+  </main>
+</body>
+</html>
