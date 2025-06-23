@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SafeServe</title>
+
+  <style>
+    :root {
+      --primary: #a9b186;
+      --accent: #000000;
+      --light: #c9d1b5;
+      --maroon: #800000;
+      --secondary: #a45a49;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #ffffff;
+      color: var(--accent);
+      line-height: 1.6;
+    }
+
+    header {
+      background-color: var(--primary);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 30px;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo img {
+      height: 50px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 20px;
+      font-size: 18px;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: var(--maroon);
+    }
+
+    main {
+      padding: 120px 20px 60px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    /* HERO IMAGE SECTION */
+    .hero-image {
+      position: relative;
+      max-width: 1200px;
+      height: 300px;
+      margin: 0 auto 50px;
+      background-image: url('assets/img4.png'); 
+      background-size: cover;
+      background-position: center;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .hero-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      background-color: white; /* changed from rgba(0,0,0,0.4) */
+      padding: 20px 30px;
+      border-radius: 10px;
+      color: black; /* default text color */
+    }
+
+    .hero-text h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      color: #800000; /* red/maroon */
+    }
+
+    .hero-text p {
+      font-size: 1.2rem;
+      color: black; /* black subtext */
+    }
+
+
+    .features, .images, .reviews {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      margin-bottom: 50px;
+    }
+
+    .same-width {
+      flex: 1 1 350px;
+    }
+
+    .feature-box {
+      background: var(--light);
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      text-align: center;
+      transition: transform 0.3s;
+    }
+
+    .feature-box:hover {
+      transform: translateY(-5px);
+    }
+
+    .feature-box h3 {
+      color: var(--maroon);
+      margin-bottom: 10px;
+      font-size: 1.4rem;
+    }
+
+    .feature-box p {
+      font-size: 1rem;
+    }
+
+    .images img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .cta {
+      text-align: center;
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+    }
+
+    .cta a {
+      color: var(--maroon);
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 40px;
+    }
+
+    .buttons a {
+      background-color: var(--maroon);
+      color: white;
+      padding: 10px 20px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .buttons a:hover {
+      background-color: var(--secondary);
+    }
+
+    .review {
+      background-color: var(--light);
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+    }
+
+    .review .user {
+      font-weight: bold;
+      color: #000;
+      margin-bottom: 8px;
+    }
+
+    .review .comment {
+      font-size: 1rem;
+    }
+
+    .faq-section {
+      background: rgb(223, 231, 207);
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      padding: 30px;
+      margin-bottom: 60px;
+    }
+
+    .faq-section h2 {
+      color: var(--maroon);
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .faq {
+      margin-bottom: 20px;
+    }
+
+    .faq-question {
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: #000;
+      cursor: pointer;
+      margin-bottom: 5px;
+    }
+
+    .faq-question:hover {
+      color: var(--maroon);
+    }
+
+    .faq-answer {
+      display: none;
+      font-size: 1rem;
+      color: #444;
+      margin-top: 5px;
+    }
+
+    footer {
+      background-color: var(--primary);
+      color: #000;
+      text-align: center;
+      padding: 30px 20px;
+    }
+
+    footer p {
+      margin-bottom: 10px;
+    }
+
+    .socials a {
+      text-decoration: none;
+      color: var(--maroon);
+      margin: 0 10px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <a href="index.html"><img src="updated logo 2.png" alt="SafeServe Logo" /></a>
+    </div>
+    <nav>
+      <a href="profile.html">Profile</a>
+      <a href="restaurants.html">Restaurants</a>
+      <a href="reviews.html">Reviews</a>
+      <a href="resources.html">Resources</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero-image">
+      <div class="hero-text">
+        <h1>Welcome to SafeServe</h1>
+        <p>Helping you dine safely with personalized allergy-aware options.</p>
+      </div>
+    </section>
+
+    <section class="features">
+      <div class="feature-box same-width">
+        <h3>Save Allergy Preferences</h3>
+        <p>Customize your profile with allergy info so results match your safety needs.</p>
+      </div>
+      <div class="feature-box same-width">
+        <h3>Leave & Read Reviews</h3>
+        <p>Share dining experiences or explore reviews from users with similar allergies.</p>
+      </div>
+      <div class="feature-box same-width">
+        <h3>Search Allergy-Safe Restaurants</h3>
+        <p>Quickly find allergy-safe places with powerful filters and smart suggestions.</p>
+      </div>
+    </section>
+
+    <section class="images">
+      <img class="same-width" src="assets/img1.png" alt="Image 1" />
+      <img class="same-width" src="assets/img2.png" alt="Image 2" />
+      <img class="same-width" src="assets/img3.png" alt="Image 3" />
+    </section>
+
+    <div class="cta">
+      <p>Start exploring now — <a href="profile.html">set your preferences</a> and <a href="restaurants.html">find restaurants</a>!</p>
+    </div>
+
+    <div class="buttons">
+      <a href="login.html">Log In</a>
+      <a href="reviews.html">Leave a Review</a>
+    </div>
+
+    <section class="reviews">
+      <div class="review same-width">
+        <div class="user">Alex M.</div>
+        <div class="comment">"SafeServe helped me find restaurants where I can eat without worry!"</div>
+      </div>
+      <div class="review same-width">
+        <div class="user">Jamie L.</div>
+        <div class="comment">"I love how easy it is to find allergy-friendly options!"</div>
+      </div>
+      <div class="review same-width">
+        <div class="user">Taylor R.</div>
+        <div class="comment">"Thanks to SafeServe, I can enjoy dining out again!"</div>
+      </div>
+    </section>
+
+    <section class="faq-section">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq">
+        <div class="faq-question">What is SafeServe?</div>
+        <div class="faq-answer">SafeServe is a platform designed to help individuals with food allergies find safe dining options.</div>
+      </div>
+      <div class="faq">
+        <div class="faq-question">How can I search for allergy-friendly restaurants?</div>
+        <div class="faq-answer">You can enter your allergies in your profile and get personalized recommendations.</div>
+      </div>
+      <div class="faq">
+        <div class="faq-question">Can I leave reviews for restaurants?</div>
+        <div class="faq-answer">Yes, after logging in you can share your experiences and read others' reviews.</div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Contact us at: idk yet</p>
+    <div class="socials">
+      <a href="#">Instagram</a>
+      <a href="#">Twitter</a>
+      <a href="#">Facebook</a>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const questions = document.querySelectorAll(".faq-question");
+      questions.forEach(q => {
+        q.addEventListener("click", function () {
+          const answer = this.nextElementSibling;
+          answer.style.display = answer.style.display === "block" ? "none" : "block";
+        });
+      });
+    });
+  </script>
+</body>
+</html>

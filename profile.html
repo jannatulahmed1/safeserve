@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Your Account - SafeServe</title>
+  <link rel="icon" href="https://lh3.googleusercontent.com/pw/AP1GczN3dqli4E6AYA_Tzp9HURJeo7wMvmcmikW6HlXw_Z1RsbxkYO-QllFsSOwaSjJ5tedKmc-UWB-r_KIcT7XjApz1GT--vHUlEPfGkONDx4XckllOUQ=s128-p-k">
+  <style>
+    :root {
+      --primary: #a9b186;
+      --accent: #000000;
+      --light: #c9d1b5;
+      --maroon: #800000;
+      --secondary: #a45a49;
+      --white: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: var(--white);
+      color: var(--accent);
+      line-height: 1.6;
+    }
+
+    header {
+      background-color: var(--primary);
+      color: var(--accent);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 30px;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+
+    .logo img {
+      height: 50px;
+    }
+
+    nav a, nav button {
+      color: white;
+      text-decoration: none;
+      margin-left: 20px;
+      font-size: 18px;
+      font-weight: 500;
+      background: none;
+      border: none;
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+
+    nav a:hover, nav button:hover {
+      color: var(--maroon);
+    }
+
+    main {
+      max-width: 1200px;
+      margin: 120px auto 2rem;
+      padding: 0 20px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 2rem;
+      font-size: 2.5rem;
+      color: var(--maroon);
+    }
+
+    .profile-section {
+      margin-bottom: 2rem;
+      background-color: var(--light);
+      padding: 1.5rem 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+
+    .profile-section h2 {
+      margin-bottom: 1rem;
+      color: var(--maroon);
+      font-size: 1.5rem;
+    }
+
+    .profile-section label {
+      display: block;
+      margin-top: 1rem;
+      font-weight: bold;
+    }
+
+    .profile-section input[type="text"],
+    .profile-section input[type="email"] {
+      width: 100%;
+      padding: 0.6rem;
+      margin-top: 0.4rem;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+
+    .allergy-options {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .review-list {
+      list-style: none;
+      margin-top: 1rem;
+      padding-left: 1rem;
+    }
+
+    .review-list li {
+      margin-bottom: 0.75rem;
+    }
+
+    .save-btn,
+    .reset-btn {
+      margin-top: 1rem;
+      margin-right: 1rem;
+      background-color: var(--accent);
+      color: var(--white);
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: 500;
+    }
+
+    .reset-btn {
+      background-color: var(--maroon);
+    }
+
+    .save-btn:hover,
+    .reset-btn:hover {
+      background-color: var(--secondary);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <a href="index.html"><img src="updated logo 2.png" alt="SafeServe Logo" /></a>
+    </div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="restaurants.html">Restaurants</a>
+      <a href="reviews.html">Reviews</a>
+      <button onclick="logout()">Logout</button>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Your Profile</h1>
+
+    <section class="profile-section">
+      <h2>View & Edit Profile</h2>
+      <label for="name">Name:</label>
+      <input type="text" id="name" value="name">
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" value="user@example.com">
+
+      <button class="save-btn">Save Profile</button>
+      <button class="reset-btn">Reset Password</button>
+    </section>
+
+    <section class="profile-section">
+      <h2>Allergy Preferences</h2>
+      <div class="allergy-options">
+        <label><input type="checkbox"> Peanuts</label>
+        <label><input type="checkbox"> Shellfish</label>
+        <label><input type="checkbox"> Gluten</label>
+        <label><input type="checkbox"> Dairy</label>
+        <label><input type="checkbox"> Soy</label>
+      </div>
+      <button class="save-btn">Save Preferences</button>
+    </section>
+
+    <section class="profile-section">
+      <h2>Past Reviews</h2>
+      <ul class="review-list">
+        <li>🌟🌟🌟🌟 - "Safe spot for gluten-free eats!" - Allergen Free Café</li>
+        <li>🌟🌟🌟 - "Great staff but limited peanut-free options." - Burger Haven</li>
+      </ul>
+    </section>
+  </main>
+
+  <script>
+    function logout() {
+      alert("Logged out! Redirecting to home page...");
+      window.location.href = "index.html";
+    }
+  </script>
+</body>
+</html>
