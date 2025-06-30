@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>SafeServe</title>
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     :root {
       --primary: #a9b186;
@@ -56,19 +56,21 @@
       color: var(--maroon);
     }
 
+    nav a.active {
+      color: var(--maroon);
+    }
+
     main {
       padding: 120px 20px 60px;
       max-width: 1200px;
       margin: auto;
     }
 
-    /* HERO IMAGE SECTION */
     .hero-image {
       position: relative;
-      max-width: 1200px;
       height: 300px;
-      margin: 0 auto 50px;
-      background-image: url('assets/img4.png'); 
+      margin-bottom: 50px;
+      background-image: url('assets/img4.png');
       background-size: cover;
       background-position: center;
       border-radius: 12px;
@@ -81,37 +83,36 @@
       left: 50%;
       transform: translate(-50%, -50%);
       text-align: center;
-      background-color: white; /* changed from rgba(0,0,0,0.4) */
+      background-color: white;
       padding: 20px 30px;
       border-radius: 10px;
-      color: black; /* default text color */
     }
 
     .hero-text h1 {
       font-size: 2.5rem;
       margin-bottom: 10px;
-      color: #800000; /* red/maroon */
+      color: var(--maroon);
     }
 
     .hero-text p {
       font-size: 1.2rem;
-      color: black; /* black subtext */
+      color: black;
     }
-
 
     .features, .images, .reviews {
       display: flex;
       flex-wrap: wrap;
-      justify-content: center;
-      gap: 30px;
+      justify-content: space-between;
+      gap: 20px;
       margin-bottom: 50px;
     }
 
     .same-width {
-      flex: 1 1 350px;
+      flex: 1 1 calc(32%);
+      max-width: calc(32%);
     }
 
-    .feature-box {
+    .feature-box, .review {
       background: var(--light);
       padding: 25px;
       border-radius: 12px;
@@ -128,10 +129,6 @@
       color: var(--maroon);
       margin-bottom: 10px;
       font-size: 1.4rem;
-    }
-
-    .feature-box p {
-      font-size: 1rem;
     }
 
     .images img {
@@ -174,24 +171,6 @@
       background-color: var(--secondary);
     }
 
-    .review {
-      background-color: var(--light);
-      padding: 20px;
-      border-radius: 10px;
-      text-align: center;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.08);
-    }
-
-    .review .user {
-      font-weight: bold;
-      color: #000;
-      margin-bottom: 8px;
-    }
-
-    .review .comment {
-      font-size: 1rem;
-    }
-
     .faq-section {
       background: rgb(223, 231, 207);
       border-radius: 10px;
@@ -208,7 +187,13 @@
     }
 
     .faq {
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 10px;
       margin-bottom: 20px;
+    }
+
+    .faq:last-child {
+      border-bottom: none;
     }
 
     .faq-question {
@@ -219,15 +204,22 @@
       margin-bottom: 5px;
     }
 
-    .faq-question:hover {
-      color: var(--maroon);
-    }
-
     .faq-answer {
       display: none;
       font-size: 1rem;
       color: #444;
       margin-top: 5px;
+    }
+
+    .group-members {
+      text-align: center;
+      margin: 40px 0 20px;
+      font-size: 0.95rem;
+      color: #333;
+    }
+
+    .group-members p {
+      margin: 4px 0;
     }
 
     footer {
@@ -237,24 +229,24 @@
       padding: 30px 20px;
     }
 
-    footer p {
-      margin-bottom: 10px;
-    }
-
     .socials a {
       text-decoration: none;
       color: var(--maroon);
       margin: 0 10px;
-      font-weight: bold;
+    }
+
+    .socials i {
+      margin-right: 6px;
     }
   </style>
 </head>
 <body>
   <header>
     <div class="logo">
-      <a href="index.html"><img src="updated logo 2.png" alt="SafeServe Logo" /></a>
+      <a href="index.html"><img src="assets/updated%20logo%202.png" alt="SafeServe Logo" /></a>
     </div>
     <nav>
+      <a href="index.html" class="active">Home</a>
       <a href="profile.html">Profile</a>
       <a href="restaurants.html">Restaurants</a>
       <a href="reviews.html">Reviews</a>
@@ -329,15 +321,24 @@
         <div class="faq-question">Can I leave reviews for restaurants?</div>
         <div class="faq-answer">Yes, after logging in you can share your experiences and read others' reviews.</div>
       </div>
+      <div class="faq">
+        <div class="faq-question">Do I need an account to use SafeServe?</div>
+        <div class="faq-answer">No account is needed to browse, but creating one allows you to save preferences and leave reviews.</div>
+      </div>
+      <div class="faq">
+        <div class="faq-question">How do you verify restaurant allergy info?</div>
+        <div class="faq-answer">We rely on user feedback and restaurant-provided data, but always advise users to confirm with the staff directly.</div>
+      </div>
     </section>
   </main>
 
   <footer>
-    <p>Contact us at: idk yet</p>
+    <p>✉️ Contact us at: <a href="mailto:safeserve@example.com" style="color: var(--maroon); text-decoration: none;">safeserve@example.com</a></p>
+    <p>Follow our socials @safeserve</p>
     <div class="socials">
-      <a href="#">Instagram</a>
-      <a href="#">Twitter</a>
-      <a href="#">Facebook</a>
+      <a href="#"><i class="fab fa-instagram"></i>Instagram</a>
+      <a href="#"><i class="fab fa-twitter"></i>Twitter</a>
+      <a href="#"><i class="fab fa-facebook"></i>Facebook</a>
     </div>
   </footer>
 

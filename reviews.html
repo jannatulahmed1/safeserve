@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SafeServe - User Reviews</title>
+  <style>
+    :root {
+      --primary: #a9b186;
+      --accent: #000000;
+      --light: #c9d1b5;
+      --maroon: #800000;
+      --secondary: #a45a49;
+      --white: #ffffff;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background: #f9f9f9;
+      color: var(--accent);
+      line-height: 1.7;
+    }
+
+    header {
+      background-color: var(--primary);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 30px;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo img {
+      height: 50px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 20px;
+      font-size: 18px;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: var(--maroon);
+    }
+
+    nav a.active {
+      color: var(--maroon);
+    }
+
+    main {
+      max-width: 1200px;
+      margin: 120px auto 40px;
+      padding: 0 20px;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      color: var(--maroon);
+    }
+
+    .review-grid {
+      display: grid;
+      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+
+    .review-card {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .review-card h3 {
+      color: #2e7d32;
+      margin-top: 0;
+    }
+
+    .stars {
+      color: gold;
+      font-size: 18px;
+    }
+
+    .form-container {
+      margin-top: 40px;
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .form-container h3 {
+      color: var(--maroon);
+    }
+
+    .form-container form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    input, textarea, select {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+
+    button {
+      background: #2e7d32;
+      color: white;
+      padding: 10px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #256128;
+    }
+
+    .see-more {
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    .see-more a {
+      text-decoration: none;
+      color: #2e7d32;
+      font-weight: bold;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 12px;
+      color: #777;
+      margin-top: 60px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">
+      <a href="index.html"><img src="assets/updated%20logo%202.png" alt="SafeServe Logo" /></a>
+    </div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="profile.html">Profile</a>
+      <a href="restaurants.html">Restaurants</a>
+      <a href="reviews.html" class="active">Reviews</a>
+      <a href="resources.html">Resources</a>
+    </nav>
+  </header>
+
+  <main>
+    <h2>User Reviews</h2>
+
+    <div class="review-grid">
+      <div class="review-card">
+        <h3>XYZ</h3>
+        <p>"Great gluten-free options!!"</p>
+        <div class="stars">★★★★★</div>
+      </div>
+      <div class="review-card">
+        <h3>another restaurant</h3>
+        <p>"I have Nut allergy. The staffs were very careful and understanding. Delicious food."</p>
+        <div class="stars">★★★★★</div>
+      </div>
+      <div class="review-card">
+        <h3>ABC</h3>
+        <p>"Good dairy-free menu. Staffs were very nice."</p>
+        <div class="stars">★★★★☆</div>
+      </div>
+    </div>
+
+    <div class="see-more">
+      <a href="">See More Reviews →</a>
+    </div>
+
+    <div class="form-container">
+      <h3>Submit a New Review</h3>
+      <form>
+        <input type="text" placeholder="Restaurant name" required />
+        <textarea placeholder="Write your review..." required></textarea>
+        <label>Rating:
+          <select>
+            <option>5 stars</option>
+            <option>4 stars</option>
+            <option>3 stars</option>
+            <option>2 stars</option>
+            <option>1 star</option>
+          </select>
+        </label>
+        <button type="submit">Submit Review</button>
+      </form>
+    </div>
+  </main>
+
+  <footer>
+    © 2025 SafeServe
+  </footer>
+</body>
+</html>
