@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login - SafeServe</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #a9b186;
+      --accent: #000000;
+      --light: #c9d1b5;
+      --maroon: #800000;
+      --secondary: #a45a49;
+      --white: #ffffff;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #ffffff;
+      color: var(--accent);
+      line-height: 1.6;
+    }
+    header {
+      background-color: var(--primary);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 30px;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+    }
+    .logo img {
+      height: 50px;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 20px;
+      font-size: 18px;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    nav a:hover {
+      color: var(--maroon);
+    }
+    nav a.active {
+      color: var(--maroon);
+    }
+    main {
+      margin-top: 120px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 70vh;
+    }
+    .form-container {
+      background-color: var(--light);
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      width: 100%;
+      max-width: 400px;
+    }
+    .form-container h1 {
+      color: var(--maroon);
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+    .form-container input[type="email"],
+    .form-container input[type="password"] {
+      width: 100%;
+      padding: 0.75rem;
+      margin-bottom: 1rem;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+    .form-container button {
+      width: 100%;
+      padding: 0.75rem;
+      background-color: var(--maroon);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+    .form-container button:hover {
+      background-color: var(--secondary);
+    }
+    .form-container p {
+      margin-top: 1rem;
+      text-align: center;
+    }
+    .form-container a {
+      color: var(--maroon);
+      text-decoration: none;
+      font-weight: 500;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <a href="index.html"><img src="assets/updated logo 2.png" alt="SafeServe Logo" /></a>
+    </div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="profile.html">Profile</a>
+      <a href="restaurants.html">Restaurants</a>
+      <a href="reviews.html">Reviews</a>
+      <a href="resources.html">Resources</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="form-container">
+      <h1>Login to SafeServe</h1>
+      <form id="login-form">
+        <input type="email" id="login-email" placeholder="Email" required />
+        <input type="password" id="login-password" placeholder="Password" required />
+        <button type="submit">Log In</button>
+      </form>
+      <p>Don't have an account? <a href="signup.html">Sign up</a></p>
+    </div>
+  </main>
+
+  <script type="module" src="./js/auth.js"></script>
+</body>
+</html>

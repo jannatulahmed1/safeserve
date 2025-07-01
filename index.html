@@ -60,21 +60,14 @@
       color: var(--maroon);
     }
 
-    main {
-      padding: 120px 20px 60px;
-      max-width: 1200px;
-      margin: auto;
-    }
-
     .hero-image {
-      position: relative;
-      height: 300px;
-      margin-bottom: 50px;
+      width: 100vw;
+      height: 500px;
       background-image: url('assets/img4.png');
       background-size: cover;
       background-position: center;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      position: relative;
+      margin-top: 80px; /* offset for fixed header */
     }
 
     .hero-text {
@@ -97,6 +90,12 @@
     .hero-text p {
       font-size: 1.2rem;
       color: black;
+    }
+
+    main {
+      padding: 60px 20px;
+      max-width: 1200px;
+      margin: auto;
     }
 
     .features, .images, .reviews {
@@ -254,14 +253,15 @@
     </nav>
   </header>
 
-  <main>
-    <section class="hero-image">
-      <div class="hero-text">
-        <h1>Welcome to SafeServe</h1>
-        <p>Helping you dine safely with personalized allergy-aware options.</p>
-      </div>
-    </section>
+  <!-- HERO IMAGE MOVED OUTSIDE MAIN -->
+  <section class="hero-image">
+    <div class="hero-text">
+      <h1>Welcome to SafeServe</h1>
+      <p>Helping you dine safely with personalized allergy-aware options.</p>
+    </div>
+  </section>
 
+  <main>
     <section class="features">
       <div class="feature-box same-width">
         <h3>Save Allergy Preferences</h3>
@@ -333,13 +333,17 @@
   </main>
 
   <footer>
-    <p>✉️ Contact us at: <a href="mailto:safeserve@example.com" style="color: var(--maroon); text-decoration: none;">safeserve@example.com</a></p>
-    <p>Follow our socials @safeserve</p>
-    <div class="socials">
-      <a href="#"><i class="fab fa-instagram"></i>Instagram</a>
-      <a href="#"><i class="fab fa-twitter"></i>Twitter</a>
-      <a href="#"><i class="fab fa-facebook"></i>Facebook</a>
-    </div>
+    <p>
+      Contact us at: 
+      <a href="mailto:safeserve@example.com" style="color: var(--maroon); text-decoration: none;">safeserve@example.com</a>
+    </p>
+    <p>
+      Follow our socials:
+      <i class="fab fa-instagram" style="margin: 0 2px;"></i>
+      <i class="fab fa-twitter" style="margin: 0 2px;"></i>
+      <i class="fab fa-facebook" style="margin: 0 2px;"></i>
+      <span style="color: var(--maroon); font-weight: 500;">@safeserve</span>
+    </p>
   </footer>
 
   <script>

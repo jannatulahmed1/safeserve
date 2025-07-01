@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Your Account - SafeServe</title>
-  <link rel="icon" href="https://lh3.googleusercontent.com/pw/AP1GczN3dqli4E6AYA_Tzp9HURJeo7wMvmcmikW6HlXw_Z1RsbxkYO-QllFsSOwaSjJ5tedKmc-UWB-r_KIcT7XjApz1GT--vHUlEPfGkONDx4XckllOUQ=s128-p-k">
+  <link rel="icon" href="assets/updated_logo_2.png">
   <style>
     :root {
       --primary: #a9b186;
@@ -14,20 +14,17 @@
       --secondary: #a45a49;
       --white: #ffffff;
     }
-
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
-
     body {
       background-color: var(--white);
       color: var(--accent);
       line-height: 1.6;
     }
-
     header {
       background-color: var(--primary);
       color: var(--accent);
@@ -40,44 +37,31 @@
       width: 100%;
       z-index: 1000;
     }
-
     .logo img {
       height: 50px;
     }
-
-    nav a, nav button {
+    nav a {
       color: white;
       text-decoration: none;
       margin-left: 20px;
       font-size: 18px;
       font-weight: 500;
-      background: none;
-      border: none;
-      cursor: pointer;
       transition: color 0.3s ease;
     }
-
-    nav a:hover, nav button:hover {
+    nav a:hover, nav a.active {
       color: var(--maroon);
     }
-
-    nav a.active {
-      color: var(--maroon);
-    }
-
     main {
       max-width: 1200px;
       margin: 120px auto 2rem;
       padding: 0 20px;
     }
-
     h1 {
       text-align: center;
       margin-bottom: 2rem;
       font-size: 2.5rem;
       color: var(--maroon);
     }
-
     .profile-section {
       margin-bottom: 2rem;
       background-color: var(--light);
@@ -85,29 +69,24 @@
       border-radius: 12px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.08);
     }
-
     .profile-section h2 {
       margin-bottom: 1rem;
       color: var(--maroon);
       font-size: 1.5rem;
     }
-
     .info-row {
       display: flex;
       justify-content: space-between;
       padding: 0.5rem 0;
       border-bottom: 1px solid #ddd;
     }
-
     .info-row strong {
       flex-basis: 30%;
     }
-
     .info-row span {
       flex-basis: 65%;
       text-align: right;
     }
-
     .profile-section input[type="text"],
     .profile-section input[type="email"],
     .profile-section input[type="password"] {
@@ -117,26 +96,17 @@
       border-radius: 8px;
       border: 1px solid #ccc;
     }
-
-    .edit-icon {
-      margin-left: 10px;
-      cursor: pointer;
-      font-size: 18px;
-    }
-
     .allergy-options {
       display: flex;
       flex-wrap: wrap;
       gap: 1rem;
       margin-top: 1rem;
     }
-
     .review-manage-list {
       list-style: none;
       margin-top: 1rem;
       padding-left: 1rem;
     }
-
     .review-manage-list li {
       margin-bottom: 0.75rem;
       display: flex;
@@ -145,7 +115,6 @@
       border-bottom: 1px solid #999;
       padding-bottom: 0.5rem;
     }
-
     .delete-btn {
       background-color: var(--maroon);
       color: white;
@@ -154,10 +123,7 @@
       padding: 5px 10px;
       cursor: pointer;
     }
-
-    .save-btn,
-    .reset-btn,
-    .logout-btn {
+    .save-btn, .reset-btn, .logout-btn {
       margin-top: 1rem;
       margin-right: 1rem;
       background-color: var(--accent);
@@ -169,12 +135,9 @@
       font-size: 1rem;
       font-weight: 500;
     }
-
-    .reset-btn,
-    .logout-btn {
+    .reset-btn, .logout-btn {
       background-color: var(--maroon);
     }
-
     .save-btn:hover,
     .reset-btn:hover,
     .logout-btn:hover,
@@ -196,60 +159,50 @@
       <a href="resources.html">Resources</a>
     </nav>
   </header>
-
   <main>
     <h1>Your Profile</h1>
-
     <section class="profile-section">
       <h2>Your Account</h2>
-      <div class="info-row"><strong>Name:</strong> <span>name example</span></div>
-      <div class="info-row"><strong>Email:</strong> <span>user@example.com</span></div>
+      <div class="info-row"><strong>Name:</strong> <span id="profile-name">Loading...</span></div>
+      <div class="info-row"><strong>Email:</strong> <span id="profile-email">Loading...</span></div>
       <div class="info-row"><strong>Allergies:</strong> <span id="displayed-allergies">None selected</span></div>
-      <div class="info-row"><strong>Reviews:</strong> <span>2</span></div>
+      <div class="info-row"><strong>Reviews:</strong> <span id="profile-review-count">0</span></div>
     </section>
-
     <section class="profile-section">
       <h2>Edit Account</h2>
       <label for="name">Name:</label>
       <input type="text" id="name" placeholder="name example ✎">
-
       <label for="email">Email:</label>
       <input type="email" id="email" placeholder="user@example.com ✎">
-
       <button class="reset-btn" onclick="togglePasswordFields()">Change Your Password</button>
-
       <div id="password-fields" style="display: none; margin-top: 1rem;">
         <label for="new-password">New Password:</label>
         <input type="password" id="new-password" placeholder="Enter new password">
-
         <label for="confirm-password">Confirm Password:</label>
         <input type="password" id="confirm-password" placeholder="Confirm new password">
       </div>
-
       <button class="save-btn">Save Changes</button>
     </section>
-
     <section class="profile-section">
       <h2>Allergy Preferences</h2>
       <div class="allergy-options">
-        <label><input type="checkbox" onchange="updatePreferences()"> Gluten</label>
-        <label><input type="checkbox" onchange="updatePreferences()"> Peanuts</label>
-        <label><input type="checkbox" onchange="updatePreferences()"> Tree Nuts</label>
-        <label><input type="checkbox" onchange="updatePreferences()"> Milk</label>
-        <label><input type="checkbox" onchange="updatePreferences()"> Eggs</label>
-        <label><input type="checkbox" onchange="updatePreferences()"> Soy</label>
-        <label><input type="checkbox" onchange="updatePreferences()"> Fish</label>
-        <label><input type="checkbox" onchange="updatePreferences()"> Shellfish</label>
-        <label><input type="checkbox" onchange="updatePreferences()"> Sesame</label>
-        <label><input type="checkbox" onchange="updatePreferences()"> Mustard</label>
-        <label><input type="checkbox" onchange="updatePreferences()"> Celery</label>
-        <label><input type="checkbox" onchange="updatePreferences()"> Corn</label>
-        <label><input type="checkbox" onchange="updatePreferences()"> Coconut</label>
-        <label><input type="checkbox" onchange="updatePreferences()"> Yeast</label>
+        <label><input type="checkbox"> Gluten</label>
+        <label><input type="checkbox"> Peanuts</label>
+        <label><input type="checkbox"> Tree Nuts</label>
+        <label><input type="checkbox"> Milk</label>
+        <label><input type="checkbox"> Eggs</label>
+        <label><input type="checkbox"> Soy</label>
+        <label><input type="checkbox"> Fish</label>
+        <label><input type="checkbox"> Shellfish</label>
+        <label><input type="checkbox"> Sesame</label>
+        <label><input type="checkbox"> Mustard</label>
+        <label><input type="checkbox"> Celery</label>
+        <label><input type="checkbox"> Corn</label>
+        <label><input type="checkbox"> Coconut</label>
+        <label><input type="checkbox"> Yeast</label>
       </div>
       <button class="save-btn" onclick="saveAllergies()">Save Preferences</button>
     </section>
-
     <section class="profile-section">
       <h2>Past Reviews</h2>
       <ul class="review-manage-list" id="reviewList">
@@ -257,23 +210,19 @@
         <li><span>🌟🌟🌟 - "Tasty but limited options." - Burger Haven</span> <button class="delete-btn" onclick="deleteReview(this)">Delete</button></li>
       </ul>
     </section>
-
     <div style="text-align:center">
       <button class="logout-btn" onclick="logout()">Logout</button>
     </div>
   </main>
-
   <script>
     function logout() {
       alert("Logged out! Redirecting to home page...");
       window.location.href = "index.html";
     }
-
     function togglePasswordFields() {
       const section = document.getElementById("password-fields");
       section.style.display = section.style.display === "none" ? "block" : "none";
     }
-
     function saveAllergies() {
       const checkboxes = document.querySelectorAll('.allergy-options input[type="checkbox"]');
       const selected = [];
@@ -282,12 +231,11 @@
       });
       document.getElementById("displayed-allergies").textContent = selected.length ? selected.join(', ') : 'None selected';
     }
-
     function deleteReview(button) {
       const li = button.parentElement;
       li.remove();
     }
   </script>
+  <script type="module" src="./js/profile.js"></script>
 </body>
 </html>
-

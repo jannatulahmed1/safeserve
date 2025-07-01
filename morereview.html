@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>All Reviews - SafeServe</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    :root {
+      --primary: #a9b186;
+      --accent: #000000;
+      --light: #c9d1b5;
+      --maroon: #800000;
+      --secondary: #a45a49;
+      --white: #ffffff;
+      --green: #2e7d32;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f9f9f9;
+      color: var(--accent);
+    }
+
+    header {
+      background-color: var(--primary);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 30px;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo img {
+      height: 50px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 20px;
+      font-size: 18px;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    nav a:hover,
+    nav a.active {
+      color: var(--maroon);
+    }
+
+    main {
+      display: flex;
+      margin-top: 100px;
+      padding: 20px;
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+      gap: 40px;
+    }
+    .goback {
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    .goback  a{
+      text-decoration: none;
+      color: #2e7d32;
+      font-weight: bold;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 280px;
+      background: #eef2e6;
+      padding: 20px;
+      border-radius: 12px;
+    }
+
+    .sidebar h2 {
+      font-size: 22px;
+      margin-bottom: 15px;
+      color: var(--accent);
+    }
+
+    .sidebar input[type="text"] {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    .sidebar label {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 16px;
+    }
+
+    .sidebar button {
+      width: 100%;
+      background: var(--green);
+      color: white;
+      border: none;
+      padding: 10px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      margin-top: 15px;
+    }
+
+    /* Reviews Section */
+    .reviews {
+      flex: 1;
+    }
+
+    .reviews h2 {
+      color: var(--maroon);
+      margin-bottom: 30px;
+    }
+
+    .review {
+      margin-bottom: 30px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #ccc;
+    }
+
+    .review h3 {
+      color: var(--green);
+      margin-bottom: 5px;
+    }
+
+    .stars {
+      color: gold;
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+
+    .review p {
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 12px;
+      color: #777;
+      margin-top: 60px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">
+      <a href="index.html"><img src="assets/updated%20logo%202.png" alt="SafeServe Logo" /></a>
+    </div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="profile.html">Profile</a>
+      <a href="restaurants.html">Restaurants</a>
+      <a href="reviews.html" class="active">Reviews</a>
+      <a href="resources.html">Resources</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Sidebar Filters -->
+    <div class="sidebar">
+      <h2>Filter by Allergens</h2>
+      <input type="text" placeholder=" allergens..." />
+      <label><input type="checkbox" /> Gluten</label>
+      <label><input type="checkbox" /> Peanuts</label>
+      <label><input type="checkbox" /> Tree Nuts</label>
+      <label><input type="checkbox" /> Milk</label>
+      <label><input type="checkbox" /> Eggs</label>
+      <label><input type="checkbox" /> Soy</label>
+      <label><input type="checkbox" /> Fish</label>
+      <label><input type="checkbox" /> Shellfish</label>
+      <label><input type="checkbox" /> Sesame</label>
+      <label><input type="checkbox" /> Mustard</label>
+      <label><input type="checkbox" /> Celery</label>
+      <label><input type="checkbox" /> Corn</label>
+      <button>Apply Filters</button>
+    </div>
+
+    <!-- Reviews Section -->
+    <div class="reviews">
+      <h2>All User Reviews</h2>
+
+      <div class="review">
+        <h3>XYZ Restaurant</h3>
+        <div class="stars">★★★★★</div>
+        <p>"Great gluten-free options!! I felt very safe eating here."</p>
+      </div>
+
+      <div class="review">
+        <h3>ABC Diner</h3>
+        <div class="stars">★★★★☆</div>
+        <p>"Good dairy-free menu. The staff was very accommodating and helpful."</p>
+      </div>
+
+      <div class="review">
+        <h3>The Allergy Cafe</h3>
+        <div class="stars">★★★★★</div>
+        <p>"I have a peanut allergy, and they handled it perfectly. Will come again!"</p>
+      </div>
+
+      <div class="review">
+        <h3>Green Spoon</h3>
+        <div class="stars">★★★★☆</div>
+        <p>"Great vegetarian options. They label everything clearly for allergens."</p>
+      </div>
+    </div>
+  </main>
+  <div class="goback">
+    <a href="reviews.html"> <- Add your review</a>
+  </div>
+  <footer>
+    © 2025 SafeServe
+  </footer>
+
+</body>
+</html>
