@@ -43,6 +43,11 @@
       height: 50px;
     }
 
+    nav {
+      display: flex;
+      align-items: center;
+    }
+
     nav a {
       color: white;
       text-decoration: none;
@@ -60,36 +65,20 @@
       color: var(--maroon);
     }
 
+    .menu-toggle {
+      display: none;
+      font-size: 24px;
+      color: white;
+      cursor: pointer;
+    }
+
     .hero-image {
-      width: 100vw;
-      height: 500px;
+      width: 100%;
+      height: 550px;
       background-image: url('assets/img4.png');
       background-size: cover;
-      background-position: center;
-      position: relative;
-      margin-top: 80px; /* offset for fixed header */
-    }
-
-    .hero-text {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      text-align: center;
-      background-color: white;
-      padding: 20px 30px;
-      border-radius: 10px;
-    }
-
-    .hero-text h1 {
-      font-size: 2.5rem;
-      margin-bottom: 10px;
-      color: var(--maroon);
-    }
-
-    .hero-text p {
-      font-size: 1.2rem;
-      color: black;
+      background-position: center center;
+      margin-top: 80px;
     }
 
     main {
@@ -114,7 +103,7 @@
     .feature-box, .review {
       background: var(--light);
       padding: 25px;
-      border-radius: 12px;
+      border-radius: 0;
       box-shadow: 0 4px 12px rgba(0,0,0,0.08);
       text-align: center;
       transition: transform 0.3s;
@@ -128,14 +117,6 @@
       color: var(--maroon);
       margin-bottom: 10px;
       font-size: 1.4rem;
-    }
-
-    .images img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
 
     .cta {
@@ -172,7 +153,7 @@
 
     .faq-section {
       background: rgb(223, 231, 207);
-      border-radius: 10px;
+      border-radius: 0;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
       padding: 30px;
       margin-bottom: 60px;
@@ -201,6 +182,9 @@
       color: #000;
       cursor: pointer;
       margin-bottom: 5px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
 
     .faq-answer {
@@ -208,17 +192,6 @@
       font-size: 1rem;
       color: #444;
       margin-top: 5px;
-    }
-
-    .group-members {
-      text-align: center;
-      margin: 40px 0 20px;
-      font-size: 0.95rem;
-      color: #333;
-    }
-
-    .group-members p {
-      margin: 4px 0;
     }
 
     footer {
@@ -237,6 +210,50 @@
     .socials i {
       margin-right: 6px;
     }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      nav {
+        display: none;
+        flex-direction: column;
+        background-color: var(--primary);
+        position: absolute;
+        top: 70px;
+        right: 20px;
+        width: 60%;
+        padding: 20px;
+        border: 1px solid #fff;
+      }
+
+      nav a {
+        margin: 10px 0;
+        font-size: 16px;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .same-width {
+        flex: 1 1 100%;
+        max-width: 100%;
+      }
+
+      .features, .images, .reviews {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .buttons {
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .buttons a {
+        width: 80%;
+        text-align: center;
+      }
+    }
   </style>
 </head>
 <body>
@@ -244,7 +261,8 @@
     <div class="logo">
       <a href="index.html"><img src="assets/updated%20logo%202.png" alt="SafeServe Logo" /></a>
     </div>
-    <nav>
+    <i class="fas fa-bars menu-toggle" onclick="toggleMenu()"></i>
+    <nav id="nav-links">
       <a href="index.html" class="active">Home</a>
       <a href="profile.html">Profile</a>
       <a href="restaurants.html">Restaurants</a>
@@ -253,13 +271,7 @@
     </nav>
   </header>
 
-  <!-- HERO IMAGE MOVED OUTSIDE MAIN -->
-  <section class="hero-image">
-    <div class="hero-text">
-      <h1>Welcome to SafeServe</h1>
-      <p>Helping you dine safely with personalized allergy-aware options.</p>
-    </div>
-  </section>
+  <section class="hero-image"></section>
 
   <main>
     <section class="features">
@@ -277,12 +289,6 @@
       </div>
     </section>
 
-    <section class="images">
-      <img class="same-width" src="assets/img1.png" alt="Image 1" />
-      <img class="same-width" src="assets/img2.png" alt="Image 2" />
-      <img class="same-width" src="assets/img3.png" alt="Image 3" />
-    </section>
-
     <div class="cta">
       <p>Start exploring now — <a href="profile.html">set your preferences</a> and <a href="restaurants.html">find restaurants</a>!</p>
     </div>
@@ -291,6 +297,12 @@
       <a href="login.html">Log In</a>
       <a href="reviews.html">Leave a Review</a>
     </div>
+
+    <section class="images">
+      <img class="same-width" src="https://images.squarespace-cdn.com/content/v1/5579e5fde4b046b52b3ff1b2/4da93fc9-5564-462e-8f5f-4ff0d10acc55/4-food-final-gif-r2.gif?format=2500w" alt="Allergy Safe Food Animation" />
+      <img class="same-width" src="https://images.squarespace-cdn.com/content/v1/5579e5fde4b046b52b3ff1b2/1604791943391-C8XW995N9GSLABPXPRS4/chef-bill-fuller?format=2500w" alt="Chef Bill Fuller cooking animation" />
+      <img class="same-width" src="https://images.squarespace-cdn.com/content/v1/5579e5fde4b046b52b3ff1b2/1604793979300-R75QQPEHJSPKJG3V7M5L/fish-dish-big-burrito.gif?format=2500w" alt="Animated fish dish from Big Burrito" />
+    </section>
 
     <section class="reviews">
       <div class="review same-width">
@@ -310,31 +322,30 @@
     <section class="faq-section">
       <h2>Frequently Asked Questions</h2>
       <div class="faq">
-        <div class="faq-question">What is SafeServe?</div>
+        <div class="faq-question">What is SafeServe? <span class="toggle-icon">+</span></div>
         <div class="faq-answer">SafeServe is a platform designed to help individuals with food allergies find safe dining options.</div>
       </div>
       <div class="faq">
-        <div class="faq-question">How can I search for allergy-friendly restaurants?</div>
+        <div class="faq-question">How can I search for allergy-friendly restaurants? <span class="toggle-icon">+</span></div>
         <div class="faq-answer">You can enter your allergies in your profile and get personalized recommendations.</div>
       </div>
       <div class="faq">
-        <div class="faq-question">Can I leave reviews for restaurants?</div>
+        <div class="faq-question">Can I leave reviews for restaurants? <span class="toggle-icon">+</span></div>
         <div class="faq-answer">Yes, after logging in you can share your experiences and read others' reviews.</div>
       </div>
       <div class="faq">
-        <div class="faq-question">Do I need an account to use SafeServe?</div>
+        <div class="faq-question">Do I need an account to use SafeServe? <span class="toggle-icon">+</span></div>
         <div class="faq-answer">No account is needed to browse, but creating one allows you to save preferences and leave reviews.</div>
       </div>
       <div class="faq">
-        <div class="faq-question">How do you verify restaurant allergy info?</div>
+        <div class="faq-question">How do you verify restaurant allergy info? <span class="toggle-icon">+</span></div>
         <div class="faq-answer">We rely on user feedback and restaurant-provided data, but always advise users to confirm with the staff directly.</div>
       </div>
     </section>
   </main>
 
   <footer>
-    <p>
-      Contact us at: 
+    <p>Contact us at: 
       <a href="mailto:safeserve@example.com" style="color: var(--maroon); text-decoration: none;">safeserve@example.com</a>
     </p>
     <p>
@@ -347,15 +358,25 @@
   </footer>
 
   <script>
+    // FAQ toggle with +/-
     document.addEventListener("DOMContentLoaded", function () {
       const questions = document.querySelectorAll(".faq-question");
       questions.forEach(q => {
         q.addEventListener("click", function () {
           const answer = this.nextElementSibling;
-          answer.style.display = answer.style.display === "block" ? "none" : "block";
+          const icon = this.querySelector(".toggle-icon");
+          const isVisible = answer.style.display === "block";
+          answer.style.display = isVisible ? "none" : "block";
+          icon.textContent = isVisible ? "+" : "−";
         });
       });
     });
+
+    // Mobile nav toggle
+    function toggleMenu() {
+      const nav = document.getElementById("nav-links");
+      nav.style.display = nav.style.display === "flex" ? "none" : "flex";
+    }
   </script>
 </body>
 </html>
