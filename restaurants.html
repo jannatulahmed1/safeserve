@@ -52,61 +52,9 @@
       transition: color 0.3s;
     }
 
-    nav a:hover {
-      color: var(--maroon);
-    }
-
+    nav a:hover,
     nav a.active {
       color: var(--maroon);
-    }
-
-    .feature-box {
-      background: var(--light);
-      padding: 25px;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-      text-align: center;
-      transition: transform 0.3s;
-    }
-
-    .feature-box:hover {
-      transform: translateY(-5px);
-    }
-
-    .feature-box h3 {
-      color: var(--maroon);
-      margin-bottom: 10px;
-      font-size: 1.4rem;
-    }
-
-    .feature-box p {
-      font-size: 1rem;
-    }
-
-    .images img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    }
-
-    footer {
-      background-color: var(--primary);
-      color: #000;
-      text-align: center;
-      padding: 30px 20px;
-    }
-
-    footer p {
-      margin-bottom: 10px;
-    }
-
-    .socials a {
-      text-decoration: none;
-      color: var(--maroon);
-      margin: 0 10px;
-      font-weight: bold;
     }
 
     .container {
@@ -126,7 +74,6 @@
       padding: 20px;
       overflow-x: auto;
       white-space: nowrap;
-      box-sizing: border-box;
     }
 
     .restaurant-card {
@@ -138,7 +85,6 @@
       border-radius: 12px;
       box-shadow: 0 4px 8px rgba(0,0,0,0.1);
       vertical-align: top;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
 
     .restaurant-card img {
@@ -185,35 +131,32 @@
       background-color: var(--secondary);
     }
 
-    .box {
-      background-color: #4C6444;
-      color: white;
-      padding: 30px;
-      width: 30%;
+    footer {
+      background-color: var(--primary);
+      color: #000;
       text-align: center;
-      border-radius: 10px;
+      padding: 30px 20px;
     }
 
-@media (max-width: 768px) {
-  .container {
-    flex-direction: column;
-  }
+    .socials a {
+      text-decoration: none;
+      color: var(--maroon);
+      margin: 0 10px;
+      font-weight: bold;
+    }
 
-  .filterbox,
-  .resultbox {
-    width: 100%;
-  }
-
-  .resultbox {
-    overflow-x: auto;
-    white-space: nowrap;
-    padding-top: 20px;
-  }
-
-  .restaurant-card {
-    width: 280px;
-  }
-}
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+      }
+      .filterbox,
+      .resultbox {
+        width: 100%;
+      }
+      .restaurant-card {
+        width: 280px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -232,135 +175,37 @@
 
   <main>
     <div class="container" style="padding-top: 100px; padding-bottom: 70px">
-      <!-- LEFT SIDE FILTERS -->
+      
+      <!-- FILTERS -->
       <div class="filterbox">
-        <h2 style="font-family: 'Poppins', sans-serif; font-weight: bold; font-size: 24px; margin-bottom: 10px;">
-          Filter by Allergens
-        </h2>
+        <h2>Filter by Allergens</h2>
+        <input type="text" id="allergenSearch" placeholder="Search allergens..." 
+               style="width: 100%; padding: 8px; margin-bottom: 15px;" />
+        <div id="allergenList" style="max-height: 300px; overflow-y: auto;">
+          <form>
+            <label><input type="checkbox" name="allergy" value="gluten"> Gluten</label><br>
+            <label><input type="checkbox" name="allergy" value="peanuts"> Peanuts</label><br>
+            <label><input type="checkbox" name="allergy" value="tree-nuts"> Tree Nuts</label><br>
+            <label><input type="checkbox" name="allergy" value="milk"> Milk</label><br>
+            <label><input type="checkbox" name="allergy" value="eggs"> Eggs</label><br>
+            <label><input type="checkbox" name="allergy" value="soy"> Soy</label><br>
+            <label><input type="checkbox" name="allergy" value="fish"> Fish</label><br>
+            <label><input type="checkbox" name="allergy" value="shellfish"> Shellfish</label><br>
+            <label><input type="checkbox" name="allergy" value="sesame"> Sesame</label><br>
+          </form>
+        </div>
 
-<input type="text" id="allergenSearch" placeholder="Search allergens..." 
-       style="width: 100%; padding: 8px 10px; border: 1px solid #ccc; border-radius: 6px; margin-bottom: 15px; font-size: 14px;" />
-
-<div id="allergenList" style="max-height: 300px; overflow-y: auto; padding-right: 5px;">
-  <form>
-      <!-- Common Allergens -->
-      <label><input type="checkbox" name="allergy" value="gluten"> Gluten</label><br>
-      <label><input type="checkbox" name="allergy" value="peanuts"> Peanuts</label><br>
-      <label><input type="checkbox" name="allergy" value="tree-nuts"> Tree Nuts</label><br>
-      <label><input type="checkbox" name="allergy" value="milk"> Milk</label><br>
-      <label><input type="checkbox" name="allergy" value="eggs"> Eggs</label><br>
-      <label><input type="checkbox" name="allergy" value="soy"> Soy</label><br>
-      <label><input type="checkbox" name="allergy" value="fish"> Fish</label><br>
-      <label><input type="checkbox" name="allergy" value="shellfish"> Shellfish</label><br>
-      <label><input type="checkbox" name="allergy" value="sesame"> Sesame</label><br>
-
-      <!-- Less Common Food Allergens -->
-      <label><input type="checkbox" name="allergy" value="mustard"> Mustard</label><br>
-      <label><input type="checkbox" name="allergy" value="celery"> Celery</label><br>
-      <label><input type="checkbox" name="allergy" value="corn"> Corn</label><br>
-      <label><input type="checkbox" name="allergy" value="coconut"> Coconut</label><br>
-      <label><input type="checkbox" name="allergy" value="yeast"> Yeast</label><br>
-      <label><input type="checkbox" name="allergy" value="sulfites"> Sulfites</label><br>
-      <label><input type="checkbox" name="allergy" value="lupin"> Lupin</label><br>
-
-      <!-- Fruits & Veggies -->
-      <label><input type="checkbox" name="allergy" value="apple"> Apple</label><br>
-      <label><input type="checkbox" name="allergy" value="banana"> Banana</label><br>
-      <label><input type="checkbox" name="allergy" value="avocado"> Avocado</label><br>
-      <label><input type="checkbox" name="allergy" value="tomato"> Tomato</label><br>
-      <label><input type="checkbox" name="allergy" value="carrot"> Carrot</label><br>
-
-      <!-- Meats & Animal Products -->
-      <label><input type="checkbox" name="allergy" value="beef"> Beef</label><br>
-      <label><input type="checkbox" name="allergy" value="chicken"> Chicken</label><br>
-      <label><input type="checkbox" name="allergy" value="pork"> Pork</label><br>
-      <label><input type="checkbox" name="allergy" value="gelatin"> Gelatin</label><br>
-  </form>
-</div>
-
-<div>
-  <h3>Selected Allergens:</h3>
-  <div id="checkedAllergens" style="margin-bottom: 15px; min-height: 24px;"></div>
-</div>
-
-<div id="allergenList" style="max-height: 300px; overflow-y: auto; padding-right: 5px;">
-  <form>
-    <!-- your checkboxes here -->
-  </form>
-</div>
-
-
-        <button style="width: 100%; padding: 10px 0; background-color: #4C6444; color: white; border: none; border-radius: 6px; font-size: 16px; cursor: pointer; transition: background-color 0.3s;"
-                onmouseover="this.style.backgroundColor='#3b4e35'" 
-                onmouseout="this.style.backgroundColor='#4C6444'">
-          Apply Filters
-        </button>
+        <button style="width: 100%; margin-top: 10px; padding: 10px;">Apply Filters</button>
         <p style="text-align: center;"> - OR - </p>
-        <button style="width: 100%; padding: 10px 0; background-color: #4C6444; color: white; border: none; border-radius: 6px; font-size: 16px; cursor: pointer; transition: background-color 0.3s;"
-                onmouseover="this.style.backgroundColor='#3b4e35'" 
-                onmouseout="this.style.backgroundColor='#4C6444'">
-          Use My Prefences
-        </button>
-
-        <h2 style="padding-top: 50px;">Other possible options here maybe...</h2>
+        <button style="width: 100%; padding: 10px;">Use My Preferences</button>
       </div>
 
-      <!-- RIGHT SIDE RESULTS -->
+      <!-- RESULTS -->
       <div class="resultbox">
         <h2 style="padding-left: 15px;">Results for Selected Allergens: No Allergens Selected</h2>
-
-        <!-- Restaurant Cards -->
-        <div class="restaurant-card">
-          <img src="" alt="Restaurant 1">
-          <div class="restaurant-info">
-            <h3>Restaurant 1</h3>
-            <p>Restaurant Description</p>
-            <a href="#" class="view-button">View Restaurant</a>
-            <p class="rating">Rating: </p>
-          </div>
-        </div>
-
-        <div class="restaurant-card">
-          <img src="" alt="Restaurant 2">
-          <div class="restaurant-info">
-            <h3>Restaurant 2</h3>
-            <p>Restaurant Description.</p>
-            <a href="#" class="view-button">View Restaurant</a>
-            <p class="rating">Rating: </p>
-          </div>
-        </div>
-
-        <div class="restaurant-card">
-          <img src="" alt="Restaurant 3">
-          <div class="restaurant-info">
-            <h3>Restaurant 3</h3>
-            <p>Restaurant Description</p>
-            <a href="#" class="view-button">View Restaurant</a>
-            <p class="rating">Rating: </p>
-          </div>
-        </div>
-
-        <div class="restaurant-card">
-          <img src="" alt="Restaurant 4">
-          <div class="restaurant-info">
-            <h3>Restaurant 4</h3>
-            <p>Restaurant Description</p>
-            <a href="#" class="view-button">View Restaurant</a>
-            <p class="rating">Rating: </p>
-          </div>
-        </div>
-
-        <div class="restaurant-card">
-          <img src="" alt="Restaurant 5">
-          <div class="restaurant-info">
-            <h3>Restaurant 5</h3>
-            <p>Restaurant Description</p>
-            <a href="#" class="view-button">View Restaurant</a>
-            <p class="rating">Rating: </p>
-          </div>
-        </div>
-
+        <!-- JS will inject restaurant cards here -->
       </div>
+
     </div>
   </main>
 
@@ -372,7 +217,8 @@
       <a href="#">Facebook</a>
     </div>
   </footer>
-  
 
+  <!-- Load restaurant data -->
+  <script type="module" src="./js/restaurants.js"></script>
 </body>
 </html>
