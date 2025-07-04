@@ -143,19 +143,25 @@
       background-color: var(--secondary);
     }
 
-    .form-container .google-button {
+    .google-button {
       background-color: #4285F4;
-      margin-top: 10px;
+      color: white;
       display: flex;
-      justify-content: center;
       align-items: center;
+      justify-content: center;
+      margin-top: 10px;
+      padding: 0.75rem;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
     }
 
-    .form-container .google-button:hover {
+    .google-button:hover {
       background-color: #3367D6;
     }
 
-    .form-container .google-button i {
+    .google-button i {
       margin-right: 8px;
     }
 
@@ -201,7 +207,7 @@
     </div>
     <nav id="nav-links">
       <a href="index.html">Home</a>
-      <a href="profile.html">Profile</a>
+      <a id="profile-link" href="login.html">Login</a>
       <a href="restaurants.html">Restaurants</a>
       <a href="reviews.html">Reviews</a>
       <a href="resources.html">Resources</a>
@@ -229,7 +235,12 @@
         <i class="fab fa-google"></i> Sign in with Google
       </button>
 
-      <p>Don't have an account? <a href="signup.html">Sign up</a></p>
+      <p>
+        Don't have an account? <a href="signup.html">Sign up</a><br />
+        <small style="font-size: 0.75rem; display: block; margin-top: 6px;">
+          By logging in, you agree to our <a href="terms.html" target="_blank">Terms & Privacy Policy</a>.
+        </small>
+      </p>
     </div>
   </main>
 
@@ -238,6 +249,27 @@
       const nav = document.getElementById("nav-links");
       nav.classList.toggle("open");
     }
+
+    // Navbar logic based on login status
+    import('https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js').then(firebase => {
+      import('https://www.gstatic.com/firebasejs/9.6.10/firebase-auth.js').then(authModule => {
+        import('./js/firebase-config.js').then(({ firebaseConfig }) => {
+          const app = firebase.initializeApp(firebaseConfig);
+          const auth = authModule.getAuth(app);
+
+          authModule.onAuthStateChanged(auth, user => {
+            const link = document.getElementById("profile-link");
+            if (user) {
+              link.textContent = "Profile";
+              link.href = "profile.html";
+            } else {
+              link.textContent = "Login";
+              link.href = "login.html";
+            }
+          });
+        });
+      });
+    });
   </script>
 
   <script type="module" src="./js/auth.js"></script>

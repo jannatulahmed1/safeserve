@@ -6,7 +6,8 @@ import {
   sendPasswordResetEmail,
   GoogleAuthProvider,
   signInWithPopup,
-  sendEmailVerification
+  sendEmailVerification,
+  onAuthStateChanged
 } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-auth.js";
 import {
   getFirestore,
@@ -98,6 +99,7 @@ if (loginForm) {
     try {
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
+      await user.reload(); // Ensure emailVerified is up to date
 
       if (!user.emailVerified) {
         errorEl.textContent = "⚠️ Please verify your email before logging in.";
@@ -127,7 +129,7 @@ if (loginForm) {
       e.preventDefault();
       const email = document.getElementById("login-email").value.trim();
       if (!email) {
-        alert("Please enter your email above first.");
+        alert("Please enter your email in the email field first.");
         return;
       }
 
@@ -176,3 +178,4 @@ if (googleBtn) {
     }
   });
 }
+

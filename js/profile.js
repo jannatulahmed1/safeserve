@@ -1,10 +1,9 @@
-// js/profile.js
-
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
 import {
   getAuth,
   onAuthStateChanged,
-  signOut
+  signOut,
+  updatePassword
 } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-auth.js";
 import {
   getFirestore,
@@ -34,12 +33,16 @@ const avatarURLs = [
 ];
 let avatarIndex = 1;
 
-// Enable editing for input fields
-window.enableEdit = function (id) {
+// Allow clicking directly on inputs to enable editing
+["first-name", "last-name", "username"].forEach((id) => {
   const input = document.getElementById(id);
-  input.disabled = false;
-  input.focus();
-};
+  if (input) {
+    input.addEventListener("click", () => {
+      input.disabled = false;
+      input.focus();
+    });
+  }
+});
 
 // Show saved allergies visually
 function updateAllergyDisplay(allergies) {
@@ -142,7 +145,47 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       });
 
-      // Logout button
+      // Password reset toggle (restore old UI)
+      const resetBtn = document.getElementById("reset-password-toggle");
+      if (resetBtn) {
+        resetBtn.addEventListener("click", () => {
+          const resetSection = document.getElementById("reset-password-section");
+          if (resetSection) {
+            resetSection.style.display = resetSection.style.display === "none" ? "block" : "none";
+          }
+        });
+      }
+
+      const confirmResetBtn = document.getElementById("confirm-reset-btn");
+      if (confirmResetBtn) {
+        confirmResetBtn.addEventListener("click", async () => {
+          const newPass = document.getElementById("new-password").value;
+          const confirmPass = document.getElementById("confirm-password").value;
+
+          if (!newPass || !confirmPass) {
+            alert("Please fill in both password fields.");
+            return;
+          }
+
+          if (newPass !== confirmPass) {
+            alert("Passwords do not match.");
+            return;
+          }
+
+          try {
+            await updatePassword(user, newPass);
+            alert("✅ Password updated successfully.");
+            document.getElementById("new-password").value = "";
+            document.getElementById("confirm-password").value = "";
+            document.getElementById("reset-password-section").style.display = "none";
+          } catch (err) {
+            console.error("❌ Password update failed:", err);
+            alert("Failed to update password: " + err.message);
+          }
+        });
+      }
+
+      // Logout
       document.querySelector(".btn-danger").addEventListener("click", () => {
         signOut(auth).then(() => {
           window.location.href = "index.html";
@@ -154,6 +197,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+
+
 
 
 

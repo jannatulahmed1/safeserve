@@ -78,6 +78,7 @@
       height: 100%;
       object-fit: cover;
     }
+ 
     .card {
       background-color: var(--white);
       border-radius: 16px;
@@ -109,11 +110,20 @@
       grid-template-columns: 1fr 1fr;
       gap: 20px;
     }
-    label {
-      display: block;
+    .edit-label {
+      display: flex;
+      align-items: center;
       font-size: 14px;
       margin-bottom: 5px;
       color: #333;
+    }
+    .edit-label i.edit-icon {
+      margin-left: 6px;
+      font-size: 14px;
+      position: relative;
+      top: 2px;
+      color: var(--accent);
+      cursor: pointer;
     }
     input[type="text"],
     input[type="email"],
@@ -125,11 +135,6 @@
       border: 1px solid #ccc;
       background-color: #fefefe;
     }
-    .edit-icon {
-      margin-left: 6px;
-      color: var(--accent);
-      cursor: pointer;
-    }
     .section {
       margin-top: 40px;
     }
@@ -137,7 +142,7 @@
     #allergy-display {
       font-size: 14px;
       color: #555;
-      margin-bottom: 10px;
+      margin-top: 25px;
     }
     .allergy-options {
       display: flex;
@@ -249,9 +254,7 @@
       <a href="index.html"><img src="assets/updated logo 2.png" alt="SafeServe Logo" /></a>
     </div>
     <div class="hamburger" onclick="document.querySelector('nav').classList.toggle('active')">
-      <span></span>
-      <span></span>
-      <span></span>
+      <span></span><span></span><span></span>
     </div>
     <nav>
       <a href="index.html">Home</a>
@@ -263,77 +266,90 @@
   </header>
 
   <main>
-    <div class="profile-pic" onclick="cycleAvatar()">
-      <img id="avatar-img"
-           src="https://randomuser.me/api/portraits/lego/1.jpg"
-           data-avatar-url="https://randomuser.me/api/portraits/lego/1.jpg"
-           alt="Profile Image">
-    </div>
+<div class="profile-pic" onclick="cycleAvatar()">
+  <img id="avatar-img"
+       src="https://randomuser.me/api/portraits/lego/1.jpg"
+       data-avatar-url="https://randomuser.me/api/portraits/lego/1.jpg"
+       alt="Profile Image">
+</div>
+
 
     <div class="card">
       <div class="tabs">
-        <span class="active">Edit Profile</span>
-        <span>Past Reviews</span>
+        <span id="edit-tab" class="active" onclick="switchTab('edit')">Edit Profile</span>
+        <span id="reviews-tab" onclick="switchTab('reviews')">Past Reviews</span>
       </div>
 
-      <h2>Basic Information</h2>
-      <div class="profile-grid">
-        <div>
-          <label>First Name <i class="fas fa-edit edit-icon" onclick="enableEdit('first-name')"></i></label>
-          <input type="text" id="first-name" placeholder="First Name">
+      <div id="edit-section">
+        <h2>Basic Information</h2>
+        <div class="profile-grid">
+          <div>
+            <label class="edit-label">First Name <i class="fas fa-edit edit-icon" onclick="enableEdit('first-name')"></i></label>
+            <input type="text" id="first-name" placeholder="First Name">
+          </div>
+          <div>
+            <label class="edit-label">Last Name <i class="fas fa-edit edit-icon" onclick="enableEdit('last-name')"></i></label>
+            <input type="text" id="last-name" placeholder="Last Name">
+          </div>
+          <div>
+            <label>Email</label>
+            <input type="email" id="email" placeholder="Email" disabled>
+          </div>
+          <div>
+            <label class="edit-label">Username <i class="fas fa-edit edit-icon" onclick="enableEdit('username')"></i></label>
+            <input type="text" id="username" placeholder="Username">
+          </div>
         </div>
-        <div>
-          <label>Last Name <i class="fas fa-edit edit-icon" onclick="enableEdit('last-name')"></i></label>
-          <input type="text" id="last-name" placeholder="Last Name">
+
+<button class="btn btn-reset" id="reset-password-toggle">Reset Password</button>
+<div id="reset-password-section" style="display: none;">
+  <div class="password-grid">
+    <div>
+      <label>New Password</label>
+      <input type="password" id="new-password" placeholder="New Password" />
+    </div>
+    <div>
+      <label>Confirm Password</label>
+      <input type="password" id="confirm-password" placeholder="Confirm Password" />
+    </div>
+  </div>
+  <button class="btn btn-reset" id="confirm-reset-btn" style="margin-top: 15px;">Confirm Reset</button>
+</div>
+
+
+        <div class="section">
+          <h2>Allergy Preferences</h2>
+          <p id="allergy-summary"></p>
+          <div class="allergy-options">
+            <input type="checkbox" id="gluten"><label for="gluten">Gluten</label>
+            <input type="checkbox" id="peanuts"><label for="peanuts">Peanuts</label>
+            <input type="checkbox" id="milk"><label for="milk">Milk</label>
+            <input type="checkbox" id="eggs"><label for="eggs">Eggs</label>
+            <input type="checkbox" id="soy"><label for="soy">Soy</label>
+            <input type="checkbox" id="shellfish"><label for="shellfish">Shellfish</label>
+            <input type="checkbox" id="sesame"><label for="sesame">Sesame</label>
+            <input type="checkbox" id="mustard"><label for="mustard">Mustard</label>
+            <input type="checkbox" id="treenuts"><label for="treenuts">Tree Nuts</label>
+            <input type="checkbox" id="corn"><label for="corn">Corn</label>
+            <input type="checkbox" id="coconut"><label for="coconut">Coconut</label>
+          </div>
+          <p id="allergy-display"><strong>Saved Preferences:</strong> (None yet)</p>
         </div>
-        <div>
-          <label>Email</label>
-          <input type="email" id="email" placeholder="Email" disabled>
-        </div>
-        <div>
-          <label>Username <i class="fas fa-edit edit-icon" onclick="enableEdit('username')"></i></label>
-          <input type="text" id="username" placeholder="Username">
+
+        <div class="button-row">
+          <button class="btn btn-save">Save Changes</button>
+          <button class="btn btn-danger">Logout</button>
         </div>
       </div>
 
-      <button class="btn btn-reset" onclick="togglePasswordFields()">Reset Password</button>
-      <div id="password-fields">
-        <div class="password-grid">
-          <div><label>New Password</label><input type="password" placeholder="New Password"></div>
-          <div><label>Confirm Password</label><input type="password" placeholder="Confirm Password"></div>
-        </div>
-      </div>
-
-      <div class="section">
-        <h2>Allergy Preferences</h2>
-        <p id="allergy-summary"></p>
-        <div class="allergy-options">
-          <input type="checkbox" id="gluten"><label for="gluten">Gluten</label>
-          <input type="checkbox" id="peanuts"><label for="peanuts">Peanuts</label>
-          <input type="checkbox" id="milk"><label for="milk">Milk</label>
-          <input type="checkbox" id="eggs"><label for="eggs">Eggs</label>
-          <input type="checkbox" id="soy"><label for="soy">Soy</label>
-          <input type="checkbox" id="shellfish"><label for="shellfish">Shellfish</label>
-          <input type="checkbox" id="sesame"><label for="sesame">Sesame</label>
-          <input type="checkbox" id="mustard"><label for="mustard">Mustard</label>
-          <input type="checkbox" id="treenuts"><label for="treenuts">Tree Nuts</label>
-          <input type="checkbox" id="corn"><label for="corn">Corn</label>
-          <input type="checkbox" id="coconut"><label for="coconut">Coconut</label>
-        </div>
-        <p id="allergy-display"><strong>Saved Preferences:</strong> (None yet)</p>
-      </div>
-
-      <div class="button-row">
-        <button class="btn btn-save">Save Changes</button>
-        <button class="btn btn-danger">Logout</button>
+      <div id="reviews-section" style="display: none;">
+        <h2>Past Reviews</h2>
+        <p>You haven't left any reviews yet.</p>
       </div>
     </div>
   </main>
 
-  <!-- Firebase data handler -->
   <script type="module" src="./js/profile.js"></script>
-
-  <!-- Avatar list for fallback/cycling -->
   <script>
     const avatars = [
       "https://randomuser.me/api/portraits/lego/0.jpg",
@@ -348,15 +364,30 @@
       "https://randomuser.me/api/portraits/lego/9.jpg"
     ];
     let avatarIndex = 1;
+
     function cycleAvatar() {
       avatarIndex = (avatarIndex + 1) % avatars.length;
       const avatarImg = document.getElementById("avatar-img");
       avatarImg.src = avatars[avatarIndex];
       avatarImg.setAttribute("data-avatar-url", avatars[avatarIndex]);
     }
+
+    function switchTab(tab) {
+      document.getElementById('edit-tab').classList.remove('active');
+      document.getElementById('reviews-tab').classList.remove('active');
+      document.getElementById('edit-section').style.display = 'none';
+      document.getElementById('reviews-section').style.display = 'none';
+
+      if (tab === 'edit') {
+        document.getElementById('edit-tab').classList.add('active');
+        document.getElementById('edit-section').style.display = 'block';
+      } else {
+        document.getElementById('reviews-tab').classList.add('active');
+        document.getElementById('reviews-section').style.display = 'block';
+      }
+    }
   </script>
 </body>
 </html>
-
 
   
