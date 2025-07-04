@@ -14,17 +14,20 @@
       --secondary: #a45a49;
       --white: #ffffff;
     }
+
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
+
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background-color: #ffffff;
       color: var(--accent);
       line-height: 1.6;
     }
+
     header {
       background-color: var(--primary);
       display: flex;
@@ -36,23 +39,62 @@
       top: 0;
       z-index: 1000;
     }
+
     .logo img {
       height: 50px;
     }
+
+    nav {
+      display: flex;
+      gap: 20px;
+    }
+
     nav a {
       color: white;
       text-decoration: none;
-      margin-left: 20px;
       font-size: 18px;
       font-weight: 500;
       transition: color 0.3s;
     }
-    nav a:hover {
-      color: var(--maroon);
-    }
+
+    nav a:hover,
     nav a.active {
       color: var(--maroon);
     }
+
+    .menu-toggle {
+      display: none;
+      font-size: 26px;
+      color: white;
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        display: none;
+        flex-direction: column;
+        background: var(--white);
+        position: absolute;
+        top: 70px;
+        right: 0;
+        width: 100%;
+        padding: 20px;
+      }
+
+      nav.open {
+        display: flex;
+      }
+
+      nav a {
+        color: var(--accent);
+        padding: 10px 0;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+    }
+
     main {
       margin-top: 120px;
       display: flex;
@@ -60,6 +102,7 @@
       align-items: center;
       min-height: 70vh;
     }
+
     .form-container {
       background-color: var(--light);
       padding: 2rem;
@@ -68,11 +111,13 @@
       width: 100%;
       max-width: 400px;
     }
+
     .form-container h1 {
       color: var(--maroon);
       margin-bottom: 1.5rem;
       text-align: center;
     }
+
     .form-container input[type="email"],
     .form-container input[type="password"] {
       width: 100%;
@@ -81,6 +126,7 @@
       border-radius: 8px;
       border: 1px solid #ccc;
     }
+
     .form-container button {
       width: 100%;
       padding: 0.75rem;
@@ -90,18 +136,58 @@
       border-radius: 8px;
       font-size: 1rem;
       cursor: pointer;
+      margin-top: 0.5rem;
     }
+
     .form-container button:hover {
       background-color: var(--secondary);
     }
+
+    .form-container .google-button {
+      background-color: #4285F4;
+      margin-top: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .form-container .google-button:hover {
+      background-color: #3367D6;
+    }
+
+    .form-container .google-button i {
+      margin-right: 8px;
+    }
+
     .form-container p {
       margin-top: 1rem;
       text-align: center;
     }
+
     .form-container a {
       color: var(--maroon);
       text-decoration: none;
       font-weight: 500;
+    }
+
+    #error-message {
+      color: red;
+      font-size: 0.9rem;
+      margin-top: 10px;
+      text-align: center;
+    }
+
+    #success-message {
+      color: green;
+      font-size: 0.9rem;
+      margin-top: 5px;
+      text-align: center;
+    }
+
+    .forgot-reset {
+      text-align: center;
+      margin-top: 0.5rem;
+      font-size: 0.9rem;
     }
   </style>
 </head>
@@ -110,7 +196,10 @@
     <div class="logo">
       <a href="index.html"><img src="assets/updated logo 2.png" alt="SafeServe Logo" /></a>
     </div>
-    <nav>
+    <div class="menu-toggle" onclick="toggleMenu()">
+      <i class="fas fa-bars"></i>
+    </div>
+    <nav id="nav-links">
       <a href="index.html">Home</a>
       <a href="profile.html">Profile</a>
       <a href="restaurants.html">Restaurants</a>
@@ -122,15 +211,37 @@
   <main>
     <div class="form-container">
       <h1>Login to SafeServe</h1>
+
+      <div id="error-message"></div>
+      <div id="success-message"></div>
+
       <form id="login-form">
         <input type="email" id="login-email" placeholder="Email" required />
         <input type="password" id="login-password" placeholder="Password" required />
         <button type="submit">Log In</button>
       </form>
+
+      <div class="forgot-reset">
+        <a href="#" id="forgot-password-link">Forgot Password?</a>
+      </div>
+
+      <button id="google-signin-btn" class="google-button" type="button">
+        <i class="fab fa-google"></i> Sign in with Google
+      </button>
+
       <p>Don't have an account? <a href="signup.html">Sign up</a></p>
     </div>
   </main>
 
+  <script>
+    function toggleMenu() {
+      const nav = document.getElementById("nav-links");
+      nav.classList.toggle("open");
+    }
+  </script>
+
   <script type="module" src="./js/auth.js"></script>
 </body>
 </html>
+
+

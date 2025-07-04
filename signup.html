@@ -39,19 +39,48 @@
     .logo img {
       height: 50px;
     }
+    nav {
+      display: flex;
+      gap: 20px;
+    }
     nav a {
       color: white;
       text-decoration: none;
-      margin-left: 20px;
       font-size: 18px;
       font-weight: 500;
       transition: color 0.3s;
     }
-    nav a:hover {
-      color: var(--maroon);
-    }
+    nav a:hover,
     nav a.active {
       color: var(--maroon);
+    }
+    .menu-toggle {
+      display: none;
+      font-size: 26px;
+      color: white;
+      cursor: pointer;
+    }
+    @media (max-width: 768px) {
+      nav {
+        display: none;
+        flex-direction: column;
+        background: var(--white);
+        position: absolute;
+        top: 70px;
+        right: 0;
+        width: 100%;
+        padding: 20px;
+      }
+      nav.open {
+        display: flex;
+      }
+      nav a {
+        color: var(--accent);
+        padding: 10px 0;
+      }
+      .menu-toggle {
+        display: block;
+      }
     }
     main {
       margin-top: 120px;
@@ -91,9 +120,22 @@
       border-radius: 8px;
       font-size: 1rem;
       cursor: pointer;
+      margin-top: 0.5rem;
     }
     .form-container button:hover {
       background-color: var(--secondary);
+    }
+    .form-container .google-button {
+      background-color: #4285F4;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .form-container .google-button:hover {
+      background-color: #3367D6;
+    }
+    .form-container .google-button i {
+      margin-right: 8px;
     }
     .form-container p {
       margin-top: 1rem;
@@ -104,13 +146,13 @@
       text-decoration: none;
       font-weight: 500;
     }
-    .form-container #error-message {
+    #error-message {
       color: red;
       font-size: 0.9rem;
       margin-bottom: 10px;
       text-align: center;
     }
-    .form-container #success-message {
+    #success-message {
       color: green;
       font-size: 0.9rem;
       margin-bottom: 10px;
@@ -123,7 +165,10 @@
     <div class="logo">
       <a href="index.html"><img src="assets/updated logo 2.png" alt="SafeServe Logo" /></a>
     </div>
-    <nav>
+    <div class="menu-toggle" onclick="toggleMenu()">
+      <i class="fas fa-bars"></i>
+    </div>
+    <nav id="nav-links">
       <a href="index.html">Home</a>
       <a href="profile.html">Profile</a>
       <a href="restaurants.html">Restaurants</a>
@@ -135,19 +180,35 @@
   <main>
     <div class="form-container">
       <h1>Create Your SafeServe Account</h1>
+
+      <div id="error-message"></div>
+      <div id="success-message"></div>
+
       <form id="signup-form">
-        <div id="error-message"></div>
-        <div id="success-message"></div>
-        <input type="text" id="signup-name" placeholder="Full Name" required />
+        <input type="text" id="signup-first-name" placeholder="First Name" required />
+        <input type="text" id="signup-last-name" placeholder="Last Name" required />
         <input type="email" id="signup-email" placeholder="Email" required />
         <input type="password" id="signup-password" placeholder="Password" required />
         <input type="password" id="signup-confirm-password" placeholder="Confirm Password" required />
         <button type="submit">Sign Up</button>
       </form>
+
+      <button id="google-signin-btn" class="google-button" type="button">
+        <i class="fab fa-google"></i> Sign up with Google
+      </button>
+
       <p>Already have an account? <a href="login.html">Log in</a></p>
     </div>
   </main>
 
+  <script>
+    function toggleMenu() {
+      const nav = document.getElementById("nav-links");
+      nav.classList.toggle("open");
+    }
+  </script>
+
   <script type="module" src="./js/auth.js"></script>
 </body>
 </html>
+

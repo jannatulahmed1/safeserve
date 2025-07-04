@@ -4,7 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>SafeServe</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     :root {
       --primary: #a9b186;
@@ -38,16 +39,9 @@
       top: 0;
       z-index: 1000;
     }
-
     .logo img {
       height: 50px;
     }
-
-    nav {
-      display: flex;
-      align-items: center;
-    }
-
     nav a {
       color: white;
       text-decoration: none;
@@ -56,11 +50,9 @@
       font-weight: 500;
       transition: color 0.3s;
     }
-
     nav a:hover {
       color: var(--maroon);
     }
-
     nav a.active {
       color: var(--maroon);
     }
@@ -81,13 +73,14 @@
       margin-top: 80px;
     }
 
+
     main {
       padding: 60px 20px;
       max-width: 1200px;
       margin: auto;
     }
 
-    .features, .images, .reviews {
+    .features, .images {
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
@@ -100,10 +93,9 @@
       max-width: calc(32%);
     }
 
-    .feature-box, .review {
+    .feature-box {
       background: var(--light);
       padding: 25px;
-      border-radius: 0;
       box-shadow: 0 4px 12px rgba(0,0,0,0.08);
       text-align: center;
       transition: transform 0.3s;
@@ -151,9 +143,28 @@
       background-color: var(--secondary);
     }
 
+    .images img {
+      width: 100%;
+      height: 210px;
+      object-fit: cover;
+    }
+
+    .images h3 {
+      margin-top: 16px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: var(--maroon);
+      text-align: center;
+    }
+
+    .images p {
+      margin-top: 8px;
+      font-size: 1rem;
+      text-align: center;
+    }
+
     .faq-section {
       background: rgb(223, 231, 207);
-      border-radius: 0;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
       padding: 30px;
       margin-bottom: 60px;
@@ -172,86 +183,45 @@
       margin-bottom: 20px;
     }
 
-    .faq:last-child {
-      border-bottom: none;
-    }
-
     .faq-question {
       font-size: 1.2rem;
       font-weight: 500;
-      color: #000;
       cursor: pointer;
-      margin-bottom: 5px;
       display: flex;
       justify-content: space-between;
-      align-items: center;
     }
 
     .faq-answer {
       display: none;
       font-size: 1rem;
-      color: #444;
       margin-top: 5px;
     }
 
     footer {
       background-color: var(--primary);
-      color: #000;
       text-align: center;
       padding: 30px 20px;
     }
 
-    .socials a {
-      text-decoration: none;
-      color: var(--maroon);
-      margin: 0 10px;
-    }
-
-    .socials i {
-      margin-right: 6px;
-    }
-
-    /* Responsive */
     @media (max-width: 768px) {
       nav {
         display: none;
         flex-direction: column;
-        background-color: var(--primary);
         position: absolute;
         top: 70px;
         right: 20px;
         width: 60%;
         padding: 20px;
-        border: 1px solid #fff;
       }
-
-      nav a {
-        margin: 10px 0;
-        font-size: 16px;
-      }
-
       .menu-toggle {
         display: block;
       }
-
       .same-width {
         flex: 1 1 100%;
         max-width: 100%;
       }
-
-      .features, .images, .reviews {
-        flex-direction: column;
-        align-items: center;
-      }
-
       .buttons {
         flex-direction: column;
-        gap: 15px;
-      }
-
-      .buttons a {
-        width: 80%;
-        text-align: center;
       }
     }
   </style>
@@ -259,7 +229,7 @@
 <body>
   <header>
     <div class="logo">
-      <a href="index.html"><img src="assets/updated%20logo%202.png" alt="SafeServe Logo" /></a>
+      <a href="index.html"><img src="assets/updated logo 2.png" alt="SafeServe Logo" /></a>
     </div>
     <i class="fas fa-bars menu-toggle" onclick="toggleMenu()"></i>
     <nav id="nav-links">
@@ -271,26 +241,32 @@
     </nav>
   </header>
 
+
   <section class="hero-image"></section>
 
   <main>
     <section class="features">
       <div class="feature-box same-width">
         <h3>Save Allergy Preferences</h3>
-        <p>Customize your profile with allergy info so results match your safety needs.</p>
+        <p>Customize your profile with allergy info so results match
+your safety needs.</p>
       </div>
       <div class="feature-box same-width">
         <h3>Leave & Read Reviews</h3>
-        <p>Share dining experiences or explore reviews from users with similar allergies.</p>
+        <p>Share dining experiences or explore reviews from users with
+similar allergies.</p>
       </div>
       <div class="feature-box same-width">
         <h3>Search Allergy-Safe Restaurants</h3>
-        <p>Quickly find allergy-safe places with powerful filters and smart suggestions.</p>
+        <p>Quickly find allergy-safe places with powerful filters and
+smart suggestions.</p>
       </div>
     </section>
 
     <div class="cta">
-      <p>Start exploring now — <a href="profile.html">set your preferences</a> and <a href="restaurants.html">find restaurants</a>!</p>
+      <p>Start exploring now — <a href="profile.html">set your
+preferences</a> and <a href="restaurants.html">find
+restaurants</a>!</p>
     </div>
 
     <div class="buttons">
@@ -299,23 +275,26 @@
     </div>
 
     <section class="images">
-      <img class="same-width" src="https://images.squarespace-cdn.com/content/v1/5579e5fde4b046b52b3ff1b2/4da93fc9-5564-462e-8f5f-4ff0d10acc55/4-food-final-gif-r2.gif?format=2500w" alt="Allergy Safe Food Animation" />
-      <img class="same-width" src="https://images.squarespace-cdn.com/content/v1/5579e5fde4b046b52b3ff1b2/1604791943391-C8XW995N9GSLABPXPRS4/chef-bill-fuller?format=2500w" alt="Chef Bill Fuller cooking animation" />
-      <img class="same-width" src="https://images.squarespace-cdn.com/content/v1/5579e5fde4b046b52b3ff1b2/1604793979300-R75QQPEHJSPKJG3V7M5L/fish-dish-big-burrito.gif?format=2500w" alt="Animated fish dish from Big Burrito" />
-    </section>
-
-    <section class="reviews">
-      <div class="review same-width">
-        <div class="user">Alex M.</div>
-        <div class="comment">"SafeServe helped me find restaurants where I can eat without worry!"</div>
+      <div class="same-width">
+        <img src="https://images.squarespace-cdn.com/content/v1/5579e5fde4b046b52b3ff1b2/4da93fc9-5564-462e-8f5f-4ff0d10acc55/4-food-final-gif-r2.gif?format=2500w"
+alt="Allergy Safe Food Animation">
+        <h3>Food for All, Without Fear</h3>
+        <p>Enjoy shared meals confidently — SafeServe connects you
+with inclusive, allergy-conscious restaurants.</p>
       </div>
-      <div class="review same-width">
-        <div class="user">Jamie L.</div>
-        <div class="comment">"I love how easy it is to find allergy-friendly options!"</div>
+      <div class="same-width">
+        <img src="https://images.squarespace-cdn.com/content/v1/5579e5fde4b046b52b3ff1b2/1604791943391-C8XW995N9GSLABPXPRS4/chef-bill-fuller?format=2500w"
+alt="Chef Bill Fuller cooking animation">
+        <h3>Trained Kitchens, Trusted Meals</h3>
+        <p>We highlight restaurants where chefs are trained in
+allergy-safe prep, so you can dine with peace of mind.</p>
       </div>
-      <div class="review same-width">
-        <div class="user">Taylor R.</div>
-        <div class="comment">"Thanks to SafeServe, I can enjoy dining out again!"</div>
+      <div class="same-width">
+        <img src="https://images.squarespace-cdn.com/content/v1/5579e5fde4b046b52b3ff1b2/1604793979300-R75QQPEHJSPKJG3V7M5L/fish-dish-big-burrito.gif?format=2500w"
+alt="Animated fish dish from Big Burrito">
+        <h3>Smart Ingredients, Safe Choices</h3>
+        <p>From clean prep surfaces to mindful menus, SafeServe
+promotes food that’s as safe as it is delicious.</p>
       </div>
     </section>
 
@@ -345,20 +324,19 @@
   </main>
 
   <footer>
-    <p>Contact us at: 
-      <a href="mailto:safeserve@example.com" style="color: var(--maroon); text-decoration: none;">safeserve@example.com</a>
-    </p>
+    <p>Contact us at: <a href="mailto:safeserve@example.com"
+style="color: var(--maroon); text-decoration:
+none;">safeserve@example.com</a></p>
     <p>
       Follow our socials:
-      <i class="fab fa-instagram" style="margin: 0 2px;"></i>
-      <i class="fab fa-twitter" style="margin: 0 2px;"></i>
-      <i class="fab fa-facebook" style="margin: 0 2px;"></i>
+      <i class="fab fa-instagram"></i>
+      <i class="fab fa-twitter"></i>
+      <i class="fab fa-facebook"></i>
       <span style="color: var(--maroon); font-weight: 500;">@safeserve</span>
     </p>
   </footer>
 
   <script>
-    // FAQ toggle with +/-
     document.addEventListener("DOMContentLoaded", function () {
       const questions = document.querySelectorAll(".faq-question");
       questions.forEach(q => {
@@ -372,7 +350,6 @@
       });
     });
 
-    // Mobile nav toggle
     function toggleMenu() {
       const nav = document.getElementById("nav-links");
       nav.style.display = nav.style.display === "flex" ? "none" : "flex";
