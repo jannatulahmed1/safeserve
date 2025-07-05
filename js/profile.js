@@ -71,6 +71,14 @@ document.addEventListener("DOMContentLoaded", () => {
       window.location.href = "login.html";
       return;
     }
+  
+    if (!user.emailVerified) {
+      alert("Please verify your email before accessing your profile.");
+      signOut(auth).then(() => {
+        window.location.href = "login.html";
+      });
+      return;
+    }
 
     try {
       const userRef = doc(db, "users", user.uid);
@@ -87,9 +95,7 @@ document.addEventListener("DOMContentLoaded", () => {
       // Prefill inputs
       document.getElementById("first-name").value = data.firstName || "";
       document.getElementById("last-name").value = data.lastName || "";
-      document.getElementById("first-name").disabled = true;
-      document.getElementById("last-name").disabled = true;
-
+ 
       document.getElementById("username").value = data.username || "";
       document.getElementById("email").value = data.email || "";
       document.getElementById("email").disabled = true;
@@ -100,10 +106,8 @@ document.addEventListener("DOMContentLoaded", () => {
           const checkbox = document.getElementById(allergy.toLowerCase());
           if (checkbox) checkbox.checked = true;
         });
-        allergySummary.textContent = `Saved allergies: ${data.allergies.join(", ")}`;
         updateAllergyDisplay(data.allergies);
       } else {
-        allergySummary.textContent = "No allergies selected.";
         updateAllergyDisplay([]);
       }
 
@@ -123,7 +127,7 @@ document.addEventListener("DOMContentLoaded", () => {
       document.querySelector(".btn-save").addEventListener("click", async () => {
         const allergyArray = Array.from(document.querySelectorAll(".allergy-options input:checked")).map(cb => cb.id);
         const selectedAvatarURL = avatarImg.getAttribute("data-avatar-url") || avatarURLs[0];
-
+      
         const updatedData = {
           firstName: document.getElementById("first-name").value.trim(),
           lastName: document.getElementById("last-name").value.trim(),
@@ -131,19 +135,21 @@ document.addEventListener("DOMContentLoaded", () => {
           allergies: allergyArray,
           profilePic: selectedAvatarURL
         };
-
+      
         try {
           await setDoc(userRef, updatedData, { merge: true });
-          allergySummary.textContent = allergyArray.length
-            ? `Saved allergies: ${allergyArray.join(", ")}`
-            : "No allergies selected.";
+      
+          // ✅ Manually update the allergy display
           updateAllergyDisplay(allergyArray);
+      
           alert("✅ Changes saved successfully.");
         } catch (err) {
           console.error("❌ Failed to update profile:", err);
           alert("Error saving profile.");
         }
       });
+      
+      
 
       // Password reset toggle (restore old UI)
       const resetBtn = document.getElementById("reset-password-toggle");

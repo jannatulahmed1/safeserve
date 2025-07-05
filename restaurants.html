@@ -12,8 +12,8 @@
       --light: #f4f4f4;
       --maroon: #800000;
       --secondary: #a45a49;
-      --tag-bg: #e5e5e5;
-      --tag-border: #ccc;
+      --tag-bg: #c9d1b5;
+      --tag-border: #999;
     }
 
     * {
@@ -36,8 +36,8 @@
       align-items: center;
       padding: 15px 30px;
       position: fixed;
-      width: 100%;
       top: 0;
+      width: 100%;
       z-index: 1000;
     }
 
@@ -71,7 +71,7 @@
       width: 25%;
       background-color: #fefefe;
       padding: 20px;
-      border-radius: 10px;
+      border-radius: 4px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.08);
       height: fit-content;
     }
@@ -86,41 +86,39 @@
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .filter-pills input[type="checkbox"] {
+      display: none;
     }
 
     .filter-pills label {
-      background-color: var(--tag-bg);
-      padding: 8px 14px;
+      background-color: #c9d1b5; 
+      padding: 8px 16px;
       border-radius: 20px;
-      font-size: 14px;
-      border: 1px solid var(--tag-border);
+      border: 2px solid transparent;
       cursor: pointer;
-      transition: all 0.2s;
-      display: inline-block;
+      user-select: none;
+      font-size: 14px;
+      transition: all 0.3s ease;
     }
 
-    .filter-pills label:hover {
+    .filter-pills input[type="checkbox"]:checked + label {
       background-color: var(--maroon);
       color: white;
       border-color: var(--maroon);
     }
 
-    .filter-pills input {
-      display: none;
-    }
-
     #applyFiltersBtn {
-      margin-top: 20px;
       display: inline-block;
-      padding: 8px 14px;
-      font-size: 14px;
+      padding: 10px 20px;
+      font-size: 15px;
       color: white;
       background-color: var(--maroon);
       border: none;
-      border-radius: 6px;
+      border-radius: 8px;
       cursor: pointer;
-      text-align: center;
-      text-decoration: none;
       transition: background-color 0.3s;
     }
 
@@ -131,7 +129,6 @@
     .resultbox {
       width: 75%;
       background-color: var(--light);
-      border-radius: 12px;
       padding: 20px;
       display: flex;
       flex-wrap: wrap;
@@ -139,15 +136,17 @@
       justify-content: flex-start;
     }
 
-    .restaurant-card {
-      background: white;
-      width: 300px;
-      border-radius: 12px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-    }
+.restaurant-card {
+  background: white;
+  width: 300px;
+  height: 420px; /* Set fixed vertical length */
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
 
     .restaurant-card img {
       width: 100%;
@@ -160,7 +159,7 @@
       flex-grow: 1;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
+      justify-content: flex-start;
     }
 
     .restaurant-info h3 {
@@ -181,8 +180,10 @@
 
     .view-button {
       display: inline-block;
-      padding: 8px 14px;
-      font-size: 14px;
+      padding: 10px 0;
+      margin-top: 12px;
+      width: 100%;
+      font-size: 15px;
       color: white;
       background-color: var(--maroon);
       border: none;
@@ -191,7 +192,6 @@
       text-align: center;
       text-decoration: none;
       transition: background-color 0.3s;
-      margin-top: auto;
     }
 
     .view-button:hover {
@@ -204,13 +204,6 @@
       text-align: center;
       padding: 30px 20px;
       margin-top: 40px;
-    }
-
-    .socials a {
-      text-decoration: none;
-      color: var(--maroon);
-      margin: 0 10px;
-      font-weight: bold;
     }
 
     @media (max-width: 768px) {
@@ -243,37 +236,67 @@
 
   <main>
     <div class="container">
-
-      <!-- FILTERS -->
       <div class="filterbox">
         <h2>Filter by Allergens</h2>
         <div class="filter-pills">
-          <label><input type="checkbox" name="allergy" value="gluten">Gluten</label>
-          <label><input type="checkbox" name="allergy" value="peanuts">Peanuts</label>
-          <label><input type="checkbox" name="allergy" value="tree-nuts">Tree Nuts</label>
-          <label><input type="checkbox" name="allergy" value="milk">Milk</label>
-          <label><input type="checkbox" name="allergy" value="eggs">Eggs</label>
-          <label><input type="checkbox" name="allergy" value="soy">Soy</label>
-          <label><input type="checkbox" name="allergy" value="fish">Fish</label>
-          <label><input type="checkbox" name="allergy" value="shellfish">Shellfish</label>
-          <label><input type="checkbox" name="allergy" value="sesame">Sesame</label>
+          <input type="checkbox" id="gluten" name="allergy" value="gluten"><label for="gluten">Gluten</label>
+          <input type="checkbox" id="peanuts" name="allergy" value="peanuts"><label for="peanuts">Peanuts</label>
+          <input type="checkbox" id="tree-nuts" name="allergy" value="tree-nuts"><label for="tree-nuts">Tree Nuts</label>
+          <input type="checkbox" id="milk" name="allergy" value="milk"><label for="milk">Milk</label>
+          <input type="checkbox" id="eggs" name="allergy" value="eggs"><label for="eggs">Eggs</label>
+          <input type="checkbox" id="soy" name="allergy" value="soy"><label for="soy">Soy</label>
+          <input type="checkbox" id="fish" name="allergy" value="fish"><label for="fish">Fish</label>
+          <input type="checkbox" id="shellfish" name="allergy" value="shellfish"><label for="shellfish">Shellfish</label>
+          <input type="checkbox" id="sesame" name="allergy" value="sesame"><label for="sesame">Sesame</label>
+          <input type="checkbox" id="mustard" name="allergy" value="mustard"><label for="mustard">Mustard</label>
+          <input type="checkbox" id="wheat" name="allergy" value="wheat"><label for="wheat">Wheat</label>
+          <input type="checkbox" id="corn" name="allergy" value="corn"><label for="corn">Corn</label>
+          <input type="checkbox" id="coconut" name="allergy" value="coconut"><label for="coconut">Coconut</label>
+          <input type="checkbox" id="sulfites" name="allergy" value="sulfites"><label for="sulfites">Sulfites</label>
+          <input type="checkbox" id="celery" name="allergy" value="celery"><label for="celery">Celery</label>
+          <input type="checkbox" id="lupin" name="allergy" value="lupin"><label for="lupin">Lupin</label>
         </div>
 
-        <!-- Apply Button -->
+        <h2>Filter by Cuisine</h2>
+        <div class="filter-pills">
+          <input type="checkbox" id="italian" name="cuisine" value="italian"><label for="italian">Italian</label>
+          <input type="checkbox" id="chinese" name="cuisine" value="chinese"><label for="chinese">Chinese</label>
+          <input type="checkbox" id="indian" name="cuisine" value="indian"><label for="indian">Indian</label>
+          <input type="checkbox" id="mexican" name="cuisine" value="mexican"><label for="mexican">Mexican</label>
+          <input type="checkbox" id="thai" name="cuisine" value="thai"><label for="thai">Thai</label>
+          <input type="checkbox" id="japanese" name="cuisine" value="japanese"><label for="japanese">Japanese</label>
+          <input type="checkbox" id="american" name="cuisine" value="american"><label for="american">American</label>
+          <input type="checkbox" id="mediterranean" name="cuisine" value="mediterranean"><label for="mediterranean">Mediterranean</label>
+          <input type="checkbox" id="korean" name="cuisine" value="korean"><label for="korean">Korean</label>
+          <input type="checkbox" id="middle-eastern" name="cuisine" value="middle-eastern"><label for="middle-eastern">Middle Eastern</label>
+          <input type="checkbox" id="greek" name="cuisine" value="greek"><label for="greek">Greek</label>
+          <input type="checkbox" id="french" name="cuisine" value="french"><label for="french">French</label>
+          <input type="checkbox" id="caribbean" name="cuisine" value="caribbean"><label for="caribbean">Caribbean</label>
+          <input type="checkbox" id="vietnamese" name="cuisine" value="vietnamese"><label for="vietnamese">Vietnamese</label>
+          <input type="checkbox" id="ethiopian" name="cuisine" value="ethiopian"><label for="ethiopian">Ethiopian</label>
+        </div>
+
+        <h2>Dietary Options</h2>
+        <div class="filter-pills">
+          <input type="checkbox" id="vegan" name="diet" value="vegan"><label for="vegan">Vegan</label>
+          <input type="checkbox" id="vegetarian" name="diet" value="vegetarian"><label for="vegetarian">Vegetarian</label>
+          <input type="checkbox" id="halal" name="diet" value="halal"><label for="halal">Halal</label>
+          <input type="checkbox" id="kosher" name="diet" value="kosher"><label for="kosher">Kosher</label>
+          <input type="checkbox" id="pescatarian" name="diet" value="pescatarian"><label for="pescatarian">Pescatarian</label>
+          <input type="checkbox" id="low-carb" name="diet" value="low-carb"><label for="low-carb">Low-Carb</label>
+          <input type="checkbox" id="low-sodium" name="diet" value="low-sodium"><label for="low-sodium">Low-Sodium</label>
+        </div>
+
         <button id="applyFiltersBtn">Apply Filters</button>
       </div>
 
-      <!-- RESULTS -->
       <div class="resultbox" id="restaurantResults">
         <!-- JS will populate this -->
       </div>
     </div>
   </main>
 
-  <!-- Load Firestore script -->
   <script type="module" src="./js/restaurants.js"></script>
 </body>
 </html>
-
-
 

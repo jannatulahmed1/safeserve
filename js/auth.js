@@ -107,7 +107,7 @@ if (loginForm) {
       }
 
       localStorage.setItem("userUID", user.uid);
-      successEl.textContent = "✅ Login successful! Redirecting...";
+      successEl.textContent = "Login successful! Redirecting...";
       setTimeout(() => {
         window.location.href = "profile.html";
       }, 1200);
