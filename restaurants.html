@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>SafeServe - Restaurants</title>
-
   <style>
     :root {
       --primary: #a9b186;
@@ -12,8 +11,6 @@
       --light: #f4f4f4;
       --maroon: #800000;
       --secondary: #a45a49;
-      --tag-bg: #c9d1b5;
-      --tag-border: #999;
     }
 
     * {
@@ -76,52 +73,56 @@
       height: fit-content;
     }
 
-    .filterbox h2 {
-      margin-bottom: 10px;
-      font-size: 20px;
-      color: var(--maroon);
-    }
-
-    .filter-pills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
+    .dropdown {
       margin-bottom: 20px;
     }
 
-    .filter-pills input[type="checkbox"] {
-      display: none;
-    }
-
-    .filter-pills label {
-      background-color: #c9d1b5; 
-      padding: 8px 16px;
-      border-radius: 20px;
-      border: 2px solid transparent;
-      cursor: pointer;
-      user-select: none;
-      font-size: 14px;
-      transition: all 0.3s ease;
-    }
-
-    .filter-pills input[type="checkbox"]:checked + label {
+    .dropdown-btn {
       background-color: var(--maroon);
       color: white;
-      border-color: var(--maroon);
-    }
-
-    #applyFiltersBtn {
-      display: inline-block;
-      padding: 10px 20px;
-      font-size: 15px;
-      color: white;
-      background-color: var(--maroon);
+      padding: 10px;
       border: none;
-      border-radius: 8px;
+      width: 100%;
+      text-align: left;
+      font-size: 16px;
       cursor: pointer;
+      border-radius: 6px;
       transition: background-color 0.3s;
     }
 
+    .dropdown-btn:hover {
+      background-color: var(--secondary);
+    }
+
+    .dropdown-content {
+      display: none;
+      padding: 10px;
+      border: 1px solid #ccc;
+      margin-top: 5px;
+      border-radius: 6px;
+      background-color: #f9f9f9;
+    }
+
+    .dropdown-content label {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 14px;
+    }
+
+    #useSavedPrefsBtn,
+    #applyFiltersBtn {
+      padding: 10px 16px;
+      background-color: var(--maroon);
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+      width: 100%;
+      margin-top: 10px;
+    }
+
+    #useSavedPrefsBtn:hover,
     #applyFiltersBtn:hover {
       background-color: var(--secondary);
     }
@@ -136,17 +137,16 @@
       justify-content: flex-start;
     }
 
-.restaurant-card {
-  background: white;
-  width: 300px;
-  height: 420px; /* Set fixed vertical length */
-  border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-}
-
+    .restaurant-card {
+      background: white;
+      width: 300px;
+      height: 420px;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
 
     .restaurant-card img {
       width: 100%;
@@ -198,22 +198,15 @@
       background-color: var(--secondary);
     }
 
-    footer {
-      background-color: var(--primary);
-      color: #000;
-      text-align: center;
-      padding: 30px 20px;
-      margin-top: 40px;
-    }
-
     @media (max-width: 768px) {
       .container {
         flex-direction: column;
       }
-      .filterbox,
-      .resultbox {
+
+      .filterbox, .resultbox {
         width: 100%;
       }
+
       .resultbox {
         justify-content: center;
       }
@@ -237,72 +230,40 @@
   <main>
     <div class="container">
       <div class="filterbox">
-        <h2>Filter by Allergens</h2>
-        <div class="filter-pills">
-          <input type="checkbox" id="peanut"><label for="peanut">Peanut</label>
-          <input type="checkbox" id="almond"><label for="almond">Almond</label>
-          <input type="checkbox" id="milk"><label for="milk">Milk</label>
-          <input type="checkbox" id="egg"><label for="egg">Egg</label>
-          <input type="checkbox" id="salmon"><label for="salmon">Salmon</label>
-          <input type="checkbox" id="tuna"><label for="tuna">Tuna</label>
-          <input type="checkbox" id="walnut"><label for="walnut">Walnut</label>
-          <input type="checkbox" id="cashew"><label for="cashew">Cashew</label>
-          <input type="checkbox" id="pistachio"><label for="pistachio">Pistachio</label>
-          <input type="checkbox" id="hazelnut"><label for="hazelnut">Hazelnut</label>
-          <input type="checkbox" id="shrimp"><label for="shrimp">Shrimp</label>
-          <input type="checkbox" id="wheat"><label for="wheat">Wheat</label>
-          <input type="checkbox" id="gluten"><label for="gluten">Gluten</label>
-          <input type="checkbox" id="crab"><label for="crab">Crab</label>
-          <input type="checkbox" id="lobster"><label for="lobster">Lobster</label>
-          <input type="checkbox" id="oats"><label for="oats">Oats</label>
-          <input type="checkbox" id="corn"><label for="corn">Corn</label>
-          <input type="checkbox" id="sesame"><label for="sesame">Sesame</label>
-          <input type="checkbox" id="soy"><label for="soy">Soy</label>
-          <input type="checkbox" id="avocado"><label for="avocado">Avocado</label>
-          <input type="checkbox" id="chickpeas"><label for="chickpeas">Chickpeas</label>
-          <input type="checkbox" id="banana"><label for="banana">Banana</label>
+        <div class="dropdown">
+          <button class="dropdown-btn"
+onclick="toggleDropdown('allergenFilters')">Allergens</button>
+          <div class="dropdown-content" id="allergenFilters"></div>
         </div>
 
-        <h2>Filter by Cuisine</h2>
-        <div class="filter-pills">
-          <input type="checkbox" id="italian" name="cuisine" value="italian"><label for="italian">Italian</label>
-          <input type="checkbox" id="chinese" name="cuisine" value="chinese"><label for="chinese">Chinese</label>
-          <input type="checkbox" id="indian" name="cuisine" value="indian"><label for="indian">Indian</label>
-          <input type="checkbox" id="mexican" name="cuisine" value="mexican"><label for="mexican">Mexican</label>
-          <input type="checkbox" id="thai" name="cuisine" value="thai"><label for="thai">Thai</label>
-          <input type="checkbox" id="japanese" name="cuisine" value="japanese"><label for="japanese">Japanese</label>
-          <input type="checkbox" id="american" name="cuisine" value="american"><label for="american">American</label>
-          <input type="checkbox" id="mediterranean" name="cuisine" value="mediterranean"><label for="mediterranean">Mediterranean</label>
-          <input type="checkbox" id="korean" name="cuisine" value="korean"><label for="korean">Korean</label>
-          <input type="checkbox" id="middle-eastern" name="cuisine" value="middle-eastern"><label for="middle-eastern">Middle Eastern</label>
-          <input type="checkbox" id="greek" name="cuisine" value="greek"><label for="greek">Greek</label>
-          <input type="checkbox" id="french" name="cuisine" value="french"><label for="french">French</label>
-          <input type="checkbox" id="caribbean" name="cuisine" value="caribbean"><label for="caribbean">Caribbean</label>
-          <input type="checkbox" id="vietnamese" name="cuisine" value="vietnamese"><label for="vietnamese">Vietnamese</label>
-          <input type="checkbox" id="ethiopian" name="cuisine" value="ethiopian"><label for="ethiopian">Ethiopian</label>
+        <div class="dropdown">
+          <button class="dropdown-btn"
+onclick="toggleDropdown('cuisineFilters')">Cuisines</button>
+          <div class="dropdown-content" id="cuisineFilters"></div>
         </div>
 
-        <h2>Dietary Options</h2>
-        <div class="filter-pills">
-          <input type="checkbox" id="vegan" name="diet" value="vegan"><label for="vegan">Vegan</label>
-          <input type="checkbox" id="vegetarian" name="diet" value="vegetarian"><label for="vegetarian">Vegetarian</label>
-          <input type="checkbox" id="pescatarian" name="diet" value="pescatarian"><label for="pescatarian">Pescatarian</label>
-          <input type="checkbox" id="halal" name="diet" value="halal"><label for="halal">Halal</label>
-          <input type="checkbox" id="kosher" name="diet" value="kosher"><label for="kosher">Kosher</label>
-          <input type="checkbox" id="low-carb" name="diet" value="low-carb"><label for="low-carb">Low-Carb</label>
-          <input type="checkbox" id="low-sodium" name="diet" value="low-sodium"><label for="low-sodium">Low-Sodium</label>
+        <div class="dropdown">
+          <button class="dropdown-btn"
+onclick="toggleDropdown('dietFilters')">Diets</button>
+          <div class="dropdown-content" id="dietFilters"></div>
         </div>
 
+        <button id="useSavedPrefsBtn">Use Saved Preferences</button>
         <button id="applyFiltersBtn">Apply Filters</button>
       </div>
 
       <div class="resultbox" id="restaurantResults">
-        <!-- JS will populate this -->
+        <!-- JS will populate results -->
       </div>
     </div>
   </main>
 
+  <script>
+    function toggleDropdown(id) {
+      const box = document.getElementById(id);
+      box.style.display = box.style.display === 'block' ? 'none' : 'block';
+    }
+  </script>
   <script type="module" src="./js/restaurants.js"></script>
 </body>
 </html>
-

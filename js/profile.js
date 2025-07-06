@@ -203,13 +203,3 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
-
-
-
-
-
-
-
-
-
-

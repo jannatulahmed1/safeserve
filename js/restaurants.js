@@ -7,28 +7,78 @@ import {
 } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore.js";
 import { firebaseConfig } from './firebase-config.js';
 
-// Init Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-// Wait for DOM to load before accessing elements
+// Filter values
+const allergenOptions = [
+  "peanut", "almond", "milk", "egg", "salmon", "tuna", "walnut",
+  "cashew", "pistachio", "hazelnut", "shrimp", "wheat", "gluten",
+  "crab", "lobster", "oats", "corn", "sesame", "soy",
+  "avocado", "chickpeas", "banana"
+];
+
+const cuisineOptions = [
+  "italian", "chinese", "indian", "mexican", "thai",
+  "japanese", "american", "mediterranean", "korean",
+  "middle-eastern", "greek", "french", "caribbean",
+  "vietnamese", "ethiopian"
+];
+
+const dietOptions = [
+  "vegan", "vegetarian", "pescatarian", "halal",
+  "kosher", "low-carb", "low-sodium"
+];
+
 window.addEventListener("DOMContentLoaded", () => {
   const applyBtn = document.getElementById("applyFiltersBtn");
+  const useSaved = document.getElementById("useSavedPrefs");
 
-  // Fetch all restaurants on page load
+  populateFilters();
   fetchRestaurants();
 
-  // Handle filter button click
   applyBtn.addEventListener("click", () => {
-    const selected = Array.from(
+    let selectedAllergies = Array.from(
       document.querySelectorAll('input[name="allergy"]:checked')
     ).map(cb => cb.value.toLowerCase());
 
-    fetchRestaurants(selected);
+    if (useSaved?.checked) {
+      const saved = JSON.parse(localStorage.getItem("savedAllergies") || "[]");
+      selectedAllergies = [...new Set([...selectedAllergies, ...saved.map(s => s.toLowerCase())])];
+    }
+
+    const selectedCuisines = Array.from(
+      document.querySelectorAll('input[name="cuisine"]:checked')
+    ).map(cb => cb.value.toLowerCase());
+
+    const selectedDiets = Array.from(
+      document.querySelectorAll('input[name="diet"]:checked')
+    ).map(cb => cb.value.toLowerCase());
+
+    fetchRestaurants(selectedAllergies, selectedCuisines, selectedDiets);
   });
 });
 
-async function fetchRestaurants(allergies = []) {
+function populateFilters() {
+  const allergyDiv = document.getElementById("allergenFilters");
+  const cuisineDiv = document.getElementById("cuisineFilters");
+  const dietDiv = document.getElementById("dietFilters");
+
+  allergenOptions.forEach(option => {
+    const input = `<input type="checkbox" id="${option}" name="allergy" value="${option}"><label for="${option}">${capitalize(option)}</label>`;
+    allergyDiv.insertAdjacentHTML("beforeend", input);
+  });
+  cuisineOptions.forEach(option => {
+    const input = `<input type="checkbox" id="${option}" name="cuisine" value="${option}"><label for="${option}">${capitalize(option)}</label>`;
+    cuisineDiv.insertAdjacentHTML("beforeend", input);
+  });
+  dietOptions.forEach(option => {
+    const input = `<input type="checkbox" id="${option}" name="diet" value="${option}"><label for="${option}">${capitalize(option)}</label>`;
+    dietDiv.insertAdjacentHTML("beforeend", input);
+  });
+}
+
+async function fetchRestaurants(allergies = [], cuisines = [], diets = []) {
   const resultBox = document.querySelector(".resultbox");
   resultBox.innerHTML = `<h2 style="padding-left: 15px;">Loading...</h2>`;
 
@@ -39,9 +89,14 @@ async function fetchRestaurants(allergies = []) {
     snapshot.forEach(doc => {
       const data = doc.data();
       const safeAllergies = (data.safeFor || []).map(a => a.trim().toLowerCase());
+      const cuisine = (data.cuisine || "").toLowerCase();
+      const tags = (data.safeFor || []).map(t => t.trim().toLowerCase()); // changed from data.tags
 
-      const matches = allergies.every(a => safeAllergies.includes(a));
-      if (allergies.length === 0 || matches) {
+      const matchAllergies = allergies.length === 0 || allergies.every(a => safeAllergies.includes(a));
+      const matchCuisine = cuisines.length === 0 || cuisines.includes(cuisine);
+      const matchDiet = diets.length === 0 || diets.some(d => tags.includes(d));
+
+      if (matchAllergies && matchCuisine && matchDiet) {
         restaurants.push(data);
       }
     });
@@ -51,8 +106,7 @@ async function fetchRestaurants(allergies = []) {
       return;
     }
 
-    resultBox.innerHTML = ""; // Clear the loading text
-
+    resultBox.innerHTML = "";
     restaurants.forEach(r => {
       const card = document.createElement("div");
       card.className = "restaurant-card";
@@ -73,4 +127,8 @@ async function fetchRestaurants(allergies = []) {
     console.error("Error fetching restaurants:", error);
     resultBox.innerHTML = `<h2 style="padding-left: 15px; color: red;">Error loading restaurants. Please try again.</h2>`;
   }
+}
+
+function capitalize(str) {
+  return str.charAt(0).toUpperCase() + str.slice(1);
 }
