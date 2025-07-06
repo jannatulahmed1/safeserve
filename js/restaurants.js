@@ -1,4 +1,3 @@
-// js/restaurants.js
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
 import {
   getFirestore,
@@ -10,7 +9,6 @@ import { firebaseConfig } from './firebase-config.js';
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-// Filter values
 const allergenOptions = [
   "peanut", "almond", "milk", "egg", "salmon", "tuna", "walnut",
   "cashew", "pistachio", "hazelnut", "shrimp", "wheat", "gluten",
@@ -32,30 +30,28 @@ const dietOptions = [
 
 window.addEventListener("DOMContentLoaded", () => {
   const applyBtn = document.getElementById("applyFiltersBtn");
-  const useSaved = document.getElementById("useSavedPrefs");
+  const useSaved = document.getElementById("useSavedPrefsBtn");
 
   populateFilters();
   fetchRestaurants();
 
   applyBtn.addEventListener("click", () => {
-    let selectedAllergies = Array.from(
-      document.querySelectorAll('input[name="allergy"]:checked')
-    ).map(cb => cb.value.toLowerCase());
-
-    if (useSaved?.checked) {
-      const saved = JSON.parse(localStorage.getItem("savedAllergies") || "[]");
-      selectedAllergies = [...new Set([...selectedAllergies, ...saved.map(s => s.toLowerCase())])];
-    }
-
-    const selectedCuisines = Array.from(
-      document.querySelectorAll('input[name="cuisine"]:checked')
-    ).map(cb => cb.value.toLowerCase());
-
-    const selectedDiets = Array.from(
-      document.querySelectorAll('input[name="diet"]:checked')
-    ).map(cb => cb.value.toLowerCase());
+    const selectedAllergies = getCheckedValues("allergy");
+    const selectedCuisines = getCheckedValues("cuisine");
+    const selectedDiets = getCheckedValues("diet");
 
     fetchRestaurants(selectedAllergies, selectedCuisines, selectedDiets);
+  });
+
+  useSaved.addEventListener("click", () => {
+    const saved = JSON.parse(localStorage.getItem("savedAllergies") || "[]");
+    const savedSet = new Set(saved.map(a => a.toLowerCase()));
+
+    document.querySelectorAll('input[name="allergy"]').forEach(cb => {
+      if (savedSet.has(cb.value.toLowerCase())) {
+        cb.checked = true;
+      }
+    });
   });
 });
 
@@ -65,17 +61,41 @@ function populateFilters() {
   const dietDiv = document.getElementById("dietFilters");
 
   allergenOptions.forEach(option => {
-    const input = `<input type="checkbox" id="${option}" name="allergy" value="${option}"><label for="${option}">${capitalize(option)}</label>`;
-    allergyDiv.insertAdjacentHTML("beforeend", input);
+    allergyDiv.appendChild(createCheckbox("allergy", option));
   });
+
   cuisineOptions.forEach(option => {
-    const input = `<input type="checkbox" id="${option}" name="cuisine" value="${option}"><label for="${option}">${capitalize(option)}</label>`;
-    cuisineDiv.insertAdjacentHTML("beforeend", input);
+    cuisineDiv.appendChild(createCheckbox("cuisine", option));
   });
+
   dietOptions.forEach(option => {
-    const input = `<input type="checkbox" id="${option}" name="diet" value="${option}"><label for="${option}">${capitalize(option)}</label>`;
-    dietDiv.insertAdjacentHTML("beforeend", input);
+    dietDiv.appendChild(createCheckbox("diet", option));
   });
+}
+
+function createCheckbox(name, value) {
+  const label = document.createElement("label");
+  label.style.display = "inline-flex";
+  label.style.alignItems = "center";
+  label.style.margin = "5px 10px 5px 0";
+  label.style.fontSize = "14px";
+
+  const checkbox = document.createElement("input");
+  checkbox.type = "checkbox";
+  checkbox.name = name;
+  checkbox.value = value;
+  checkbox.style.marginRight = "6px";
+
+  const text = document.createTextNode(capitalize(value));
+  label.appendChild(checkbox);
+  label.appendChild(text);
+
+  return label;
+}
+
+function getCheckedValues(name) {
+  return Array.from(document.querySelectorAll(`input[name="${name}"]:checked`))
+    .map(cb => cb.value.toLowerCase());
 }
 
 async function fetchRestaurants(allergies = [], cuisines = [], diets = []) {
@@ -90,7 +110,7 @@ async function fetchRestaurants(allergies = [], cuisines = [], diets = []) {
       const data = doc.data();
       const safeAllergies = (data.safeFor || []).map(a => a.trim().toLowerCase());
       const cuisine = (data.cuisine || "").toLowerCase();
-      const tags = (data.safeFor || []).map(t => t.trim().toLowerCase()); // changed from data.tags
+      const tags = (data.safeFor || []).map(t => t.trim().toLowerCase()); // reused as diet tags
 
       const matchAllergies = allergies.length === 0 || allergies.every(a => safeAllergies.includes(a));
       const matchCuisine = cuisines.length === 0 || cuisines.includes(cuisine);

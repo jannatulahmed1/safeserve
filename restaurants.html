@@ -4,6 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>SafeServe - Restaurants</title>
+
+  <!-- Font Awesome for dropdown icon -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
   <style>
     :root {
       --primary: #a9b186;
@@ -74,39 +78,49 @@
     }
 
     .dropdown {
-      margin-bottom: 20px;
+      margin-bottom: 10px;
+      padding-bottom: 10px;
     }
 
-    .dropdown-btn {
-      background-color: var(--maroon);
-      color: white;
-      padding: 10px;
-      border: none;
-      width: 100%;
-      text-align: left;
+    .dropdown-header {
       font-size: 16px;
+      font-weight: 600;
+      padding: 8px 0;
       cursor: pointer;
-      border-radius: 6px;
-      transition: background-color 0.3s;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
 
-    .dropdown-btn:hover {
-      background-color: var(--secondary);
+    .dropdown-header .arrow-icon {
+      font-size: 16px;
+      transition: transform 0.3s;
     }
 
     .dropdown-content {
-      display: none;
-      padding: 10px;
-      border: 1px solid #ccc;
-      margin-top: 5px;
-      border-radius: 6px;
-      background-color: #f9f9f9;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+      padding-left: 4px;
+    }
+
+    .dropdown-content.open {
+      max-height: 300px;
+      overflow-y: auto;
+      margin-top: 8px;
     }
 
     .dropdown-content label {
-      display: block;
-      margin-bottom: 8px;
+      display: inline-flex;
+      align-items: center;
+      margin: 4px 8px 4px 0;
       font-size: 14px;
+      color: black;
+      white-space: nowrap;
+    }
+
+    .dropdown-content input[type="checkbox"] {
+      margin-right: 6px;
     }
 
     #useSavedPrefsBtn,
@@ -231,20 +245,26 @@
     <div class="container">
       <div class="filterbox">
         <div class="dropdown">
-          <button class="dropdown-btn"
-onclick="toggleDropdown('allergenFilters')">Allergens</button>
+          <div class="dropdown-header" onclick="toggleDropdown('allergenFilters', this)">
+            Filter by Allergens 
+            <i class="fa-solid fa-chevron-down arrow-icon"></i>
+          </div>
           <div class="dropdown-content" id="allergenFilters"></div>
         </div>
 
         <div class="dropdown">
-          <button class="dropdown-btn"
-onclick="toggleDropdown('cuisineFilters')">Cuisines</button>
+          <div class="dropdown-header" onclick="toggleDropdown('cuisineFilters', this)">
+            Filter by Cuisines 
+            <i class="fa-solid fa-chevron-down arrow-icon"></i>
+          </div>
           <div class="dropdown-content" id="cuisineFilters"></div>
         </div>
 
         <div class="dropdown">
-          <button class="dropdown-btn"
-onclick="toggleDropdown('dietFilters')">Diets</button>
+          <div class="dropdown-header" onclick="toggleDropdown('dietFilters', this)">
+            Filter by Diets 
+            <i class="fa-solid fa-chevron-down arrow-icon"></i>
+          </div>
           <div class="dropdown-content" id="dietFilters"></div>
         </div>
 
@@ -259,11 +279,14 @@ onclick="toggleDropdown('dietFilters')">Diets</button>
   </main>
 
   <script>
-    function toggleDropdown(id) {
-      const box = document.getElementById(id);
-      box.style.display = box.style.display === 'block' ? 'none' : 'block';
+    function toggleDropdown(id, header) {
+      const content = document.getElementById(id);
+      const arrowIcon = header.querySelector('.arrow-icon');
+      content.classList.toggle('open');
+      arrowIcon.style.transform = content.classList.contains('open') ? 'rotate(180deg)' : 'rotate(0deg)';
     }
   </script>
+
   <script type="module" src="./js/restaurants.js"></script>
 </body>
 </html>
