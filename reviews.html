@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>SafeServe - Reviews</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <style>
     :root {
       --primary: #a9b186;
@@ -77,33 +78,47 @@
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
 
-    .sidebar .accordion {
-      margin-bottom: 20px;
+    .dropdown {
+      margin-bottom: 16px;
     }
 
-    .accordion-header {
-      background-color: var(--deepred);
-      color: white;
-      padding: 10px;
-      border-radius: 6px;
+    .dropdown-header {
       font-size: 16px;
-      font-weight: bold;
+      font-weight: 600;
+      padding: 10px;
+      background-color: var(--maroon);
+      color: white;
+      border-radius: 6px;
       cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
 
-    .accordion-content {
-      display: none;
-      margin-top: 10px;
+    .dropdown-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+      padding-left: 10px;
     }
 
-    .accordion-content label {
-      display: block;
-      margin-bottom: 8px;
-      font-size: 15px;
+    .dropdown-content.open {
+      max-height: 300px;
+      overflow-y: auto;
+      margin-top: 8px;
     }
 
-    .accordion-header.active + .accordion-content {
-      display: block;
+    .dropdown-content label {
+      display: inline-flex;
+      align-items: center;
+      margin: 4px 8px 4px 0;
+      font-size: 14px;
+      color: black;
+      white-space: nowrap;
+    }
+
+    .dropdown-content input[type="checkbox"] {
+      margin-right: 6px;
     }
 
     .sidebar button {
@@ -167,24 +182,26 @@
 
     .review {
       margin-bottom: 30px;
-      padding-bottom: 20px;
-      border-bottom: 1px solid #ccc;
+      padding: 20px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.08);
     }
 
     .review h3 {
-      color: var(--green);
-      margin-bottom: 5px;
-    }
-
-    .stars {
-      color: gold;
-      font-size: 18px;
-      margin-bottom: 5px;
+      color: #4C6444;
+      margin-bottom: 6px;
     }
 
     .meta-info {
       font-size: 14px;
       color: #555;
+      margin-bottom: 6px;
+    }
+
+    .stars {
+      color: gold;
+      font-size: 18px;
       margin-bottom: 8px;
     }
 
@@ -197,17 +214,19 @@
   </style>
   <script>
     document.addEventListener("DOMContentLoaded", () => {
-      const headers = document.querySelectorAll('.accordion-header');
+      const headers = document.querySelectorAll('.dropdown-header');
       headers.forEach(header => {
         header.addEventListener('click', () => {
-          header.classList.toggle('active');
+          const content = header.nextElementSibling;
+          content.classList.toggle('open');
+          const arrowIcon = header.querySelector('.fa-chevron-down');
+          arrowIcon.style.transform = content.classList.contains('open') ? 'rotate(180deg)' : 'rotate(0deg)';
         });
       });
     });
   </script>
 </head>
 <body>
-
   <header>
     <div class="logo">
       <a href="index.html"><img src="assets/updated%20logo%202.png" alt="SafeServe Logo" /></a>
@@ -222,29 +241,21 @@
   </header>
 
   <main>
-    <!-- Sidebar Filters -->
     <div class="sidebar">
-      <div class="accordion">
-        <div class="accordion-header">Allergens</div>
-        <div class="accordion-content">
+      <div class="dropdown">
+        <div class="dropdown-header">Allergens <i class="fa-solid fa-chevron-down"></i></div>
+        <div class="dropdown-content">
           <label><input type="checkbox"> Peanut</label>
-          <label><input type="checkbox"> Almond</label>
           <label><input type="checkbox"> Milk</label>
           <label><input type="checkbox"> Egg</label>
-          <label><input type="checkbox"> Salmon</label>
-          <label><input type="checkbox"> Tuna</label>
-          <label><input type="checkbox"> Walnut</label>
-          <label><input type="checkbox"> Cashew</label>
-          <label><input type="checkbox"> Pistachio</label>
-          <label><input type="checkbox"> Shrimp</label>
           <label><input type="checkbox"> Gluten</label>
-          <label><input type="checkbox"> Corn</label>
           <label><input type="checkbox"> Soy</label>
         </div>
       </div>
-      <div class="accordion">
-        <div class="accordion-header">Cuisines</div>
-        <div class="accordion-content">
+
+      <div class="dropdown">
+        <div class="dropdown-header">Cuisines <i class="fa-solid fa-chevron-down"></i></div>
+        <div class="dropdown-content">
           <label><input type="checkbox"> Mexican</label>
           <label><input type="checkbox"> Italian</label>
           <label><input type="checkbox"> Indian</label>
@@ -255,15 +266,12 @@
       <button>Apply Filters</button>
     </div>
 
-    <!-- Main Content -->
     <div class="content">
-      <!-- Submit Form -->
       <div class="form-container">
         <h3>Submit a New Review</h3>
         <form id="reviewForm">
           <input type="text" id="restaurantName" placeholder="Restaurant name" required />
           <textarea id="reviewText" placeholder="Write your review..." required></textarea>
-        
           <label>Rating:
             <select id="ratingSelect">
               <option value="5">5 stars</option>
@@ -273,7 +281,6 @@
               <option value="1">1 star</option>
             </select>
           </label>
-        
           <label>Allergens (check all that apply):</label>
           <div id="allergenOptions">
             <label><input type="checkbox" value="Peanut"> Peanut</label>
@@ -281,34 +288,29 @@
             <label><input type="checkbox" value="Egg"> Egg</label>
             <label><input type="checkbox" value="Gluten"> Gluten</label>
             <label><input type="checkbox" value="Soy"> Soy</label>
-            <!-- Add more if needed -->
           </div>
-        
-          <label>Cuisine:</label>
-          <select id="cuisineSelect">
-            <option value="">Select one</option>
-            <option value="Thai">Thai</option>
-            <option value="Italian">Italian</option>
-            <option value="Mexican">Mexican</option>
-            <option value="Japanese">Japanese</option>
-            <option value="American">American</option>
-            <option value="Indian">Indian</option>
-            <option value="Mediterrian">Mediterrian</option>
-            <option value="Middle Eastern"> Middle Eastern</option>
-          </select>
-        
+          <label>Cuisine:
+            <select id="cuisineSelect">
+              <option value="">Select one</option>
+              <option value="Thai">Thai</option>
+              <option value="Italian">Italian</option>
+              <option value="Mexican">Mexican</option>
+              <option value="Japanese">Japanese</option>
+              <option value="American">American</option>
+              <option value="Indian">Indian</option>
+              <option value="Mediterrian">Mediterrian</option>
+              <option value="Middle Eastern"> Middle Eastern</option>
+            </select>
+          </label>
           <button type="submit">Submit Review</button>
         </form>
-        
       </div>
 
-      <!-- All Reviews -->
       <div class="reviews">
         <h2>User Reviews</h2>
       </div>
-
+    </div>
   </main>
-
   <footer>
     © 2025 SafeServe
   </footer>
