@@ -76,6 +76,7 @@
       padding: 20px;
       border-radius: 12px;
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      height: fit-content;
     }
 
     .dropdown {
@@ -212,19 +213,6 @@
       color: #777;
     }
   </style>
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const headers = document.querySelectorAll('.dropdown-header');
-      headers.forEach(header => {
-        header.addEventListener('click', () => {
-          const content = header.nextElementSibling;
-          content.classList.toggle('open');
-          const arrowIcon = header.querySelector('.fa-chevron-down');
-          arrowIcon.style.transform = content.classList.contains('open') ? 'rotate(180deg)' : 'rotate(0deg)';
-        });
-      });
-    });
-  </script>
 </head>
 <body>
   <header>
@@ -243,27 +231,28 @@
   <main>
     <div class="sidebar">
       <div class="dropdown">
-        <div class="dropdown-header">Allergens <i class="fa-solid fa-chevron-down"></i></div>
-        <div class="dropdown-content">
-          <label><input type="checkbox"> Peanut</label>
-          <label><input type="checkbox"> Milk</label>
-          <label><input type="checkbox"> Egg</label>
-          <label><input type="checkbox"> Gluten</label>
-          <label><input type="checkbox"> Soy</label>
+        <div class="dropdown-header" onclick="toggleDropdown('allergenFilters', this)">
+          Allergens <i class="fa-solid fa-chevron-down"></i>
         </div>
+        <div class="dropdown-content" id="allergenFilters"></div>
       </div>
 
       <div class="dropdown">
-        <div class="dropdown-header">Cuisines <i class="fa-solid fa-chevron-down"></i></div>
-        <div class="dropdown-content">
-          <label><input type="checkbox"> Mexican</label>
-          <label><input type="checkbox"> Italian</label>
-          <label><input type="checkbox"> Indian</label>
-          <label><input type="checkbox"> American</label>
-          <label><input type="checkbox"> Japanese</label>
+        <div class="dropdown-header" onclick="toggleDropdown('cuisineFilters', this)">
+          Cuisines <i class="fa-solid fa-chevron-down"></i>
         </div>
+        <div class="dropdown-content" id="cuisineFilters"></div>
       </div>
-      <button>Apply Filters</button>
+
+      <div class="dropdown">
+        <div class="dropdown-header" onclick="toggleDropdown('dietFilters', this)">
+          Diets <i class="fa-solid fa-chevron-down"></i>
+        </div>
+        <div class="dropdown-content" id="dietFilters"></div>
+      </div>
+
+      <button id="useSavedPrefsBtn">Use Saved Preferences</button>
+      <button id="applyFiltersBtn">Apply Filters</button>
     </div>
 
     <div class="content">
@@ -282,13 +271,7 @@
             </select>
           </label>
           <label>Allergens (check all that apply):</label>
-          <div id="allergenOptions">
-            <label><input type="checkbox" value="Peanut"> Peanut</label>
-            <label><input type="checkbox" value="Milk"> Milk</label>
-            <label><input type="checkbox" value="Egg"> Egg</label>
-            <label><input type="checkbox" value="Gluten"> Gluten</label>
-            <label><input type="checkbox" value="Soy"> Soy</label>
-          </div>
+          <div id="allergenOptions"></div>
           <label>Cuisine:
             <select id="cuisineSelect">
               <option value="">Select one</option>
@@ -298,8 +281,8 @@
               <option value="Japanese">Japanese</option>
               <option value="American">American</option>
               <option value="Indian">Indian</option>
-              <option value="Mediterrian">Mediterrian</option>
-              <option value="Middle Eastern"> Middle Eastern</option>
+              <option value="Mediterranean">Mediterranean</option>
+              <option value="Middle Eastern">Middle Eastern</option>
             </select>
           </label>
           <button type="submit">Submit Review</button>
@@ -314,6 +297,15 @@
   <footer>
     © 2025 SafeServe
   </footer>
+
+  <script>
+    function toggleDropdown(id, header) {
+      const content = document.getElementById(id);
+      const arrowIcon = header.querySelector('.fa-chevron-down');
+      content.classList.toggle('open');
+      arrowIcon.style.transform = content.classList.contains('open') ? 'rotate(180deg)' : 'rotate(0deg)';
+    }
+  </script>
   <script type="module" src="js/review.js"></script>
 </body>
 </html>
