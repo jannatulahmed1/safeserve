@@ -164,7 +164,7 @@
     }
 
     button[type="submit"] {
-      background: var(--green);
+      background: var(--maroon);
       color: white;
       padding: 10px;
       border: none;
@@ -173,7 +173,7 @@
     }
 
     button[type="submit"]:hover {
-      background: #256128;
+      background: #800000;
     }
 
     .reviews h2 {
@@ -291,6 +291,16 @@
               <option value="Middle Eastern">Middle Eastern</option>
             </select>
           </label>
+          <label>Diets (check all that apply):</label>
+<div id="dietOptions">
+  <label><input type="checkbox" name="diet" value="Vegan"> Vegan</label>
+  <label><input type="checkbox" name="diet" value="Vegetarian"> Vegetarian</label>
+  <label><input type="checkbox" name="diet" value="Pescatarian"> Pescatarian</label>
+  <label><input type="checkbox" name="diet" value="Halal"> Halal</label>
+  <label><input type="checkbox" name="diet" value="Kosher"> Kosher</label>
+  <label><input type="checkbox" name="diet" value="Low-carb"> Low-carb</label>
+  <label><input type="checkbox" name="diet" value="Low-sodium"> Low-sodium</label>
+</div>
           <button type="submit">Submit Review</button>
         </form>
       </div>

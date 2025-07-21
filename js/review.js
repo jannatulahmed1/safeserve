@@ -105,11 +105,13 @@ async function loadReviews(filterAllergies = [], filterCuisines = [], filterDiet
       const data = doc.data();
       const allergens = (data.allergens || []).map(a => a.toLowerCase());
       const cuisine = (data.cuisine || "").toLowerCase();
-      const tags = (data.allergens || []).map(t => t.toLowerCase());
+      const diets = (data.diets || []).map(d => d.toLowerCase());
+      // const tags = (data.allergens || []).map(t => t.toLowerCase());
 
       const matchAllergy = filterAllergies.length === 0 || filterAllergies.every(a => allergens.includes(a));
       const matchCuisine = filterCuisines.length === 0 || filterCuisines.includes(cuisine);
-      const matchDiet = filterDiets.length === 0 || filterDiets.some(d => tags.includes(d));
+      // const matchDiet = filterDiets.length === 0 || filterDiets.some(d => tags.includes(d));
+      const matchDiet = filterDiets.length === 0 || filterDiets.every(d => diets.includes(d));
 
       if (!matchAllergy || !matchCuisine || !matchDiet) return;
 
@@ -122,7 +124,7 @@ async function loadReviews(filterAllergies = [], filterCuisines = [], filterDiet
         <div class="review">
           <h3>${restaurant}</h3>
           <p class="meta-info">Posted by: <strong>${username}</strong></p>
-          <p class="meta-info">Allergens: ${data.allergens?.join(", ") || "None"} | Cuisine: ${data.cuisine || "N/A"}</p>
+          <p class="meta-info">Allergens: ${data.allergens?.join(", ") || "None"} | Cuisine: ${data.cuisine || "N/A"} | Diet: ${data.diets?.join(", ") || "None"}</p>
           <div class="stars">${stars}</div>
           <p>"${reviewText}"</p>
         </div>
@@ -166,6 +168,9 @@ form.addEventListener("submit", async (e) => {
     alert("Please fill all fields!");
     return;
   }
+  //new
+  const dietChecks = document.querySelectorAll('input[name="diet"]:checked');
+  const diets = Array.from(dietChecks).map(cb => cb.value);
 
   const reviewData = {
     restaurant,
@@ -173,7 +178,8 @@ form.addEventListener("submit", async (e) => {
     rating,
     user: { username },
     allergens,
-    cuisine
+    cuisine,
+    diets
   };
 
   try {
