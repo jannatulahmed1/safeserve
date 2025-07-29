@@ -209,10 +209,41 @@
       display: none;
     }
     .password-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-    }
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-top: 15px;
+  align-items: start;
+}
+
+    .dropdown-header {
+  margin-top: 20px;
+  font-weight: 600;
+  cursor: pointer;
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.dropdown-header i {
+  margin-left: 10px;
+  transition: transform 0.3s ease;
+}
+
+.dropdown-content {
+  display: none;
+  margin-top: 10px;
+  padding: 10px;
+}
+
+.dropdown-content.open {
+  display: block;
+}
+.dropdown-header.open i {
+  transform: rotate(180deg);
+}
+
     .hamburger {
       display: none;
       flex-direction: column;
@@ -317,35 +348,51 @@
 </div>
 
 
-        <div class="section">
-          <h2>Allergy Preferences</h2>
-          <div class="allergy-options">
-            <input type="checkbox" id="peanut"><label for="peanut">Peanut</label>
-            <input type="checkbox" id="almond"><label for="almond">Almond</label>
-            <input type="checkbox" id="milk"><label for="milk">Milk</label>
-            <input type="checkbox" id="egg"><label for="egg">Egg</label>
-            <input type="checkbox" id="salmon"><label for="salmon">Salmon</label>
-            <input type="checkbox" id="tuna"><label for="tuna">Tuna</label>
-            <input type="checkbox" id="walnut"><label for="walnut">Walnut</label>
-            <input type="checkbox" id="cashew"><label for="cashew">Cashew</label>
-            <input type="checkbox" id="pistachio"><label for="pistachio">Pistachio</label>
-            <input type="checkbox" id="hazelnut"><label for="hazelnut">Hazelnut</label>
-            <input type="checkbox" id="shrimp"><label for="shrimp">Shrimp</label>
-            <input type="checkbox" id="wheat"><label for="wheat">Wheat</label>
-            <input type="checkbox" id="gluten"><label for="gluten">Gluten</label>
-            <input type="checkbox" id="crab"><label for="crab">Crab</label>
-            <input type="checkbox" id="lobster"><label for="lobster">Lobster</label>
-            <input type="checkbox" id="oats"><label for="oats">Oats</label>
-            <input type="checkbox" id="corn"><label for="corn">Corn</label>
-            <input type="checkbox" id="sesame"><label for="sesame">Sesame</label>
-            <input type="checkbox" id="soy"><label for="soy">Soy</label>
-            <input type="checkbox" id="avocado"><label for="avocado">Avocado</label>
-            <input type="checkbox" id="chickpeas"><label for="chickpeas">Chickpeas</label>
-            <input type="checkbox" id="banana"><label for="banana">Banana</label>
+        <!-- Dropdown Filters -->
+        <div class="dropdown">
+          <div class="dropdown-header" onclick="toggleDropdown('allergenDropdown', this)">Filter by Allergens <i class="fa-solid fa-chevron-down"></i></div>
+          <div class="dropdown-content" id="allergenDropdown">
+            <div class="allergy-options">
+              <input type="checkbox" id="peanut"><label for="peanut">Peanut</label>
+              <input type="checkbox" id="almond"><label for="almond">Almond</label>
+              <input type="checkbox" id="milk"><label for="milk">Milk</label>
+              <input type="checkbox" id="egg"><label for="egg">Egg</label>
+              <input type="checkbox" id="salmon"><label for="salmon">Salmon</label>
+              <input type="checkbox" id="tuna"><label for="tuna">Tuna</label>
+              <input type="checkbox" id="walnut"><label for="walnut">Walnut</label>
+              <input type="checkbox" id="cashew"><label for="cashew">Cashew</label>
+              <input type="checkbox" id="shrimp"><label for="shrimp">Shrimp</label>
+              <input type="checkbox" id="gluten"><label for="gluten">Gluten</label>
+              <input type="checkbox" id="soy"><label for="soy">Soy</label>
+              <input type="checkbox" id="banana"><label for="banana">Banana</label>
+            </div>
           </div>
-          <p id="allergy-display"><strong>Saved Preferences:</strong> (None yet)</p>
         </div>
 
+        <div class="dropdown">
+          <div class="dropdown-header" onclick="toggleDropdown('cuisineDropdown', this)">Filter by Cuisines <i class="fa-solid fa-chevron-down"></i></div>
+          <div class="dropdown-content" id="cuisineDropdown">
+            <div class="allergy-options">
+              <input type="checkbox" id="italian"><label for="italian">Italian</label>
+              <input type="checkbox" id="mexican"><label for="mexican">Mexican</label>
+              <input type="checkbox" id="chinese"><label for="chinese">Chinese</label>
+              <input type="checkbox" id="korean"><label for="korean">Korean</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="dropdown">
+          <div class="dropdown-header" onclick="toggleDropdown('dietDropdown', this)">Filter by Diets <i class="fa-solid fa-chevron-down"></i></div>
+          <div class="dropdown-content" id="dietDropdown">
+            <div class="allergy-options">
+              <input type="checkbox" id="vegan"><label for="vegan">Vegan</label>
+              <input type="checkbox" id="vegetarian"><label for="vegetarian">Vegetarian</label>
+              <input type="checkbox" id="halal"><label for="halal">Halal</label>
+            </div>
+          </div>
+        </div>
+
+        <p id="allergy-display"><strong>Saved Preferences:</strong> (None yet)</p>
         <div class="button-row">
           <button class="btn btn-save">Save Changes</button>
           <button class="btn btn-danger">Logout</button>
@@ -397,7 +444,16 @@
       }
     }
   </script>
+  <script>
+    // Dropdown toggle logic
+    function toggleDropdown(id, headerEl) {
+      const dropdown = document.getElementById(id);
+      dropdown.classList.toggle("open");
+      headerEl.classList.toggle("open");
+    }
+  </script>  
 </body>
-</html>
+</html> 
+  
 
   

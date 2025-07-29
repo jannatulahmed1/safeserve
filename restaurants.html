@@ -6,7 +6,18 @@
   <title>SafeServe - Restaurants</title>
 
   <!-- Font Awesome for dropdown icon -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+
+<!-- Leaflet CSS & JS -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+<!-- Leaflet Control Geocoder CSS & JS (load BEFORE your own scripts) -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
+<script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+
 
   <style>
     :root {
@@ -124,7 +135,9 @@
     }
 
     #useSavedPrefsBtn,
-    #applyFiltersBtn {
+    #applyFiltersBtn,
+    #openMapBtn
+    {
       padding: 10px 16px;
       background-color: var(--maroon);
       color: white;
@@ -137,7 +150,9 @@
     }
 
     #useSavedPrefsBtn:hover,
-    #applyFiltersBtn:hover {
+    #applyFiltersBtn:hover,
+    #openMapBtn:hover
+    {
       background-color: var(--secondary);
     }
 
@@ -270,7 +285,16 @@
 
         <button id="useSavedPrefsBtn">Use Saved Preferences</button>
         <button id="applyFiltersBtn">Apply Filters</button>
+
+
+        <!-- ADD MAP -->
+        <button id="openMapBtn">Search by Location</button>
+        <div id="map" style="padding-top: 10px; width: 100%; height: 400px; display: none; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);"></div>
+
+
       </div>
+
+      
 
       <div class="resultbox" id="restaurantResults">
         <!-- JS will populate results -->
@@ -278,15 +302,211 @@
     </div>
   </main>
 
-  <script>
-    function toggleDropdown(id, header) {
-      const content = document.getElementById(id);
-      const arrowIcon = header.querySelector('.arrow-icon');
-      content.classList.toggle('open');
-      arrowIcon.style.transform = content.classList.contains('open') ? 'rotate(180deg)' : 'rotate(0deg)';
-    }
-  </script>
+ <script>
+  function toggleDropdown(id, header) {
+    const content = document.getElementById(id);
+    const arrowIcon = header.querySelector('.arrow-icon');
+    content.classList.toggle('open');
+    arrowIcon.style.transform = content.classList.contains('open') ? 'rotate(180deg)' : 'rotate(0deg)';
+  }
 
-  <script type="module" src="./js/restaurants.js"></script>
+  
+</script>
+
+
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+
+  <script>
+  // Firebase and Leaflet setup
+  const firebaseConfig = {
+    apiKey: "AIzaSyD1m9rfBUZ9VId0bLKymdeCdWJbyoA0Bf8",
+    authDomain: "safeserve-ea1b6.firebaseapp.com",
+    projectId: "safeserve-ea1b6",
+    storageBucket: "safeserve-ea1b6.firebasestorage.app",
+    messagingSenderId: "89792804155",
+    appId: "1:89792804155:web:72d606b9ec21515528331e"
+  };
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.firestore();
+
+  const allRestaurants = [];
+  const geocodeCache = {};
+  let map, mapInitialized = false;
+  let restaurantMarkers = [];
+
+  function toggleDropdown(id, header) {
+    const content = document.getElementById(id);
+    const arrowIcon = header.querySelector('.arrow-icon');
+    content.classList.toggle('open');
+    arrowIcon.style.transform = content.classList.contains('open') ? 'rotate(180deg)' : 'rotate(0deg)';
+  }
+
+  function renderRestaurantCards(restaurants) {
+    const container = document.getElementById('restaurantResults');
+    container.innerHTML = '';
+    restaurants.forEach(data => {
+      const safeForStr = (data.safeFor || []).join(', ');
+      const card = `
+        <div class="restaurant-card">
+          <img src="${data.image}" alt="${data.name}">
+          <div class="restaurant-info">
+            <h3>${data.name}</h3>
+            <p><strong>Location:</strong> ${data.location}</p>
+            <p><strong>Cuisine:</strong> ${data.cuisine}</p>
+            <p><strong>Rating: ⭐</strong> ${data.rating}</p>
+            <p><strong>Safe For:</strong> ${safeForStr}</p>
+            <a class="view-button" href="${data.link}" target="_blank">View Restaurant</a>
+          </div>
+        </div>`;
+      container.insertAdjacentHTML('beforeend', card);
+    });
+  }
+
+  function populateFilters(data) {
+    const allergens = new Set();
+    const cuisines = new Set();
+    const diets = new Set();
+
+    data.forEach(r => {
+      if (r.safeFor) r.safeFor.forEach(item => {
+        if (item === 'Vegetarian' || item === 'Vegan') diets.add(item);
+        else allergens.add(item);
+      });
+      if (r.cuisine) cuisines.add(r.cuisine);
+    });
+
+    function makeCheckboxes(set, containerId) {
+      const container = document.getElementById(containerId);
+      container.innerHTML = '';
+      Array.from(set).sort().forEach(item => {
+        const label = document.createElement('label');
+        label.innerHTML = `<input type="checkbox" value="${item}"> ${item}`;
+        container.appendChild(label);
+      });
+    }
+
+    makeCheckboxes(allergens, 'allergenFilters');
+    makeCheckboxes(cuisines, 'cuisineFilters');
+    makeCheckboxes(diets, 'dietFilters');
+  }
+
+  function getSelectedFilters() {
+    const getChecked = id => [...document.querySelectorAll(`#${id} input:checked`)].map(cb => cb.value);
+    return {
+      allergens: getChecked('allergenFilters'),
+      cuisines: getChecked('cuisineFilters'),
+      diets: getChecked('dietFilters')
+    };
+  }
+
+  function clearMapMarkers() {
+    restaurantMarkers.forEach(marker => marker.remove());
+    restaurantMarkers = [];
+  }
+
+  async function geocodeAddress(address) {
+    if (geocodeCache[address]) return geocodeCache[address];
+    const url = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(address)}&email=safe.serve@example.com`;
+    const res = await fetch(url);
+    const data = await res.json();
+    if (data.length > 0) {
+      const coords = { lat: parseFloat(data[0].lat), lon: parseFloat(data[0].lon) };
+      geocodeCache[address] = coords;
+      await new Promise(r => setTimeout(r, 1100)); // respect Nominatim rate limit
+      return coords;
+    }
+    return null;
+  }
+
+  async function loadRestaurantsOnMap(restaurantsToShow = allRestaurants) {
+    clearMapMarkers();
+    for (const data of restaurantsToShow) {
+      const address = data.location;
+      if (!address) continue;
+      const coords = await geocodeAddress(address);
+      if (!coords) continue;
+
+      const safeForStr = (data.safeFor || []).join(', ');
+      const popupHtml = `
+        <strong>${data.name}</strong><br/>
+        ${data.cuisine}<br/>
+        Rating: ${data.rating}<br/>
+        Safe For: ${safeForStr}<br/>
+        <a href="${data.link}" target="_blank">Visit Website</a>
+      `;
+      const marker = L.marker([coords.lat, coords.lon]).addTo(map).bindPopup(popupHtml);
+      restaurantMarkers.push(marker);
+    }
+  }
+
+  function applyFilters() {
+    const { allergens, cuisines, diets } = getSelectedFilters();
+    const filtered = allRestaurants.filter(r => {
+      const matchesAllergens = allergens.every(a => r.safeFor && r.safeFor.includes(a));
+      const matchesCuisine = cuisines.length ? cuisines.includes(r.cuisine) : true;
+      const matchesDiet = diets.every(d => r.safeFor && r.safeFor.includes(d));
+      return matchesAllergens && matchesCuisine && matchesDiet;
+    });
+    renderRestaurantCards(filtered);
+    if (mapInitialized) loadRestaurantsOnMap(filtered);
+  }
+
+  document.getElementById('applyFiltersBtn').addEventListener('click', applyFilters);
+
+  document.getElementById('useSavedPrefsBtn').addEventListener('click', () => {
+    const saved = JSON.parse(localStorage.getItem('dietPrefs')) || [];
+    document.querySelectorAll('#dietFilters input').forEach(cb => {
+      cb.checked = saved.includes(cb.value);
+    });
+  });
+
+  db.collection('restaurants').get().then(snapshot => {
+    snapshot.forEach(doc => allRestaurants.push(doc.data()));
+    renderRestaurantCards(allRestaurants);
+    populateFilters(allRestaurants);
+  });
+
+  document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('openMapBtn').addEventListener('click', () => {
+      const mapContainer = document.getElementById('map');
+      const isVisible = mapContainer.style.display === 'block';
+      mapContainer.style.display = isVisible ? 'none' : 'block';
+      openMapBtn.textContent = isVisible ? 'Search by Location' : 'Hide Map';
+
+      if (!mapInitialized && !isVisible) {
+        map = L.map('map').setView([40.7128, -74.0060], 12);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          attribution: '&copy; OpenStreetMap contributors'
+        }).addTo(map);
+
+        L.Control.geocoder({ defaultMarkGeocode: false })
+          .on('markgeocode', e => {
+            const bbox = e.geocode.bbox;
+            const bounds = [[bbox.getSouthWest().lat, bbox.getSouthWest().lng], [bbox.getNorthEast().lat, bbox.getNorthEast().lng]];
+            map.fitBounds(bounds);
+            L.marker(e.geocode.center).addTo(map).bindPopup(e.geocode.name).openPopup();
+          })
+          .addTo(map);
+
+        navigator.geolocation.getCurrentPosition(pos => {
+          map.setView([pos.coords.latitude, pos.coords.longitude], 14);
+          L.marker([pos.coords.latitude, pos.coords.longitude]).addTo(map).bindPopup('You are here').openPopup();
+        });
+
+        loadRestaurantsOnMap();
+        mapInitialized = true;
+      } else {
+        setTimeout(() => map.invalidateSize(), 100);
+      }
+    });
+  });
+</script>
+
+
+
+
 </body>
 </html>

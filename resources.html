@@ -53,9 +53,11 @@
     }
 
     nav a:hover,
-    nav a.active {
-      color: var(--maroon);
-    }
+   nav a.active {
+  color: var(--maroon);
+  text-decoration: none; /* prevents underline on hover */
+}
+
 
     main {
       max-width: 1000px;
@@ -113,78 +115,13 @@
     a:hover {
       text-decoration: underline;
     }
-
-    .card-preview {
-      margin-top: 20px;
-      background-color: #fff;
-      border: 2px dashed var(--maroon);
-      padding: 20px;
-      border-radius: 8px;
-      text-align: center;
-      width: 100%;
-    }
-
-    .card-preview h3 {
-      margin-bottom: 10px;
-      color: var(--maroon);
-    }
-
-    .btn {
-      margin-top: 15px;
-      background-color: var(--maroon);
-      color: white;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 6px;
-      font-size: 15px;
-      cursor: pointer;
-    }
-
-    .btn:hover {
-      background-color: var(--secondary);
-    }
-
-    .form-group {
-      margin-bottom: 15px;
-    }
-
-    .form-group label {
-      display: block;
-      font-weight: bold;
-      margin-bottom: 5px;
-    }
-
-    .form-group input[type="text"] {
-      width: 100%;
-      padding: 10px;
-      font-size: 1rem;
-      border-radius: 6px;
-      border: 1px solid #ccc;
-    }
-
-    .checkbox-group {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    .checkbox-group label {
-      background-color: var(--white);
-      border: 1px solid #999;
-      border-radius: 20px;
-      padding: 8px 14px;
-      cursor: pointer;
-    }
-
-    .checkbox-group input {
-      margin-right: 5px;
-    }
   </style>
 </head>
 <body>
   <header>
     <div class="logo">
-      <a href="index.html"><img src="assets/updated logo 2.png" alt="SafeServe Logo" /></a>
+      <a href="index.html"><img src="assets/updated logo 2.png"
+alt="SafeServe Logo" /></a>
     </div>
     <nav>
       <a href="index.html">Home</a>
@@ -199,31 +136,10 @@
     <h1>Allergy Info & Resources</h1>
 
     <section>
-      <h2>Printable Allergy Card Generator</h2>
-      <p>Enter your info and download a card to show restaurant staff.</p>
-
-      <div class="form-group">
-        <label for="cardName">Your Name</label>
-        <input type="text" id="cardName" placeholder="e.g., Alex Smith">
-      </div>
-
-      <div class="form-group">
-        <label>Allergens</label>
-        <div class="checkbox-group" id="allergenCheckboxes"></div>
-      </div>
-
-      <div class="card-preview" id="cardPreview">
-        <h3>Your Allergy Card</h3>
-        <p><strong>Name:</strong> <span id="previewName">N/A</span></p>
-        <p><strong>Allergies:</strong> <span id="previewAllergies">None selected</span></p>
-      </div>
-
-      <button class="btn" onclick="window.print()">Download / Print Card</button>
-    </section>
-
-    <section>
       <h2>Understanding Cross-Contamination</h2>
-      <p>Even if a dish does not include allergens as ingredients, it can become unsafe through cross-contact during preparation. Always ask restaurants:</p>
+      <p>Even if a dish does not include allergens as ingredients, it
+can become unsafe through cross-contact during preparation. Always ask
+restaurants:</p>
       <ul>
         <li>Do you use shared cooking surfaces (grills, fryers)?</li>
         <li>Are utensils cleaned separately for allergy orders?</li>
@@ -234,54 +150,46 @@
     <section>
       <h2>Dining Tips for Allergy Safety</h2>
       <ul>
-        <li>Always disclose your allergies to restaurant staff before ordering.</li>
-        <li>Use allergy cards (printed or on your phone) to list allergens clearly.</li>
+        <li>Always disclose your allergies to restaurant staff before
+ordering.</li>
+        <li>Use allergy cards (printed or on your phone) to list
+allergens clearly.</li>
         <li>Call ahead and speak with a manager or chef if you're unsure.</li>
         <li>Review online menus and allergy policies when available.</li>
-        <li>Avoid buffets or salad bars unless strict protocols are followed.</li>
+        <li>Avoid buffets or salad bars unless strict protocols are
+followed.</li>
       </ul>
     </section>
 
     <section>
       <h2>Helpful Resources</h2>
-      <p>These trusted sites provide medical advice, safety practices, and tools for individuals with food allergies:</p>
+      <p>These trusted sites provide medical advice, safety practices,
+and tools for individuals with food allergies:</p>
       <ul>
-        <li><a href="https://www.foodallergy.org" target="_blank">Food Allergy Research & Education (FARE)</a></li>
-        <li><a href="https://www.mayoclinic.org/diseases-conditions/food-allergy/symptoms-causes/syc-20355095" target="_blank">Mayo Clinic: Food Allergies</a></li>
-        <li><a href="https://www.cdc.gov/healthyschools/foodallergies/" target="_blank">CDC: Food Allergies in Schools</a></li>
-        <li><a href="https://acaai.org/allergies/types/food-allergy/" target="_blank">American College of Allergy, Asthma & Immunology</a></li>
+        <li><a href="https://www.foodallergy.org" target="_blank">Food
+Allergy Research & Education (FARE)</a></li>
+        <li><a href="https://www.mayoclinic.org/diseases-conditions/food-allergy/symptoms-causes/syc-20355095"
+target="_blank">Mayo Clinic: Food Allergies</a></li>
+        <li><a href="https://www.cdc.gov/healthyschools/foodallergies/"
+target="_blank">CDC: Food Allergies in Schools</a></li>
+        <li><a href="https://acaai.org/allergies/types/food-allergy/"
+target="_blank">American College of Allergy, Asthma &
+Immunology</a></li>
       </ul>
     </section>
+
+    <section>
+      <h2>About Us</h2>
+      <p><strong>SafeServe</strong> is a web platform built by
+students passionate about food safety, accessibility, and technology.
+We understand how difficult it can be to dine out with severe food
+allergies, and our mission is to make that easier and safer.</p>
+      <p>Our features like personalized profiles, allergen filters,
+and restaurant safety info are designed to empower users to eat out
+with more confidence and peace of mind. SafeServe is always evolving,
+and we welcome suggestions and feedback from the allergy-conscious
+community.</p>
+    </section>
   </main>
-
-  <script>
-    const allergens = [
-      "Peanuts", "Tree Nuts", "Milk", "Eggs", "Fish",
-      "Shellfish", "Wheat", "Soy", "Sesame", "Gluten", "Corn", "Oats"
-    ];
-
-    const checkboxGroup = document.getElementById("allergenCheckboxes");
-    const previewName = document.getElementById("previewName");
-    const previewAllergies = document.getElementById("previewAllergies");
-    const nameInput = document.getElementById("cardName");
-
-    allergens.forEach((allergen, index) => {
-      const id = `allergen${index}`;
-      const html = `
-        <label for="${id}">
-          <input type="checkbox" id="${id}" value="${allergen}">${allergen}
-        </label>`;
-      checkboxGroup.insertAdjacentHTML("beforeend", html);
-    });
-
-    function updateCardPreview() {
-      previewName.innerText = nameInput.value || "N/A";
-      const selected = [...checkboxGroup.querySelectorAll("input:checked")].map(cb => cb.value);
-      previewAllergies.innerText = selected.length ? selected.join(", ") : "None selected";
-    }
-
-    nameInput.addEventListener("input", updateCardPreview);
-    checkboxGroup.addEventListener("change", updateCardPreview);
-  </script>
 </body>
 </html>

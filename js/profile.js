@@ -44,12 +44,11 @@ let avatarIndex = 1;
   }
 });
 
-// Show saved allergies visually
-function updateAllergyDisplay(allergies) {
+// Show saved allergies, cuisines, and diets visually
+function updateAllergyDisplay(allergies = [], cuisines = [], diets = []) {
   const allergyDisplay = document.getElementById("allergy-display");
-  if (allergyDisplay) {
-    allergyDisplay.innerHTML = `<strong>Saved Preferences:</strong> ${allergies.length ? allergies.join(", ") : "None selected"}`;
-  }
+  const allPrefs = [...allergies, ...cuisines, ...diets];
+  allergyDisplay.innerHTML = `<strong>Saved Preferences:</strong> ${allPrefs.length ? allPrefs.join(", ") : "None selected"}`;
 }
 
 // Cycle avatar image
@@ -63,15 +62,13 @@ function cycleAvatar() {
 window.cycleAvatar = cycleAvatar;
 
 document.addEventListener("DOMContentLoaded", () => {
-  const allergySummary = document.getElementById("allergy-summary");
-
   onAuthStateChanged(auth, async (user) => {
     if (!user) {
       alert("You are not logged in. Redirecting to login page...");
       window.location.href = "login.html";
       return;
     }
-  
+
     if (!user.emailVerified) {
       alert("Please verify your email before accessing your profile.");
       signOut(auth).then(() => {
@@ -95,7 +92,6 @@ document.addEventListener("DOMContentLoaded", () => {
       // Prefill inputs
       document.getElementById("first-name").value = data.firstName || "";
       document.getElementById("last-name").value = data.lastName || "";
- 
       document.getElementById("username").value = data.username || "";
       document.getElementById("email").value = data.email || "";
       document.getElementById("email").disabled = true;
@@ -106,10 +102,32 @@ document.addEventListener("DOMContentLoaded", () => {
           const checkbox = document.getElementById(allergy.toLowerCase());
           if (checkbox) checkbox.checked = true;
         });
-        updateAllergyDisplay(data.allergies);
-      } else {
-        updateAllergyDisplay([]);
       }
+
+      // Cuisines
+      if (Array.isArray(data.cuisines)) {
+        data.cuisines.forEach(cuisine => {
+          const checkbox = document.getElementById(cuisine.toLowerCase());
+          if (checkbox) checkbox.checked = true;
+        });
+      }
+
+      // Diets
+      if (Array.isArray(data.diets)) {
+        data.diets.forEach(diet => {
+          const checkbox = document.getElementById(diet.toLowerCase());
+          if (checkbox) checkbox.checked = true;
+        });
+      }
+
+      updateAllergyDisplay(data.allergies || [], data.cuisines || [], data.diets || []);
+     
+      window.toggleDropdown = function (id, headerEl) {
+        const dropdown = document.getElementById(id);
+        dropdown.classList.toggle("open");
+        headerEl.classList.toggle("open");
+      };
+      
 
       // Avatar
       const avatarImg = document.getElementById("avatar-img");
@@ -125,33 +143,32 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // Save changes
       document.querySelector(".btn-save").addEventListener("click", async () => {
-        const allergyArray = Array.from(document.querySelectorAll(".allergy-options input:checked")).map(cb => cb.id);
+        const allergyArray = Array.from(document.querySelectorAll("#allergenDropdown input:checked")).map(cb => cb.id);
+        const cuisineArray = Array.from(document.querySelectorAll("#cuisineDropdown input:checked")).map(cb => cb.id);
+        const dietArray = Array.from(document.querySelectorAll("#dietDropdown input:checked")).map(cb => cb.id);
         const selectedAvatarURL = avatarImg.getAttribute("data-avatar-url") || avatarURLs[0];
-      
+
         const updatedData = {
           firstName: document.getElementById("first-name").value.trim(),
           lastName: document.getElementById("last-name").value.trim(),
           username: document.getElementById("username").value.trim(),
           allergies: allergyArray,
+          cuisines: cuisineArray,
+          diets: dietArray,
           profilePic: selectedAvatarURL
         };
-      
+
         try {
           await setDoc(userRef, updatedData, { merge: true });
-      
-          // ✅ Manually update the allergy display
-          updateAllergyDisplay(allergyArray);
-      
+          updateAllergyDisplay(allergyArray, cuisineArray, dietArray);
           alert("✅ Changes saved successfully.");
         } catch (err) {
           console.error("❌ Failed to update profile:", err);
           alert("Error saving profile.");
         }
       });
-      
-      
 
-      // Password reset toggle (restore old UI)
+      // Password reset toggle
       const resetBtn = document.getElementById("reset-password-toggle");
       if (resetBtn) {
         resetBtn.addEventListener("click", () => {
