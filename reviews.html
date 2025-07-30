@@ -256,7 +256,8 @@
     </div>
 
     <div class="content">
-      <div class="form-container">
+      <!-- Review Form Section: This will be hidden if user is not logged in -->
+      <div class="form-container" id="reviewFormSection">
         <h3>Submit a New Review</h3>
         <form id="reviewForm">
           <input type="text" id="restaurantName" placeholder="Restaurant name" required />
@@ -270,14 +271,16 @@
               <option value="1">1 star</option>
             </select>
           </label>
+    
           <label>Allergens (check all that apply):</label>
           <div id="allergenOptions">
-  <label><input type="checkbox" value="Peanut"> Peanut</label>
-  <label><input type="checkbox" value="Milk"> Milk</label>
-  <label><input type="checkbox" value="Egg"> Egg</label>
-  <label><input type="checkbox" value="Gluten"> Gluten</label>
-  <label><input type="checkbox" value="Soy"> Soy</label>
-</div>
+            <label><input type="checkbox" value="Peanut"> Peanut</label>
+            <label><input type="checkbox" value="Milk"> Milk</label>
+            <label><input type="checkbox" value="Egg"> Egg</label>
+            <label><input type="checkbox" value="Gluten"> Gluten</label>
+            <label><input type="checkbox" value="Soy"> Soy</label>
+          </div>
+    
           <label>Cuisine:
             <select id="cuisineSelect">
               <option value="">Select one</option>
@@ -291,27 +294,29 @@
               <option value="Middle Eastern">Middle Eastern</option>
             </select>
           </label>
+    
           <label>Diets (check all that apply):</label>
-<div id="dietOptions">
-  <label><input type="checkbox" name="diet" value="Vegan"> Vegan</label>
-  <label><input type="checkbox" name="diet" value="Vegetarian"> Vegetarian</label>
-  <label><input type="checkbox" name="diet" value="Pescatarian"> Pescatarian</label>
-  <label><input type="checkbox" name="diet" value="Halal"> Halal</label>
-  <label><input type="checkbox" name="diet" value="Kosher"> Kosher</label>
-  <label><input type="checkbox" name="diet" value="Low-carb"> Low-carb</label>
-  <label><input type="checkbox" name="diet" value="Low-sodium"> Low-sodium</label>
-</div>
+          <div id="dietOptions">
+            <label><input type="checkbox" name="diet" value="Vegan"> Vegan</label>
+            <label><input type="checkbox" name="diet" value="Vegetarian"> Vegetarian</label>
+            <label><input type="checkbox" name="diet" value="Pescatarian"> Pescatarian</label>
+            <label><input type="checkbox" name="diet" value="Halal"> Halal</label>
+            <label><input type="checkbox" name="diet" value="Kosher"> Kosher</label>
+            <label><input type="checkbox" name="diet" value="Low-carb"> Low-carb</label>
+            <label><input type="checkbox" name="diet" value="Low-sodium"> Low-sodium</label>
+          </div>
+    
           <button type="submit">Submit Review</button>
         </form>
       </div>
-
+    
+      <!-- Reviews Display Section -->
       <div class="reviews">
         <h2>User Reviews</h2>
       </div>
     </div>
   </main>
-  <footer>
-  </footer>
+ 
 
   <script>
     function toggleDropdown(id, header) {

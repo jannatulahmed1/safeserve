@@ -7,12 +7,19 @@ import {
   doc,
   getDocs
 } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore.js";
+import {
+  getAuth,
+  onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/9.6.10/firebase-auth.js";
+
 import { firebaseConfig } from './firebase-config.js';
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
+const auth = getAuth(app);
 
 const form = document.getElementById("reviewForm");
+const formSection = document.querySelector(".form-container");
 const reviewsContainer = document.querySelector(".reviews");
 
 const allergyList = [
@@ -33,6 +40,14 @@ const dietList = [
   "vegan", "vegetarian", "pescatarian", "halal",
   "kosher", "low-carb", "low-sodium"
 ];
+
+onAuthStateChanged(auth, (user) => {
+  if (!user || !user.emailVerified) {
+    if (formSection) formSection.style.display = "none";
+  } else {
+    if (formSection) formSection.style.display = "block";
+  }
+});
 
 window.addEventListener("DOMContentLoaded", () => {
   populateFilters();
@@ -106,11 +121,9 @@ async function loadReviews(filterAllergies = [], filterCuisines = [], filterDiet
       const allergens = (data.allergens || []).map(a => a.toLowerCase());
       const cuisine = (data.cuisine || "").toLowerCase();
       const diets = (data.diets || []).map(d => d.toLowerCase());
-      // const tags = (data.allergens || []).map(t => t.toLowerCase());
 
       const matchAllergy = filterAllergies.length === 0 || filterAllergies.every(a => allergens.includes(a));
       const matchCuisine = filterCuisines.length === 0 || filterCuisines.includes(cuisine);
-      // const matchDiet = filterDiets.length === 0 || filterDiets.some(d => tags.includes(d));
       const matchDiet = filterDiets.length === 0 || filterDiets.every(d => diets.includes(d));
 
       if (!matchAllergy || !matchCuisine || !matchDiet) return;
@@ -137,8 +150,14 @@ async function loadReviews(filterAllergies = [], filterCuisines = [], filterDiet
   }
 }
 
-form.addEventListener("submit", async (e) => {
+form?.addEventListener("submit", async (e) => {
   e.preventDefault();
+  const user = auth.currentUser;
+
+  if (!user || !user.emailVerified) {
+    alert("You must be logged in and have a verified email to submit a review.");
+    return;
+  }
 
   const restaurant = document.getElementById("restaurantName").value.trim();
   const reviewText = document.getElementById("reviewText").value.trim();
@@ -149,41 +168,38 @@ form.addEventListener("submit", async (e) => {
 
   const cuisine = document.getElementById("cuisineSelect").value;
 
-  const uid = localStorage.getItem("userUID");
+  const dietChecks = document.querySelectorAll('input[name="diet"]:checked');
+  const diets = Array.from(dietChecks).map(cb => cb.value);
+
   let username = "anonymous";
 
-  if (uid) {
-    try {
-      const userDoc = await getDoc(doc(db, "users", uid));
-      if (userDoc.exists()) {
-        const userData = userDoc.data();
-        username = userData.username || userData.firstName || "anonymous";
-      }
-    } catch (err) {
-      console.error("Could not fetch username:", err);
+  try {
+    const userDoc = await getDoc(doc(db, "users", user.uid));
+    if (userDoc.exists()) {
+      const userData = userDoc.data();
+      username = userData.username || userData.firstName || "anonymous";
     }
+  } catch (err) {
+    console.error("Could not fetch username:", err);
   }
 
   if (!restaurant || !reviewText || !rating) {
     alert("Please fill all fields!");
     return;
   }
-  //new
-  const dietChecks = document.querySelectorAll('input[name="diet"]:checked');
-  const diets = Array.from(dietChecks).map(cb => cb.value);
 
   const reviewData = {
     restaurant,
     review: reviewText,
     rating,
     user: { username },
+    userId: user.uid, // 🔥 required for Firestore rule
     allergens,
     cuisine,
     diets
   };
 
   try {
-    console.log("Submitting review:", reviewData);
     await addDoc(collection(db, "reviews"), reviewData);
     alert("Review submitted!");
     form.reset();
