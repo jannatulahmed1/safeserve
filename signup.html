@@ -102,6 +102,13 @@
       margin-bottom: 1.5rem;
       text-align: center;
     }
+    .name-row {
+      display: flex;
+      gap: 10px;
+    }
+    .name-row input {
+      width: 100%;
+    }
     .form-container input[type="text"],
     .form-container input[type="email"],
     .form-container input[type="password"] {
@@ -192,8 +199,10 @@
       <div id="success-message"></div>
 
       <form id="signup-form">
-        <input type="text" id="signup-first-name" placeholder="First Name" required />
-        <input type="text" id="signup-last-name" placeholder="Last Name" required />
+        <div class="name-row">
+          <input type="text" id="signup-first-name" placeholder="First Name" required />
+          <input type="text" id="signup-last-name" placeholder="Last Name" required />
+        </div>
         <input type="email" id="signup-email" placeholder="Email" required />
         <input type="password" id="signup-password" placeholder="Password" required />
         <input type="password" id="signup-confirm-password" placeholder="Confirm Password" required />
@@ -210,7 +219,7 @@
           By signing up, you agree to our <a href="terms.html" target="_blank">Terms & Privacy Policy</a>.
         </small>
       </p>
-          </div>
+    </div>
   </main>
 
   <script>
@@ -223,5 +232,3 @@
   <script type="module" src="./js/auth.js"></script>
 </body>
 </html>
-
-
