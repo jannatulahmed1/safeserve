@@ -9,8 +9,12 @@ import {
   getFirestore,
   doc,
   getDoc,
-  setDoc
+  setDoc,
+  collection,
+  getDocs,
+  deleteDoc   
 } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore.js";
+
 import { firebaseConfig } from './firebase-config.js';
 
 // Initialize Firebase
@@ -88,6 +92,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const data = snap.data();
       console.log("🔥 Loaded profile data:", data);
+
+      loadUserReviews(user.uid);
 
       // Prefill inputs
       document.getElementById("first-name").value = data.firstName || "";
@@ -220,3 +226,70 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+//changes 
+async function loadUserReviews(userId) {
+  const container = document.getElementById("user-reviews-container");
+  container.innerHTML = "";
+
+  try {
+    const snapshot = await getDocs(collection(db, "reviews"));
+    const userReviews = [];
+
+    snapshot.forEach(docSnap => {
+      const data = docSnap.data();
+      if (data.userId === userId) {
+        data.id = docSnap.id;
+        userReviews.push(data);
+      }
+    });
+
+    if (userReviews.length === 0) {
+      container.innerHTML = "<p>You haven’t left any reviews yet.</p>";
+      return;
+    }
+
+    userReviews.sort((a, b) => b.timestamp?.seconds - a.timestamp?.seconds);
+
+    userReviews.forEach(data => {
+      const stars = "★".repeat(data.rating || 0) + "☆".repeat(5 - (data.rating || 0));
+      const avatar = document.getElementById("avatar-img")?.src || "https://randomuser.me/api/portraits/lego/1.jpg";
+      const username = document.getElementById("username")?.value || "Anonymous";
+
+      const html = `
+        <div class="review" style="background:#fff; padding:15px 20px; border-radius:12px; margin-bottom:20px; box-shadow:0 2px 5px rgba(0,0,0,0.05);" data-id="${data.id}">
+          <h3 style="color:#4C6444;">${data.restaurant || "Unknown Restaurant"}</h3>
+          <div style="display:flex; align-items:center; gap:10px; margin-bottom:8px;">
+            <img src="${avatar}" alt="avatar" style="width: 40px; height: 40px; border-radius: 50%;" />
+            <span style="font-weight:bold;">${username}</span>
+            <button onclick="deletePastReview('${data.id}')" style="margin-left:auto; background:#800000; color:white; border:none; padding:5px 10px; border-radius:4px;">Delete</button>
+          </div>
+          <p class="meta-info" style="font-size:14px; color:#555;">
+            Allergens: ${data.allergens?.join(", ") || "None"} | 
+            Cuisine: ${data.cuisine || "N/A"} | 
+            Diet: ${data.diets?.join(", ") || "None"}
+          </p>
+          <div class="stars" style="color:gold; font-size:18px;">${stars}</div>
+          <p style="margin-top:8px;">"${data.review || ""}"</p>
+        </div>
+      `;
+      container.insertAdjacentHTML("beforeend", html);
+    });
+
+  } catch (err) {
+    console.error("Error loading past reviews:", err);
+    container.innerHTML = `<p style="color:red;">Failed to load your reviews.</p>`;
+  }
+}
+window.deletePastReview = async function (reviewId) {
+  if (!confirm("Are you sure you want to delete this review?")) return;
+
+  try {
+    await deleteDoc(doc(db, "reviews", reviewId));
+    alert("Review deleted!");
+    loadUserReviews(auth.currentUser.uid); // reload updated list
+  } catch (err) {
+    console.error("Error deleting review:", err);
+    alert("❌ Failed to delete review.");
+  }
+};
+
