@@ -37,7 +37,7 @@ onAuthStateChanged(auth, (user) => {
   }
 });
 
-const allergyList = [/* same */ "peanut","almond","milk","egg","salmon","tuna","walnut","cashew","pistachio","hazelnut","shrimp","wheat","gluten","crab","lobster","oats","corn","sesame","soy","avocado","chickpeas","banana"];
+const allergyList = [/* same */ "peanut","almond","milk","egg","salmon","tuna","walnut","cashew","pistachio","hazelnut","shrimp","wheat","gluten","crab","lobster","oats","corn","sesame","soy","avocado","chickpeas"];
 const cuisineList = [/* same */ "italian","chinese","indian","mexican","thai","japanese","american","mediterranean","korean","middle-eastern","greek","french","caribbean","vietnamese","ethiopian"];
 const dietList = [/* same */ "vegan","vegetarian","pescatarian","halal","kosher","low-carb","low-sodium"];
 
@@ -53,13 +53,25 @@ window.addEventListener("DOMContentLoaded", () => {
   });
 
   document.getElementById("useSavedPrefsBtn")?.addEventListener("click", () => {
-    const saved = JSON.parse(localStorage.getItem("savedAllergies") || "[]");
-    const savedSet = new Set(saved.map(a => a.toLowerCase()));
+    const prefs = JSON.parse(localStorage.getItem("safeserveUserPrefs") || "{}");
+    const allergySet = new Set((prefs.allergies || []).map(a => a.toLowerCase()));
+    const cuisineSet = new Set((prefs.cuisines || []).map(c => c.toLowerCase()));
+    const dietSet = new Set((prefs.diets || []).map(d => d.toLowerCase()));
+
     document.querySelectorAll('input[name="allergy"]').forEach(cb => {
-      cb.checked = savedSet.has(cb.value.toLowerCase());
+      cb.checked = allergySet.has(cb.value.toLowerCase());
     });
+    document.querySelectorAll('input[name="cuisine"]').forEach(cb => {
+      cb.checked = cuisineSet.has(cb.value.toLowerCase());
+    });
+    document.querySelectorAll('input[name="diet"]').forEach(cb => {
+      cb.checked = dietSet.has(cb.value.toLowerCase());
+    });
+
+    loadReviews([...allergySet], [...cuisineSet], [...dietSet]);
   });
 });
+  
 
 function populateFilters() {
   const allergenDiv = document.getElementById("allergenFilters");

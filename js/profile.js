@@ -127,7 +127,15 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       updateAllergyDisplay(data.allergies || [], data.cuisines || [], data.diets || []);
-     
+     // Also store preferences in localStorage on load
+const prefsToStore = {
+  allergies: data.allergies || [],
+  cuisines: data.cuisines || [],
+  diets: data.diets || []
+};
+localStorage.setItem("safeserveUserPrefs", JSON.stringify(prefsToStore));
+console.log("📦 Preferences stored in localStorage on load.");
+
       window.toggleDropdown = function (id, headerEl) {
         const dropdown = document.getElementById(id);
         dropdown.classList.toggle("open");
@@ -167,7 +175,18 @@ document.addEventListener("DOMContentLoaded", () => {
         try {
           await setDoc(userRef, updatedData, { merge: true });
           updateAllergyDisplay(allergyArray, cuisineArray, dietArray);
+          
+          // ✅ Save preferences to localStorage
+          const prefsToStore = {
+            allergies: allergyArray,
+            cuisines: cuisineArray,
+            diets: dietArray
+          };
+          localStorage.setItem("safeserveUserPrefs", JSON.stringify(prefsToStore));
+          console.log("✅ Preferences saved to localStorage for restaurant filter");
+          
           alert("✅ Changes saved successfully.");
+          
         } catch (err) {
           console.error("❌ Failed to update profile:", err);
           alert("Error saving profile.");

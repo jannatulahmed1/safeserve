@@ -9,7 +9,7 @@ const allergenOptions = [
   "peanut", "almond", "milk", "egg", "salmon", "tuna", "walnut",
   "cashew", "pistachio", "hazelnut", "shrimp", "wheat", "gluten",
   "crab", "lobster", "oats", "corn", "sesame", "soy",
-  "avocado", "chickpeas", "banana"
+  "avocado", "chickpeas"
 ];
 const cuisineOptions = [
   "italian", "chinese", "indian", "mexican", "thai",
@@ -36,15 +36,27 @@ document.addEventListener("DOMContentLoaded", () => {
     const selectedCuisines = getCheckedValues("cuisine");
     const selectedDiets = getCheckedValues("diet");
     fetchRestaurants(selectedAllergies, selectedCuisines, selectedDiets);
-    loadRestaurantsOnMap(staticRestaurants);
+    if (mapInitialized) loadRestaurantsOnMap(staticRestaurants);
   });
 
   document.getElementById("useSavedPrefsBtn").addEventListener("click", () => {
-    const saved = JSON.parse(localStorage.getItem("savedAllergies") || "[]");
-    const savedSet = new Set(saved.map(a => a.toLowerCase()));
+    const prefs = JSON.parse(localStorage.getItem("safeserveUserPrefs") || "{}");
+    const allergySet = new Set((prefs.allergies || []).map(a => a.toLowerCase()));
+    const cuisineSet = new Set((prefs.cuisines || []).map(c => c.toLowerCase()));
+    const dietSet = new Set((prefs.diets || []).map(d => d.toLowerCase()));
+
     document.querySelectorAll('input[name="allergy"]').forEach(cb => {
-      cb.checked = savedSet.has(cb.value.toLowerCase());
+      cb.checked = allergySet.has(cb.value.toLowerCase());
     });
+    document.querySelectorAll('input[name="cuisine"]').forEach(cb => {
+      cb.checked = cuisineSet.has(cb.value.toLowerCase());
+    });
+    document.querySelectorAll('input[name="diet"]').forEach(cb => {
+      cb.checked = dietSet.has(cb.value.toLowerCase());
+    });
+
+    fetchRestaurants([...allergySet], [...cuisineSet], [...dietSet]);
+    if (mapInitialized) loadRestaurantsOnMap(staticRestaurants);
   });
 
   document.getElementById("openMapBtn").addEventListener("click", () => {
@@ -154,7 +166,7 @@ function fetchRestaurants(allergies = [], cuisines = [], diets = []) {
     const card = document.createElement("div");
     card.className = "restaurant-card";
     card.innerHTML = `
-      <img src="${r.image}" alt="${r.name}">
+      <img src="${r.image || 'https://via.placeholder.com/200x150'}" alt="${r.name}">
       <div class="restaurant-info">
         <h3>${r.name}</h3>
         <p><strong>Location:</strong> ${r.location}</p>
@@ -188,6 +200,7 @@ async function geocodeAddress(address) {
 }
 
 async function loadRestaurantsOnMap(restaurantsToShow = staticRestaurants) {
+  if (!map) return; // prevent error if map is not initialized
   clearMapMarkers();
   for (const data of restaurantsToShow) {
     const coords = await geocodeAddress(data.location);
@@ -209,3 +222,4 @@ async function loadRestaurantsOnMap(restaurantsToShow = staticRestaurants) {
 function capitalize(str) {
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
+
