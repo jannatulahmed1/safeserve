@@ -1,5 +1,14 @@
 export const staticRestaurants = [
     {
+      name: "Top Thai",
+      location: "55 Carmine St, New York, NY 10014",
+      link: "https://www.topthaivintage.com/",
+      cuisine: "thai",
+      rating: 5.0,
+      safeFor: ["gluten", "halal"],
+      image: "https://img-us.didaudo.net/us-res/000/006/6661.jpg?output=webp&fit=cover&w=800&h=600"
+    },
+    {
       name: "Big Daddy’s Restaurant NYC",
       location: "239 Park Avenue South, New York, NY 10003",
       link: "https://www.bigdaddysnyc.com/",
