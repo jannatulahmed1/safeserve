@@ -1,57 +1,89 @@
+import { staticRestaurants } from './static-restaurants.js';
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
-import {
-  getFirestore,
-  collection,
-  getDocs
-} from "https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore.js";
 import { firebaseConfig } from './firebase-config.js';
 
 const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
 
+// Filter options
 const allergenOptions = [
   "peanut", "almond", "milk", "egg", "salmon", "tuna", "walnut",
   "cashew", "pistachio", "hazelnut", "shrimp", "wheat", "gluten",
   "crab", "lobster", "oats", "corn", "sesame", "soy",
   "avocado", "chickpeas", "banana"
 ];
-
 const cuisineOptions = [
   "italian", "chinese", "indian", "mexican", "thai",
   "japanese", "american", "mediterranean", "korean",
   "middle-eastern", "greek", "french", "caribbean",
   "vietnamese", "ethiopian"
 ];
-
 const dietOptions = [
   "vegan", "vegetarian", "pescatarian", "halal",
   "kosher", "low-carb", "low-sodium"
 ];
 
-window.addEventListener("DOMContentLoaded", () => {
-  const applyBtn = document.getElementById("applyFiltersBtn");
-  const useSaved = document.getElementById("useSavedPrefsBtn");
+// Map variables
+let map, mapInitialized = false;
+const geocodeCache = {};
+let restaurantMarkers = [];
 
+document.addEventListener("DOMContentLoaded", () => {
   populateFilters();
   fetchRestaurants();
 
-  applyBtn.addEventListener("click", () => {
+  document.getElementById("applyFiltersBtn").addEventListener("click", () => {
     const selectedAllergies = getCheckedValues("allergy");
     const selectedCuisines = getCheckedValues("cuisine");
     const selectedDiets = getCheckedValues("diet");
-
     fetchRestaurants(selectedAllergies, selectedCuisines, selectedDiets);
+    loadRestaurantsOnMap(staticRestaurants);
   });
 
-  useSaved.addEventListener("click", () => {
+  document.getElementById("useSavedPrefsBtn").addEventListener("click", () => {
     const saved = JSON.parse(localStorage.getItem("savedAllergies") || "[]");
     const savedSet = new Set(saved.map(a => a.toLowerCase()));
-
     document.querySelectorAll('input[name="allergy"]').forEach(cb => {
-      if (savedSet.has(cb.value.toLowerCase())) {
-        cb.checked = true;
-      }
+      cb.checked = savedSet.has(cb.value.toLowerCase());
     });
+  });
+
+  document.getElementById("openMapBtn").addEventListener("click", () => {
+    const mapContainer = document.getElementById("map");
+    const isVisible = mapContainer.style.display === 'block';
+    mapContainer.style.display = isVisible ? 'none' : 'block';
+    document.getElementById("openMapBtn").textContent = isVisible ? 'Search by Location' : 'Hide Map';
+
+    if (!mapInitialized && !isVisible) {
+      map = L.map('map').setView([40.7128, -74.0060], 12);
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; OpenStreetMap contributors'
+      }).addTo(map);
+
+      L.Control.geocoder({ defaultMarkGeocode: false })
+        .on('markgeocode', e => {
+          const bbox = e.geocode.bbox;
+          const bounds = [
+            [bbox.getSouthWest().lat, bbox.getSouthWest().lng],
+            [bbox.getNorthEast().lat, bbox.getNorthEast().lng]
+          ];
+          map.fitBounds(bounds);
+          L.marker(e.geocode.center).addTo(map).bindPopup(e.geocode.name).openPopup();
+        })
+        .addTo(map);
+
+      navigator.geolocation.getCurrentPosition(pos => {
+        map.setView([pos.coords.latitude, pos.coords.longitude], 14);
+        L.marker([pos.coords.latitude, pos.coords.longitude])
+          .addTo(map)
+          .bindPopup('You are here')
+          .openPopup();
+      });
+
+      loadRestaurantsOnMap(staticRestaurants);
+      mapInitialized = true;
+    } else {
+      setTimeout(() => map.invalidateSize(), 100);
+    }
   });
 });
 
@@ -63,11 +95,9 @@ function populateFilters() {
   allergenOptions.forEach(option => {
     allergyDiv.appendChild(createCheckbox("allergy", option));
   });
-
   cuisineOptions.forEach(option => {
     cuisineDiv.appendChild(createCheckbox("cuisine", option));
   });
-
   dietOptions.forEach(option => {
     dietDiv.appendChild(createCheckbox("diet", option));
   });
@@ -98,54 +128,81 @@ function getCheckedValues(name) {
     .map(cb => cb.value.toLowerCase());
 }
 
-async function fetchRestaurants(allergies = [], cuisines = [], diets = []) {
+function fetchRestaurants(allergies = [], cuisines = [], diets = []) {
   const resultBox = document.querySelector(".resultbox");
   resultBox.innerHTML = `<h2 style="padding-left: 15px;">Loading...</h2>`;
 
-  try {
-    const snapshot = await getDocs(collection(db, "restaurants"));
-    const restaurants = [];
+  const restaurants = staticRestaurants.filter(data => {
+    const safeAllergies = (data.safeFor || []).map(a => a.trim().toLowerCase());
+    const cuisine = (data.cuisine || "").toLowerCase();
+    const tags = safeAllergies;
 
-    snapshot.forEach(doc => {
-      const data = doc.data();
-      const safeAllergies = (data.safeFor || []).map(a => a.trim().toLowerCase());
-      const cuisine = (data.cuisine || "").toLowerCase();
-      const tags = (data.safeFor || []).map(t => t.trim().toLowerCase()); // reused as diet tags
+    const matchAllergies = allergies.length === 0 || allergies.every(a => safeAllergies.includes(a));
+    const matchCuisine = cuisines.length === 0 || cuisines.includes(cuisine);
+    const matchDiet = diets.length === 0 || diets.some(d => tags.includes(d));
 
-      const matchAllergies = allergies.length === 0 || allergies.every(a => safeAllergies.includes(a));
-      const matchCuisine = cuisines.length === 0 || cuisines.includes(cuisine);
-      const matchDiet = diets.length === 0 || diets.some(d => tags.includes(d));
+    return matchAllergies && matchCuisine && matchDiet;
+  });
 
-      if (matchAllergies && matchCuisine && matchDiet) {
-        restaurants.push(data);
-      }
-    });
+  if (restaurants.length === 0) {
+    resultBox.innerHTML = `<h2 style="padding-left: 15px;">No matching restaurants found.</h2>`;
+    return;
+  }
 
-    if (restaurants.length === 0) {
-      resultBox.innerHTML = `<h2 style="padding-left: 15px;">No matching restaurants found.</h2>`;
-      return;
-    }
+  resultBox.innerHTML = "";
+  restaurants.forEach(r => {
+    const card = document.createElement("div");
+    card.className = "restaurant-card";
+    card.innerHTML = `
+      <img src="${r.image}" alt="${r.name}">
+      <div class="restaurant-info">
+        <h3>${r.name}</h3>
+        <p><strong>Location:</strong> ${r.location}</p>
+        <p><strong>Cuisine:</strong> ${r.cuisine}</p>
+        <p class="rating"><strong>Rating:</strong> ⭐ ${r.rating}</p>
+        <p><strong>Safe for:</strong> ${r.safeFor?.join(", ") || "None"}</p>
+        <a href="${r.link || '#'}" target="_blank" class="view-button">View Restaurant</a>
+      </div>
+    `;
+    resultBox.appendChild(card);
+  });
+}
 
-    resultBox.innerHTML = "";
-    restaurants.forEach(r => {
-      const card = document.createElement("div");
-      card.className = "restaurant-card";
-      card.innerHTML = `
-        <img src="${r.image}" alt="${r.name}">
-        <div class="restaurant-info">
-          <h3>${r.name}</h3>
-          <p><strong>Location:</strong> ${r.location}</p>
-          <p><strong>Cuisine:</strong> ${r.cuisine}</p>
-          <p class="rating"><strong>Rating:</strong> ⭐ ${r.rating}</p>
-          <p><strong>Safe for:</strong> ${r.safeFor?.join(", ") || "None"}</p>
-          <a href="${r.link || '#'}" target="_blank" class="view-button">View Restaurant</a>
-        </div>
-      `;
-      resultBox.appendChild(card);
-    });
-  } catch (error) {
-    console.error("Error fetching restaurants:", error);
-    resultBox.innerHTML = `<h2 style="padding-left: 15px; color: red;">Error loading restaurants. Please try again.</h2>`;
+function clearMapMarkers() {
+  restaurantMarkers.forEach(marker => marker.remove());
+  restaurantMarkers = [];
+}
+
+async function geocodeAddress(address) {
+  if (geocodeCache[address]) return geocodeCache[address];
+  const url = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(address)}&email=safe.serve@example.com`;
+  const res = await fetch(url);
+  const data = await res.json();
+  if (data.length > 0) {
+    const coords = { lat: parseFloat(data[0].lat), lon: parseFloat(data[0].lon) };
+    geocodeCache[address] = coords;
+    await new Promise(r => setTimeout(r, 1100)); // delay for Nominatim
+    return coords;
+  }
+  return null;
+}
+
+async function loadRestaurantsOnMap(restaurantsToShow = staticRestaurants) {
+  clearMapMarkers();
+  for (const data of restaurantsToShow) {
+    const coords = await geocodeAddress(data.location);
+    if (!coords) continue;
+
+    const safeForStr = (data.safeFor || []).join(', ');
+    const popupHtml = `
+      <strong>${data.name}</strong><br/>
+      ${data.cuisine}<br/>
+      Rating: ${data.rating}<br/>
+      Safe For: ${safeForStr}<br/>
+      <a href="${data.link}" target="_blank">Visit Website</a>
+    `;
+    const marker = L.marker([coords.lat, coords.lon]).addTo(map).bindPopup(popupHtml);
+    restaurantMarkers.push(marker);
   }
 }
 
