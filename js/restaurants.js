@@ -149,11 +149,12 @@ function fetchRestaurants(allergies = [], cuisines = [], diets = []) {
     const cuisine = (data.cuisine || "").toLowerCase();
     const tags = safeAllergies;
 
-    const matchAllergies = allergies.length === 0 || allergies.every(a => safeAllergies.includes(a));
+    const matchAllergies = allergies.length === 0 || allergies.some(a => safeAllergies.includes(a));
     const matchCuisine = cuisines.length === 0 || cuisines.includes(cuisine);
     const matchDiet = diets.length === 0 || diets.some(d => tags.includes(d));
-
-    return matchAllergies && matchCuisine && matchDiet;
+    
+    if (!(matchAllergies || matchCuisine || matchDiet)) return false;
+    return true;    
   });
 
   if (restaurants.length === 0) {

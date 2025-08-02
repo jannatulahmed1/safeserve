@@ -27,23 +27,25 @@ const loginPrompt = document.getElementById("loginPromptContainer");
 let currentUserId = null;
 
 onAuthStateChanged(auth, (user) => {
+  currentUserId = user && user.emailVerified ? user.uid : null;
+
   if (!user || !user.emailVerified) {
     if (formSection) formSection.style.display = "none";
     if (loginPrompt) loginPrompt.style.display = "block";
   } else {
-    currentUserId = user.uid;
     if (formSection) formSection.style.display = "block";
     if (loginPrompt) loginPrompt.style.display = "none";
   }
+
+  loadReviews();
 });
 
-const allergyList = [/* same */ "peanut","almond","milk","egg","salmon","tuna","walnut","cashew","pistachio","hazelnut","shrimp","wheat","gluten","crab","lobster","oats","corn","sesame","soy","avocado","chickpeas"];
-const cuisineList = [/* same */ "italian","chinese","indian","mexican","thai","japanese","american","mediterranean","korean","middle-eastern","greek","french","caribbean","vietnamese","ethiopian"];
-const dietList = [/* same */ "vegan","vegetarian","pescatarian","halal","kosher","low-carb","low-sodium"];
+const allergyList = ["peanut","almond","milk","egg","salmon","tuna","walnut","cashew","pistachio","hazelnut","shrimp","wheat","gluten","crab","lobster","oats","corn","sesame","soy","avocado","chickpeas"];
+const cuisineList = ["italian","chinese","indian","mexican","thai","japanese","american","mediterranean","korean","middle-eastern","greek","french","caribbean","vietnamese","ethiopian"];
+const dietList = ["vegan","vegetarian","pescatarian","halal","kosher","low-carb","low-sodium"];
 
 window.addEventListener("DOMContentLoaded", () => {
   populateFilters();
-  loadReviews();
 
   document.getElementById("applyFiltersBtn")?.addEventListener("click", () => {
     const selectedAllergies = getCheckedValues("allergy");
@@ -71,7 +73,6 @@ window.addEventListener("DOMContentLoaded", () => {
     loadReviews([...allergySet], [...cuisineSet], [...dietSet]);
   });
 });
-  
 
 function populateFilters() {
   const allergenDiv = document.getElementById("allergenFilters");
@@ -122,18 +123,20 @@ async function loadReviews(filterAllergies = [], filterCuisines = [], filterDiet
       const cuisine = (data.cuisine || "").toLowerCase();
       const diets = (data.diets || []).map(d => d.toLowerCase());
 
-      const matchAllergy = !filterAllergies.length || filterAllergies.every(a => allergens.includes(a));
+      const matchAllergy = !filterAllergies.length || allergens.some(a => filterAllergies.includes(a));
       const matchCuisine = !filterCuisines.length || filterCuisines.includes(cuisine);
-      const matchDiet = !filterDiets.length || filterDiets.every(d => diets.includes(d));
-      if (!matchAllergy || !matchCuisine || !matchDiet) continue;
+      const matchDiet = !filterDiets.length || diets.some(d => filterDiets.includes(d));
+      
+      if (!(matchAllergy || matchCuisine || matchDiet)) continue;
+      
 
-      let username = "anonymous";
+      let username = "Anonymous";
       let profilePic = "avatar1";
       try {
         const userDoc = await getDoc(doc(db, "users", userId));
         if (userDoc.exists()) {
           const userData = userDoc.data();
-          username = userData.username || userData.firstName || "anonymous";
+          username = userData.username || userData.firstName || "Anonymous";
           profilePic = userData.profilePic || "avatar1";
         }
       } catch (err) {
@@ -143,7 +146,7 @@ async function loadReviews(filterAllergies = [], filterCuisines = [], filterDiet
       const stars = "★".repeat(data.rating) + "☆".repeat(5 - data.rating);
       const restaurant = data.restaurant || "Unknown";
       const reviewText = data.review || "";
-      const isOwner = currentUserId === userId;
+      const isOwner = currentUserId && currentUserId === userId;
 
       const html = `
         <div class="review" data-id="${data.id}">
