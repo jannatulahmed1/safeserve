@@ -227,7 +227,7 @@
       border-radius: 12px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
-
+    
     @media (max-width: 768px) {
       .container {
         flex-direction: column;
@@ -241,6 +241,13 @@
         justify-content: center;
       }
     }
+    @media (min-width: 769px) {
+  .filterbox {
+    max-height: calc(100vh - 120px); /* keeps it scrollable on large screens */
+    overflow-y: auto;
+  }
+}
+
   </style>
 </head>
 <body>

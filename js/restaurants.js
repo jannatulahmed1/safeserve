@@ -33,14 +33,24 @@ document.addEventListener("DOMContentLoaded", () => {
   populateFilters();
   fetchRestaurants();
 
+  // ✅ Updated: Apply Filters + Save to localStorage
   document.getElementById("applyFiltersBtn").addEventListener("click", () => {
     const selectedAllergies = getCheckedValues("allergy");
     const selectedCuisines = getCheckedValues("cuisine");
     const selectedDiets = getCheckedValues("diet");
+
+    // Save preferences
+    localStorage.setItem("safeserveUserPrefs", JSON.stringify({
+      allergies: selectedAllergies,
+      cuisines: selectedCuisines,
+      diets: selectedDiets
+    }));
+
     fetchRestaurants(selectedAllergies, selectedCuisines, selectedDiets);
     if (mapInitialized) loadRestaurantsOnMap(staticRestaurants);
   });
 
+  // ✅ Already working: Use saved prefs
   document.getElementById("useSavedPrefsBtn").addEventListener("click", () => {
     const prefs = JSON.parse(localStorage.getItem("safeserveUserPrefs") || "{}");
     const allergySet = new Set((prefs.allergies || []).map(a => a.toLowerCase()));
@@ -100,6 +110,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+
 
 function populateFilters() {
   const allergyDiv = document.getElementById("allergenFilters");
