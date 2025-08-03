@@ -6,17 +6,19 @@ const app = initializeApp(firebaseConfig);
 
 // Filter options
 const allergenOptions = [
-  "peanut", "almond", "milk", "egg", "salmon", "tuna", "walnut",
-  "cashew", "pistachio", "hazelnut", "shrimp", "wheat", "gluten",
-  "crab", "lobster", "oats", "corn", "sesame", "soy",
-  "avocado", "chickpeas"
+  "peanut", "tree nut", "nut", "milk", "egg", "wheat", "gluten", "soy",
+  "fish", "shellfish", "sesame", "mustard", "sulfite", "corn", "dairy",
+  "celery", "yeast", "lupin", "mollusk", "buckwheat", "latex"
 ];
+
 const cuisineOptions = [
-  "italian", "chinese", "indian", "mexican", "thai",
-  "japanese", "american", "mediterranean", "korean",
-  "middle-eastern", "greek", "french", "caribbean",
-  "vietnamese", "ethiopian"
+  "italian", "chinese", "indian", "mexican", "thai", "japanese", "american",
+  "mediterranean", "korean", "greek", "french", "caribbean", "vietnamese",
+  "ethiopian", "turkish", "cuban", "bengali", "dominican", "puerto rican",
+  "jamaican", "peruvian", "filipino", "lebanese", "brazilian",
+  "nigerian", "ghanaian", "moroccan", "egyptian", "somali"
 ];
+
 const dietOptions = [
   "vegan", "vegetarian", "pescatarian", "halal",
   "kosher", "low-carb", "low-sodium"
