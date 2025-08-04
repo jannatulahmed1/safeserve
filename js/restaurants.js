@@ -4,7 +4,7 @@ import { firebaseConfig } from './firebase-config.js';
 
 const app = initializeApp(firebaseConfig);
 
-// Filter options
+//filter options
 const allergenOptions = [
   "peanut", "tree nut", "nut", "milk", "egg", "wheat", "gluten", "soy",
   "fish", "shellfish", "sesame", "mustard", "sulfite", "corn", "dairy",
@@ -24,7 +24,7 @@ const dietOptions = [
   "kosher", "low-carb", "low-sodium", "other"
 ];
 
-// Map variables
+//map variables
 let map, mapInitialized = false;
 const geocodeCache = {};
 let restaurantMarkers = [];
@@ -33,13 +33,13 @@ document.addEventListener("DOMContentLoaded", () => {
   populateFilters();
   fetchRestaurants();
 
-  // ✅ Updated: Apply Filters + Save to localStorage
+  //apply Filters + Save to localStorage
   document.getElementById("applyFiltersBtn").addEventListener("click", () => {
-    const selectedAllergies = getCheckedValues("allergy");
-    const selectedCuisines = getCheckedValues("cuisine");
-    const selectedDiets = getCheckedValues("diet");
-
-    // Save preferences
+    const selectedAllergies = getCheckedValuesById("allergenFilters");
+    const selectedCuisines = getCheckedValuesById("cuisineFilters");
+    const selectedDiets = getCheckedValuesById("dietFilters");
+    
+    //save preferences
     localStorage.setItem("safeserveUserPrefs", JSON.stringify({
       allergies: selectedAllergies,
       cuisines: selectedCuisines,
@@ -50,7 +50,13 @@ document.addEventListener("DOMContentLoaded", () => {
     if (mapInitialized) loadRestaurantsOnMap(staticRestaurants);
   });
 
-  // ✅ Already working: Use saved prefs
+  function getCheckedValuesById(containerId) {
+    return Array.from(document.querySelectorAll(`#${containerId} input[type="checkbox"]:checked`))
+      .map(cb => cb.value.toLowerCase());
+  }
+  
+
+  //use saved prefs
   document.getElementById("useSavedPrefsBtn").addEventListener("click", () => {
     const prefs = JSON.parse(localStorage.getItem("safeserveUserPrefs") || "{}");
     const allergySet = new Set((prefs.allergies || []).map(a => a.toLowerCase()));
@@ -111,7 +117,6 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-
 function populateFilters() {
   const allergyDiv = document.getElementById("allergenFilters");
   const cuisineDiv = document.getElementById("cuisineFilters");
@@ -153,44 +158,40 @@ function getCheckedValues(name) {
     .map(cb => cb.value.toLowerCase());
 }
 
-function fetchRestaurants(allergies = [], cuisines = [], diets = []) {
-  const resultBox = document.querySelector(".resultbox");
-  resultBox.innerHTML = `<h2 style="padding-left: 15px;">Loading...</h2>`;
+function fetchRestaurants(selectedAllergies = [], selectedCuisines = [], selectedDiets = []) {
+  const resultsContainer = document.getElementById("restaurantResults");
+  resultsContainer.innerHTML = ""; // Clear current results
 
-  const restaurants = staticRestaurants.filter(data => {
-    const safeAllergies = (data.safeFor || []).map(a => a.trim().toLowerCase());
-    const cuisine = (data.cuisine || "").toLowerCase();
-    const tags = safeAllergies;
+  const filtered = staticRestaurants.filter(restaurant => {
+    const allergyMatch = selectedAllergies.length === 0 || selectedAllergies.every(a =>
+      restaurant.safeFor.includes(a.toLowerCase())
+    );
 
-    const matchAllergies = allergies.length === 0 || allergies.some(a => safeAllergies.includes(a));
-    const matchCuisine = cuisines.length === 0 || cuisines.includes(cuisine);
-    const matchDiet = diets.length === 0 || diets.some(d => tags.includes(d));
-    
-    if (!(matchAllergies || matchCuisine || matchDiet)) return false;
-    return true;    
+    const cuisineMatch = selectedCuisines.length === 0 || selectedCuisines.includes(restaurant.cuisine.toLowerCase());
+
+    const dietMatch = selectedDiets.length === 0 || !restaurant.diet
+      ? true
+      : selectedDiets.includes(restaurant.diet.toLowerCase());
+
+    return allergyMatch && cuisineMatch && dietMatch;
   });
 
-  if (restaurants.length === 0) {
-    resultBox.innerHTML = `<h2 style="padding-left: 15px;">No matching restaurants found.</h2>`;
-    return;
-  }
-
-  resultBox.innerHTML = "";
-  restaurants.forEach(r => {
+  //render filtered restaurants
+  filtered.forEach(restaurant => {
     const card = document.createElement("div");
     card.className = "restaurant-card";
     card.innerHTML = `
-      <img src="${r.image || 'https://via.placeholder.com/200x150'}" alt="${r.name}">
+      <img src="${restaurant.image}" alt="${restaurant.name}">
       <div class="restaurant-info">
-        <h3>${r.name}</h3>
-        <p><strong>Location:</strong> ${r.location}</p>
-        <p><strong>Cuisine:</strong> ${r.cuisine}</p>
-        <p class="rating"><strong>Rating:</strong> ⭐ ${r.rating}</p>
-        <p><strong>Safe for:</strong> ${r.safeFor?.join(", ") || "None"}</p>
-        <a href="${r.link || '#'}" target="_blank" class="view-button">View Restaurant</a>
+        <h3>${restaurant.name}</h3>
+        <p><strong>Address:</strong> ${restaurant.location}</p>
+        <p><strong>Cuisine:</strong> ${restaurant.cuisine}</p>
+        <p><strong>Safe For:</strong> ${restaurant.safeFor.join(", ")}</p>
+        <p class="rating">Rating: ${restaurant.rating}</p>
+        <a class="view-button" href="${restaurant.link}" target="_blank">View Restaurant</a>
       </div>
     `;
-    resultBox.appendChild(card);
+    resultsContainer.appendChild(card);
   });
 }
 
@@ -207,14 +208,14 @@ async function geocodeAddress(address) {
   if (data.length > 0) {
     const coords = { lat: parseFloat(data[0].lat), lon: parseFloat(data[0].lon) };
     geocodeCache[address] = coords;
-    await new Promise(r => setTimeout(r, 1100)); // delay for Nominatim
+    await new Promise(r => setTimeout(r, 1100)); 
     return coords;
   }
   return null;
 }
 
 async function loadRestaurantsOnMap(restaurantsToShow = staticRestaurants) {
-  if (!map) return; // prevent error if map is not initialized
+  if (!map) return; //prevent error if map is not initialized
   clearMapMarkers();
   for (const data of restaurantsToShow) {
     const coords = await geocodeAddress(data.location);

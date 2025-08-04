@@ -4644,4 +4644,3 @@ export const staticRestaurants = [
       "image": "https://via.placeholder.com/200x150?text=Prince+Street+Pizza"
     }
   ];
-

@@ -243,7 +243,7 @@
     }
     @media (min-width: 769px) {
   .filterbox {
-    max-height: calc(100vh - 120px); /* keeps it scrollable on large screens */
+    max-height: calc(100vh - 120px); 
     overflow-y: auto;
   }
 }
@@ -298,12 +298,10 @@
       </div>
 
       <div class="resultbox" id="restaurantResults">
-        <!-- JS will populate results -->
       </div>
     </div>
   </main>
 
-  <!-- Add dropdown toggle logic -->
   <script>
     function toggleDropdown(id, header) {
       const content = document.getElementById(id);
@@ -316,8 +314,6 @@
       }
     }
   </script>
-
-  <!-- JS logic -->
   <script type="module" src="./js/restaurants.js"></script>
 </body>
 </html>

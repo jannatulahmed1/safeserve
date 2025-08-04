@@ -17,12 +17,12 @@ import {
 
 import { firebaseConfig } from './firebase-config.js';
 
-// Initialize Firebase
+//initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
-// Avatar URLs (external LEGO avatars)
+//Avatar 
 const avatarURLs = [
   "https://randomuser.me/api/portraits/lego/0.jpg",
   "https://randomuser.me/api/portraits/lego/1.jpg",
@@ -37,7 +37,6 @@ const avatarURLs = [
 ];
 let avatarIndex = 1;
 
-// Allow clicking directly on inputs to enable editing
 ["first-name", "last-name", "username"].forEach((id) => {
   const input = document.getElementById(id);
   if (input) {
@@ -48,14 +47,14 @@ let avatarIndex = 1;
   }
 });
 
-// Show saved allergies, cuisines, and diets visually
+//show saved allergies, cuisines, and diets visually
 function updateAllergyDisplay(allergies = [], cuisines = [], diets = []) {
   const allergyDisplay = document.getElementById("allergy-display");
   const allPrefs = [...allergies, ...cuisines, ...diets];
   allergyDisplay.innerHTML = `<strong>Saved Preferences:</strong> ${allPrefs.length ? allPrefs.join(", ") : "None selected"}`;
 }
 
-// Cycle avatar image
+//cycle avatar image
 function cycleAvatar() {
   avatarIndex = (avatarIndex + 1) % avatarURLs.length;
   const newURL = avatarURLs[avatarIndex];
@@ -91,18 +90,18 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       const data = snap.data();
-      console.log("🔥 Loaded profile data:", data);
+      console.log("Loaded profile data:", data);
 
       loadUserReviews(user.uid);
 
-      // Prefill inputs
+      //prefill inputs
       document.getElementById("first-name").value = data.firstName || "";
       document.getElementById("last-name").value = data.lastName || "";
       document.getElementById("username").value = data.username || "";
       document.getElementById("email").value = data.email || "";
       document.getElementById("email").disabled = true;
 
-      // Allergies
+      //allergies
       if (Array.isArray(data.allergies)) {
         data.allergies.forEach(allergy => {
           const checkbox = document.getElementById(allergy.toLowerCase());
@@ -110,7 +109,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
       }
 
-      // Cuisines
+      //cuisines
       if (Array.isArray(data.cuisines)) {
         data.cuisines.forEach(cuisine => {
           const checkbox = document.getElementById(cuisine.toLowerCase());
@@ -118,7 +117,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
       }
 
-      // Diets
+      //diets
       if (Array.isArray(data.diets)) {
         data.diets.forEach(diet => {
           const checkbox = document.getElementById(diet.toLowerCase());
@@ -127,7 +126,6 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       updateAllergyDisplay(data.allergies || [], data.cuisines || [], data.diets || []);
-     // Also store preferences in localStorage on load
 const prefsToStore = {
   allergies: data.allergies || [],
   cuisines: data.cuisines || [],
@@ -143,7 +141,7 @@ console.log("📦 Preferences stored in localStorage on load.");
       };
       
 
-      // Avatar
+      //avatar
       const avatarImg = document.getElementById("avatar-img");
       if (data.profilePic && avatarURLs.includes(data.profilePic)) {
         avatarImg.src = data.profilePic;
@@ -155,7 +153,7 @@ console.log("📦 Preferences stored in localStorage on load.");
         avatarIndex = 0;
       }
 
-      // Save changes
+      //save changes
       document.querySelector(".btn-save").addEventListener("click", async () => {
         const allergyArray = Array.from(document.querySelectorAll("#allergenDropdown input:checked")).map(cb => cb.id);
         const cuisineArray = Array.from(document.querySelectorAll("#cuisineDropdown input:checked")).map(cb => cb.id);
@@ -176,19 +174,19 @@ console.log("📦 Preferences stored in localStorage on load.");
           await setDoc(userRef, updatedData, { merge: true });
           updateAllergyDisplay(allergyArray, cuisineArray, dietArray);
           
-          // ✅ Save preferences to localStorage
+          //Save preferences to localStorage
           const prefsToStore = {
             allergies: allergyArray,
             cuisines: cuisineArray,
             diets: dietArray
           };
           localStorage.setItem("safeserveUserPrefs", JSON.stringify(prefsToStore));
-          console.log("✅ Preferences saved to localStorage for restaurant filter");
+          console.log("Preferences saved to localStorage for restaurant filter");
           
-          alert("✅ Changes saved successfully.");
+          alert("Changes saved successfully.");
           
         } catch (err) {
-          console.error("❌ Failed to update profile:", err);
+          console.error("Failed to update profile:", err);
           alert("Error saving profile.");
         }
       });
@@ -222,12 +220,12 @@ console.log("📦 Preferences stored in localStorage on load.");
 
           try {
             await updatePassword(user, newPass);
-            alert("✅ Password updated successfully.");
+            alert("Password updated successfully.");
             document.getElementById("new-password").value = "";
             document.getElementById("confirm-password").value = "";
             document.getElementById("reset-password-section").style.display = "none";
           } catch (err) {
-            console.error("❌ Password update failed:", err);
+            console.error("Password update failed:", err);
             alert("Failed to update password: " + err.message);
           }
         });
@@ -241,7 +239,7 @@ console.log("📦 Preferences stored in localStorage on load.");
       });
 
     } catch (err) {
-      console.error("❌ Error loading profile:", err);
+      console.error("Error loading profile:", err);
     }
   });
 });
@@ -308,7 +306,7 @@ window.deletePastReview = async function (reviewId) {
     loadUserReviews(auth.currentUser.uid); // reload updated list
   } catch (err) {
     console.error("Error deleting review:", err);
-    alert("❌ Failed to delete review.");
+    alert("Failed to delete review.");
   }
 };
 
