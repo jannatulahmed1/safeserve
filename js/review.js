@@ -128,12 +128,11 @@ async function loadReviews(filterAllergies = [], filterCuisines = [], filterDiet
       const cuisine = (data.cuisine || "").toLowerCase();
       const diets = (data.diets || []).map(d => d.toLowerCase());
 
-      const matchAllergy = !filterAllergies.length || allergens.some(a => filterAllergies.includes(a));
-      const matchCuisine = !filterCuisines.length || filterCuisines.includes(cuisine);
-      const matchDiet = !filterDiets.length || diets.some(d => filterDiets.includes(d));
+      const matchAllergy = filterAllergies.every(a => allergens.includes(a));
+      const matchDiet = filterDiets.every(d => diets.includes(d));
+      const matchCuisine = filterCuisines.length === 0 || filterCuisines.includes(cuisine);
       
-      if (!(matchAllergy || matchCuisine || matchDiet)) continue;
-      
+      if (!(matchAllergy && matchCuisine && matchDiet)) continue;
 
       let username = "Anonymous";
       let profilePic = "avatar1";
