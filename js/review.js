@@ -40,14 +40,14 @@ onAuthStateChanged(auth, (user) => {
   loadReviews();
 });
 
-const allergyList = ["peanut", "tree nut", "nut", "milk", "egg", "wheat", "gluten", "soy", "fish", "shellfish", "sesame", "mustard", "sulfite", "corn", "dairy", "celery", "yeast", "lupin", "mollusk", "buckwheat", "latex"];
+const allergyList = ["peanut", "tree nut", "nut", "milk", "egg", "wheat", "gluten", "soy", "fish", "shellfish", "sesame", "mustard", "sulfite", "corn", "dairy", "celery", "yeast", "lupin", "mollusk", "buckwheat", "latex", "other"];
 const cuisineList = [
   "italian", "chinese", "indian", "mexican", "thai", "japanese", "american",
   "mediterranean", "korean",  "greek", "french", "caribbean",
   "vietnamese", "ethiopian", "turkish", "cuban", "bengali", "dominican",
   "puerto rican", "jamaican", "peruvian", "filipino", "lebanese", "brazilian",
-  "nigerian", "ghanaian", "moroccan", "egyptian", "somali", 
- ];const dietList = ["vegan","vegetarian","pescatarian","halal","kosher","low-carb","low-sodium"];
+  "nigerian", "ghanaian", "moroccan", "egyptian", "somali", "other"
+ ];const dietList = ["vegan","vegetarian","pescatarian","halal","kosher","low-carb","low-sodium", "other"];
 
 window.addEventListener("DOMContentLoaded", () => {
   populateFilters();

@@ -8,7 +8,7 @@ const app = initializeApp(firebaseConfig);
 const allergenOptions = [
   "peanut", "tree nut", "nut", "milk", "egg", "wheat", "gluten", "soy",
   "fish", "shellfish", "sesame", "mustard", "sulfite", "corn", "dairy",
-  "celery", "yeast", "lupin", "mollusk", "buckwheat", "latex"
+  "celery", "yeast", "lupin", "mollusk", "buckwheat", "latex", "other"
 ];
 
 const cuisineOptions = [
@@ -16,12 +16,12 @@ const cuisineOptions = [
   "mediterranean", "korean", "greek", "french", "caribbean", "vietnamese",
   "ethiopian", "turkish", "cuban", "bengali", "dominican", "puerto rican",
   "jamaican", "peruvian", "filipino", "lebanese", "brazilian",
-  "nigerian", "ghanaian", "moroccan", "egyptian", "somali"
+  "nigerian", "ghanaian", "moroccan", "egyptian", "somali", "other"
 ];
 
 const dietOptions = [
   "vegan", "vegetarian", "pescatarian", "halal",
-  "kosher", "low-carb", "low-sodium"
+  "kosher", "low-carb", "low-sodium", "other"
 ];
 
 // Map variables
