@@ -160,23 +160,22 @@ function getCheckedValues(name) {
 
 function fetchRestaurants(selectedAllergies = [], selectedCuisines = [], selectedDiets = []) {
   const resultsContainer = document.getElementById("restaurantResults");
-  resultsContainer.innerHTML = ""; // Clear current results
+  resultsContainer.innerHTML = ""; 
 
   const filtered = staticRestaurants.filter(restaurant => {
-    const allergyMatch = selectedAllergies.length === 0 || selectedAllergies.every(a =>
-      restaurant.safeFor.includes(a.toLowerCase())
-    );
-
-    const cuisineMatch = selectedCuisines.length === 0 || selectedCuisines.includes(restaurant.cuisine.toLowerCase());
-
-    const dietMatch = selectedDiets.length === 0 || !restaurant.diet
-      ? true
-      : selectedDiets.includes(restaurant.diet.toLowerCase());
-
+    const safeForList = (restaurant.safeFor || []).map(s => s.toLowerCase());
+    const cuisine = (restaurant.cuisine || "").toLowerCase();
+    const allergyMatch = selectedAllergies.every(a => safeForList.includes(a));
+    const dietMatch = selectedDiets.every(d => safeForList.includes(d));
+    const cuisineMatch = selectedCuisines.length === 0 || selectedCuisines.includes(cuisine);
     return allergyMatch && cuisineMatch && dietMatch;
   });
 
-  //render filtered restaurants
+  if (filtered.length === 0) {
+    resultsContainer.innerHTML = `<p>No matching restaurants found.</p>`;
+    return;
+  }
+
   filtered.forEach(restaurant => {
     const card = document.createElement("div");
     card.className = "restaurant-card";
