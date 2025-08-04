@@ -39,24 +39,24 @@
     .logo img {
       height: 50px;
     }
-    nav {
-      display: flex;
-      gap: 20px;
-    }
     nav a {
       color: white;
       text-decoration: none;
+      margin-left: 20px;
       font-size: 18px;
       font-weight: 500;
       transition: color 0.3s;
     }
-    nav a:hover,
+    nav a:hover {
+      color: var(--maroon);
+    }
     nav a.active {
       color: var(--maroon);
     }
+
     .menu-toggle {
       display: none;
-      font-size: 26px;
+      font-size: 24px;
       color: white;
       cursor: pointer;
     }

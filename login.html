@@ -39,32 +39,27 @@
       top: 0;
       z-index: 1000;
     }
-
     .logo img {
       height: 50px;
     }
-
-    nav {
-      display: flex;
-      gap: 20px;
-    }
-
     nav a {
       color: white;
       text-decoration: none;
+      margin-left: 20px;
       font-size: 18px;
       font-weight: 500;
       transition: color 0.3s;
     }
-
-    nav a:hover,
+    nav a:hover {
+      color: var(--maroon);
+    }
     nav a.active {
       color: var(--maroon);
     }
 
     .menu-toggle {
       display: none;
-      font-size: 26px;
+      font-size: 24px;
       color: white;
       cursor: pointer;
     }
@@ -207,7 +202,7 @@
     </div>
     <nav id="nav-links">
       <a href="index.html">Home</a>
-      <a id="profile-link" href="login.html">Login</a>
+      <a id="profile-link" href="login.html">Profile</a>
       <a href="restaurants.html">Restaurants</a>
       <a href="reviews.html">Reviews</a>
       <a href="resources.html">Resources</a>
@@ -250,27 +245,26 @@
       nav.classList.toggle("open");
     }
 
-    // Navbar logic based on login status
-    import('https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js').then(firebase => {
-      import('https://www.gstatic.com/firebasejs/9.6.10/firebase-auth.js').then(authModule => {
-        import('./js/firebase-config.js').then(({ firebaseConfig }) => {
-          const app = firebase.initializeApp(firebaseConfig);
-          const auth = authModule.getAuth(app);
-
-          authModule.onAuthStateChanged(auth, user => {
-            const link = document.getElementById("profile-link");
-            if (user) {
-              link.textContent = "Profile";
-              link.href = "profile.html";
-            } else {
-              link.textContent = "Login";
-              link.href = "login.html";
-            }
-          });
-        });
-      });
-    });
   </script>
+
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
+  import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-auth.js";
+  import { firebaseConfig } from './js/firebase-config.js';
+
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+
+  onAuthStateChanged(auth, (user) => {
+  console.log("Auth state changed:", user);
+  if (user && user.emailVerified) {
+    console.log("Redirecting to profile.html...");
+    window.location.href = "profile.html";
+  }
+});
+
+</script>
+
 
   <script type="module" src="./js/auth.js"></script>
 </body>

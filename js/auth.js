@@ -17,13 +17,13 @@ import {
 } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore.js";
 import { firebaseConfig } from './firebase-config.js';
 
-// Firebase init
+//firebase init
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 const provider = new GoogleAuthProvider();
 
-// -------- SIGNUP --------
+//SIGNUP 
 const signupForm = document.getElementById("signup-form");
 if (signupForm) {
   signupForm.addEventListener("submit", async (e) => {
@@ -41,7 +41,7 @@ if (signupForm) {
     successEl.textContent = "";
 
     if (password !== confirmPassword) {
-      errorEl.textContent = "❌ Passwords do not match.";
+      errorEl.textContent = "Passwords do not match.";
       return;
     }
 
@@ -63,26 +63,26 @@ if (signupForm) {
       });
 
       localStorage.setItem("userUID", user.uid);
-      successEl.textContent = "✅ Signup successful! Please verify your email.";
+      successEl.textContent = "Signup successful! Please verify your email.";
       setTimeout(() => {
         window.location.href = "profile.html";
       }, 1500);
     } catch (error) {
       console.error("Signup error:", error);
       if (error.code === "auth/email-already-in-use") {
-        errorEl.textContent = "❌ This email is already in use.";
+        errorEl.textContent = "This email is already in use.";
       } else if (error.code === "auth/invalid-email") {
-        errorEl.textContent = "❌ Please enter a valid email.";
+        errorEl.textContent = "Please enter a valid email.";
       } else if (error.code === "auth/weak-password") {
-        errorEl.textContent = "❌ Password must be at least 6 characters.";
+        errorEl.textContent = "Password must be at least 6 characters.";
       } else {
-        errorEl.textContent = "❌ Signup error: " + error.message;
+        errorEl.textContent = "Signup error: " + error.message;
       }
     }
   });
 }
 
-// -------- LOGIN --------
+//LOGIN 
 const loginForm = document.getElementById("login-form");
 if (loginForm) {
   loginForm.addEventListener("submit", async (e) => {
@@ -99,7 +99,7 @@ if (loginForm) {
     try {
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
-      await user.reload(); // Ensure emailVerified is up to date
+      await user.reload(); 
 
       if (!user.emailVerified) {
         errorEl.textContent = "⚠️ Please verify your email before logging in.";
@@ -114,11 +114,11 @@ if (loginForm) {
     } catch (error) {
       console.error("Login error:", error);
       if (error.code === "auth/wrong-password") {
-        errorEl.textContent = "❌ Incorrect password. Try again.";
+        errorEl.textContent = "Incorrect password. Try again.";
       } else if (error.code === "auth/user-not-found") {
-        errorEl.textContent = "❌ No account found with this email.";
+        errorEl.textContent = "No account found with this email.";
       } else {
-        errorEl.textContent = "❌ Login error: " + error.message;
+        errorEl.textContent = "Login error: " + error.message;
       }
     }
   });
@@ -135,7 +135,7 @@ if (loginForm) {
 
       try {
         await sendPasswordResetEmail(auth, email);
-        alert("📧 Reset email sent! Check your inbox.");
+        alert("Reset email sent! Check your inbox.");
       } catch (err) {
         alert("Error sending reset email: " + err.message);
       }
@@ -143,7 +143,7 @@ if (loginForm) {
   }
 }
 
-// -------- GOOGLE SIGN-IN --------
+//GOOGLE SIGN-IN 
 const googleBtn = document.getElementById("google-signin-btn");
 if (googleBtn) {
   googleBtn.addEventListener("click", async () => {
@@ -174,7 +174,7 @@ if (googleBtn) {
       window.location.href = "profile.html";
     } catch (error) {
       console.error("Google Sign-In Error:", error.message);
-      alert("❌ Google sign-in failed: " + error.message);
+      alert("Google sign-in failed: " + error.message);
     }
   });
 }

@@ -208,11 +208,19 @@
       nav {
         display: none;
         flex-direction: column;
+        background: var(--white);
         position: absolute;
         top: 70px;
-        right: 20px;
-        width: 60%;
+        right: 0;
+        width: 100%;
         padding: 20px;
+      }
+      nav.open {
+        display: flex;
+      }
+      nav a {
+        color: var(--accent);
+        padding: 10px 0;
       }
       .menu-toggle {
         display: block;
@@ -271,7 +279,7 @@ restaurants</a>!</p>
     </div>
 
     <div class="buttons">
-      <a href="login.html">Log In</a>
+      <a id="login-link" href="login.html">Login</a>
       <a href="reviews.html">Leave a Review</a>
     </div>
 
