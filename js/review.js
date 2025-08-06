@@ -184,31 +184,15 @@ window.deleteReview = async function (id) {
     }
   }
 };
-window.editReview = async function (id) {
-  try {
-    const ref = doc(db, "reviews", id);
-    const snap = await getDoc(ref);
-    if (!snap.exists()) return alert("Review not found.");
-
-    const data = snap.data();
-
-    document.getElementById("restaurantName").value = data.restaurant || "";
-    document.getElementById("reviewText").value = data.review || "";
-    document.getElementById("ratingSelect").value = data.rating || "5";
-    document.getElementById("cuisineSelect").value = data.cuisine || "";
-
-    document.querySelectorAll('#allergenOptions input[type="checkbox"]').forEach(cb => {
-      cb.checked = (data.allergens || []).includes(cb.value);
-    });
-    document.querySelectorAll('input[name="diet"]').forEach(cb => {
-      cb.checked = (data.diets || []).includes(cb.value);
-    });
-
-    form.dataset.editId = id;
-    form.querySelector('button[type="submit"]').textContent = "Update Review";
-  } catch (err) {
-    console.error("Error editing review:", err);
-    alert("Could not load review.");
+window.deleteReview = async function (id) {
+  if (confirm("Are you sure you want to delete this review?")) {
+    try {
+      await deleteDoc(doc(db, "reviews", id));
+      loadReviews();
+    } catch (err) {
+      console.error("Error deleting review:", err);
+      alert("Failed to delete review.");
+    }
   }
 };
 
