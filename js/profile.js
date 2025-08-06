@@ -33,7 +33,8 @@ const avatarURLs = [
   "https://randomuser.me/api/portraits/lego/6.jpg",
   "https://randomuser.me/api/portraits/lego/7.jpg",
   "https://randomuser.me/api/portraits/lego/8.jpg",
-  "https://randomuser.me/api/portraits/lego/9.jpg"
+  "https://randomuser.me/api/portraits/lego/9.jpg",
+  "/assets/img1.png"
 ];
 let avatarIndex = 1;
 
@@ -310,3 +311,17 @@ window.deletePastReview = async function (reviewId) {
   }
 };
 
+window.switchTab = function (tab) {
+  document.getElementById('edit-tab').classList.remove('active');
+  document.getElementById('reviews-tab').classList.remove('active');
+  document.getElementById('edit-section').style.display = 'none';
+  document.getElementById('reviews-section').style.display = 'none';
+
+  if (tab === 'edit') {
+    document.getElementById('edit-tab').classList.add('active');
+    document.getElementById('edit-section').style.display = 'block';
+  } else {
+    document.getElementById('reviews-tab').classList.add('active');
+    document.getElementById('reviews-section').style.display = 'block';
+  }
+};

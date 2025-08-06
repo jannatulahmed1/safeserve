@@ -107,6 +107,16 @@ function getCheckedValues(name) {
     .map(cb => cb.value.toLowerCase());
 }
 
+function getAvatarURL(profilePic) {
+  if (profilePic.startsWith("http") || profilePic.startsWith("/assets")) {
+    return profilePic;
+  }
+
+  const num = getAvatarNumber(profilePic);
+  return `https://randomuser.me/api/portraits/lego/${num}.jpg`;
+}
+
+
 async function loadReviews(filterAllergies = [], filterCuisines = [], filterDiets = []) {
   reviewsContainer.innerHTML = `<h2>User Reviews</h2>`;
   try {
@@ -156,7 +166,7 @@ async function loadReviews(filterAllergies = [], filterCuisines = [], filterDiet
         <div class="review" data-id="${data.id}">
           <h3>${restaurant}</h3>
           <div style="display: flex; align-items: center; gap: 10px;">
-            <img src="https://randomuser.me/api/portraits/lego/${getAvatarNumber(profilePic)}.jpg" alt="avatar" style="width: 40px; height: 40px; border-radius: 50%;" />
+          <img src="${getAvatarURL(profilePic)}" alt="avatar" style="width: 40px; height: 40px; border-radius: 50%;" />
             <p class="meta-info">Posted by: <strong>${username}</strong></p>
             ${isOwner ? `<button onclick="deleteReview('${data.id}')" style="margin-left:auto; background:#800000; color:white; border:none; padding:5px 10px; border-radius:4px;">Delete</button>` : ""}
           </div>
