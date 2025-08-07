@@ -14,7 +14,6 @@ import {
   getDocs,
   deleteDoc   
 } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore.js";
-
 import { firebaseConfig } from './firebase-config.js';
 
 //initialize Firebase
@@ -22,7 +21,7 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
-//Avatar 
+//Profile Pic 
 const avatarURLs = [
   "https://randomuser.me/api/portraits/lego/0.jpg",
   "https://randomuser.me/api/portraits/lego/1.jpg",
@@ -31,10 +30,15 @@ const avatarURLs = [
   "https://randomuser.me/api/portraits/lego/4.jpg",
   "https://randomuser.me/api/portraits/lego/5.jpg",
   "https://randomuser.me/api/portraits/lego/6.jpg",
-  "https://randomuser.me/api/portraits/lego/7.jpg",
   "https://randomuser.me/api/portraits/lego/8.jpg",
   "https://randomuser.me/api/portraits/lego/9.jpg",
-  "/assets/img1.png"
+  "/assets/img1.png",
+  "/assets/img2.png",
+  "/assets/img3.png",
+  "/assets/img5.png",
+  "/assets/img6.png",
+  "/assets/img7.png",
+  "/assets/img8.png",
 ];
 let avatarIndex = 1;
 
