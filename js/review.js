@@ -22,21 +22,33 @@ const auth = getAuth(app);
 const form = document.getElementById("reviewForm");
 const formSection = document.querySelector(".form-container");
 const reviewsContainer = document.querySelector(".reviews");
+const loginReminder = document.getElementById("loginReminder");
 const loginPrompt = document.getElementById("loginPromptContainer");
 
 let currentUserId = null;
 
 onAuthStateChanged(auth, (user) => {
   currentUserId = user && user.emailVerified ? user.uid : null;
+  // const loginReminder = document.getElementById("loginReminder");
 
   if (!user || !user.emailVerified) {
     if (formSection) formSection.style.display = "none";
     if (loginPrompt) loginPrompt.style.display = "block";
+    if (loginReminder) loginReminder.style.display = "block"; // show reminder
   } else {
     if (formSection) formSection.style.display = "block";
     if (loginPrompt) loginPrompt.style.display = "none";
-  }
+    if (loginReminder) loginReminder.style.display = "none"; // hide reminder
+  }  
+  // currentUserId = user && user.emailVerified ? user.uid : null;
 
+  // if (!user || !user.emailVerified) {
+  //   if (formSection) formSection.style.display = "none";
+  //   if (loginPrompt) loginPrompt.style.display = "block";
+  // } else {
+  //   if (formSection) formSection.style.display = "block";
+  //   if (loginPrompt) loginPrompt.style.display = "none";
+  // }
   loadReviews();
 });
 
@@ -118,7 +130,8 @@ function getAvatarURL(profilePic) {
 
 
 async function loadReviews(filterAllergies = [], filterCuisines = [], filterDiets = []) {
-  reviewsContainer.innerHTML = `<h2>User Reviews</h2>`;
+  reviewsContainer.querySelectorAll('.review').forEach(el => el.remove());
+  // reviewsContainer.innerHTML = `<h2>User Reviews</h2>`;
   try {
     const snapshot = await getDocs(query(collection(db, "reviews")));
     const reviews = [];

@@ -212,6 +212,58 @@
       font-size: 12px;
       color: #777;
     }
+
+  
+@media (max-width: 900px) {
+  main {
+    flex-direction: column;
+    gap: 20px;
+    padding: 12px;
+  }
+
+  .sidebar {
+    width: 100%;
+    margin: 0;
+    position: static;       
+  }
+
+  .content {
+    width: 100%;
+  }
+
+  
+  .dropdown-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height .3s ease;
+  }
+  .dropdown-content.open {
+    max-height: 320px;      
+    overflow: auto;
+  }
+
+  .dropdown-content label {
+    display: flex;
+    align-items: center;
+    padding: 8px 6px;
+    border-radius: 8px;
+    background: #fafafa;
+  }
+
+  .sidebar button,
+  button[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+  }
+
+  .form-container,
+  .review {
+    border-radius: 14px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  }
+}
+
   </style>
 </head>
 <body>
@@ -256,7 +308,6 @@
     </div>
 
     <div class="content">
-      <!-- Review Form Section: This will be hidden if user is not logged in -->
       <div class="form-container" id="reviewFormSection">
         <h3>Submit a New Review</h3>
         <form id="reviewForm">
@@ -295,7 +346,8 @@
             <label><input type="checkbox" value="Sulfite"> Sulfite</label>
             <label><input type="checkbox" value="Buckwheat"> Buckwheat</label>
             <label><input type="checkbox" value="Latex"> Latex</label>
-            
+            <label><input type="checkbox" value="Other"> Other</label>
+
           </div>
     
           <label>Cuisine:
@@ -324,6 +376,7 @@
               <option value="Cubanan">Cubanan</option>
               <option value="French">French</option>
               <option value="Greek">Greek</option>
+              <option value="Other">Other</option>
             </select>
           </label>
     
@@ -336,6 +389,7 @@
             <label><input type="checkbox" name="diet" value="Kosher"> Kosher</label>
             <label><input type="checkbox" name="diet" value="Low-carb"> Low-carb</label>
             <label><input type="checkbox" name="diet" value="Low-sodium"> Low-sodium</label>
+            <label><input type="checkbox" name="diet" value="Other"> Other</label>
           </div>
     
           <button type="submit">Submit Review</button>
@@ -345,11 +399,9 @@
      
       <div class="reviews">
         <h2>User Reviews</h2>
-        <div id="loginPromptContainer" style="display: none; margin-bottom: 20px;">
-          <p style="font-size: 16px; color: #800000;">
-            Please <a href="login.html" style="color: #800000; text-decoration: underline; font-weight: bold;">log in</a> to leave your own reviews.
-          </p>
-        </div>
+        <p id="loginReminder" style="display:none; font-size:16px; margin-bottom:15px;">
+          <a href="login.html" style="color:#800000; font-weight:bold; text-decoration:underline;">Log in</a> to share your thoughts.
+        </p>
       </div>
     </div>
   </main>

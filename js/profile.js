@@ -39,6 +39,9 @@ const avatarURLs = [
   "/assets/img6.png",
   "/assets/img7.png",
   "/assets/img8.png",
+  "/assets/img9.png",
+  "/assets/img10.png",
+
 ];
 let avatarIndex = 1;
 
