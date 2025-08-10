@@ -7,7 +7,8 @@ export const staticRestaurants = [
     cuisine: "american",
     rating: 4,
     safeFor: ["vegan", "gluten"],
-    image: "https://experiencenomad.com/wp-content/uploads/2015/10/the-little-beet-nomad-1.jpg"
+    image: "https://experiencenomad.com/wp-content/uploads/2015/10/the-little-beet-nomad-1.jpg",
+    coordinates: { lat: 40.74413354145032, lon: -73.98885349471682 }
   },
   //2
   {
@@ -17,7 +18,8 @@ export const staticRestaurants = [
     cuisine: "thai",
     rating: 5,
     safeFor: ["gluten", "halal"],
-    image: "https://img-us.didaudo.net/us-locations/US/000/002/2403/top-thai-55-carmine-3.jpg?output=webp&fit=cover&w=800&h=600"
+    image: "https://img-us.didaudo.net/us-locations/US/000/002/2403/top-thai-55-carmine-3.jpg?output=webp&fit=cover&w=800&h=600",
+    coordinates: { lat: 40.730119306228225, lon: -74.00425806403193 }
   },
   //3
   {
@@ -27,7 +29,8 @@ export const staticRestaurants = [
     cuisine: "Japanese",
     rating: 4.3,
     safeFor: ["nut", "milk", "egg", "wheat"],
-    image: "https://bondisushi.com/wp-content/uploads/2021/06/S7A0470-min-scaled.jpg"
+    image: "https://bondisushi.com/wp-content/uploads/2021/06/S7A0470-min-scaled.jpg",
+    coordinates: { lat: 40.74489512614467, lon: -73.98784762170207 }
   },
   //4
   {
@@ -37,7 +40,8 @@ export const staticRestaurants = [
     cuisine: "korean",
     rating: 4.2,
     safeFor: ["nut", "gluten"],
-    image: "https://tb-static.uber.com/prod/image-proc/processed_images/08971c78c3eb022be09c0441638d4a81/4eed3468b168fc6e31dff0bb81a347bc.jpeg"
+    image: "https://tb-static.uber.com/prod/image-proc/processed_images/08971c78c3eb022be09c0441638d4a81/4eed3468b168fc6e31dff0bb81a347bc.jpeg",
+    coordinates: { lat: 40.716348037334015, lon: -73.95983007937637 }
   },
   //5
   {
@@ -47,7 +51,8 @@ export const staticRestaurants = [
     cuisine: "Japanese",
     rating: 4.5,
     safeFor: ["nut", "milk", "egg", "shellfish", "wheat"],
-    image: "https://popmenucloud.com/cdn-cgi/image/width%3D1200%2Cheight%3D1200%2Cfit%3Dscale-down%2Cformat%3Dauto%2Cquality%3D60/xhektjys/6c5360e2-ce3b-4390-a827-111038738f4b.jpg"
+    image: "https://popmenucloud.com/cdn-cgi/image/width%3D1200%2Cheight%3D1200%2Cfit%3Dscale-down%2Cformat%3Dauto%2Cquality%3D60/xhektjys/6c5360e2-ce3b-4390-a827-111038738f4b.jpg",
+    coordinates: { lat: 40.726180170591036, lon: -74.00244569286802 }
   },
   //6
   {
@@ -57,7 +62,8 @@ export const staticRestaurants = [
     cuisine: "other",
     rating: 4.1,
     safeFor: ["vegetarian", "halal", "milk", "egg"],
-    image: "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=606,h=344,fit=crop/Aq2WRMP3XGfpDD1a/screenshot-2025-05-27-194955-AQExbqVK1kuvG9Lj.png"
+    image: "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=606,h=344,fit=crop/Aq2WRMP3XGfpDD1a/screenshot-2025-05-27-194955-AQExbqVK1kuvG9Lj.png",
+    coordinates: { lat: 40.73760056300786, lon: -73.99768250821012 }
   },
   //7
   {
@@ -67,7 +73,8 @@ export const staticRestaurants = [
     cuisine: "American",
     rating: 4.1,
     safeFor: ["nut", "vegetarian"],
-    image: "https://resizer.otstatic.com/v3/photos/78389751-0?width=320&height=180&webp=true"
+    image: "https://resizer.otstatic.com/v3/photos/78389751-0?width=320&height=180&webp=true",
+    coordinates: { lat: 40.73575346221845, lon: -74.0015194505387 }
   },
   //8
   {
@@ -77,7 +84,8 @@ export const staticRestaurants = [
     cuisine: "Japanese",
     rating: 4.4,
     safeFor: ["nut", "gluten"],
-    image: "https://static1.squarespace.com/static/5ce5a075d10d8800011f0906/t/5f345498f4e75e00addf0918/1601430142895/200810_NAMINORI_010.jpg?format=1500w"
+    image: "https://static1.squarespace.com/static/5ce5a075d10d8800011f0906/t/5f345498f4e75e00addf0918/1601430142895/200810_NAMINORI_010.jpg?format=1500w",
+    coordinates: { lat: 40.719248834118595, lon: -73.95289070636136 }
   },
   //9
   {
@@ -87,7 +95,8 @@ export const staticRestaurants = [
     cuisine: "Portuguese",
     rating: 4.0,
     safeFor: ["nut", "gluten"],
-    image: "https://joeybatscafe.com/cdn/shop/files/20240219_142910_1800x.jpg?v=1709638434"
+    image: "https://joeybatscafe.com/cdn/shop/files/20240219_142910_1800x.jpg?v=1709638434",
+    coordinates: { lat: 40.72020760586001, lon: -73.99039115054022 }
   },
   //10
   {
@@ -97,7 +106,8 @@ export const staticRestaurants = [
     cuisine: "Japanese",
     rating: 4.2,
     safeFor: ["nut", "milk", "egg", "wheat", "shellfish"],
-    image: "https://images.squarespace-cdn.com/content/v1/636bf0c18c6e2b7eb3e451b8/1668018389141-K254OME9HQCU4EO6E765/_I0A6145.jpg?format=2500w"
+    image: "https://images.squarespace-cdn.com/content/v1/636bf0c18c6e2b7eb3e451b8/1668018389141-K254OME9HQCU4EO6E765/_I0A6145.jpg?format=2500w",
+    coordinates: { lat: 40.758527572717384, lon: -73.98328474868613 }
   },
   //11
   {
@@ -107,7 +117,8 @@ export const staticRestaurants = [
     cuisine: "American",
     rating: 4.6,
     safeFor: ["nut", "milk", "egg", "wheat"],
-    image: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/23/50/c1/8e/shop-our-pop-culture.jpg?w=900&h=500&s=1"
+    image: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/23/50/c1/8e/shop-our-pop-culture.jpg?w=900&h=500&s=1",
+    coordinates: { lat: 40.72534758703628, lon: -73.9948969910177 }
   },
   //12
   {
@@ -117,7 +128,8 @@ export const staticRestaurants = [
     cuisine: "Greek-American",
     rating: 4.0,
     safeFor: ["nut", "milk", "egg", "wheat"],
-    image: "https://media-cdn.tripadvisor.com/media/photo-s/03/fa/a2/22/chobani-soho.jpg"
+    image: "https://media-cdn.tripadvisor.com/media/photo-s/03/fa/a2/22/chobani-soho.jpg",
+    coordinates: { lat: 40.72601380123464, lon: -74.0010956486892 }
   },
   //13
   {
@@ -127,7 +139,8 @@ export const staticRestaurants = [
     cuisine: "Latin American",
     rating: 4.3,
     safeFor: ["nut", "gluten"],
-    image: "https://lh3.googleusercontent.com/whGUBI-f4GRagr_8ysflC3I4ve8iJcgraoh-JdKhMOit9HjeSHmPIJ8S-B9GVO0kko84It9vdW7EiV5muiVTmenfUNMiNawRv8g=s1800"
+    image: "https://lh3.googleusercontent.com/whGUBI-f4GRagr_8ysflC3I4ve8iJcgraoh-JdKhMOit9HjeSHmPIJ8S-B9GVO0kko84It9vdW7EiV5muiVTmenfUNMiNawRv8g=s1800",
+    coordinates: { lat: 40.688186613780864, lon: -73.98831350636436 }
   },
   //14
   {
@@ -137,7 +150,8 @@ export const staticRestaurants = [
     cuisine: "Other",
     rating: 4.2,
     safeFor: ["shellfish", "dairy", "egg", "halal"],
-    image: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/26/de/c2/98/caption.jpg?w=900&h=500&s=1"
+    image: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/26/de/c2/98/caption.jpg?w=900&h=500&s=1",
+    coordinates: { lat: 40.71909477658804, lon: -73.84521416403301 }
   },
   //15
   {
@@ -147,7 +161,8 @@ export const staticRestaurants = [
     cuisine: "Bengali",
     rating: 3.6,
     safeFor: ["peanut", "egg", "halal", "vegetarian"],
-    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRucOfrds13Z9OQ98zv9BheL59tkSe20FmZA&s"
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRucOfrds13Z9OQ98zv9BheL59tkSe20FmZA&s",
+    coordinates: { lat: 40.744031184907854, lon: -73.71842982170217 }
   },
   //16
   {
@@ -157,7 +172,8 @@ export const staticRestaurants = [
     cuisine: "Other",
     rating: 4.5,
     safeFor: ["gluten", "dairy", "nut"],
-    image: "https://resizer.otstatic.com/v3/photos/60530181-3?width=1280&height=720&webp=true"
+    image: "https://resizer.otstatic.com/v3/photos/60530181-3?width=1280&height=720&webp=true",
+    coordinates: { lat: 40.73424335512134, lon: -74.00273959101686 }
   },
   //17
   {
@@ -167,6 +183,7 @@ export const staticRestaurants = [
     cuisine: "French",
     rating: 5.0,
     safeFor: ["peanut", "gluten", "dairy"],
-    image: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2a/bc/76/0d/la-grande-boucherie-joie.jpg?w=900&h=500&s=1"
-  }, 
+    image: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2a/bc/76/0d/la-grande-boucherie-joie.jpg?w=900&h=500&s=1",
+    coordinates: { lat: 40.76271928628305, lon: -73.98084536402887 }
+  },
 ];
