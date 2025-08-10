@@ -4,7 +4,7 @@ import { firebaseConfig } from './firebase-config.js';
 
 const app = initializeApp(firebaseConfig);
 
-//filter options
+// Filter options
 const allergenOptions = [
   "peanut", "tree nut", "nut", "milk", "egg", "wheat", "gluten", "soy",
   "fish", "shellfish", "sesame", "mustard", "sulfite", "corn", "dairy",
@@ -24,39 +24,70 @@ const dietOptions = [
   "kosher", "low-carb", "low-sodium", "other"
 ];
 
-//map variables
+// Map variables
 let map, mapInitialized = false;
-const geocodeCache = {};
 let restaurantMarkers = [];
+let userLocationMarker = null; // add this near your other map variables
+
+
+function getDistanceFromLatLonInMiles(lat1, lon1, lat2, lon2) {
+  const R = 3958.8; // Earth radius in miles. Use 6371 for km if you want
+  const dLat = deg2rad(lat2 - lat1);
+  const dLon = deg2rad(lon2 - lon1);
+  const a = 
+    Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+    Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * 
+    Math.sin(dLon / 2) * Math.sin(dLon / 2)
+  ;
+  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+  return R * c;
+}
+
+function deg2rad(deg) {
+  return deg * (Math.PI / 180);
+}
+
+function updateUserLocationAndRefresh(lat, lng, name = "Your Location") {
+  window.lastUserLocation = { lat, lng, name };
+
+  const selectedAllergies = getCheckedValuesById("allergenFilters");
+  const selectedCuisines = getCheckedValuesById("cuisineFilters");
+  const selectedDiets = getCheckedValuesById("dietFilters");
+
+  const filtered = fetchRestaurants(selectedAllergies, selectedCuisines, selectedDiets);
+  loadRestaurantsOnMap(filtered);
+}
+
+
+const greenIcon = L.icon({
+  iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-green.png',
+  iconSize: [25, 41],
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
+  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png',
+  shadowSize: [41, 41]
+});
+
 
 document.addEventListener("DOMContentLoaded", () => {
   populateFilters();
   fetchRestaurants();
 
-  //apply Filters + Save to localStorage
   document.getElementById("applyFiltersBtn").addEventListener("click", () => {
     const selectedAllergies = getCheckedValuesById("allergenFilters");
     const selectedCuisines = getCheckedValuesById("cuisineFilters");
     const selectedDiets = getCheckedValuesById("dietFilters");
-    
-    //save preferences
+
     localStorage.setItem("safeserveUserPrefs", JSON.stringify({
       allergies: selectedAllergies,
       cuisines: selectedCuisines,
       diets: selectedDiets
     }));
 
-    fetchRestaurants(selectedAllergies, selectedCuisines, selectedDiets);
-    if (mapInitialized) loadRestaurantsOnMap(staticRestaurants);
+    const filtered = fetchRestaurants(selectedAllergies, selectedCuisines, selectedDiets);
+    if (mapInitialized) loadRestaurantsOnMap(filtered);
   });
 
-  function getCheckedValuesById(containerId) {
-    return Array.from(document.querySelectorAll(`#${containerId} input[type="checkbox"]:checked`))
-      .map(cb => cb.value.toLowerCase());
-  }
-  
-
-  //use saved prefs
   document.getElementById("useSavedPrefsBtn").addEventListener("click", () => {
     const prefs = JSON.parse(localStorage.getItem("safeserveUserPrefs") || "{}");
     const allergySet = new Set((prefs.allergies || []).map(a => a.toLowerCase()));
@@ -73,8 +104,8 @@ document.addEventListener("DOMContentLoaded", () => {
       cb.checked = dietSet.has(cb.value.toLowerCase());
     });
 
-    fetchRestaurants([...allergySet], [...cuisineSet], [...dietSet]);
-    if (mapInitialized) loadRestaurantsOnMap(staticRestaurants);
+    const filtered = fetchRestaurants([...allergySet], [...cuisineSet], [...dietSet]);
+    if (mapInitialized) loadRestaurantsOnMap(filtered);
   });
 
   document.getElementById("openMapBtn").addEventListener("click", () => {
@@ -89,25 +120,52 @@ document.addEventListener("DOMContentLoaded", () => {
         attribution: '&copy; OpenStreetMap contributors'
       }).addTo(map);
 
-      L.Control.geocoder({ defaultMarkGeocode: false })
-        .on('markgeocode', e => {
-          const bbox = e.geocode.bbox;
-          const bounds = [
-            [bbox.getSouthWest().lat, bbox.getSouthWest().lng],
-            [bbox.getNorthEast().lat, bbox.getNorthEast().lng]
-          ];
-          map.fitBounds(bounds);
-          L.marker(e.geocode.center).addTo(map).bindPopup(e.geocode.name).openPopup();
-        })
-        .addTo(map);
+L.Control.geocoder({ defaultMarkGeocode: false })
+.on('markgeocode', e => {
+  const geocode = e.geocode;
+  const center = geocode.center;
+  const name = geocode.name;
+  const bbox = geocode.bbox;
 
-      navigator.geolocation.getCurrentPosition(pos => {
-        map.setView([pos.coords.latitude, pos.coords.longitude], 14);
-        L.marker([pos.coords.latitude, pos.coords.longitude])
-          .addTo(map)
-          .bindPopup('You are here')
-          .openPopup();
-      });
+ // Remove previous user location marker if any
+if (userLocationMarker) {
+  map.removeLayer(userLocationMarker);
+}
+
+// Zoom map to location bounds and add marker with popup
+const bounds = [
+  [bbox.getSouthWest().lat, bbox.getSouthWest().lng],
+  [bbox.getNorthEast().lat, bbox.getNorthEast().lng]
+];
+map.fitBounds(bounds);
+
+userLocationMarker = L.marker(center, {icon: greenIcon}).addTo(map).bindPopup(name).openPopup();
+
+// Use helper to update location and refresh UI
+updateUserLocationAndRefresh(center.lat, center.lng, name);
+
+})
+
+  .addTo(map);
+
+
+
+navigator.geolocation.getCurrentPosition(pos => {
+if (userLocationMarker) {
+  map.removeLayer(userLocationMarker);
+}
+const userLatLng = [pos.coords.latitude, pos.coords.longitude];
+userLocationMarker = L.marker(userLatLng, {icon: greenIcon})
+  .addTo(map)
+  .bindPopup('You are here')
+  .openPopup();
+map.setView(userLatLng, 14);
+
+// Use helper to update location and refresh UI
+updateUserLocationAndRefresh(pos.coords.latitude, pos.coords.longitude, "Your Location");
+
+});
+
 
       loadRestaurantsOnMap(staticRestaurants);
       mapInitialized = true;
@@ -122,15 +180,9 @@ function populateFilters() {
   const cuisineDiv = document.getElementById("cuisineFilters");
   const dietDiv = document.getElementById("dietFilters");
 
-  allergenOptions.forEach(option => {
-    allergyDiv.appendChild(createCheckbox("allergy", option));
-  });
-  cuisineOptions.forEach(option => {
-    cuisineDiv.appendChild(createCheckbox("cuisine", option));
-  });
-  dietOptions.forEach(option => {
-    dietDiv.appendChild(createCheckbox("diet", option));
-  });
+  allergenOptions.forEach(option => allergyDiv.appendChild(createCheckbox("allergy", option)));
+  cuisineOptions.forEach(option => cuisineDiv.appendChild(createCheckbox("cuisine", option)));
+  dietOptions.forEach(option => dietDiv.appendChild(createCheckbox("diet", option)));
 }
 
 function createCheckbox(name, value) {
@@ -153,14 +205,24 @@ function createCheckbox(name, value) {
   return label;
 }
 
-function getCheckedValues(name) {
-  return Array.from(document.querySelectorAll(`input[name="${name}"]:checked`))
+function getCheckedValuesById(containerId) {
+  return Array.from(document.querySelectorAll(`#${containerId} input[type="checkbox"]:checked`))
     .map(cb => cb.value.toLowerCase());
 }
 
 function fetchRestaurants(selectedAllergies = [], selectedCuisines = [], selectedDiets = []) {
   const resultsContainer = document.getElementById("restaurantResults");
+const locationRefContainer = document.getElementById("locationReference");
+if (window.lastUserLocation && window.lastUserLocation.name) {
+  locationRefContainer.textContent = `Restaurants Near: ${window.lastUserLocation.name}`;
+} else {
+  locationRefContainer.textContent = "";
+}
+
   resultsContainer.innerHTML = ""; 
+
+
+  const userLoc = window.lastUserLocation;
 
   const filtered = staticRestaurants.filter(restaurant => {
     const safeForList = (restaurant.safeFor || []).map(s => s.toLowerCase());
@@ -173,10 +235,21 @@ function fetchRestaurants(selectedAllergies = [], selectedCuisines = [], selecte
 
   if (filtered.length === 0) {
     resultsContainer.innerHTML = `<p>No matching restaurants found.</p>`;
-    return;
+    return [];
   }
 
   filtered.forEach(restaurant => {
+    let distanceStr = "";
+    if (userLoc && restaurant.coordinates && restaurant.coordinates.lat != null && restaurant.coordinates.lon != null) {
+      const dist = getDistanceFromLatLonInMiles(
+        userLoc.lat,
+        userLoc.lng,
+        restaurant.coordinates.lat,
+        restaurant.coordinates.lon
+      );
+      distanceStr = `<p><strong>Distance:</strong> ${dist.toFixed(2)} miles</p>`;
+    }
+
     const card = document.createElement("div");
     card.className = "restaurant-card";
     card.innerHTML = `
@@ -187,53 +260,63 @@ function fetchRestaurants(selectedAllergies = [], selectedCuisines = [], selecte
         <p><strong>Cuisine:</strong> ${restaurant.cuisine}</p>
         <p><strong>Safe For:</strong> ${restaurant.safeFor.join(", ")}</p>
         <p class="rating">Rating: ${restaurant.rating}</p>
+        ${distanceStr}
         <a class="view-button" href="${restaurant.link}" target="_blank">View Restaurant</a>
       </div>
     `;
     resultsContainer.appendChild(card);
   });
+
+  return filtered; // for map usage
 }
+
 
 function clearMapMarkers() {
   restaurantMarkers.forEach(marker => marker.remove());
   restaurantMarkers = [];
 }
 
-async function geocodeAddress(address) {
-  if (geocodeCache[address]) return geocodeCache[address];
-  const url = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(address)}&email=safe.serve@example.com`;
-  const res = await fetch(url);
-  const data = await res.json();
-  if (data.length > 0) {
-    const coords = { lat: parseFloat(data[0].lat), lon: parseFloat(data[0].lon) };
-    geocodeCache[address] = coords;
-    await new Promise(r => setTimeout(r, 1100)); 
-    return coords;
-  }
-  return null;
-}
-
-async function loadRestaurantsOnMap(restaurantsToShow = staticRestaurants) {
-  if (!map) return; //prevent error if map is not initialized
+function loadRestaurantsOnMap(restaurantsToShow = staticRestaurants) {
+  if (!map) return;
   clearMapMarkers();
-  for (const data of restaurantsToShow) {
-    const coords = await geocodeAddress(data.location);
-    if (!coords) continue;
+
+  const userLoc = window.lastUserLocation;
+
+  restaurantsToShow.forEach(data => {
+    const coords = data.coordinates; // must be {lat, lon}
+    if (!coords || coords.lat == null || coords.lon == null) return;
+
+    // Calculate distance if user location exists
+    let distanceText = "";
+    if (userLoc) {
+      const dist = getDistanceFromLatLonInMiles(
+        userLoc.lat,
+        userLoc.lng,
+        coords.lat,
+        coords.lon
+      );
+      distanceText = `<br/><strong>Distance:</strong> ${dist.toFixed(2)} miles`;
+    }
 
     const safeForStr = (data.safeFor || []).join(', ');
     const popupHtml = `
       <strong>${data.name}</strong><br/>
       ${data.cuisine}<br/>
       Rating: ${data.rating}<br/>
-      Safe For: ${safeForStr}<br/>
-      <a href="${data.link}" target="_blank">Visit Website</a>
+      Safe For: ${safeForStr}
+      ${distanceText}
+      <br/><a href="${data.link}" target="_blank">Visit Website</a>
     `;
-    const marker = L.marker([coords.lat, coords.lon]).addTo(map).bindPopup(popupHtml);
+
+    const marker = L.marker([coords.lat, coords.lon])
+      .addTo(map)
+      .bindPopup(popupHtml);
+
     restaurantMarkers.push(marker);
-  }
+  });
 }
+
 
 function capitalize(str) {
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
-
