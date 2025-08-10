@@ -148,15 +148,13 @@
       background-color: var(--secondary);
     }
 
-    .resultbox {
-      width: 75%;
-      background-color: var(--light);
-      padding: 20px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      justify-content: flex-start;
-    }
+
+.resultbox {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: flex-start;
+}
 
     .restaurant-card {
       background: white;
@@ -227,6 +225,22 @@
       border-radius: 12px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
+
+#map {
+  position: relative; /* ensures child controls are positioned correctly */
+}
+
+.leaflet-control {
+  z-index: 1000 !important; /* make sure controls stay above tiles */
+}
+
+.leaflet-control-geocoder {
+  background: white;
+  padding: 4px;
+  border-radius: 4px;
+}
+
+
     
     @media (max-width: 768px) {
       .container {
@@ -297,8 +311,12 @@
         <div id="map"></div>
       </div>
 
-      <div class="resultbox" id="restaurantResults">
-      </div>
+<div class="result-container" style="width: 75%; background-color: var(--light); padding: 20px;">
+  <div id="locationReference" style="margin-bottom: 10px; font-weight: bold;"></div>
+  <div class="resultbox" id="restaurantResults"></div>
+</div>
+
+
     </div>
   </main>
 
