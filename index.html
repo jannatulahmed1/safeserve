@@ -13,6 +13,7 @@
       --light: #c9d1b5;
       --maroon: #800000;
       --secondary: #a45a49;
+      --white:#ffffff; 
     }
 
     * {
@@ -217,35 +218,58 @@
     }
 
     @media (max-width: 768px) {
-      nav {
-        display: none;
-        flex-direction: column;
-        background: var(--white);
-        position: absolute;
-        top: 70px;
-        right: 0;
-        width: 100%;
-        padding: 20px;
-      }
-      nav.open {
-        display: flex;
-      }
-      nav a {
-        color: var(--accent);
-        padding: 10px 0;
-      }
-      .menu-toggle {
-        display: block;
-      }
-      .same-width {
-        flex: 1 1 100%;
-        max-width: 100%;
-      }
-      .buttons {
-        flex-direction: column;
-      }
+    .hero-image{
+      background-image: none !important;
+      background: none !important;
+      margin-top: 80px;
+      height: auto;
     }
-  </style>
+    .hero-image::before{
+      content: "";
+      display: block;
+      width: 100%;
+      aspect-ratio: 2.5 / 1.5;
+      background: url('assets/img4.png') center / contain no-repeat transparent;
+    }
+    
+    nav {
+      position: fixed;
+      top: 70px;
+      left: 0;
+      right: 0;
+      background: var(--white);
+      display: none;
+      flex-direction: column;
+      padding: 20px;
+      box-shadow: 0 6px 18px rgba(0,0,0,.12);
+      z-index: 1100;
+    }
+    nav.open { display: flex; }
+    nav a {
+      color: var(--accent);
+      padding: 10px 0;
+    }
+
+    .menu-toggle { display: block; }
+    .same-width { flex: 1 1 100%; max-width: 100%; }
+    .buttons { flex-direction: column; }
+    .cta, .cta p { text-align: center; }
+
+    .buttons { 
+      flex-direction: column; 
+      align-items: center;
+      gap: 16px;
+    }
+
+    .buttons a {
+      display: block;
+      width: 100%;
+      max-width: 360px;
+      text-align: center;
+      margin: 0 auto;
+    }
+  }
+</style>
 </head>
 <body>
   <header>
@@ -261,7 +285,6 @@
       <a href="resources.html">Resources</a>
     </nav>
   </header>
-
 
   <section class="hero-image"></section>
 

@@ -59,6 +59,13 @@
       color: var(--maroon);
     }
 
+    .menu-toggle{
+      display: none;
+      font-size: 24px;
+      color: white;
+      cursor: pointer;
+    }
+
     main {
       display: flex;
       flex-direction: row;
@@ -215,23 +222,40 @@
 
   
 @media (max-width: 900px) {
+  nav{
+    position: fixed;
+    top: 70px;
+    left: 0;
+    right: 0;
+    background: var(--white);
+    display: none;
+    flex-direction: column;
+    padding: 20px;
+    box-shadow: 0 6px 18px rgba(0,0,0,.12);
+    z-index: 1100;
+  }
+  nav.open{ display:flex; }
+
+  nav a{
+    color: var(--accent);
+    padding: 10px 0;
+    margin-left: 0;
+  }
+
+  .menu-toggle{ display:block; }
   main {
     flex-direction: column;
     gap: 20px;
     padding: 12px;
   }
-
   .sidebar {
     width: 100%;
     margin: 0;
     position: static;       
   }
-
   .content {
     width: 100%;
   }
-
-  
   .dropdown-content {
     max-height: 0;
     overflow: hidden;
@@ -241,7 +265,6 @@
     max-height: 320px;      
     overflow: auto;
   }
-
   .dropdown-content label {
     display: flex;
     align-items: center;
@@ -249,14 +272,12 @@
     border-radius: 8px;
     background: #fafafa;
   }
-
   .sidebar button,
   button[type="submit"] {
     width: 100%;
     padding: 12px;
     border-radius: 10px;
   }
-
   .form-container,
   .review {
     border-radius: 14px;
@@ -264,14 +285,15 @@
   }
 }
 
-  </style>
+</style>
 </head>
 <body>
   <header>
     <div class="logo">
       <a href="index.html"><img src="assets/updated%20logo%202.png" alt="SafeServe Logo" /></a>
     </div>
-    <nav>
+    <i class="fas fa-bars menu-toggle" onclick="toggleMenu()" aria-label="Toggle menu" aria-expanded="false"></i>
+    <nav id="nav-links">
       <a href="index.html">Home</a>
       <a href="profile.html">Profile</a>
       <a href="restaurants.html">Restaurants</a>
@@ -347,7 +369,6 @@
             <label><input type="checkbox" value="Buckwheat"> Buckwheat</label>
             <label><input type="checkbox" value="Latex"> Latex</label>
             <label><input type="checkbox" value="Other"> Other</label>
-
           </div>
     
           <label>Cuisine:
@@ -391,22 +412,19 @@
             <label><input type="checkbox" name="diet" value="Low-sodium"> Low-sodium</label>
             <label><input type="checkbox" name="diet" value="Other"> Other</label>
           </div>
-    
           <button type="submit">Submit Review</button>
         </form>
       </div>
-    
-     
+        
       <div class="reviews">
         <h2>User Reviews</h2>
         <p id="loginReminder" style="display:none; font-size:16px; margin-bottom:15px;">
-          <a href="login.html" style="color:#800000; font-weight:bold; text-decoration:underline;">Log in</a> to share your thoughts.
-        </p>
+          <a href="login.html" style="color:#800000; font-weight:bold; text-decoration:none;">Log in</a> to leave your own reviews.
+        </p>        
       </div>
     </div>
   </main>
  
-
   <script>
     function toggleDropdown(id, header) {
       const content = document.getElementById(id);
@@ -415,6 +433,15 @@
       arrowIcon.style.transform = content.classList.contains('open') ? 'rotate(180deg)' : 'rotate(0deg)';
     }
   </script>
+  <script>
+    function toggleMenu(){
+      const nav = document.getElementById('nav-links');
+      const btn = document.querySelector('.menu-toggle');
+      const isOpen = nav.classList.toggle('open');
+      btn.setAttribute('aria-expanded', isOpen);
+    }
+  </script>
   <script type="module" src="js/review.js"></script>
+
 </body>
 </html>

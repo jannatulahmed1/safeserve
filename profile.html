@@ -249,27 +249,28 @@
       background: white;
       margin: 4px 0;
     }
-    @media (max-width: 768px) {
+
+    @media (max-width: 768px){
       nav {
-        position: absolute;
-        top: 70px;
+        position: fixed;        
+        top: 70px;              
+        left: 0;
         right: 0;
-        background: white;
-        flex-direction: column;
-        align-items: flex-start;
-        width: 200px;
+        background: var(--white); 
         display: none;
+        flex-direction: column;
+        padding: 20px;
+        box-shadow: 0 6px 18px rgba(0,0,0,.12);
+        z-index: 1100;
+        width: auto;            
       }
-      nav.active {
-        display: flex;
-      }
+      nav.active { display: flex; }    
       nav a {
-        color: black;
-        margin: 10px 20px;
+        color: var(--accent);
+        margin: 0;              
+        padding: 12px 20px;
       }
-      .hamburger {
-        display: flex;
-      }
+      .hamburger { display: flex; }
     }
   </style>
 </head>

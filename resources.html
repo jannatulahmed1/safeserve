@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Allergy Info & Resources | SafeServe</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     :root {
       --primary: #a9b186;
@@ -25,7 +26,6 @@
       color: var(--accent);
       line-height: 1.7;
     }
-
     header {
       background-color: var(--primary);
       display: flex;
@@ -37,11 +37,9 @@
       width: 100%;
       z-index: 1000;
     }
-
     .logo img {
       height: 50px;
     }
-
     nav a {
       color: white;
       text-decoration: none;
@@ -50,13 +48,11 @@
       font-weight: 500;
       transition: color 0.3s;
     }
-
     nav a:hover,
-   nav a.active {
-  color: var(--maroon);
-  text-decoration: none; 
-}
-
+    nav a.active {
+    color: var(--maroon);
+    text-decoration: none; 
+  }
 
     main {
       max-width: 1000px;
@@ -114,15 +110,42 @@
     a:hover {
       text-decoration: underline;
     }
+
+    .menu-toggle{
+      display:none;
+      font-size:24px;
+      color:#fff;
+      cursor:pointer;
+    }
+    @media (max-width: 768px) {
+      nav{
+        position: fixed;         
+        top: 70px;               
+        left: 0;
+        right: 0;
+        background: var(--white);
+        display: none;           
+        flex-direction: column;
+        padding: 20px;
+        box-shadow: 0 6px 18px rgba(0,0,0,.12);
+        z-index: 1100;
+      }
+      nav.open{ display:flex; }
+      nav a{
+        color: var(--accent);
+        padding: 10px 0;
+      }
+      .menu-toggle{ display:block; }
+    }
   </style>
 </head>
 <body>
   <header>
     <div class="logo">
-      <a href="index.html"><img src="assets/updated logo 2.png"
-alt="SafeServe Logo" /></a>
+      <a href="index.html"><img src="assets/updated logo 2.png" alt="SafeServe Logo" /></a>
     </div>
-    <nav>
+    <i class="fas fa-bars menu-toggle" onclick="toggleMenu()" aria-label="Toggle menu" aria-expanded="false"></i>
+    <nav id="nav-links">
       <a href="index.html">Home</a>
       <a href="profile.html">Profile</a>
       <a href="restaurants.html">Restaurants</a>
@@ -130,10 +153,9 @@ alt="SafeServe Logo" /></a>
       <a href="resources.html" class="active">Resources</a>
     </nav>
   </header>
-
+  
   <main>
     <h1>Allergy Info & Resources</h1>
-
     <section>
       <h2>Understanding Cross-Contamination</h2>
       <p>Even if a dish does not include allergens as ingredients, it
@@ -190,5 +212,13 @@ and we welcome suggestions and feedback from the allergy-conscious
 community.</p>
     </section>
   </main>
+  <script>
+    function toggleMenu(){
+      const nav = document.getElementById('nav-links');
+      const btn = document.querySelector('.menu-toggle');
+      const isOpen = nav.classList.toggle('open');
+      btn.setAttribute('aria-expanded', isOpen);
+    }
+  </script>
 </body>
 </html>

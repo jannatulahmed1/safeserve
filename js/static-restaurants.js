@@ -158,7 +158,7 @@ export const staticRestaurants = [
     name: "Sagar Chinese",
     location: "252-05 Union Tpke, Bellerose, NY 11426",
     link: "https://sagarchinese.com/",
-    cuisine: "Bengali",
+    cuisine: "Other",
     rating: 3.6,
     safeFor: ["peanut", "egg", "halal", "vegetarian"],
     image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRucOfrds13Z9OQ98zv9BheL59tkSe20FmZA&s",

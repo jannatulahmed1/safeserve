@@ -23,15 +23,6 @@ const db = getFirestore(app);
 
 //Profile Pic 
 const avatarURLs = [
-  "https://randomuser.me/api/portraits/lego/0.jpg",
-  "https://randomuser.me/api/portraits/lego/1.jpg",
-  "https://randomuser.me/api/portraits/lego/2.jpg",
-  "https://randomuser.me/api/portraits/lego/3.jpg",
-  "https://randomuser.me/api/portraits/lego/4.jpg",
-  "https://randomuser.me/api/portraits/lego/5.jpg",
-  "https://randomuser.me/api/portraits/lego/6.jpg",
-  "https://randomuser.me/api/portraits/lego/8.jpg",
-  "https://randomuser.me/api/portraits/lego/9.jpg",
   "/assets/img1.png",
   "/assets/img2.png",
   "/assets/img3.png",
@@ -41,8 +32,12 @@ const avatarURLs = [
   "/assets/img8.png",
   "/assets/img9.png",
   "/assets/img10.png",
-
+  "/assets/img12.png",
+  "/assets/img13.png",
+  "/assets/img15.png",
+  "/assets/img16.png",
 ];
+
 let avatarIndex = 1;
 
 ["first-name", "last-name", "username"].forEach((id) => {
