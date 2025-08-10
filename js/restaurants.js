@@ -73,6 +73,15 @@ document.addEventListener("DOMContentLoaded", () => {
   populateFilters();
   fetchRestaurants();
 
+    // Check for location
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(pos => {
+      updateUserLocationAndRefresh(pos.coords.latitude, pos.coords.longitude, "Your Location");
+    }, err => {
+      console.warn("User denied geolocation or error:", err);
+    });
+  }
+
   document.getElementById("applyFiltersBtn").addEventListener("click", () => {
     const selectedAllergies = getCheckedValuesById("allergenFilters");
     const selectedCuisines = getCheckedValuesById("cuisineFilters");
@@ -213,14 +222,17 @@ function getCheckedValuesById(containerId) {
 function fetchRestaurants(selectedAllergies = [], selectedCuisines = [], selectedDiets = []) {
   const resultsContainer = document.getElementById("restaurantResults");
 const locationRefContainer = document.getElementById("locationReference");
+
 if (window.lastUserLocation && window.lastUserLocation.name) {
-  locationRefContainer.textContent = `Restaurants Near: ${window.lastUserLocation.name}`;
+  const fullName = window.lastUserLocation.name;
+  const truncatedName = fullName;
+  locationRefContainer.textContent = `Restaurants Near: ${truncatedName}`;
 } else {
-  locationRefContainer.textContent = "";
+  locationRefContainer.textContent = `Restaurants Near: No Location Found`;
 }
 
-  resultsContainer.innerHTML = ""; 
 
+  resultsContainer.innerHTML = "";
 
   const userLoc = window.lastUserLocation;
 
@@ -238,37 +250,71 @@ if (window.lastUserLocation && window.lastUserLocation.name) {
     return [];
   }
 
-  filtered.forEach(restaurant => {
-    let distanceStr = "";
-    if (userLoc && restaurant.coordinates && restaurant.coordinates.lat != null && restaurant.coordinates.lon != null) {
-      const dist = getDistanceFromLatLonInMiles(
-        userLoc.lat,
-        userLoc.lng,
-        restaurant.coordinates.lat,
-        restaurant.coordinates.lon
-      );
-      distanceStr = `<p><strong>Distance:</strong> ${dist.toFixed(2)} miles</p>`;
-    }
+  if (userLoc) {
+    // Build array of index-distance pairs
+    const distancePairs = filtered.map((restaurant, idx) => {
+      let distance = Infinity;
+      if (restaurant.coordinates && restaurant.coordinates.lat != null && restaurant.coordinates.lon != null) {
+        distance = getDistanceFromLatLonInMiles(
+          userLoc.lat,
+          userLoc.lng,
+          restaurant.coordinates.lat,
+          restaurant.coordinates.lon
+        );
+      }
+      return { idx, distance };
+    });
 
-    const card = document.createElement("div");
-    card.className = "restaurant-card";
-    card.innerHTML = `
-      <img src="${restaurant.image}" alt="${restaurant.name}">
-      <div class="restaurant-info">
-        <h3>${restaurant.name}</h3>
-        <p><strong>Address:</strong> ${restaurant.location}</p>
-        <p><strong>Cuisine:</strong> ${restaurant.cuisine}</p>
-        <p><strong>Safe For:</strong> ${restaurant.safeFor.join(", ")}</p>
-        <p class="rating">Rating: ${restaurant.rating}</p>
-        ${distanceStr}
-        <a class="view-button" href="${restaurant.link}" target="_blank">View Restaurant</a>
-      </div>
-    `;
-    resultsContainer.appendChild(card);
-  });
+    // Sort by distance ascending
+    distancePairs.sort((a, b) => a.distance - b.distance);
 
-  return filtered; // for map usage
+    // Render restaurants in distance order
+    distancePairs.forEach(({ idx, distance }) => {
+      const restaurant = filtered[idx];
+      const distanceStr = isFinite(distance) ? `<p><strong>Distance:</strong> ${distance.toFixed(2)} miles</p>` : "";
+
+      const card = document.createElement("div");
+      card.className = "restaurant-card";
+      card.innerHTML = `
+        <img src="${restaurant.image}" alt="${restaurant.name}">
+        <div class="restaurant-info">
+          <h3>${restaurant.name}</h3>
+          <p><strong>Address:</strong> ${restaurant.location}</p>
+          <p><strong>Cuisine:</strong> ${restaurant.cuisine}</p>
+          <p><strong>Safe For:</strong> ${restaurant.safeFor.join(", ")}</p>
+          <p class="rating">Rating: ${restaurant.rating}</p>
+          ${distanceStr}
+          <a class="view-button" href="${restaurant.link}" target="_blank">View Restaurant</a>
+        </div>
+      `;
+      resultsContainer.appendChild(card);
+    });
+
+  } else {
+    // No user location — render filtered as is
+    filtered.forEach(restaurant => {
+      let distanceStr = "";
+      const card = document.createElement("div");
+      card.className = "restaurant-card";
+      card.innerHTML = `
+        <img src="${restaurant.image}" alt="${restaurant.name}">
+        <div class="restaurant-info">
+          <h3>${restaurant.name}</h3>
+          <p><strong>Address:</strong> ${restaurant.location}</p>
+          <p><strong>Cuisine:</strong> ${restaurant.cuisine}</p>
+          <p><strong>Safe For:</strong> ${restaurant.safeFor.join(", ")}</p>
+          <p class="rating">Rating: ${restaurant.rating}</p>
+          ${distanceStr}
+          <a class="view-button" href="${restaurant.link}" target="_blank">View Restaurant</a>
+        </div>
+      `;
+      resultsContainer.appendChild(card);
+    });
+  }
+
+  return filtered;
 }
+
 
 
 function clearMapMarkers() {
