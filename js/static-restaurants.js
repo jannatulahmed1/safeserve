@@ -186,4 +186,735 @@ export const staticRestaurants = [
     image: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2a/bc/76/0d/la-grande-boucherie-joie.jpg?w=900&h=500&s=1",
     coordinates: { lat: 40.76271928628305, lon: -73.98084536402887 }
   },
+  //18
+  {
+    name: "Sofia Pizza Shoppe",
+    location: "989 1st Ave, New York, NY 10022",
+    link: "https://www.sofiapizzashoppe.com/",
+    cuisine: "Italian",
+    rating: 4.0,
+    safeFor: ["peanut", "tree nut"],
+    image: "https://64.media.tumblr.com/af882d643773734824f65bee88f7815c/tumblr_inline_own8okl3zZ1qai5m3_540.jpg",
+  },
+
+  //19
+  {
+    name: "A La Mode Shoppe",
+    location: "360 E 55th St, New York, NY 10022",
+    link: "https://alamodeshoppe.com/",
+    cuisine: "Other",
+    rating: 4.9,
+    safeFor: ["peanut", "tree nut", "gluten", "dairy"],
+    image: "https://tb-static.uber.com/prod/enhanced-images/image-touchup-v1/1df152980acd13322b49a328f32ac42e/4b0dc941d102ea819030d59d2c2a5d60.webp",
+  },
+
+  //20
+  {
+    name: "The Donut Pub",
+    location: "360 E 55th St, New York, NY 10022",
+    link: "https://www.donutpub.com/",
+    cuisine: "American",
+    rating: 4.4,
+    safeFor: ["nut", "shellfish", "sesame", "mustard"],
+    image: "https://www.tpgarchitecture.com/archidata4/tpg/assets/prev/project_1693/23907_27BF76C6-AE57-D6C4-5CBCAD3B23E2FA49_lg.jpg",
+  },
+
+  //21
+  {
+    name: "Wild",
+    location: "535 Hudson St, New York, NY 10014",
+    link: "https://wildrestaurantnyc.com/",
+    cuisine: "Italian",
+    rating: 4.4,
+    safeFor: ["gluten", "nut"],
+    image: "https://resizer.otstatic.com/v3/photos/60563025-3?width=1280&height=720&webp=true",
+  },
+
+  //22  
+  {
+    name: "Johns of Bleecker Street",
+    location: "278 Bleecker St, New York, NY 10014",
+    link: "https://johnsofbleecker.com/",
+    cuisine: "Italian",
+    rating: 4.6,
+    safeFor: ["peanut", "nut", "tree nut", "egg", "soy", "fish", "shellfish", "sesame"],
+    image: "https://res.cloudinary.com/the-infatuation/image/upload/f_auto/q_auto/v1717076525/images/JohnsOfBleecker_Interior_BryanKim_NYC_00003_ossaec.jpg",
+  },
+  
+  //23  
+  {
+    name: "S'MAC",
+    location: "197 1st Ave, New York, NY 10003",
+    link: "https://www.eatsmac.com/",
+    cuisine: "Italian",
+    rating: 4.5,
+    safeFor: ["nut", "shellfish", "dairy"],
+    image: "https://celebrityparentsmag.com/wp-content/uploads/2021/07/SMAC-Food-ORG-33.jpg",
+  },
+
+  //23  
+  {
+    name: "Big Daddys",
+    location: "1596 2nd Ave, New York, NY 10028",
+    link: "https://www.bigdaddysnyc.com/",
+    cuisine: "American",
+    rating: 3.6,
+    safeFor: ["nut", "gluten", "dairy"],
+    image: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjtDqneyaqD4HeBRcQdfMD4c4ulS7z-9JT3cLs4avBnZVA30LxmCNSJRn_fiSNR6s0Jv78_p1t5FEXB-POIfEgFLYWMq2-arLKWCs_Ff6GIFDkDtCbv2SfSx_KruUZEkjxEv34Hf1spZpo/s1600/Ben+NYC+054.JPG",
+  },
+    //23  
+    {
+      name: "Alice's Tea Cup",
+      location: "102 W 73rd St, New York, NY 10023",
+      link: "https://www.alicesteacup.com/",
+      cuisine: "other",
+      rating: 4.3,
+      safeFor: ["nut", "gluten", "dairy", "milk"],
+      image: "https://www.kidonthetown.com/wp-content/uploads/2023/07/alices-tea-cup.png",
+    },
+
+    //24 
+    {
+      name: "Elenis",
+      location: "226 3rd Ave, New York, NY 10003",
+      link: "https://elenis.com/?srsltid=AfmBOopal71aDdAlzhEsvWyQG8J0c-oxirDq89CBKj1-8IgCH3NaNsrX",
+      cuisine: "other",
+      rating: 4.3,
+      safeFor: ["nut", "peanut", "tree nut"],
+      image: "https://thevillagesun.com/wp-content/uploads/2020/03/elenis-exterior.jpg",
+    },
+
+    //25  
+    {
+      name: "Erin McKennas Bakery",
+      location: "248 Broome St, New York, NY 10002",
+      link: "https://www.erinmckennasbakery.com/",
+      cuisine: "other",
+      rating: 4.3,
+      safeFor: ["gluten", "wheat", "soy", "dairy", "egg", "nut"],
+      image: "https://thevillagesun.com/wp-content/uploads/2020/03/elenis-exterior.jpg",
+    },
+    //26 
+    {
+      name: "Pie By The Pound",
+      location: "124 4th Ave, New York, NY 10003",
+      link: "http://www.piebythepoundnewyork.com/",
+      cuisine: "Italian",
+      rating: 4.4,
+      safeFor: ["gluten", "dairy", "nut"],
+      image: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiKP9pWka_LXLlUdIX1xBOUiA_InMKv8QWxMu66rT3XlQMLC_hQLxmHdzxN8rmoYuHf4d2bwbL31Jm6x0u5YnORzFgFcWss_MZ5mCcdwAsi0KudrpT-MUvCLX6oZ306QKO9lY4p99wuR6g/s1600/64999114_2398134196905023_3815960296535621632_n.jpg",
+    },
+
+    //27 	
+    {
+      name: "Bareburger",
+      location: "124 4th Ave, New York, NY 10003",
+      link: "http://www.piebythepoundnewyork.com/",
+      cuisine: "Italian",
+      rating: 4.4,
+      safeFor: ["nut"],
+      image: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiKP9pWka_LXLlUdIX1xBOUiA_InMKv8QWxMu66rT3XlQMLC_hQLxmHdzxN8rmoYuHf4d2bwbL31Jm6x0u5YnORzFgFcWss_MZ5mCcdwAsi0KudrpT-MUvCLX6oZ306QKO9lY4p99wuR6g/s1600/64999114_2398134196905023_3815960296535621632_n.jpg",
+    },
+
+    //28
+    {
+      name: "Duke's NYC",
+      location: "560 3rd Ave, New York, NY 10016",
+      link: "https://www.dukesnyc.com/",
+      cuisine: "American",
+      rating: 4.5,
+      safeFor: ["nut"],
+      image: "https://live.staticflickr.com/4104/5048237807_2cdb912795_b.jpg",
+    },
+
+    //29
+    {
+      name: "Chipotle Mexican Grill",
+      location: "620 9th Ave, New York, NY 10036",
+      link: "https://www.chipotle.com/",
+      cuisine: "Mexican",
+      rating: 4.2,
+      safeFor: ["nut", "dairy", "sesame", "egg", "shellfish"],
+      image: "https://tb-static.uber.com/prod/image-proc/processed_images/2bd3ad3aacf5927588f4dae8236cf9fc/db809eadd12d21eb61044e0f3bf7c9b7.jpeg",
+    },
+    //30
+    {
+      name: "Sushi Yasaka",
+      location: "242 E 52nd St, New York, NY 10022",
+      link: "https://sushiyasakanyc.com/",
+      cuisine: "Japanese",
+      rating: 4.2,
+      safeFor: ["soy", "shellfish", "fish", "sesame"],
+      image: "https://www.yasaka.nyc/_nuxt/img/index.a878b3c.png",
+    },
+    //31
+    {
+      name: "Osteria Cotta",
+      location: "182 10th Ave, New York, NY 10011",
+      link: "https://osteriacotta.com/",
+      cuisine: "Italian",
+      rating: 4.5,
+      safeFor: ["egg", "nut"],
+      image: "https://media-cdn.grubhub.com/image/upload/d_search:browse-images:default.jpg/w_1200,q_auto,fl_lossy,dpr_auto,c_fill,f_auto,h_800,g_auto/tdfp9iq6ejjb3l7eni2w",
+    },
+    //32
+    {
+      name: "Pasta Louise",
+      location: "230 Park Ave S, New York, NY 10003",
+      link: "https://pastalouisenyc.com/",
+      cuisine: "Italian",
+      rating: 4.3,
+      safeFor: ["egg", "nut"],
+      image: "https://image.resy.com/3/003/2/41761/aba07095bb4bd402c592ac09018be87a62586ef1/jpg/1:1/1600",
+    },
+
+    //33
+    {
+      name: "Lilli and Loo",
+      location: "154 Rivington St, New York, NY 10002",
+      link: "https://www.lilliandloo.com/",
+      cuisine: "Other",
+      rating: 4.2,
+      safeFor: ["peanut", "nut", "tree nut", "gluten", "soy", "dairy", "egg", "sesame"],
+      image: "https://static.spotapps.co/spots/2e/a835cb1541430ba122a592d1b52e0c/full",
+    },
+    //34
+    {
+      name: "Hu Kitchen",
+      location: "78 5th Ave, New York, NY 10011",
+      link: "https://hukitchen.com/",
+      cuisine: "American",
+      rating: 4.3,
+      safeFor: ["peanut", "nut", "tree nut", "gluten", "dairy", "egg", "soy", "sesame"],
+      image: "https://onthegrid.city/imager/s3_amazonaws_com/onthegrid.city/assets/grid/new-york-city/manhattan-visualized/hu-kitchen/IMG_1579_299006722e285f47655d17d1c9136337.jpg",
+    },
+    //35
+    {
+      name: "By Chloe",
+      location: "240 Lafayette St, New York, NY 10012",
+      link: "https://eatbychloe.com/",
+      cuisine: "Other",
+      rating: 4.1,
+      safeFor: ["peanut", "nut", "tree nut", "gluten", "dairy", "egg", "soy", "sesame", "mustard"],
+      image: "https://media.timeout.com/images/103639966/image.jpg",
+    },
+
+    //36
+    {
+      name: "Dig Inn",
+      location: "131 W 37th St, New York, NY 10018",
+      link: "https://diginn.com/",
+      cuisine: "American",
+      rating: 4.0,
+      safeFor: ["peanut", "nut", "tree nut", "gluten", "soy", "dairy", "egg"],
+      image: "https://images.squarespace-cdn.com/content/v1/6377acee19258c4978a8a37b/e0e44a53-27bc-4e6f-b834-a38bff8d737c/TL_dg8kpz.jpg",
+    },
+
+    //37
+    {
+      name: "Terri",
+      location: "107 Rivington St, New York, NY 10002",
+      link: "https://www.terrinyc.com/",
+      cuisine: "Other",
+      rating: 4.2,
+      safeFor: ["peanut", "nut", "tree nut", "gluten", "dairy", "egg", "soy", "sesame"],
+      image: "https://images.happycow.net/venues/1024/20/75/hcmp20757_261136.jpeg",
+    },
+
+    //38
+    {
+      name: "Juice Press",
+      location: "1432 Broadway, New York, NY 10018",
+      link: "https://juicepress.com/",
+      cuisine: "Other",
+      rating: 4.3,
+      safeFor: ["peanut", "nut", "tree nut", "dairy", "soy", "gluten", "egg"],
+      image: "https://images.prismic.io/goodnature/NzgwZTkyNzctMGJlYi00YWU3LWJhZjAtMDMzZTYwZWYzZDVh_how-to-make-cold-pressed-juice-blog-hero.png?auto=compress%2Cformat&rect=0%2C0%2C1200%2C630&w=1200&h=630&q=75",
+    },
+    //39
+    {
+      name: "Modern Bread and Bagel",
+      location: "220 E 14th St, New York, NY 10003",
+      link: "https://modernbreadandbagel.com/",
+      cuisine: "American",
+      rating: 4.3,
+      safeFor: ["gluten", "dairy", "egg", "nut"],
+      image: "https://thelocalgirl.com/bergen/wp-content/uploads/sites/5/2025/06/modern-bread-and-bagel-1-e1749059307874-800x757.jpg",
+    },
+    //40
+    {
+      name: "Nami Nori",
+      location: "233 Spring St, New York, NY 10013",
+      link: "https://www.naminori.com/",
+      cuisine: "Japanese",
+      rating: 4.5,
+      safeFor: ["gluten", "nut", "egg", "dairy", "soy", "sesame"],
+      image: "https://images.ctfassets.net/trvmqu12jq2l/4v4lt955xnVK3tyleBYihi/7e44b8ea09c6b850647778b1f938aeac/NamiNori2_article.jpg",
+    },
+
+    //41
+    {
+      name: "Senza Gluten",
+      location: "206 E 11th St, New York, NY 10003",
+      link: "https://senzaglutennyc.com/",
+      cuisine: "Italian",
+      rating: 4.6,
+      safeFor: ["gluten", "dairy", "egg", "nut", "soy", "sesame"],
+      image: "https://senzaglutennyc.com/wp-content/uploads/2022/07/dinner-menu-banner-2048x1365.jpg",
+    },
+
+    //42
+    {
+      name: "Aroy Dee Thai Kitchen",
+      location: "19 E 13th St, New York, NY 10003",
+      link: "https://www.aroydeethai.com/",
+      cuisine: "Thai",
+      rating: 4.3,
+      safeFor: ["gluten", "nut", "soy", "sesame"],
+      image: "https://images.deliveryhero.io/image/fd-sg/LH/w9wa-listing.jpg",
+    },
+
+    //43
+    {
+      name: "Hamachi Sushi 34",
+      location: "151 E 34th St, New York, NY 10016",
+      link: "https://www.hamachisushi34.com/",
+      cuisine: "Japanese",
+      rating: 4.4,
+      safeFor: ["gluten", "nut", "soy", "sesame"],
+      image: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/29/f6/33/d8/hamachi-sushi-34.jpg?w=1100&h=1100&s=1",
+    },
+
+    //44
+    {
+      name: "Malibu Farm New York",
+      location: "Greenwich St, New York, NY 10013",
+      link: "https://www.malibufarmnyc.com/",
+      cuisine: "American",
+      rating: 4.2,
+      safeFor: ["gluten", "dairy", "egg", "nut", "soy", "sesame"],
+      image: "https://lh3.googleusercontent.com/p/AF1QipPRUW1rDG0WnoQgXYVLXSHiUci1NL611OwEsoq0=s1360-w1360-h1020-rw",
+    },
+
+    //45
+    {
+      name: "JOE & THE JUICE",
+      location: "Various locations in NYC",
+      link: "https://www.joejuice.com/",
+      cuisine: "Other",
+      rating: 4.0,
+      safeFor: ["gluten", "dairy", "nut", "soy", "sesame"],
+      image: "https://tb-static.uber.com/prod/image-proc/processed_images/fb393ea4b453307918170b0349313a4b/1da9a9e826d15157cea1c5bb8696f248.jpeg",
+    },
+
+    //46
+    {
+      name: "Sugarfish",
+      location: "Various locations in NYC",
+      link: "https://www.sugarfishsushi.com/",
+      cuisine: "Japanese",
+      rating: 4.6,
+      safeFor: ["gluten", "nut", "soy", "sesame"],
+      image: "https://sugarfishsushi.com/wp-content/uploads/2019/09/SF2GoBox.jpg",
+    },
+
+    //47
+    {
+      name: "Dylans Candy Bar",
+      location: "20 Hudson Yards, New York, NY 10001",
+      link: "https://dylanscandybar.com/",
+      cuisine: "Other",
+      rating: 4.4,
+      safeFor: ["gluten", "dairy", "egg", "nut", "soy", "sesame"],
+      image: "https://res.cloudinary.com/the-infatuation/image/upload/v1729703062/images/DylansCandyBar_Interior_AlexStaniloff_NYC-5_j0cxj1.jpg",
+    },
+  
+    //48
+    {
+      name: "Whipped Urban Dessert Lab",
+      location: "95 Orchard St, New York, NY 10002",
+      link: "https://www.whippedurban.com/",
+      cuisine: "Other",
+      rating: 4.5,
+      safeFor: ["gluten", "dairy", "egg", "nut", "soy", "sesame"],
+      image: "http://blackrestaurantweeks.com/wp-content/uploads/2020/11/118708297_3092083374251206_3113147744544876398_o.jpg",
+    },
+    //49
+    {
+      name: "John's of Times Square",
+      location: "260 W 44th St, New York, NY 10036",
+      link: "https://www.johnspizzerianyc.com/",
+      cuisine: "Italian",
+      rating: 4.6,
+      safeFor: ["peanut", "nut", "tree nut", "gluten", "dairy", "egg", "soy", "sesame"],
+      image: "https://assets.simpleviewinc.com/simpleview/image/upload/q_75/v1/crm/newyorkstate/johns-pizzeria-times-square_oj-studio_pizza_e3186701-a085-4a90-9b6243f0edd20ec1.jpg",
+    },
+    //50
+    {
+      name: "Crompton Ale House",
+      location: "159 E 56th St, New York, NY 10022",
+      link: "https://www.cromptonalehouse.com/",
+      cuisine: "American",
+      rating: 4.4,
+      safeFor: ["peanut", "nut", "tree nut", "gluten", "dairy", "egg", "soy", "sesame"],
+      image: "https://static.spotapps.co/spots/83/ea15602f0c11e984472ff21907be26/full",
+    },
+
+    //51
+    {
+      name: "Ristorante Rafele",
+      location: "29 7th Ave S, New York, NY 10014",
+      link: "https://www.ristoranterafele.com/",
+      cuisine: "Italian",
+      rating: 4.5,
+      safeFor: ["peanut", "nut", "tree nut", "gluten", "dairy", "egg", "soy", "sesame"],
+      image: "https://images.squarespace-cdn.com/content/v1/5ac79dd1f79392ec0d1e38e6/1553274399387-AXK9ENY1PVXKS5U5JF3Y/hQR4eF3w.jpg?format=2500w",
+    },
+
+    //52
+    {
+      name: "Risotteria Melotti",
+      location: "270 Bleecker St, New York, NY 10014",
+      link: "https://www.risotteria.com/",
+      cuisine: "Italian",
+      rating: 4.6,
+      safeFor: ["peanut", "nut", "tree nut", "gluten", "dairy", "egg", "soy", "sesame"],
+      image: "https://843dd46226.clvaw-cdnwnd.com/768358dbaefc0cd27a210502c61ee7f9/200000731-0fca810bf9/DSC06183.JPG?ph=843dd46226",
+    },
+
+    //53
+    {
+      name: "Superiority Burger",
+      location: "119 Avenue A, New York, NY 10009",
+      link: "https://www.superiorityburger.com/",
+      cuisine: "Other",
+      rating: 4.7,
+      safeFor: ["peanut", "tree nut", "egg", "dairy", "soy", "sesame"],
+      image: "https://static01.nyt.com/images/2023/06/28/multimedia/27rest-superiority-burger-opener-btvk/27rest-superiority-burger-opener-btvk-superJumbo.jpg",
+    },
+
+    //54
+    {
+      name: "Pommes Frites",
+      location: "128 MacDougal St, New York, NY 10012",
+      link: "https://www.pommesfritesnyc.com/",
+      cuisine: "Other",
+      rating: 4.5,
+      safeFor: ["peanut", "tree nut", "egg", "dairy", "soy", "sesame"],
+      image: "https://tb-static.uber.com/prod/enhanced-images/image-touchup-v1/ec4c1084ad1d28182d046a999b88b509/d55e48fefc495a1baed32bbb57ccb788.jpeg",
+    },
+
+    //55
+    {
+      name: "Candle Cafe",
+      location: "1307 3rd Ave, New York, NY 10021",
+      link: "https://www.candlecafe.com/",
+      cuisine: "Other",
+      rating: 4.6,
+      safeFor: ["peanut", "tree nut", "egg", "dairy", "soy", "sesame"],
+      image: "https://static.spotapps.co/website_images/ab_websites/192032_website_v1/catering.jpg",
+    },
+
+    //56
+    {
+      name: "Rethink Café",
+      location: "154 Clinton Ave, Brooklyn, NY 11205",
+      link: "https://www.rethinkfood.org/",
+      cuisine: "Other",
+      rating: 4.4,
+      safeFor: ["peanut", "tree nut", "egg", "dairy", "soy", "sesame"],
+
+    },
+
+    //57
+    {
+      name: "Dirt Candy",
+      location: "86 Allen St, New York, NY 10002",
+      link: "https://www.dirtcandynyc.com/",
+      cuisine: "Other",
+      rating: 4.7,
+      safeFor: ["peanut", "tree nut", "egg", "dairy", "soy", "sesame"],
+    },
+
+    //58
+    {
+      name: "Bagel Town",
+      location: "488 Hempstead Ave, West Hempstead, NY 11552",
+      link: "https://www.bageltown.com/",
+      cuisine: "Other",
+      rating: 4.3,
+      safeFor: ["peanut", "tree nut", "egg", "dairy", "soy", "sesame"],
+    },
+
+    //59
+    {
+      name: "Baked Cravings",
+      location: "1673 Lexington Ave, New York, NY 10029",
+      link: "https://www.bakedcravings.com/",
+      cuisine: "Other",
+      rating: 4.6,
+      safeFor: ["peanut", "tree nut", "egg", "dairy", "soy", "sesame"],
+    },
+
+    //60
+    {
+      name: "By The Way Bakery",
+      location: "38 E 7th St, New York, NY 10003",
+      link: "https://www.bythewaybakery.com/",
+      cuisine: "Other",
+      rating: 4.5,
+      safeFor: ["peanut", "nut", "tree nut", "gluten", "dairy", "egg", "soy", "sesame"],
+    },
+
+    //61
+    {
+      name: "Peacefood Café",
+      location: "41 E 11th St, New York, NY 10003",
+      link: "https://peacefoodcafe.com/",
+      cuisine: "Other",
+      rating: 4.3,
+      safeFor: ["peanut", "nut", "tree nut", "gluten", "dairy", "egg", "soy"],
+    },
+
+    //62
+    {
+      name: "Candle 79",
+      location: "154 E 79th St, New York, NY 10075",
+      link: "https://candle79.com/",
+      cuisine: "Other",
+      rating: 4.4,
+      safeFor: ["peanut", "nut", "tree nut", "gluten", "dairy", "egg", "soy"],
+    },
+
+    //63
+    {
+      name: "Bibble & Sip",
+      location: "70 Pinehurst Ave, New York, NY 10033",
+      link: "https://bibbleandsip.com/",
+      cuisine: "Other",
+      rating: 4.4,
+      safeFor: ["peanut", "nut", "tree nut", "gluten", "dairy", "egg", "soy"],
+    },
+
+    //64
+    {
+      name: "Cafe Gratitude",
+      location: "240 E 2nd St, New York, NY 10009",
+      link: "https://cafegratitude.com/",
+      cuisine: "Other",
+      rating: 4.3,
+      safeFor: ["peanut", "nut", "tree nut", "gluten", "dairy", "egg", "soy", "sesame"],
+    },
+
+    //65
+    {
+      name: "Champs Diner",
+      location: "197 Meserole St, Brooklyn, NY 11206",
+      link: "https://champsdiner.com/",
+      cuisine: "Other",
+      rating: 4.6,
+      safeFor: ["peanut", "nut", "tree nut", "gluten", "dairy", "soy"],
+    },
+    
+
+    //66
+    {
+      name: "Franchia Vegan Café",
+      location: "240 E 51st St, New York, NY 10022",
+      link: "https://franchiavegancafe.com/",
+      cuisine: "Other",
+      rating: 4.3,
+      safeFor: ["peanut", "nut", "tree nut", "gluten", "dairy", "soy", "sesame"],
+    },
+
+    //67
+    {
+      name: "Little Cupcake Bakeshop",
+      location: "30 E 7th St, New York, NY 10003",
+      link: "https://littlecupcakebakeshop.com/",
+      cuisine: "Other",
+      rating: 4.4,
+      safeFor: ["peanut", "nut", "tree nut", "gluten", "dairy", "egg"],
+    }, 
+
+    //68
+    {
+      name: "Bread Alone Bakery",
+      location: "1500 Broadway, New York, NY 10036",
+      link: "https://breadalone.com/",
+      cuisine: "Other",
+      rating: 4.5,
+      safeFor: ["gluten", "dairy", "egg", "nut"],
+    },
+
+    //69
+    {
+      name: "Marlow & Sons",
+      location: "81 Bedford St, New York, NY 10014",
+      link: "https://marlowandsons.com/",
+      cuisine: "American",
+      rating: 4.4,
+      safeFor: ["peanut", "nut", "tree nut", "gluten", "dairy", "soy"],
+    },
+
+    //70
+    {
+      name: "Cafe Blossom",
+      location: "187 9th Ave, New York, NY 10011",
+      link: "https://cafeblossom.com/",
+      cuisine: "Other",
+      rating: 4.5,
+      safeFor: ["peanut", "nut", "tree nut", "gluten", "dairy", "egg", "soy", "sesame"],
+    },
+
+    //71
+    {
+      name: "Two Hands",
+      location: "164 Mott St, New York, NY 10013",
+      link: "https://twohandsnyc.com/",
+      cuisine: "Other",
+      rating: 4.4,
+      safeFor: ["nut", "tree nut", "dairy", "egg", "soy"],
+    },
+
+    //72
+    {
+      name: "Cafe Zaiya",
+      location: "25 Murray St, New York, NY 10007",
+      link: "https://www.cafezaiya.com/",
+      cuisine: "Japanese",
+      rating: 4.3,
+      safeFor: ["peanut", "nut", "tree nut", "gluten", "soy", "sesame", "dairy"],
+    },
+    //73
+    {
+      name: "Little Collins",
+      location: "667 Lexington Ave, New York, NY 10022",
+      link: "https://littlecollinsnyc.com/",
+      cuisine: "Other",
+      rating: 4.2,
+      safeFor: ["nut", "tree nut", "dairy", "egg", "soy"],
+    },
+
+    //74
+    {
+      name: "OBAO",
+      location: "222 E 53rd St, New York, NY 10022",
+      link: "https://obaonyc.com/",
+      cuisine: "Vietnamese",
+      rating: 4.0,
+      safeFor: ["peanut", "nut", "tree nut", "soy", "sesame", "gluten", "egg"],
+    },
+
+    //75
+    {
+      name: "Nix",
+      location: "72 University Pl, New York, NY 10003",
+      link: "https://www.nixny.com/",
+      cuisine: "Other",
+      rating: 4.3,
+      safeFor: ["peanut", "nut", "tree nut", "dairy", "soy", "gluten"],
+    },
+
+    //76
+    {
+      name: "Freddy's",
+      location: "71 Irving Pl, New York, NY 10003",
+      link: "https://freddysnyc.com/",
+      cuisine: "American",
+      rating: 4.2,
+      safeFor: ["peanut", "nut", "tree nut", "gluten", "dairy", "soy", "egg"],
+    },
+
+    //77
+    {
+      name: "Bluestone Lane",
+      location: "55 Greenwich Ave, New York, NY 10014",
+      link: "https://bluestonelane.com/",
+      cuisine: "Other",
+      rating: 4.2,
+      safeFor: ["peanut", "nut", "tree nut", "gluten", "dairy", "soy", "egg"],
+    },
+
+    //78
+    {
+      name: "Wild Ginger",
+      location: "196 10th Ave, New York, NY 10011",
+      link: "https://wildginger.nyc/",
+      cuisine: "Other",
+      rating: 4.1,
+      safeFor: ["peanut", "nut", "tree nut", "soy", "sesame", "gluten"],
+    },
+
+    //79
+    {
+      name: "Hummus Place",
+      location: "79 W 3rd St, New York, NY 10012",
+      link: "https://www.hummusplace.com/",
+      cuisine: "Mediterranean",
+      rating: 4.3,
+      safeFor: ["peanut", "nut", "tree nut", "gluten", "soy", "sesame"],
+    },
+
+    //80
+    {
+      name: "Loring Place",
+      location: "21 W 8th St, New York, NY 10011",
+      link: "https://www.loringplace.com/",
+      cuisine: "American",
+      rating: 4.5,
+      safeFor: ["peanut", "nut", "tree nut", "gluten", "dairy", "egg", "soy"],
+    },
+
+    //81
+    {
+      name: "The Butcher's Daughter",
+      location: "19 Kenmare St, New York, NY 10012",
+      link: "https://www.thebutchersdaughter.com/",
+      cuisine: "Other",
+      rating: 4.3,
+      safeFor: ["peanut", "nut", "tree nut", "gluten", "dairy", "soy"],
+    },
+
+    //82
+    {
+      name: "Devoción",
+      location: "25 E 20th St, New York, NY 10003",
+      link: "https://devocion.com/",
+      cuisine: "Other",
+      rating: 4.6,
+      safeFor: ["peanut", "nut", "tree nut", "gluten", "soy", "sesame"],
+    },
+
+    //83
+    {
+      name: "Noreetuh",
+      location: "251 E 51st St, New York, NY 10022",
+      link: "https://noreetuh.com/",
+      cuisine: "Other",
+      rating: 4.4,
+      safeFor: ["peanut", "nut", "tree nut", "gluten", "soy", "sesame", "dairy"],
+    },
+
+    //84
+    {
+      name: "Avant Garden",
+      location: "130 E 7th St, New York, NY 10009",
+      link: "https://avantgardennyc.com/",
+      cuisine: "Other",
+      rating: 4.6,
+      safeFor: ["peanut", "nut", "tree nut", "gluten", "soy", "sesame"],
+    },
+
+    //85
+    {
+      name: "Eisenberg's Sandwich Shop",
+      location: "174 5th Ave, New York, NY 10010",
+      link: "https://eisenbergssandwichshop.com/",
+      cuisine: "American Diner",
+      rating: 4.3,
+      safeFor: ["peanut", "nut", "tree nut", "gluten", "dairy", "egg"],
+    },
+
+
 ];
