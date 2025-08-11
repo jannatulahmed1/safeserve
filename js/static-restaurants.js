@@ -1,4 +1,3 @@
-
 export const staticRestaurants = [
   //1
   {
@@ -8,7 +7,7 @@ export const staticRestaurants = [
     cuisine: "american",
     rating: 4,
     safeFor: ["vegan", "gluten"],
-    image: "https://us-east-1.graphassets.com/A34TivACHQGezGfQcXj8zz/cmd62lgfq0guz07k5tzvfgbpt",
+    image: "https://img.freepik.com/premium-photo/modern-cafe-storefront-with-white-brick-greenery_412311-14047.jpg",
     coordinates: { lat: 40.74413354145032, lon: -73.98885349471682 }
   },
   //2
@@ -73,8 +72,8 @@ export const staticRestaurants = [
     link: "https://www.theperryclub.com/",
     cuisine: "American",
     rating: 4.1,
-    safeFor: ["nut", "vegetarian"],
-    image: "https://nashvillelifestyles.com/downloads/37284/download/NL_95-3.jpeg?cb=fd75d6a25ee881acb0aeccaf5cd57952",
+    safeFor: ["nut"],
+    image: "https://d3tv8y14ogpztx.cloudfront.net/extra_images/images/000/031/880/wide_product/the-perry-club-neon-sign.jpg",
     coordinates: { lat: 40.73575346221845, lon: -74.0015194505387 }
   },
   //8
@@ -155,16 +154,6 @@ export const staticRestaurants = [
     coordinates: { lat: 40.71909477658804, lon: -73.84521416403301 }
   },
   //15
-  {
-    name: "Sagar Chinese",
-    location: "252-05 Union Tpke, Bellerose, NY 11426",
-    link: "https://sagarchinese.com/",
-    cuisine: "Other",
-    rating: 3.6,
-    safeFor: ["peanut", "egg", "halal", "vegetarian"],
-    image: "https://tb-static.uber.com/prod/image-proc/processed_images/c5904d0578f413e4cf387720ece38620/fb86662148be855d931b37d6c1e5fcbe.jpeg",
-    coordinates: { lat: 40.744031184907854, lon: -73.71842982170217 }
-  },
   //16
   {
     name: "Rubys Cafe",
@@ -1668,7 +1657,7 @@ export const staticRestaurants = [
       link: "https://bistango.com/",
       cuisine: "American",
       rating: 4.2,
-      safeFor: ["peanut", "nut", "tree nut", "gluten", "dairy", "egg"],
+      safeFor: ["peanut", "nut", "tree nut", "dairy", "egg"],
       image: "https://media.timeout.com/images/106147491/750/562/image.jpg",
       coordinates: { lat: 40.75647204947337, lon: -73.97143870826058 }
     },
@@ -1683,23 +1672,228 @@ export const staticRestaurants = [
       image: "https://southshorehomelifeandstyle.com/wp-content/uploads/2020/11/NZ6_0171-scaled.jpg",
       coordinates: { lat: 40.73988500690024, lon: -73.98875589292 }
     },
+    //147
+    {
+      name: "Elenas 43 Restaurant",
+      location: "8948 Francis Lewis Blvd, Queens Village, NY 11427",
+      link: "http://www.elena43.com/",
+      cuisine: "Dominican",
+      rating: 4.1,
+      safeFor: ["gluten", "dairy", "soy", "egg"],
+      image: "https://modernrestaurantmanagement.com/assets/media/2021/03/Getty_629200476-1200x655.jpg",
+    },
+    //148
+    {
+      name: "Windies",
+      location: "216-06 Jamaica Ave, Jamaica, NY 11428",
+      link: "https://windiesrestaurant.com/",
+      cuisine: "Caribbean",
+      rating: 4.3,
+      safeFor: ["fish", "shellfish"],
+      image: "https://static01.nyt.com/images/2022/01/19/dining/19restaurant-exchange3/merlin_199610832_1f05a894-6228-4911-8602-8185c91794c1-superJumbo.jpg",
+    },
+    //149
+    {
+      name: "The Door",
+      location: "163-07 Baisley Blvd, Jamaica, NY 11434",
+      link: "https://thedoorrestaurantny.com/",
+      cuisine: "Jamaican",
+      rating: 4.4,
+      safeFor: ["gluten", "egg", "nut", "fish"],
+      image: "https://pourmybeer.com/wp-content/uploads/2019/10/chairs-menu-restaurant-6267-e1572625563158.jpg",
+    },
+    //150
+    {
+      name: "Cookerz Blend",
+      location: "217-84 Hempstead Ave, Queens, NY 11429",
+      link: "https://www.instagram.com/cookerzblend/?hl=en",
+      cuisine: "Caribbean",
+      rating: 4.6,
+      safeFor: ["gluten", "dairy", "soy"],
+      image: "https://www.azcentral.com/gcdn/authoring/authoring-images/2025/02/04/PPHX/78223897007-3-rs-2456-copy.JPG?width=700&height=451&fit=crop&format=pjpg&auto=webp",
+    },
+    //151
+    {
+      name: "Frangos Peri Peri",
+      location: "233-16 Hillside Ave., Queens, NY 11427",
+      link: "https://frangosperiperi.com/",
+      cuisine: "Other",
+      rating: 4.5,
+      safeFor: ["gluten", "dairy", "soy", "egg", "nut", "fish", "shellfish"],
+      image: "https://media-cdn.grubhub.com/image/upload/d_search:browse-images:default.jpg/w_150,q_auto:low,fl_lossy,dpr_2.0,c_fill,f_auto,h_150/nry99gvtnr5ztf5hz4ud",
+    },
+    //152
+    {
+      name: "Shogun Japan",
+      location: "205-05 Hillside Ave., Hollis, NY 11423",
+      link: "https://www.shogunjapanhollis.com/",
+      cuisine: "Japanese",
+      rating: 4.2,
+      safeFor: ["gluten", "dairy", "soy", "egg", "fish", "shellfish", "nut"],
+      image: "https://d1w7312wesee68.cloudfront.net/ZBJL4sJsZFpBnOU1wOLnrdyVZjGbxAGiX5yEP8S2dRI/ext:webp/quality:85/plain/s3://toast-sites-resources-prod/restaurantImages/3260edd5-641c-4fa1-88f9-94e6e114526b/Screenshot%202023-07-08%20at%2018.44.57.png",
+    },
+    //153
+    {
+      name: "Wo Kee Noodle",
+      location: "168-12 Union Tpke, Fresh Meadows, NY 11366",
+      link: "https://www.ubereats.com/store/wo-kee-noodle-fresh-meadows/B2BeBR0hV1q8q4FZbZoRkg",
+      cuisine: "Chinese",
+      rating: 4.3,
+      safeFor: ["gluten", "soy", "egg", "fish", "shellfish", "nut"],
+      image: "https://www.wokeenoodle.com/img/slider/3.jpg",
+    },
+    //154
+    {
+      name: "The Queens Kickshaw",
+      location: "40-08 Broadway, Astoria, NY 11103",
+      link: "https://queenskickshaw.com/",
+      cuisine: "American",
+      rating: 4.5,
+      safeFor: ["gluten", "soy", "egg"],
+      image: "https://images.nymag.com/restaurants/reviews/underground/kickshaw110530_560.jpg",
 
 
+    },
+    //155
+    {
+      name: "Casa Enrique",
+      location: "5-48 49th Ave, Long Island City, NY 11101",
+      link: "http://www.casaenrique.com/",
+      cuisine: "Mexican",
+      rating: 4.6,
+      safeFor: ["gluten", "dairy", "nut", "soy"],
+      image: "https://res.cloudinary.com/the-infatuation/image/upload/v1656121712/cms/reviews/casa-enrique/KatePrevite_CasaEnrique_Spread_1.jpg",
+    },
+    //156
+    {
+      name: "Sultans Kitchen",
+      location: "68-08 Fresh Pond Rd, Glendale, NY 11385",
+      link: "https://www.sultanskitchen.com/",
+      cuisine: "Mediterranean",
+      rating: 4.4,
+      safeFor: ["gluten", "soy"],
+      image: "https://www.bestrestaurants.com.au/media/fr2lzu2w/2.jpg?v=1d819554760cb30",
+    },
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    //157
+    {
+      name: "Nur Thai",
+      location: "31-01 34th Ave, Astoria, NY 11106",
+      link: "https://nurthai.com/",
+      cuisine: "Thai",
+      rating: 4.4,
+      safeFor: ["vegan", "vegetarian", "gluten", "halal"],
+      image: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/30/8c/60/05/fine-dining-set-up.jpg?w=900&h=500&s=1"
+    },
+    //158
+    {
+      name: "Lemongrass Brooklyn",
+      location: "156 Court St, Brooklyn, NY 11201",
+      link: "https://www.lemongrassbrooklyn.com/",
+      cuisine: "Thai",
+      rating: 4.1,
+      safeFor: ["vegetarian", "vegan", "gluten", "shellfish"],
+      image: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/28/24/8b/b6/l-e-m-o-n-g-r-a-s-s-b.jpg?w=900&h=500&s=1"
+    },
+    //159
+    {
+      name: "Haka",
+      location: "620 S Oyster Bay Rd, Hicksville, NY 11801",
+      link: "https://www.hicksvillehaka.com/1x3hrj85/restaurant/order-online",
+      cuisine: "Chinese",
+      rating: 3.9,
+      safeFor: ["halal"],
+      image: "https://resizer.otstatic.com/v3/photos/51899286-3?width=1280&height=720&webp=true"
+    },
+    //160
+    {
+      name: "Modoo Chicken & Noodle Bar",
+      location: "216-17 Northern Blvd, Bayside, NY 11361",
+      link: "https://www.modoochickennoodle.com/",
+      cuisine: "Korean",
+      rating: 4.0,
+      safeFor: ["peanut", "nut", "vegetarian"],
+      image: "https://tb-static.uber.com/prod/enhanced-images/image-touchup-v1/bdedc4865fa8286e6012369c0e9e8a2c/6e5e18c323e95b3081b9edbefee0c783.jpeg"
+    },
+    //161
+    {
+      name: "Jiang's Kitchen",
+      location: "65 St Marks Pl, New York, NY 10003",
+      link: "https://www.jiangskitchenny.com/",
+      cuisine: "Chinese",
+      rating: 4.0,
+      safeFor: ["halal"],
+      image: "https://www.courant.com/wp-content/uploads/migration/2021/12/06/2CE2VIZX4BH23K7V74BABQUNR4.jpg?w=1024&h=670"
+    },
+    //162
+    {
+      name: "Gazab",
+      location: "179 Essex St, New York, NY 10002",
+      link: "https://www.gazabnyc.com/",
+      cuisine: "Indian",
+      rating: 4.5,
+      safeFor: ["vegetarian", "vegan", "gluten", "halal"],
+      image: "https://resizer.otstatic.com/v3/photos/61214981-3?width=752&height=752&webp=true"
+    },
+    //163
+    {
+      name: "Mango Mango Dessert",
+      location: "176-67 Union Tpke, Fresh Meadows, NY 11366",
+      link: "https://www.mangomangodessert.com/",
+      cuisine: "Other",
+      rating: 4.0,
+      safeFor: ["dairy"],
+      image: "https://img.taste.com.au/J6wxBVCQ/taste/2016/11/mango-with-yoghurt-and-almond-praline-26024-1.jpeg"
+    },
+    //164
+    {
+      name: "Qahwah House",
+      location: "2237 31st St, Astoria, NY 11105",
+      link: "https://qahwahhouse.com/",
+      cuisine: "Other",
+      rating: 3.9,
+      safeFor: ["halal"],
+      image: "https://breakfastwithnick.com/wp-content/uploads/qahwah-house-5.jpeg"
+    },
+    //165
+    {
+      name: "Moka & Co",
+      location: "28-54 Steinway St, Astoria, NY 11103",
+      link: "https://www.mokanco.com/locations/steinway-st",
+      cuisine: "Other",
+      rating: 4.1,
+      safeFor: ["dairy"],
+      image: "https://cdn.prod.website-files.com/6698def7b7c3e6fc0004a765/6797edeaecd2cb906f028b00_3rdAve_Location.jpg"
+    },
+    //166
+    {
+      name: "Grey Cafe",
+      location: "195-19 Northern Blvd, Queens, NY 11358",
+      link: "https://greycafe.shop/",
+      cuisine: "Other",
+      rating: 4.2,
+      safeFor: ["vegan", "vegetarian", "gluten"],
+      image: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2e/8b/81/6b/caption.jpg?w=900&h=500&s=1"
+    },
+    //167
+    {
+      name: "Cafe Bench",
+      location: "194-07 Northern Blvd, Flushing, NY 11358",
+      link: "https://www.cafebench-crepe.com/",
+      cuisine: "Other",
+      rating: 3.9,
+      safeFor: ["gluten"],
+      image: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0d/c4/72/a3/photo4jpg.jpg?w=900&h=500&s=1"
+    },
+    //168
+    {
+      name: "Sup Thai Kitchen",
+      location: "178-19 Union Tpke, Fresh Meadows, NY 11366",
+      link: "https://www.supthainy.com/",
+      cuisine: "Thai",
+      rating: 4.2,
+      safeFor: ["vegetarian", "vegan", "gluten"],
+      image: "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqKUZzri0gKrmmBjsRaIVhMD8M8WsWIEN8BwYLbBDYHq8d0_SGyoqy-_cFbGthCu-Uosw71StpZu_8-iGOJsP-dLyAINwO9Yir1VfLCPknLyIKUrh-4ai2omRDfhc9NHU3YICxAhL9HKz_g=s1360-w1360-h1020-rw"
+    }
 
 ];
