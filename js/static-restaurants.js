@@ -1681,6 +1681,7 @@ export const staticRestaurants = [
       rating: 4.1,
       safeFor: ["gluten", "dairy", "soy", "egg"],
       image: "https://modernrestaurantmanagement.com/assets/media/2021/03/Getty_629200476-1200x655.jpg",
+      coordinates: { lat: 40.71844220452105, lon: -73.75776204874428 }
     },
     //148
     {
@@ -1691,6 +1692,7 @@ export const staticRestaurants = [
       rating: 4.3,
       safeFor: ["fish", "shellfish"],
       image: "https://static01.nyt.com/images/2022/01/19/dining/19restaurant-exchange3/merlin_199610832_1f05a894-6228-4911-8602-8185c91794c1-superJumbo.jpg",
+      coordinates: { lat: 40.71748741150935, lon: -73.73841253340207 }
     },
     //149
     {
@@ -1701,6 +1703,7 @@ export const staticRestaurants = [
       rating: 4.4,
       safeFor: ["gluten", "egg", "nut", "fish"],
       image: "https://pourmybeer.com/wp-content/uploads/2019/10/chairs-menu-restaurant-6267-e1572625563158.jpg",
+      coordinates: { lat: 40.67881659980329, lon: -73.77946326409021 }
     },
     //150
     {
@@ -1711,6 +1714,7 @@ export const staticRestaurants = [
       rating: 4.6,
       safeFor: ["gluten", "dairy", "soy"],
       image: "https://www.azcentral.com/gcdn/authoring/authoring-images/2025/02/04/PPHX/78223897007-3-rs-2456-copy.JPG?width=700&height=451&fit=crop&format=pjpg&auto=webp",
+      coordinates: { lat: 40.714098540536014, lon: -73.73861654874466 }
     },
     //151
     {
@@ -1721,6 +1725,7 @@ export const staticRestaurants = [
       rating: 4.5,
       safeFor: ["gluten", "dairy", "soy", "egg", "nut", "fish", "shellfish"],
       image: "https://media-cdn.grubhub.com/image/upload/d_search:browse-images:default.jpg/w_150,q_auto:low,fl_lossy,dpr_2.0,c_fill,f_auto,h_150/nry99gvtnr5ztf5hz4ud",
+      coordinates: { lat: 40.73342369774908, lon: -73.73638892175609 }
     },
     //152
     {
@@ -1731,6 +1736,7 @@ export const staticRestaurants = [
       rating: 4.2,
       safeFor: ["gluten", "dairy", "soy", "egg", "fish", "shellfish", "nut"],
       image: "https://d1w7312wesee68.cloudfront.net/ZBJL4sJsZFpBnOU1wOLnrdyVZjGbxAGiX5yEP8S2dRI/ext:webp/quality:85/plain/s3://toast-sites-resources-prod/restaurantImages/3260edd5-641c-4fa1-88f9-94e6e114526b/Screenshot%202023-07-08%20at%2018.44.57.png",
+      coordinates: { lat: 40.721256172363205, lon: -73.76045940826394 }
     },
     //153
     {
@@ -1741,6 +1747,7 @@ export const staticRestaurants = [
       rating: 4.3,
       safeFor: ["gluten", "soy", "egg", "fish", "shellfish", "nut"],
       image: "https://www.wokeenoodle.com/img/slider/3.jpg",
+      coordinates: { lat: 40.72308112428674, lon: -73.79967290641491 }
     },
     //154
     {
@@ -1751,6 +1758,7 @@ export const staticRestaurants = [
       rating: 4.5,
       safeFor: ["gluten", "soy", "egg"],
       image: "https://images.nymag.com/restaurants/reviews/underground/kickshaw110530_560.jpg",
+      coordinates: { lat: 40.75871687237024, lon: -73.9187470910693 }
 
 
     },
@@ -1763,6 +1771,7 @@ export const staticRestaurants = [
       rating: 4.6,
       safeFor: ["gluten", "dairy", "nut", "soy"],
       image: "https://res.cloudinary.com/the-infatuation/image/upload/v1656121712/cms/reviews/casa-enrique/KatePrevite_CasaEnrique_Spread_1.jpg",
+      coordinates: { lat: 40.74355321218703, lon: -73.95438467165371 }
     },
     //156
     {
@@ -1773,6 +1782,7 @@ export const staticRestaurants = [
       rating: 4.4,
       safeFor: ["gluten", "soy"],
       image: "https://www.bestrestaurants.com.au/media/fr2lzu2w/2.jpg?v=1d819554760cb30",
+      coordinates: { lat: 40.704992770685934, lon: -73.89642927758109 }
     },
 
     //157
@@ -1783,7 +1793,8 @@ export const staticRestaurants = [
       cuisine: "Thai",
       rating: 4.4,
       safeFor: ["vegan", "vegetarian", "gluten", "halal"],
-      image: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/30/8c/60/05/fine-dining-set-up.jpg?w=900&h=500&s=1"
+      image: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/30/8c/60/05/fine-dining-set-up.jpg?w=900&h=500&s=1",
+      coordinates: { lat: 40.75990849677941, lon: -73.92697302175362 }
     },
     //158
     {
@@ -1793,7 +1804,8 @@ export const staticRestaurants = [
       cuisine: "Thai",
       rating: 4.1,
       safeFor: ["vegetarian", "vegan", "gluten", "shellfish"],
-      image: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/28/24/8b/b6/l-e-m-o-n-g-r-a-s-s-b.jpg?w=900&h=500&s=1"
+      image: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/28/24/8b/b6/l-e-m-o-n-g-r-a-s-s-b.jpg?w=900&h=500&s=1",
+      coordinates: { lat: 40.68884477681237, lon: -73.99310370641813 }
     },
     //159
     {
@@ -1803,7 +1815,8 @@ export const staticRestaurants = [
       cuisine: "Chinese",
       rating: 3.9,
       safeFor: ["halal"],
-      image: "https://resizer.otstatic.com/v3/photos/51899286-3?width=1280&height=720&webp=true"
+      image: "https://resizer.otstatic.com/v3/photos/51899286-3?width=1280&height=720&webp=true",
+      coordinates: { lat: 40.77101117698903, lon: -73.50182883524592 }
     },
     //160
     {
@@ -1813,7 +1826,8 @@ export const staticRestaurants = [
       cuisine: "Korean",
       rating: 4.0,
       safeFor: ["peanut", "nut", "vegetarian"],
-      image: "https://tb-static.uber.com/prod/enhanced-images/image-touchup-v1/bdedc4865fa8286e6012369c0e9e8a2c/6e5e18c323e95b3081b9edbefee0c783.jpeg"
+      image: "https://tb-static.uber.com/prod/enhanced-images/image-touchup-v1/bdedc4865fa8286e6012369c0e9e8a2c/6e5e18c323e95b3081b9edbefee0c783.jpeg",
+      coordinates: { lat: 40.76153278594163, lon: -73.76505291990468 }
     },
     //161
     {
@@ -1823,7 +1837,8 @@ export const staticRestaurants = [
       cuisine: "Chinese",
       rating: 4.0,
       safeFor: ["halal"],
-      image: "https://www.courant.com/wp-content/uploads/migration/2021/12/06/2CE2VIZX4BH23K7V74BABQUNR4.jpg?w=1024&h=670"
+      image: "https://www.courant.com/wp-content/uploads/migration/2021/12/06/2CE2VIZX4BH23K7V74BABQUNR4.jpg?w=1024&h=670",
+      coordinates: { lat: 40.72825034546575, lon: -73.98606014874328 }
     },
     //162
     {
@@ -1833,7 +1848,8 @@ export const staticRestaurants = [
       cuisine: "Indian",
       rating: 4.5,
       safeFor: ["vegetarian", "vegan", "gluten", "halal"],
-      image: "https://resizer.otstatic.com/v3/photos/61214981-3?width=752&height=752&webp=true"
+      image: "https://resizer.otstatic.com/v3/photos/61214981-3?width=752&height=752&webp=true",
+      coordinates: { lat: 40.722011483546446, lon: -73.98667833525053 }
     },
     //163
     {
@@ -1843,7 +1859,8 @@ export const staticRestaurants = [
       cuisine: "Other",
       rating: 4.0,
       safeFor: ["dairy"],
-      image: "https://img.taste.com.au/J6wxBVCQ/taste/2016/11/mango-with-yoghurt-and-almond-praline-26024-1.jpeg"
+      image: "https://img.taste.com.au/J6wxBVCQ/taste/2016/11/mango-with-yoghurt-and-almond-praline-26024-1.jpeg",
+      coordinates: { lat: 40.72627653973603, lon: -73.79126040641461 }
     },
     //164
     {
@@ -1853,7 +1870,8 @@ export const staticRestaurants = [
       cuisine: "Other",
       rating: 3.9,
       safeFor: ["halal"],
-      image: "https://breakfastwithnick.com/wp-content/uploads/qahwah-house-5.jpeg"
+      image: "https://breakfastwithnick.com/wp-content/uploads/qahwah-house-5.jpeg",
+      coordinates: { lat: 40.77538181474093, lon: -73.91153842175213 }
     },
     //165
     {
@@ -1863,7 +1881,8 @@ export const staticRestaurants = [
       cuisine: "Other",
       rating: 4.1,
       safeFor: ["dairy"],
-      image: "https://cdn.prod.website-files.com/6698def7b7c3e6fc0004a765/6797edeaecd2cb906f028b00_3rdAve_Location.jpg"
+      image: "https://cdn.prod.website-files.com/6698def7b7c3e6fc0004a765/6797edeaecd2cb906f028b00_3rdAve_Location.jpg",
+      coordinates: { lat: 40.76453163979647, lon: -73.91490873339761 }
     },
     //166
     {
@@ -1873,7 +1892,8 @@ export const staticRestaurants = [
       cuisine: "Other",
       rating: 4.2,
       safeFor: ["vegan", "vegetarian", "gluten"],
-      image: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2e/8b/81/6b/caption.jpg?w=900&h=500&s=1"
+      image: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2e/8b/81/6b/caption.jpg?w=900&h=500&s=1",
+      coordinates: { lat: 40.758278319589884, lon: -73.78601610641157 }
     },
     //167
     {
@@ -1883,7 +1903,8 @@ export const staticRestaurants = [
       cuisine: "Other",
       rating: 3.9,
       safeFor: ["gluten"],
-      image: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0d/c4/72/a3/photo4jpg.jpg?w=900&h=500&s=1"
+      image: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0d/c4/72/a3/photo4jpg.jpg?w=900&h=500&s=1",
+      coordinates: { lat: 40.75828502674917, lon: -73.78717627572712 }
     },
     //168
     {
@@ -1893,7 +1914,8 @@ export const staticRestaurants = [
       cuisine: "Thai",
       rating: 4.2,
       safeFor: ["vegetarian", "vegan", "gluten"],
-      image: "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqKUZzri0gKrmmBjsRaIVhMD8M8WsWIEN8BwYLbBDYHq8d0_SGyoqy-_cFbGthCu-Uosw71StpZu_8-iGOJsP-dLyAINwO9Yir1VfLCPknLyIKUrh-4ai2omRDfhc9NHU3YICxAhL9HKz_g=s1360-w1360-h1020-rw"
+      image: "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqKUZzri0gKrmmBjsRaIVhMD8M8WsWIEN8BwYLbBDYHq8d0_SGyoqy-_cFbGthCu-Uosw71StpZu_8-iGOJsP-dLyAINwO9Yir1VfLCPknLyIKUrh-4ai2omRDfhc9NHU3YICxAhL9HKz_g=s1360-w1360-h1020-rw",
+      coordinates: { lat: 40.72687406138124, lon: -73.78939220641456 }
     }
 
 ];
