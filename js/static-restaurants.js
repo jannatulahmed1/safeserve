@@ -19,7 +19,7 @@ export const staticRestaurants = [
     cuisine: "thai",
     rating: 5,
     safeFor: ["gluten", "halal"],
-    image: "https://www.tastingtable.com/img/gallery/14-best-thai-restaurants-in-nyc-ranked/l-intro-1684248672.jpg",
+    image: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1c/64/5c/6b/photo7jpg.jpg?w=900&h=500&s=1",
     coordinates: { lat: 40.730119306228225, lon: -74.00425806403193 }
   },
   //3
@@ -30,7 +30,7 @@ export const staticRestaurants = [
     cuisine: "Japanese",
     rating: 4.3,
     safeFor: ["nut", "milk", "egg", "wheat"],
-    image: "httpc/b92d4926516c2635a39581f43cd533a0.jpeg",
+    image: "https://tb-static.uber.com/prod/image-proc/processed_images/271a6df86a95515db0d11981df47a72c/b92d4926516c2635a39581f43cd533a0.jpeg",
     coordinates: { lat: 40.74489512614467, lon: -73.98784762170207 }
   },
   //4
@@ -302,7 +302,7 @@ export const staticRestaurants = [
       cuisine: "other",
       rating: 4.3,
       safeFor: ["gluten", "wheat", "soy", "dairy", "egg", "nut"],
-      image: "https://thevillagesun.com/wp-content/uploads/2020/03/elenis-exterior.jpg",
+      image: "https://www.erinmckennasbakery.com/cdn/shop/files/DSC00519-2.jpg?v=1728427100&width=480",
       coordinates: { lat: 40.722785802985356, lon: -73.99182170229555 }
     },
     //26 
@@ -325,7 +325,7 @@ export const staticRestaurants = [
       cuisine: "Italian",
       rating: 4.4,
       safeFor: ["nut"],
-      image: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiKP9pWka_LXLlUdIX1xBOUiA_InMKv8QWxMu66rT3XlQMLC_hQLxmHdzxN8rmoYuHf4d2bwbL31Jm6x0u5YnORzFgFcWss_MZ5mCcdwAsi0KudrpT-MUvCLX6oZ306QKO9lY4p99wuR6g/s1600/64999114_2398134196905023_3815960296535621632_n.jpg",
+      image: "https://bareburger.com/wp-content/uploads/2024/02/Bareburger-restaurant-front-on-31st-Ave-Astoria-New-York-with-people-enjoying-delicious-sustainable-meals.webp",
       coordinates: { lat: 40.76092241834041, lon: -73.9903935739165 }
     },
 
@@ -689,7 +689,7 @@ export const staticRestaurants = [
       cuisine: "Other",
       rating: 4.3,
       safeFor: ["peanut", "tree nut", "egg", "dairy", "soy", "sesame"],
-      image: "https://s3-media0.fl.yelpcdn.com/bphoto/9TszaPtiRB_YWvKrMF_hLw/348s.jpg",
+      image: "https://sdg-migration-id.s3.amazonaws.com/Interior-Design-H2R-Bagel-Yard-Dubai-01.jpg",
       coordinates: { lat: 40.69662956669542, lon: -73.65391682300039 }
     },
 
@@ -1176,12 +1176,12 @@ export const staticRestaurants = [
     },
     //100
     {
-      name: "Ghenet Ethiopian Restaurant",
+      name: "Ghenet",
       location: "1563 2nd Ave, New York, NY 10028",
       link: "http://www.ghenetethiopian.com/",
       cuisine: "Ethiopian",
       rating: 4.3,
-      safeFor: ["peanut", "nut", "tree nut", "gluten", "dairy", "soy"],
+      safeFor: ["tree nut", "gluten", "dairy", "soy"],
       image: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/06/cd/5f/c8/ghenet-brooklyn.jpg?w=600&h=400&s=1",
       coordinates: { lat: 40.77499164352736, lon: -73.95412507572556 }
     },
