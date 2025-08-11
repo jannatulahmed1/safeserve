@@ -623,7 +623,7 @@ export const staticRestaurants = [
       cuisine: "Other",
       rating: 4.4,
       safeFor: ["peanut", "tree nut", "egg", "dairy", "soy", "sesame"],
-
+      image: "https://media.timeout.com/images/105776177/750/422/image.jpg"
     },
 
     //57
@@ -634,6 +634,8 @@ export const staticRestaurants = [
       cuisine: "Other",
       rating: 4.7,
       safeFor: ["peanut", "tree nut", "egg", "dairy", "soy", "sesame"],
+      image: "https://images.squarespace-cdn.com/content/v1/5c8d03277d0c91483c66d702/1553352084482-DANPXXWJNNCPP0444H01/Cauliflower.jpg"
+
     },
 
     //58
@@ -644,6 +646,8 @@ export const staticRestaurants = [
       cuisine: "Other",
       rating: 4.3,
       safeFor: ["peanut", "tree nut", "egg", "dairy", "soy", "sesame"],
+      image: "https://s3-media0.fl.yelpcdn.com/bphoto/9TszaPtiRB_YWvKrMF_hLw/348s.jpg"
+
     },
 
     //59
@@ -654,6 +658,8 @@ export const staticRestaurants = [
       cuisine: "Other",
       rating: 4.6,
       safeFor: ["peanut", "tree nut", "egg", "dairy", "soy", "sesame"],
+      image: "https://www.bakedcravings.com/cdn/shop/files/cup-cupp.png?crop=center&v=1744922721&width=1920"
+
     },
 
     //60
@@ -664,6 +670,8 @@ export const staticRestaurants = [
       cuisine: "Other",
       rating: 4.5,
       safeFor: ["peanut", "nut", "tree nut", "gluten", "dairy", "egg", "soy", "sesame"],
+      image: "https://img.cdn4dd.com/cdn-cgi/image/fit=cover,width=600,height=400,format=auto,quality=80/https://doordash-static.s3.amazonaws.com/media/store/header/72d24eef-5d93-4962-a398-78924e429f8f.jpg"
+
     },
 
     //61
@@ -674,6 +682,8 @@ export const staticRestaurants = [
       cuisine: "Other",
       rating: 4.3,
       safeFor: ["peanut", "nut", "tree nut", "gluten", "dairy", "egg", "soy"],
+      image: "https://res.cloudinary.com/the-infatuation/image/upload/v1679670228/images/NoahDevereaux_Peacefood_29_VeggieBurger_l1nxgy.jpg"
+
     },
 
     //62
@@ -684,6 +694,7 @@ export const staticRestaurants = [
       cuisine: "Other",
       rating: 4.4,
       safeFor: ["peanut", "nut", "tree nut", "gluten", "dairy", "egg", "soy"],
+      image: "https://static.spotapps.co/website_images/ab_websites/192032_website_v1/video_poster.jpg"
     },
 
     //63
@@ -694,6 +705,8 @@ export const staticRestaurants = [
       cuisine: "Other",
       rating: 4.4,
       safeFor: ["peanut", "nut", "tree nut", "gluten", "dairy", "egg", "soy"],
+      image: "https://s3-media0.fl.yelpcdn.com/bphoto/QYKHtlqXgAuOUG3RO-vETA/348s.jpg"
+
     },
 
     //64
@@ -704,6 +717,8 @@ export const staticRestaurants = [
       cuisine: "Other",
       rating: 4.3,
       safeFor: ["peanut", "nut", "tree nut", "gluten", "dairy", "egg", "soy", "sesame"],
+      image: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/25/64/bc/f6/tasty-plant-based-lunch.jpg?w=900&h=500&s=1"
+
     },
 
     //65
@@ -714,9 +729,10 @@ export const staticRestaurants = [
       cuisine: "Other",
       rating: 4.6,
       safeFor: ["peanut", "nut", "tree nut", "gluten", "dairy", "soy"],
+      image: "https://static.spotapps.co/spots/9a/4c05490639435a98024fee1eeeade6/:original"
+
     },
     
-
     //66
     {
       name: "Franchia Vegan Café",
@@ -725,6 +741,8 @@ export const staticRestaurants = [
       cuisine: "Other",
       rating: 4.3,
       safeFor: ["peanut", "nut", "tree nut", "gluten", "dairy", "soy", "sesame"],
+      image: "https://herbivoresheaven.com/wp-content/uploads/2023/05/franchia-2.jpg?w=1024"
+
     },
 
     //67
@@ -735,6 +753,8 @@ export const staticRestaurants = [
       cuisine: "Other",
       rating: 4.4,
       safeFor: ["peanut", "nut", "tree nut", "gluten", "dairy", "egg"],
+      image: "https://www.littlecupcakebakeshop.com/8a36fe8f573ef095fc354cce1bc7b7b2780f07c9.jpg"
+
     }, 
 
     //68
@@ -745,6 +765,8 @@ export const staticRestaurants = [
       cuisine: "Other",
       rating: 4.5,
       safeFor: ["gluten", "dairy", "egg", "nut"],
+      image: "https://images.squarespace-cdn.com/content/v1/64dfd81e88c9a30298f26380/176ad61d-d4b9-4a6c-96a1-11c02680b457/packaged+group_1.jpg"
+
     },
 
     //69
@@ -755,6 +777,8 @@ export const staticRestaurants = [
       cuisine: "American",
       rating: 4.4,
       safeFor: ["peanut", "nut", "tree nut", "gluten", "dairy", "soy"],
+      image: "https://media.newyorker.com/photos/5c8ade761c20e62d0082ae0c/master/w_1600%2Cc_limit/190325_r33968.jpg"
+
     },
 
     //70
@@ -765,6 +789,8 @@ export const staticRestaurants = [
       cuisine: "Other",
       rating: 4.5,
       safeFor: ["peanut", "nut", "tree nut", "gluten", "dairy", "egg", "soy", "sesame"],
+      image: "https://blossom-cafe.com/static/media/bg-img-23.3fe5c211c758c3f0ecdd.jpg"
+
     },
 
     //71
@@ -775,6 +801,8 @@ export const staticRestaurants = [
       cuisine: "Other",
       rating: 4.4,
       safeFor: ["nut", "tree nut", "dairy", "egg", "soy"],
+      image: "https://images.getbento.com/accounts/3cca86fd1cad92b59651204131a0ae59/media/images/35013TwoHands_NoHo_Mar24_LAlmeida-4836.jpg?w=1200&fit=crop&auto=compress,format&cs=origin&crop=focalpoint&fp-x=0.5&fp-y=0.5"
+
     },
 
     //72
@@ -785,6 +813,8 @@ export const staticRestaurants = [
       cuisine: "Japanese",
       rating: 4.3,
       safeFor: ["peanut", "nut", "tree nut", "gluten", "soy", "sesame", "dairy"],
+      image: "https://commonmarketrestaurants.com/wp-content/uploads/2024/03/BALLAST-13.jpg"
+
     },
     //73
     {
@@ -794,6 +824,8 @@ export const staticRestaurants = [
       cuisine: "Other",
       rating: 4.2,
       safeFor: ["nut", "tree nut", "dairy", "egg", "soy"],
+      image: "https://images.otstatic.com/prod/24610593/1/large.jpg"
+
     },
 
     //74
@@ -804,6 +836,8 @@ export const staticRestaurants = [
       cuisine: "Vietnamese",
       rating: 4.0,
       safeFor: ["peanut", "nut", "tree nut", "soy", "sesame", "gluten", "egg"],
+      image: "https://popmenucloud.com/cdn-cgi/image/width%3D1200%2Cheight%3D1200%2Cfit%3Dscale-down%2Cformat%3Dauto%2Cquality%3D60/ongzivjk/09a6ec0d-2d99-48ec-ae2a-b26dac3cb28e.jpeg"
+
     },
 
     //75
@@ -814,6 +848,8 @@ export const staticRestaurants = [
       cuisine: "Other",
       rating: 4.3,
       safeFor: ["peanut", "nut", "tree nut", "dairy", "soy", "gluten"],
+      image: "https://robbreport.com/wp-content/uploads/2020/06/nix-nyc-closes.jpg?w=1000"
+
     },
 
     //76
@@ -824,6 +860,8 @@ export const staticRestaurants = [
       cuisine: "American",
       rating: 4.2,
       safeFor: ["peanut", "nut", "tree nut", "gluten", "dairy", "soy", "egg"],
+      image: "https://s3-media0.fl.yelpcdn.com/bphoto/oF4mRD6-5JlBJ9blSVSXlQ/1000s.jpg"
+
     },
 
     //77
@@ -834,6 +872,8 @@ export const staticRestaurants = [
       cuisine: "Other",
       rating: 4.2,
       safeFor: ["peanut", "nut", "tree nut", "gluten", "dairy", "soy", "egg"],
+      image: "https://bluestonelane.com/wp-content/uploads/2022/02/BL201218306777-1-scaled.jpg"
+
     },
 
     //78
@@ -844,6 +884,8 @@ export const staticRestaurants = [
       cuisine: "Other",
       rating: 4.1,
       safeFor: ["peanut", "nut", "tree nut", "soy", "sesame", "gluten"],
+      image: "https://www.tinbuilding.com/wp-content/uploads/2024/09/download-6-scaled-920x518.webp"
+
     },
 
     //79
@@ -854,6 +896,8 @@ export const staticRestaurants = [
       cuisine: "Mediterranean",
       rating: 4.3,
       safeFor: ["peanut", "nut", "tree nut", "gluten", "soy", "sesame"],
+      image: "https://northwoodoffice-assets.imgix.net/goBallantyne/images/heroes/NORTHITALIA156-2.jpg?auto=compress%2Cformat&crop=focalpoint&fit=crop&fp-debug=&fp-x=0.4993&fp-y=0.7915&fp-z=1&h=1080&ixlib=php-3.1.0&q=80&v=1718293452&w=1920"
+
     },
 
     //80
@@ -864,6 +908,8 @@ export const staticRestaurants = [
       cuisine: "American",
       rating: 4.5,
       safeFor: ["peanut", "nut", "tree nut", "gluten", "dairy", "egg", "soy"],
+      image: "https://hips.hearstapps.com/hmg-prod/images/dsc01939-1638289406.jpg?crop=0.669xw:1.00xh;0.240xw,0&resize=640:*"
+
     },
 
     //81
@@ -874,6 +920,9 @@ export const staticRestaurants = [
       cuisine: "Other",
       rating: 4.3,
       safeFor: ["peanut", "nut", "tree nut", "gluten", "dairy", "soy"],
+      image: "https://media.timeout.com/images/106155236/750/562/image.jpg"
+
+
     },
 
     //82
@@ -884,6 +933,7 @@ export const staticRestaurants = [
       cuisine: "Other",
       rating: 4.6,
       safeFor: ["peanut", "nut", "tree nut", "gluten", "soy", "sesame"],
+      image: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/08/4e/9d/c5/the-spacious-interior.jpg?w=900&h=500&s=1"
     },
 
     //83
@@ -894,6 +944,7 @@ export const staticRestaurants = [
       cuisine: "Other",
       rating: 4.4,
       safeFor: ["peanut", "nut", "tree nut", "gluten", "soy", "sesame", "dairy"],
+      image: "https://images.squarespace-cdn.com/content/v1/51978642e4b041b39c92577d/1636317703723-M80NKSHEVDWPTKFBM15S/image-asset.jpeg"
     },
 
     //84
@@ -904,6 +955,8 @@ export const staticRestaurants = [
       cuisine: "Other",
       rating: 4.6,
       safeFor: ["peanut", "nut", "tree nut", "gluten", "soy", "sesame"],
+      image: "https://images.squarespace-cdn.com/content/v1/63e4114354125674f89227f9/f22720dc-d25d-4514-87dd-f4f130ddf11d/Avant+Garden_Medsker_149.jpg",
+
     },
 
     //85
@@ -914,7 +967,7 @@ export const staticRestaurants = [
       cuisine: "American Diner",
       rating: 4.3,
       safeFor: ["peanut", "nut", "tree nut", "gluten", "dairy", "egg"],
+      image: "https://static01.nyt.com/images/2022/12/07/multimedia/07rest-s-and-p1/06rest-s-and-p1-superJumbo.jpg",
     },
-
 
 ];
