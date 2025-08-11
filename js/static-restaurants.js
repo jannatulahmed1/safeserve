@@ -1,3 +1,4 @@
+
 export const staticRestaurants = [
   //1
   {
@@ -7,7 +8,7 @@ export const staticRestaurants = [
     cuisine: "american",
     rating: 4,
     safeFor: ["vegan", "gluten"],
-    image: "https://experiencenomad.com/wp-content/uploads/2015/10/the-little-beet-nomad-1.jpg",
+    image: "https://us-east-1.graphassets.com/A34TivACHQGezGfQcXj8zz/cmd62lgfq0guz07k5tzvfgbpt",
     coordinates: { lat: 40.74413354145032, lon: -73.98885349471682 }
   },
   //2
@@ -18,7 +19,7 @@ export const staticRestaurants = [
     cuisine: "thai",
     rating: 5,
     safeFor: ["gluten", "halal"],
-    image: "https://img-us.didaudo.net/us-locations/US/000/002/2403/top-thai-55-carmine-3.jpg?output=webp&fit=cover&w=800&h=600",
+    image: "https://www.tastingtable.com/img/gallery/14-best-thai-restaurants-in-nyc-ranked/l-intro-1684248672.jpg",
     coordinates: { lat: 40.730119306228225, lon: -74.00425806403193 }
   },
   //3
@@ -29,7 +30,7 @@ export const staticRestaurants = [
     cuisine: "Japanese",
     rating: 4.3,
     safeFor: ["nut", "milk", "egg", "wheat"],
-    image: "https://bondisushi.com/wp-content/uploads/2021/06/S7A0470-min-scaled.jpg",
+    image: "httpc/b92d4926516c2635a39581f43cd533a0.jpeg",
     coordinates: { lat: 40.74489512614467, lon: -73.98784762170207 }
   },
   //4
@@ -40,7 +41,7 @@ export const staticRestaurants = [
     cuisine: "korean",
     rating: 4.2,
     safeFor: ["nut", "gluten"],
-    image: "https://tb-static.uber.com/prod/image-proc/processed_images/08971c78c3eb022be09c0441638d4a81/4eed3468b168fc6e31dff0bb81a347bc.jpeg",
+    image: "https://img.cdn4dd.com/cdn-cgi/image/fit=contain,width=1200,height=672,format=auto/https://doordash-static.s3.amazonaws.com/media/store/header/6439442b-a8fe-4a2b-a703-c4bbbb7976d4.jpg",
     coordinates: { lat: 40.716348037334015, lon: -73.95983007937637 }
   },
   //5
@@ -51,7 +52,7 @@ export const staticRestaurants = [
     cuisine: "Japanese",
     rating: 4.5,
     safeFor: ["nut", "milk", "egg", "shellfish", "wheat"],
-    image: "https://popmenucloud.com/cdn-cgi/image/width%3D1200%2Cheight%3D1200%2Cfit%3Dscale-down%2Cformat%3Dauto%2Cquality%3D60/xhektjys/6c5360e2-ce3b-4390-a827-111038738f4b.jpg",
+    image: "https://thegrovela.com/wp-content/uploads/2017/05/BlueRibbon_900x600.jpg",
     coordinates: { lat: 40.726180170591036, lon: -74.00244569286802 }
   },
   //6
@@ -73,7 +74,7 @@ export const staticRestaurants = [
     cuisine: "American",
     rating: 4.1,
     safeFor: ["nut", "vegetarian"],
-    image: "https://resizer.otstatic.com/v3/photos/78389751-0?width=320&height=180&webp=true",
+    image: "https://nashvillelifestyles.com/downloads/37284/download/NL_95-3.jpeg?cb=fd75d6a25ee881acb0aeccaf5cd57952",
     coordinates: { lat: 40.73575346221845, lon: -74.0015194505387 }
   },
   //8
@@ -84,7 +85,7 @@ export const staticRestaurants = [
     cuisine: "Japanese",
     rating: 4.4,
     safeFor: ["nut", "gluten"],
-    image: "https://static1.squarespace.com/static/5ce5a075d10d8800011f0906/t/5f345498f4e75e00addf0918/1601430142895/200810_NAMINORI_010.jpg?format=1500w",
+    image: "https://images.squarespace-cdn.com/content/5ce5a075d10d8800011f0906/1571945039606-RK6DK380PVF6SB0YOTN6/190908_NAMINORI_193-2+copy.jpg?content-type=image%2Fjpeg",
     coordinates: { lat: 40.719248834118595, lon: -73.95289070636136 }
   },
   //9
@@ -95,7 +96,7 @@ export const staticRestaurants = [
     cuisine: "Portuguese",
     rating: 4.0,
     safeFor: ["nut", "gluten"],
-    image: "https://joeybatscafe.com/cdn/shop/files/20240219_142910_1800x.jpg?v=1709638434",
+    image: "https://images.squarespace-cdn.com/content/5c6c8783523958b58c320e1b/1669049642330-R9WFOGJWAA90CF1PG0LS/DSC07431.jpg?format=1500w&content-type=image%2Fjpeg",
     coordinates: { lat: 40.72020760586001, lon: -73.99039115054022 }
   },
   //10
@@ -161,7 +162,7 @@ export const staticRestaurants = [
     cuisine: "Other",
     rating: 3.6,
     safeFor: ["peanut", "egg", "halal", "vegetarian"],
-    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRucOfrds13Z9OQ98zv9BheL59tkSe20FmZA&s",
+    image: "https://tb-static.uber.com/prod/image-proc/processed_images/c5904d0578f413e4cf387720ece38620/fb86662148be855d931b37d6c1e5fcbe.jpeg",
     coordinates: { lat: 40.744031184907854, lon: -73.71842982170217 }
   },
   //16
@@ -892,7 +893,7 @@ export const staticRestaurants = [
       link: "https://www.nixny.com/",
       cuisine: "Other",
       rating: 4.3,
-      safeFor: ["peanut", "nut", "tree nut", "dairy", "soy", "gluten"],
+      safeFor: ["lupin", "nut", "tree nut", "dairy", "soy", "gluten"],
       image: "https://robbreport.com/wp-content/uploads/2020/06/nix-nyc-closes.jpg?w=1000",
       coordinates: { lat: 40.73351666586235, lon: -73.99367969231432 }
     },
@@ -1010,11 +1011,643 @@ export const staticRestaurants = [
       name: "Eisenberg's Sandwich Shop",
       location: "174 5th Ave, New York, NY 10010",
       link: "https://eisenbergssandwichshop.com/",
-      cuisine: "American Diner",
+      cuisine: "American",
       rating: 4.3,
       safeFor: ["peanut", "nut", "tree nut", "gluten", "dairy", "egg"],
       image: "https://static01.nyt.com/images/2022/12/07/multimedia/07rest-s-and-p1/06rest-s-and-p1-superJumbo.jpg",
       coordinates: { lat: 40.74130134853889, lon: -73.99008243464296 }
     },
+
+    //86
+    {
+      name: "Cafe Mogador",
+      location: "101 St Marks Pl, New York, NY 10009",
+      link: "https://cafemogador.com/",
+      cuisine: "Moroccan",
+      rating: 4.4,
+      safeFor: ["peanut", "nut", "tree nut", "gluten", "dairy", "soy", "sesame"],
+      image: "https://images.squarespace-cdn.com/content/v1/571da513c2ea511fcc0e4e6e/1497249761110-61IGXRO88GC9JJA0GHKZ/mogador2017-682.jpg?format=1500w",
+    },
+    //87
+    {
+      name: "Seamore's",
+      location: "184 7th Ave S, New York, NY 10014",
+      link: "https://seamores.com/",
+      cuisine: "Other",
+      rating: 4.3,
+      safeFor: ["peanut", "nut", "tree nut", "dairy", "soy", "gluten", "shellfish"],
+      image: "https://images.squarespace-cdn.com/content/v1/55ce1e48e4b06614877a8bfb/db359299-a1af-4bac-afa0-93d1985a2dc5/IMG_8675.jpg",
+
+    },
+    //88
+    {
+      name: "The Smith",
+      location: "55 3rd Ave, New York, NY 10003",
+      link: "https://thesmithrestaurant.com/",
+      cuisine: "American",
+      rating: 4.4,
+      safeFor: ["peanut", "nut", "tree nut", "gluten", "dairy", "egg", "soy"],
+      image: "https://thesmithrestaurant.com/wp-content/uploads/cache/2018/04/homefinal3/985760779.jpg",
+    },
+    //89
+    {
+      name: "Cookshop",
+      location: "156 10th Ave, New York, NY 10011",
+      link: "https://cookshopny.com/",
+      cuisine: "American",
+      rating: 4.5,
+      safeFor: ["peanut", "nut", "tree nut", "gluten", "dairy", "soy", "egg"],
+      image: "https://tb-static.uber.com/prod/image-proc/processed_images/ceae8c9585cca7b03999cb490bf99b35/3ac2b39ad528f8c8c5dc77c59abb683d.jpeg",
+    },
+
+    //90
+    {
+      name: "Westville",
+      location: "210 7th Ave S, New York, NY 10014",
+      link: "https://westvillenyc.com/",
+      cuisine: "American",
+      rating: 4.3,
+      safeFor: ["peanut", "nut", "tree nut", "gluten", "dairy", "soy", "egg"],
+      image: "https://resizer.otstatic.com/v3/photos/71292573-1?width=1280&height=720&webp=true",
+    },
+    //91
+    {
+      name: "Lure Fishbar",
+      location: "142 Mercer St, New York, NY 10012",
+      link: "https://lurefishbar.com/",
+      cuisine: "Other",
+      rating: 4.4,
+      safeFor: ["peanut", "nut", "tree nut", "shellfish", "gluten", "dairy", "soy"],
+      image: "https://pyxis.nymag.com/v1/imgs/b92/dfb/3f5dd7c602265a8648032985dfbb66bf41-lure-fishbar-01.2x.rsocial.w600.jpg",
+    },
+    //92
+    {
+      name: "Tacombi",
+      location: "255 W 43rd St, New York, NY 10036",
+      link: "https://tacombi.com/",
+      cuisine: "Mexican",
+      rating: 4.3,
+      safeFor: ["peanut", "nut", "tree nut", "gluten", "dairy", "soy", "corn"],
+      image: "https://secretchicago.com/wp-content/uploads/2023/07/Tacombi-scaled.jpg",
+    },
+    //93
+    {
+      name: "Breads Bakery",
+      location: "18 E 16th St, New York, NY 10003",
+      link: "https://breadsbakery.com/",
+      cuisine: "Other",
+      rating: 4.6,
+      safeFor: ["peanut", "nut", "tree nut", "gluten", "dairy", "egg"],
+      image: "https://images.getbento.com/accounts/0aca7e2e8357d677d40838963870b3d2/media/images/71251567fe37c5eb6-BREADS_BAKERY_chocolate_rugleach_Photographed_by_Paul_Wagtouicz_06.jpg?w=1800&fit=max&auto=compress,format&cs=origin&h=1800",
+    },
+    //94
+    {
+      name: "Jack's Wife Freda",
+      location: "224 Lafayette St, New York, NY 10012",
+      link: "https://jackswifefreda.com/",
+      cuisine: "Mediterranean",
+      rating: 4.4,
+      safeFor: ["peanut", "nut", "tree nut", "gluten", "dairy", "egg", "soy"],
+      image: "https://jackswifefreda.com/wp-content/uploads/2025/01/JWF_web_slideshow_202506-1170x658.jpg",
+    },
+    //95
+    {
+      name: "Taïm",
+      location: "222 Waverly Pl, New York, NY 10014",
+      link: "https://taimfalafel.com/",
+      cuisine: "Mediterranean",
+      rating: 4.5,
+      safeFor: ["peanut", "nut", "tree nut", "gluten", "dairy", "soy", "sesame"],
+      image: "https://taimkitchen.com/cdn/shop/files/profile_image_1744x1650.png?v=1682012719",
+    },
+    //96
+    {
+      name: "Chobani SoHo",
+      location: "95 Greene St, New York, NY 10012",
+      link: "https://chobani.com/soho",
+      cuisine: "Cafe",
+      rating: 4.2,
+      safeFor: ["peanut", "nut", "tree nut", "dairy", "soy"],
+      image: "https://static01.nyt.com/images/2012/08/01/nyregion/01yogurt2-cityroom/01yogurt2-cityroom-blog480.jpg",
+    },
+    //97 
+    {
+      name: "Chikalicious Dessert Bar",
+      location: "203 E 10th St, New York, NY 10003",
+      link: "https://chikalicious.com/",
+      cuisine: "Dessert",
+      rating: 4.3,
+      safeFor: ["peanut", "nut", "tree nut", "gluten", "dairy", "egg"],
+      image: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhNZcZuF_UY7n4Bsg51W3lmXuxOFHIzDbom7Ei-buFYxy5Q1UHpM618DnBsI0k5QLySRmXAWmZu8z-wu9iGMIJ7q6JPsR0uThc7OJ6vFzV9GWf7sFVgxXGG7eTbrCzXyL__QB3FaV8_LJRJ/s1600/IMG_3691.jpg",
+    },
+
+    //98
+    {
+      name: "Rubirosa",
+      location: "235 Mulberry St, New York, NY 10012",
+      link: "https://rubirosanyc.com/",
+      cuisine: "Italian",
+      rating: 4.5,
+      safeFor: ["peanut", "nut", "tree nut", "gluten", "dairy", "egg", "soy"],
+      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT39D7OapdGNFuym1eV_GzB_mtgGJDEDa5jfw&s",
+    },
+    //99
+    {
+      name: "Café Mogador",
+      location: "101 St Marks Pl, New York, NY 10009",
+      link: "https://cafemogador.com/",
+      cuisine: "Moroccan",
+      rating: 4.4,
+      safeFor: ["peanut", "nut", "tree nut", "gluten", "dairy", "soy", "sesame"],
+      image: "https://images.squarespace-cdn.com/content/v1/571da513c2ea511fcc0e4e6e/1497249761110-61IGXRO88GC9JJA0GHKZ/mogador2017-682.jpg?format=1500w"
+    },
+    //100
+    {
+      name: "Ghenet Ethiopian Restaurant",
+      location: "1563 2nd Ave, New York, NY 10028",
+      link: "http://www.ghenetethiopian.com/",
+      cuisine: "Ethiopian",
+      rating: 4.3,
+      safeFor: ["peanut", "nut", "tree nut", "gluten", "dairy", "soy"],
+      image: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/06/cd/5f/c8/ghenet-brooklyn.jpg?w=600&h=400&s=1",
+    },
+    //101
+    {
+      name: "Saray Turkish Kitchen",
+      location: "141 W 46th St, New York, NY 10036",
+      link: "http://www.saraynyc.com/",
+      cuisine: "Turkish",
+      rating: 4.1,
+      safeFor: ["peanut", "nut", "tree nut", "gluten", "dairy", "soy", "sesame"],
+      image: "https://images.allhungry.com/fit-in/412x0/filters:watermark(https://images.allhungry.com/0/logos/allhngry-logo-email1.png,center,center,90)/0/img/menu/Medite_rranean/Turkish_Pide1.jpg",
+    },
+    //102
+    {
+      name: "Calle Ocho",
+      location: "1703 Broadway, New York, NY 10019",
+      link: "https://calleochonyc.com/",
+      cuisine: "Cuban",
+      rating: 4.0,
+      safeFor: ["peanut", "nut", "tree nut", "gluten", "dairy", "soy"],
+      image: "https://img.grouponcdn.com/seocms/U5RnY84y1N9rMgF3X5ACJKJvHLw/hero_jpg-600x390",
+    },
+    //103
+    {
+      name: "Bengal Tiger",
+      location: "103 Lexington Ave, New York, NY 10016",
+      link: "http://www.bengaltigerrestaurant.com/",
+      cuisine: "Bengali",
+      rating: 4.2,
+      safeFor: ["peanut", "nut", "tree nut", "gluten", "dairy", "soy"],
+      image: "https://www.bengaltigerindianfood.com/images/bengal-tiger-nyc-2.jpg",
+
+    },
+    //104
+    {
+      name: "Casa Adela",
+      location: "112 Dyckman St, New York, NY 10040",
+      link: "https://casaadelanyc.com/",
+      cuisine: "Dominican",
+      rating: 4.1,
+      safeFor: ["peanut", "nut", "tree nut", "gluten", "dairy"],
+      image: "https://www.newschoolfreepress.com/wp-content/uploads/2024/02/IMG_7484-1568x882.jpg",
+    },
+    //105
+    {
+      name: "La Isla Restaurant",
+      location: "127 E 111th St, New York, NY 10029",
+      link: "http://laislanyc.com/",
+      cuisine: "Puerto Rican",
+      rating: 4.3,
+      safeFor: ["peanut", "nut", "tree nut", "gluten", "dairy", "soy"],
+      image: "https://tb-static.uber.com/prod/image-proc/processed_images/c1d351c2d1f4a5c318dbc6acb0a22b08/db809eadd12d21eb61044e0f3bf7c9b7.jpeg",
+    },
+    //106
+    {
+      name: "Queen of Sheba",
+      location: "102 W 116th St, New York, NY 10026",
+      link: "http://www.queenofshebaethiopian.com/",
+      cuisine: "Ethiopian",
+      rating: 4.0,
+      safeFor: ["peanut", "nut", "tree nut", "gluten", "dairy", "soy"],
+      image: "https://images.happycow.net/venues/1024/27/46/hcmp27468_1386660.jpeg",
+
+    },
+    //107
+    {
+      name: "Tacis Beyti",
+      location: "256 W 52nd St, New York, NY 10019",
+      link: "https://tacisbeyti.com/",
+      cuisine: "Turkish",
+      rating: 4.2,
+      safeFor: ["peanut", "nut", "tree nut", "gluten", "dairy", "soy", "sesame"],
+      image: "https://tb-static.uber.com/prod/image-proc/processed_images/8fa34ab58406604ee114e689401c8b5e/66345bbe137cfe4e15769c434c6c397c.jpeg",
+    },
+    //108
+    {
+      name: "Cubana Social",
+      location: "1703 Broadway, New York, NY 10019",
+      link: "https://cubananyc.com/",
+      cuisine: "Cuban",
+      rating: 4.1,
+      safeFor: ["peanut", "nut", "tree nut", "gluten", "dairy", "soy"],
+      image: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/15/a2/56/16/delicias.jpg?w=900&h=500&s=1",
+    },
+    //109
+    {
+      name: "Spice Symphony",
+      location: "155 E 55th St, New York, NY 10022",
+      link: "http://spicesymphonyusa.com/",
+      cuisine: "Bengali",
+      rating: 4.3,
+      safeFor: ["peanut", "nut", "tree nut", "gluten", "dairy", "soy"],
+      image: "https://cdn.durable.co/blocks/dtGLblx5PJvA7ezRjsco78wzrCVQy8grmj9s5EHqMT9v6Vw4TplOfendXgHz9HyP.jpg",
+    },
+    //110
+    {
+      name: "Addis Ethiopian Restaurant",
+      location: "2851 Broadway, New York, NY 10025",
+      link: "http://addisnyc.com/",
+      cuisine: "Ethiopian",
+      rating: 4.2,
+      safeFor: ["peanut", "nut", "tree nut", "gluten", "dairy", "soy"],
+      image: "https://static01.nyt.com/images/2017/10/18/dining/18HUNGRY-BENYAM-slide-9MRG/18HUNGRY-BENYAM-slide-9MRG-superJumbo.jpg",
+    },
+    //111
+    {
+      name: "Istanbul Kebab House",
+      location: "187 Chrystie St, New York, NY 10002",
+      link: "https://istanbulkebabnyc.com/",
+      cuisine: "Turkish",
+      rating: 4.0,
+      safeFor: ["peanut", "nut", "tree nut", "gluten", "dairy", "soy", "sesame"],
+      image: "https://static.wixstatic.com/media/463a77_bfc8607e9403469995b0e30424be849a~mv2.jpg/v1/fill/w_640,h_480,fp_0.50_0.50,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/463a77_bfc8607e9403469995b0e30424be849a~mv2.jpg",
+    },
+    //112
+    {
+      name: "Havana Central",
+      location: "151 W 46th St, New York, NY 10036",
+      link: "https://havanacentral.com/",
+      cuisine: "Cuban",
+      rating: 4.1,
+      safeFor: ["peanut", "nut", "tree nut", "gluten", "dairy", "soy"],
+      image: "https://images.getbento.com/accounts/cd484f615ff22a69714b023094b4ab4d/media/images/16008Mar_Y_Tierra_-22.jpg?w=1800&fit=max&auto=compress,format&cs=origin&h=1800"
+    },
+    //113
+    {
+      name: "Bengal Spice",
+      location: "1407 Broadway, New York, NY 10018",
+      link: "https://bengalspicenyc.com/",
+      cuisine: "Bengali",
+      rating: 4.0,
+      safeFor: ["peanut", "nut", "tree nut", "gluten", "dairy", "soy"],
+      image: "https://tb-static.uber.com/prod/image-proc/processed_images/353f6e37c46c76ea40a9a293c25538e7/9ba9ffab5f885fc3dac87838b3357014.webp",
+    },
+    //114
+    {
+      name: "El Malecon",
+      location: "2468 Broadway, New York, NY 10025",
+      link: "https://elmaleconnyc.com/",
+      cuisine: "Dominican",
+      rating: 4.2,
+      safeFor: ["peanut", "nut", "tree nut", "gluten", "dairy"],
+      image: "https://res.cloudinary.com/the-infatuation/image/upload/v1656120781/cms/EmilyS_NYC_Malecon_Exterior_02.jpg",
+    },
+    //115
+    {
+      name: "La Fonda Boricua",
+      location: "75 Bayard St, New York, NY 10013",
+      link: "http://www.lafondaboricua.com/",
+      cuisine: "Puerto Rican",
+      rating: 4.1,
+      safeFor: ["peanut", "nut", "tree nut", "gluten", "dairy", "soy"],
+      image: "https://lh3.googleusercontent.com/proxy/pzjTSemhlq57PqTef_TFFscZlQdfd_Uy0Pgvrukg8sffF4Z0hnZyuFaGH5-V1-AiO33Wm6bLNdCSdjQ3l_3S",
+    },
+    //116
+    {
+      name: "Meskerem Ethiopian Restaurant",
+      location: "3045 Broadway, New York, NY 10027",
+      link: "https://meskeremethiopian.com/",
+      cuisine: "Ethiopian",
+      rating: 4.3,
+      safeFor: ["peanut", "nut", "tree nut", "gluten", "dairy", "soy"],
+      image: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2d/5f/56/a4/caption.jpg?w=900&h=-1&s=1",
+
+    },
+    //117
+    {
+      name: "Turkuaz",
+      location: "244 E 58th St, New York, NY 10022",
+      link: "https://turkuaznyc.com/",
+      cuisine: "Turkish",
+      rating: 4.4,
+      safeFor: ["peanut", "nut", "tree nut", "gluten", "dairy", "soy", "sesame"],
+      image: "https://images.squarespace-cdn.com/content/v1/54d1a4cae4b0c27bb1ffc2ff/1683942994030-0GDV8JBUXJC2RF54CR5F/GettyImages-1129866002.jpg?format=2500w"
+    },
+    //118
+    {
+      name: "Café La Trova",
+      location: "2480 Broadway, New York, NY 10025",
+      link: "https://cafelatrovanyc.com/",
+      cuisine: "Cuban",
+      rating: 4.3,
+      safeFor: ["peanut", "nut", "tree nut", "gluten", "dairy", "soy"],
+      image: "https://media.timeout.com/images/105327395/image.jpg",
+    },
+    //120
+    {
+      name: "Lupa Osteria Romana",
+      location: "170 Thompson St, New York, NY 10012",
+      link: "https://www.luparestaurant.com/",
+      cuisine: "Italian",
+      rating: 4.5,
+      safeFor: ["peanut", "nut", "tree nut", "gluten", "dairy", "soy", "egg"],
+      image: "https://www.tagvenue.com/resize/b2/2b/widen-1680-noupsize;72055-the-writers-room-room-enhanced-v1-3213062.jpg",
+    },
+    //121
+    {
+      name: "Joe's Shanghai",
+      location: "9 Pell St, New York, NY 10013",
+      link: "https://www.joeshanghairestaurants.com/",
+      cuisine: "Chinese",
+      rating: 4.3,
+      safeFor: ["peanut", "nut", "tree nut", "gluten", "soy", "sesame"],
+      image: "https://static.wixstatic.com/media/8f8abd_9d6c9421ab0e445b94c9f1377e57527d~mv2.jpg/v1/fill/w_640,h_464,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/8f8abd_9d6c9421ab0e445b94c9f1377e57527d~mv2.jpg"
+    },
+    //122
+    {
+      name: "Junoon",
+      location: "27 W 24th St, New York, NY 10010",
+      link: "https://junoonnyc.com/",
+      cuisine: "Indian",
+      rating: 4.5,
+      safeFor: ["peanut", "nut", "tree nut", "gluten", "dairy", "soy", "mustard"],
+      image: "https://images.ctfassets.net/1aemqu6a6t65/47q3K4aaIwB0C7bvIMDj6t/c3fe4a45befb2bb210b847e37a3023a2/Junoon-Manhattan-NYC-Photo-Courtesy-1.jpg",
+    },
+    //123
+    {
+      name: "Los Tacos No.1",
+      location: "75 9th Ave, New York, NY 10011",
+      link: "https://www.lostacos1.com/",
+      cuisine: "Mexican",
+      rating: 4.6,
+      safeFor: ["peanut", "nut", "tree nut", "gluten", "dairy", "soy", "corn"],
+      image: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2a/19/d8/e7/caption.jpg?w=900&h=500&s=1",
+    },
+    //124
+    {
+      name: "Pure Thai Cookhouse",
+      location: "766 9th Ave, New York, NY 10019",
+      link: "http://purethaicookhouse.com/",
+      cuisine: "Thai",
+      rating: 4.4,
+      safeFor: ["peanut", "nut", "tree nut", "gluten", "soy", "sesame", "shellfish"],
+      image:"https://media-cdn.tripadvisor.com/media/photo-s/0f/16/aa/e4/inside-pure-thai-cookhouse.jpg", 
+    },
+    //125
+    {
+      name: "Sushi Nakazawa",
+      location: "23 Commerce St, New York, NY 10014",
+      link: "https://sushinakazawa.com/",
+      cuisine: "Japanese",
+      rating: 4.8,
+      safeFor: ["peanut", "nut", "tree nut", "soy", "fish", "shellfish"],
+      image: "https://media.timeout.com/images/101435865/750/422/image.jpg"
+    },
+    //126
+    {
+      name: "ABC Kitchen",
+      location: "35 E 18th St, New York, NY 10003",
+      link: "https://abchome.com/eat/abc-kitchen/",
+      cuisine: "American",
+      rating: 4.5,
+      safeFor: ["peanut", "nut", "tree nut", "gluten", "dairy", "soy", "egg"],
+      image: "https://static01.nyt.com/images/2010/06/02/dining/02restspan-1/REST1-articleLarge.jpg?quality=75&auto=webp&disable=upscale",
+    },
+    //127
+    {
+      name: "Ousia",
+      location: "211 E 43rd St, New York, NY 10017",
+      link: "https://ousiany.com/",
+      cuisine: "Mediterranean",
+      rating: 4.4,
+      safeFor: ["peanut", "nut", "tree nut", "gluten", "dairy", "soy", "sesame"],
+      image: "https://www.estiator.com/wp-content/uploads/2017/06/ESTIATOR-JUNE17-SCENE-LIVANOS.jpg",
+    },
+    //128
+    {
+      name: "Cote Korean Steakhouse",
+      location: "16 W 22nd St, New York, NY 10010",
+      link: "https://cotenyc.com/",
+      cuisine: "Korean",
+      rating: 4.5,
+      safeFor: ["peanut", "nut", "tree nut", "soy", "gluten", "sesame"],
+      image: "https://cdn.prod.website-files.com/64dc46f3bd5126f2de6e5a04/65739b9b725aeb68ac5c985a_BUTCHERSFEAST-forweb.webp",
+    },
+    //129
+    {
+      name: "Estiatorio Milos",
+      location: "125 W 55th St, New York, NY 10019",
+      link: "https://www.milosnyc.com/",
+      cuisine: "Greek",
+      rating: 4.6,
+      safeFor: ["peanut", "nut", "tree nut", "shellfish", "gluten", "dairy", "soy"],
+      image: "https://platform.ny.eater.com/wp-content/uploads/sites/6/chorus/uploads/chorus_asset/file/16295295/20190513_GH_MILOS_1015.jpg?quality=90&strip=all&crop=16.666666666667%2C0%2C66.666666666667%2C100&w=2400",
+    },
+    //130
+    {
+      name: "Delice & Sarrasin",
+      location: "17 Commerce St, New York, NY 10014",
+      link: "https://delice-sarrasin.com/",
+      cuisine: "French (Gluten-free, Buckwheat specialties)",
+      rating: 4.5,
+      safeFor: ["buckwheat", "gluten", "dairy", "nut", "egg"],
+      image: "https://media.newyorker.com/photos/614cee9b831236d78429458c/master/pass/211004_r39103.jpg",
+    },
+    //131
+    {
+      name: "Alimama Tea",
+      location: "89A Bayard St, New York, NY 10013",
+      link: "https://www.orderalimama.com/#most-popular",
+      cuisine: "Other",
+      rating: 4.5,
+      safeFor: ["gluten", "dairy", "vegan", "egg"],
+      image: "https://s3-media0.fl.yelpcdn.com/bphoto/P8lTLUP_C89JBv6qKOEAdQ/348s.jpg",
+    
+    }, 
+    //132
+    {
+      name: "T-Swirl Crepe (Forest Hills)",
+      location: "70-23 Austin St, Forest Hills, NY 11375",
+      link: "http://www.tswirlcrepeforesthills.com/",
+      cuisine: "Other",
+      rating: 4.7,
+      image:"https://static.where-e.com/United_States/New_York/Queens_County/Tswirl-Crepe--Forest-Hills_3cde5267eb06ef3d6ad0d48da8b1adad.jpg",
+    
+    },
+    //133
+    {
+      name: "Bricktown Bagels & Cafe",
+      location: "51-06 Vernon Blvd, Long Island City, NY 11101",
+      link: "https://www.bricktownbagelscafe.com/",
+      cuisine: "Other",
+      rating: 4.1,
+      safeFor: ["gluten"], 
+      image: "https://lh3.googleusercontent.com/p/AF1QipOA3AaKa-5Hj4APxC_gtRhKpQyiMiNCTXjY7SvU=s1360-w1360-h1020",
+    
+    },
+    //134
+    {
+      name: "Rawsome Treats",
+      location: "158 Orchard St, New York, NY 10002",
+      link: "http://www.rawsometreats.com/",
+      cuisine: "Other",
+      rating: 4.5,
+      safeFor: ["gluten", "dairy"], 
+      image: "https://s3-media0.fl.yelpcdn.com/bphoto/XQ3vvp0hLw_dkctQOgzm_A/348s.jpg",
+    
+    },
+    //135
+    {
+      name: "Postcard Bakery",
+      location: "31-33 Carmine St, New York, NY 10014",
+      link: "https://www.postcardbakery.co/",
+      cuisine: "Other",
+      rating: 4.8,
+      safeFor: ["gluten"], 
+      image: "https://cdn.thespaces.com/wp-content/uploads/2024/04/Postcard-BWF-20240227-160-ret.jpg",
+    
+    },
+    //136
+    {
+      name: "Petit Chou",
+      location: "229 1st Ave, New York, NY 10003",
+      link: "https://www.petitchounyc.com/",
+      cuisine: "Other",
+      rating: 5.0,
+      safeFor: ["gluten"],
+      image: "https://c8.alamy.com/comp/2E3X23Y/petit-chou-229-first-ave-new-york-nyc-storefront-photo-of-a-patisserie-in-the-east-village-neighborhood-in-manhattan-2E3X23Y.jpg",
+    },
+    //137
+    {
+      name: "Thyme & Tonic",
+      location: "474 Columbus Ave, New York, NY 10024",
+      link: "https://www.thymeandtonic.com/",
+      cuisine: "Other",
+      rating: 4.0,
+      safeFor: ["gluten"], 
+      image: "https://yeahthatskosher.com/wp-content/uploads/2023/04/thyme-tonic-kosher-uws-nyc-new-menu-meat-uws9.jpg",
+    
+    },
+    //138
+    {
+      name: "Win Son Bakery",
+      location: "164 Graham Ave, Brooklyn, NY 11206",
+      link: "https://winsonbrooklyn.com/",
+      cuisine: "Other",
+      rating: 4.5,
+      safeFor: ["gluten"], 
+      image: "https://d2gi7vg84kjm7x.cloudfront.net/store/e609863a4ea324b4f3df20f7e3022ec8.jpg?vertical=",
+    
+    },
+    //139
+    {
+      name: "Dagon",
+      location: "2454 Broadway, New York, NY 10024",  
+      link: "https://www.dagonnyc.com/",
+      cuisine: "Other",
+      rating: 4.8,
+      safeFor: ["gluten"],
+      image: "https://s3-media0.fl.yelpcdn.com/bphoto/Ar6N8EWl1O54tQNWWESe2g/348s.jpg",
+    },
+    //140
+    {
+      name: "Sixteen Mill",
+      location: "552 Union St, Brooklyn, NY 11215", 
+      link: "https://sixteenmill.com/",
+      cuisine: "Other",
+      rating: 4.8, 
+      safeFor: ["gluten", "vegan"],
+      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSM3AstQSPbT1P39tORYkSCS2qby_iMKZ3hrdZjl7scOXQvngPfInAL7s4Z5iZKi2O3LU&usqp=CAU",
+    },
+    //141
+    {
+      name: "Divyas Kitchen",
+      location: "110 7th Ave, New York, NY 10011",
+      link: "https://divyaskitchen.com/",
+      cuisine: "Indian, Vegetarian, Gluten-free options",
+      rating: 4.2,
+      safeFor: ["lupin", "buckwheat", "dairy", "nut"],
+      image: "https://tb-static.uber.com/prod/image-proc/processed_images/7b16425afe90a523819c9cc08686f6e0/df577d3a0807d3bb859f2fb53aefcd86.jpeg",
+    },
+    //142
+    {
+      name: "Kesté Pizza & Vino",
+      location: "271 Bleecker St, New York, NY 10014",
+      link: "https://kestepizza.com/",
+      cuisine: "Italian",
+      rating: 4.5,
+      safeFor: ["buckwheat", "gluten", "nut", "dairy"],
+      image: "https://images.squarespace-cdn.com/content/v1/53cc1616e4b0f4361f8ace24/1474327559742-O8NM8CY3QRF40YBFIE4I/image-asset.jpeg",
+    },
+
+    //143
+    {
+      name: "Huertas",
+      location: "107 1st Avenue, New York, NY 10009",
+      link: "https://huertasnyc.com/",
+      cuisine: "Spanish",
+      rating: 4.4,
+      safeFor: ["mollusk", "nut", "gluten", "dairy", "soy"],
+      image: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/10/7a/57/6f/feasting.jpg?w=900&h=500&s=1",
+    },
+    //144
+    {
+      name: "Beyond Sushi",
+      location: "62 Gansevoort St, New York, NY 10014",
+      link: "https://beyondsushi.com/",
+      cuisine: "Vegan Sushi",
+      rating: 4.3,
+      safeFor: ["mollusk", "lupin", "buckwheat", "nut", "soy", "gluten"],
+      image: "https://theminagroup.com/wp-content/uploads/2024/11/restaurants-01.jpg",
+    },
+    //145
+    {
+      name: "Bistango",
+      location: "145 E 50th St, New York, NY 10022",
+      link: "https://bistango.com/",
+      cuisine: "American/Italian",
+      rating: 4.2,
+      safeFor: ["peanut", "nut", "tree nut", "gluten", "dairy", "egg"],
+      image: "https://media.timeout.com/images/106147491/750/562/image.jpg",
+    },
+    //146
+    {
+      name: "Comfort Diner",
+      location: "25 E 21st St, New York, NY 10010",
+      link: "https://comfortdinernyc.com/",
+      cuisine: "American Diner",
+      rating: 4.1,
+      safeFor: ["peanut", "nut", "tree nut", "sesame"],
+      image: "https://southshorehomelifeandstyle.com/wp-content/uploads/2020/11/NZ6_0171-scaled.jpg",
+    },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ];
