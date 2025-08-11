@@ -348,7 +348,7 @@ export const staticRestaurants = [
       link: "https://sushiyasakanyc.com/",
       cuisine: "Japanese",
       rating: 4.2,
-      safeFor: ["soy", "shellfish", "fish", "sesame"],
+      safeFor: ["soy", "shellfish", "sesame"],
       image: "https://www.yasaka.nyc/_nuxt/img/index.a878b3c.png",
       coordinates: { lat: 40.7563734306029, lon: -73.96849560949936 }
     },
@@ -1436,7 +1436,7 @@ export const staticRestaurants = [
       link: "https://sushinakazawa.com/",
       cuisine: "Japanese",
       rating: 4.8,
-      safeFor: ["peanut", "nut", "tree nut", "soy", "fish", "shellfish"],
+      safeFor: ["peanut", "nut", "tree nut", "soy"],
       image: "https://media.timeout.com/images/101435865/750/422/image.jpg",
       coordinates: { lat: 40.73190969150424, lon: -74.00451975059184 }
     },
@@ -1734,7 +1734,7 @@ export const staticRestaurants = [
       link: "https://www.shogunjapanhollis.com/",
       cuisine: "Japanese",
       rating: 4.2,
-      safeFor: ["gluten", "dairy", "soy", "egg", "fish", "shellfish", "nut"],
+      safeFor: ["gluten", "dairy", "soy", "egg", "nut"],
       image: "https://d1w7312wesee68.cloudfront.net/ZBJL4sJsZFpBnOU1wOLnrdyVZjGbxAGiX5yEP8S2dRI/ext:webp/quality:85/plain/s3://toast-sites-resources-prod/restaurantImages/3260edd5-641c-4fa1-88f9-94e6e114526b/Screenshot%202023-07-08%20at%2018.44.57.png",
       coordinates: { lat: 40.721256172363205, lon: -73.76045940826394 }
     },
