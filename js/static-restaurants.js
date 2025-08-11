@@ -1027,6 +1027,7 @@ export const staticRestaurants = [
       rating: 4.4,
       safeFor: ["peanut", "nut", "tree nut", "gluten", "dairy", "soy", "sesame"],
       image: "https://images.squarespace-cdn.com/content/v1/571da513c2ea511fcc0e4e6e/1497249761110-61IGXRO88GC9JJA0GHKZ/mogador2017-682.jpg?format=1500w",
+      coordinates: { lat: 40.7276341042428, lon: -73.98432810641445 }
     },
     //87
     {
@@ -1037,7 +1038,7 @@ export const staticRestaurants = [
       rating: 4.3,
       safeFor: ["peanut", "nut", "tree nut", "dairy", "soy", "gluten", "shellfish"],
       image: "https://images.squarespace-cdn.com/content/v1/55ce1e48e4b06614877a8bfb/db359299-a1af-4bac-afa0-93d1985a2dc5/IMG_8675.jpg",
-
+      coordinates: { lat: 40.73639121960854, lon: -74.00152304874254 }
     },
     //88
     {
@@ -1048,6 +1049,7 @@ export const staticRestaurants = [
       rating: 4.4,
       safeFor: ["peanut", "nut", "tree nut", "gluten", "dairy", "egg", "soy"],
       image: "https://thesmithrestaurant.com/wp-content/uploads/cache/2018/04/homefinal3/985760779.jpg",
+      coordinates: { lat: 40.73118110350372, lon: -73.98861349292082 }
     },
     //89
     {
@@ -1058,6 +1060,7 @@ export const staticRestaurants = [
       rating: 4.5,
       safeFor: ["peanut", "nut", "tree nut", "gluten", "dairy", "soy", "egg"],
       image: "https://tb-static.uber.com/prod/image-proc/processed_images/ceae8c9585cca7b03999cb490bf99b35/3ac2b39ad528f8c8c5dc77c59abb683d.jpeg",
+      coordinates: { lat: 40.74578396433683, lon: -74.00558379476833 }
     },
 
     //90
@@ -1069,6 +1072,7 @@ export const staticRestaurants = [
       rating: 4.3,
       safeFor: ["peanut", "nut", "tree nut", "gluten", "dairy", "soy", "egg"],
       image: "https://resizer.otstatic.com/v3/photos/71292573-1?width=1280&height=720&webp=true",
+      coordinates: { lat: 40.73649524257057, lon: -74.00130887942697 }
     },
     //91
     {
@@ -1079,6 +1083,7 @@ export const staticRestaurants = [
       rating: 4.4,
       safeFor: ["peanut", "nut", "tree nut", "shellfish", "gluten", "dairy", "soy"],
       image: "https://pyxis.nymag.com/v1/imgs/b92/dfb/3f5dd7c602265a8648032985dfbb66bf41-lure-fishbar-01.2x.rsocial.w600.jpg",
+      coordinates: { lat: 40.72499568248799, lon: -73.99829561990803 }
     },
     //92
     {
@@ -1089,6 +1094,7 @@ export const staticRestaurants = [
       rating: 4.3,
       safeFor: ["peanut", "nut", "tree nut", "gluten", "dairy", "soy", "corn"],
       image: "https://secretchicago.com/wp-content/uploads/2023/07/Tacombi-scaled.jpg",
+      coordinates: { lat: 40.75824780722816, lon: -73.98891639106937 }
     },
     //93
     {
@@ -1099,6 +1105,7 @@ export const staticRestaurants = [
       rating: 4.6,
       safeFor: ["peanut", "nut", "tree nut", "gluten", "dairy", "egg"],
       image: "https://images.getbento.com/accounts/0aca7e2e8357d677d40838963870b3d2/media/images/71251567fe37c5eb6-BREADS_BAKERY_chocolate_rugleach_Photographed_by_Paul_Wagtouicz_06.jpg?w=1800&fit=max&auto=compress,format&cs=origin&h=1800",
+      coordinates: { lat: 40.736766500889445, lon: -73.99182293524915 }
     },
     //94
     {
@@ -1109,6 +1116,7 @@ export const staticRestaurants = [
       rating: 4.4,
       safeFor: ["peanut", "nut", "tree nut", "gluten", "dairy", "egg", "soy"],
       image: "https://jackswifefreda.com/wp-content/uploads/2025/01/JWF_web_slideshow_202506-1170x658.jpg",
+      coordinates: { lat: 40.72235598210588, lon: -73.99762867942832 }
     },
     //95
     {
@@ -1119,6 +1127,7 @@ export const staticRestaurants = [
       rating: 4.5,
       safeFor: ["peanut", "nut", "tree nut", "gluten", "dairy", "soy", "sesame"],
       image: "https://taimkitchen.com/cdn/shop/files/profile_image_1744x1650.png?v=1682012719",
+      coordinates: { lat: 40.73607826635761, lon: -74.00197003524924 }
     },
     //96
     {
@@ -1129,6 +1138,7 @@ export const staticRestaurants = [
       rating: 4.2,
       safeFor: ["peanut", "nut", "tree nut", "dairy", "soy"],
       image: "https://static01.nyt.com/images/2012/08/01/nyregion/01yogurt2-cityroom/01yogurt2-cityroom-blog480.jpg",
+      coordinates: { lat: 40.72440320434503, lon: -74.00012935059259 }
     },
     //97 
     {
@@ -1139,6 +1149,7 @@ export const staticRestaurants = [
       rating: 4.3,
       safeFor: ["peanut", "nut", "tree nut", "gluten", "dairy", "egg"],
       image: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhNZcZuF_UY7n4Bsg51W3lmXuxOFHIzDbom7Ei-buFYxy5Q1UHpM618DnBsI0k5QLySRmXAWmZu8z-wu9iGMIJ7q6JPsR0uThc7OJ6vFzV9GWf7sFVgxXGG7eTbrCzXyL__QB3FaV8_LJRJ/s1600/IMG_3691.jpg",
+      coordinates: { lat: 40.729881037110026, lon: -73.98635566408535 }
     },
 
     //98
@@ -1150,6 +1161,7 @@ export const staticRestaurants = [
       rating: 4.5,
       safeFor: ["peanut", "nut", "tree nut", "gluten", "dairy", "egg", "soy"],
       image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT39D7OapdGNFuym1eV_GzB_mtgGJDEDa5jfw&s",
+      coordinates: { lat: 40.72300797338308, lon: -73.99628691990826 }
     },
     //99
     {
@@ -1159,7 +1171,8 @@ export const staticRestaurants = [
       cuisine: "Moroccan",
       rating: 4.4,
       safeFor: ["peanut", "nut", "tree nut", "gluten", "dairy", "soy", "sesame"],
-      image: "https://images.squarespace-cdn.com/content/v1/571da513c2ea511fcc0e4e6e/1497249761110-61IGXRO88GC9JJA0GHKZ/mogador2017-682.jpg?format=1500w"
+      image: "https://images.squarespace-cdn.com/content/v1/571da513c2ea511fcc0e4e6e/1497249761110-61IGXRO88GC9JJA0GHKZ/mogador2017-682.jpg?format=1500w",
+      coordinates: { lat: 40.72762597371873, lon: -73.98430664874331 }
     },
     //100
     {
@@ -1170,6 +1183,7 @@ export const staticRestaurants = [
       rating: 4.3,
       safeFor: ["peanut", "nut", "tree nut", "gluten", "dairy", "soy"],
       image: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/06/cd/5f/c8/ghenet-brooklyn.jpg?w=600&h=400&s=1",
+      coordinates: { lat: 40.77499164352736, lon: -73.95412507572556 }
     },
     //101
     {
@@ -1180,6 +1194,7 @@ export const staticRestaurants = [
       rating: 4.1,
       safeFor: ["peanut", "nut", "tree nut", "gluten", "dairy", "soy", "sesame"],
       image: "https://images.allhungry.com/fit-in/412x0/filters:watermark(https://images.allhungry.com/0/logos/allhngry-logo-email1.png,center,center,90)/0/img/menu/Medite_rranean/Turkish_Pide1.jpg",
+      coordinates: { lat: 40.75845845316245, lon: -73.98383929106933 }
     },
     //102
     {
@@ -1190,6 +1205,7 @@ export const staticRestaurants = [
       rating: 4.0,
       safeFor: ["peanut", "nut", "tree nut", "gluten", "dairy", "soy"],
       image: "https://img.grouponcdn.com/seocms/U5RnY84y1N9rMgF3X5ACJKJvHLw/hero_jpg-600x390",
+      coordinates: { lat: 40.76409589292759, lon: -73.98278659106883 }
     },
     //103
     {
@@ -1200,6 +1216,7 @@ export const staticRestaurants = [
       rating: 4.2,
       safeFor: ["peanut", "nut", "tree nut", "gluten", "dairy", "soy"],
       image: "https://www.bengaltigerindianfood.com/images/bengal-tiger-nyc-2.jpg",
+      coordinates: { lat: 40.742297388722235, lon: -73.98246389107088 }
 
     },
     //104
@@ -1211,6 +1228,7 @@ export const staticRestaurants = [
       rating: 4.1,
       safeFor: ["peanut", "nut", "tree nut", "gluten", "dairy"],
       image: "https://www.newschoolfreepress.com/wp-content/uploads/2024/02/IMG_7484-1568x882.jpg",
+      coordinates: { lat: 40.862148781078886, lon: -73.92522776222397 }
     },
     //105
     {
@@ -1221,6 +1239,7 @@ export const staticRestaurants = [
       rating: 4.3,
       safeFor: ["peanut", "nut", "tree nut", "gluten", "dairy", "soy"],
       image: "https://tb-static.uber.com/prod/image-proc/processed_images/c1d351c2d1f4a5c318dbc6acb0a22b08/db809eadd12d21eb61044e0f3bf7c9b7.jpeg",
+      coordinates: { lat: 40.7963337577106, lon: -73.94446438127014 }
     },
     //106
     {
@@ -1231,6 +1250,7 @@ export const staticRestaurants = [
       rating: 4.0,
       safeFor: ["peanut", "nut", "tree nut", "gluten", "dairy", "soy"],
       image: "https://images.happycow.net/venues/1024/27/46/hcmp27468_1386660.jpeg",
+      coordinates: { lat: 40.80206264279839, lon: -73.95015527572296 }
 
     },
     //107
@@ -1242,6 +1262,7 @@ export const staticRestaurants = [
       rating: 4.2,
       safeFor: ["peanut", "nut", "tree nut", "gluten", "dairy", "soy", "sesame"],
       image: "https://tb-static.uber.com/prod/image-proc/processed_images/8fa34ab58406604ee114e689401c8b5e/66345bbe137cfe4e15769c434c6c397c.jpeg",
+      coordinates: { lat: 40.76342270867735, lon: -73.98481783709552 }
     },
     //108
     {
@@ -1252,6 +1273,7 @@ export const staticRestaurants = [
       rating: 4.1,
       safeFor: ["peanut", "nut", "tree nut", "gluten", "dairy", "soy"],
       image: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/15/a2/56/16/delicias.jpg?w=900&h=500&s=1",
+      coordinates: { lat: 40.76404713650679, lon: -73.98285096408217 }
     },
     //109
     {
@@ -1262,6 +1284,7 @@ export const staticRestaurants = [
       rating: 4.3,
       safeFor: ["peanut", "nut", "tree nut", "gluten", "dairy", "soy"],
       image: "https://cdn.durable.co/blocks/dtGLblx5PJvA7ezRjsco78wzrCVQy8grmj9s5EHqMT9v6Vw4TplOfendXgHz9HyP.jpg",
+      coordinates: { lat: 40.75954834420783, lon: -73.96912605058921 }
     },
     //110
     {
@@ -1272,6 +1295,7 @@ export const staticRestaurants = [
       rating: 4.2,
       safeFor: ["peanut", "nut", "tree nut", "gluten", "dairy", "soy"],
       image: "https://static01.nyt.com/images/2017/10/18/dining/18HUNGRY-BENYAM-slide-9MRG/18HUNGRY-BENYAM-slide-9MRG-superJumbo.jpg",
+      coordinates: { lat: 40.804735187935876, lon: -73.96671589291384 }
     },
     //111
     {
@@ -1282,6 +1306,7 @@ export const staticRestaurants = [
       rating: 4.0,
       safeFor: ["peanut", "nut", "tree nut", "gluten", "dairy", "soy", "sesame"],
       image: "https://static.wixstatic.com/media/463a77_bfc8607e9403469995b0e30424be849a~mv2.jpg/v1/fill/w_640,h_480,fp_0.50_0.50,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/463a77_bfc8607e9403469995b0e30424be849a~mv2.jpg",
+      coordinates: { lat: 40.721947233482794, lon: -73.99234003709941 }
     },
     //112
     {
@@ -1291,7 +1316,8 @@ export const staticRestaurants = [
       cuisine: "Cuban",
       rating: 4.1,
       safeFor: ["peanut", "nut", "tree nut", "gluten", "dairy", "soy"],
-      image: "https://images.getbento.com/accounts/cd484f615ff22a69714b023094b4ab4d/media/images/16008Mar_Y_Tierra_-22.jpg?w=1800&fit=max&auto=compress,format&cs=origin&h=1800"
+      image: "https://images.getbento.com/accounts/cd484f615ff22a69714b023094b4ab4d/media/images/16008Mar_Y_Tierra_-22.jpg?w=1800&fit=max&auto=compress,format&cs=origin&h=1800",
+      coordinates: { lat: 40.75851917273285, lon: -73.98403390456271 }
     },
     //113
     {
@@ -1302,6 +1328,7 @@ export const staticRestaurants = [
       rating: 4.0,
       safeFor: ["peanut", "nut", "tree nut", "gluten", "dairy", "soy"],
       image: "https://tb-static.uber.com/prod/image-proc/processed_images/353f6e37c46c76ea40a9a293c25538e7/9ba9ffab5f885fc3dac87838b3357014.webp",
+      coordinates: { lat: 40.7553657315416, lon: -73.99240236593188 }
     },
     //114
     {
@@ -1312,6 +1339,7 @@ export const staticRestaurants = [
       rating: 4.2,
       safeFor: ["peanut", "nut", "tree nut", "gluten", "dairy"],
       image: "https://res.cloudinary.com/the-infatuation/image/upload/v1656120781/cms/EmilyS_NYC_Malecon_Exterior_02.jpg",
+      coordinates: { lat: 40.79182218894601, lon: -73.97369186592842 }
     },
     //115
     {
@@ -1322,6 +1350,7 @@ export const staticRestaurants = [
       rating: 4.1,
       safeFor: ["peanut", "nut", "tree nut", "gluten", "dairy", "soy"],
       image: "https://lh3.googleusercontent.com/proxy/pzjTSemhlq57PqTef_TFFscZlQdfd_Uy0Pgvrukg8sffF4Z0hnZyuFaGH5-V1-AiO33Wm6bLNdCSdjQ3l_3S",
+      coordinates: { lat: 40.71556022343693, lon: -73.99855576408672 }
     },
     //116
     {
@@ -1332,7 +1361,7 @@ export const staticRestaurants = [
       rating: 4.3,
       safeFor: ["peanut", "nut", "tree nut", "gluten", "dairy", "soy"],
       image: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2d/5f/56/a4/caption.jpg?w=900&h=-1&s=1",
-
+      coordinates: { lat: 40.81166655761834, lon: -73.96178536407764 }
     },
     //117
     {
@@ -1342,7 +1371,8 @@ export const staticRestaurants = [
       cuisine: "Turkish",
       rating: 4.4,
       safeFor: ["peanut", "nut", "tree nut", "gluten", "dairy", "soy", "sesame"],
-      image: "https://images.squarespace-cdn.com/content/v1/54d1a4cae4b0c27bb1ffc2ff/1683942994030-0GDV8JBUXJC2RF54CR5F/GettyImages-1129866002.jpg?format=2500w"
+      image: "https://images.squarespace-cdn.com/content/v1/54d1a4cae4b0c27bb1ffc2ff/1683942994030-0GDV8JBUXJC2RF54CR5F/GettyImages-1129866002.jpg?format=2500w",
+      coordinates: { lat: 40.760245888270795, lon: -73.96542427757589 }
     },
     //118
     {
@@ -1353,6 +1383,7 @@ export const staticRestaurants = [
       rating: 4.3,
       safeFor: ["peanut", "nut", "tree nut", "gluten", "dairy", "soy"],
       image: "https://media.timeout.com/images/105327395/image.jpg",
+      coordinates: { lat: 40.792225178826946, lon: -73.97335027757282 }
     },
     //120
     {
@@ -1363,6 +1394,7 @@ export const staticRestaurants = [
       rating: 4.5,
       safeFor: ["peanut", "nut", "tree nut", "gluten", "dairy", "soy", "egg"],
       image: "https://www.tagvenue.com/resize/b2/2b/widen-1680-noupsize;72055-the-writers-room-room-enhanced-v1-3213062.jpg",
+      coordinates: { lat: 40.72783624260666, lon: -74.00002671990782 }
     },
     //121
     {
@@ -1372,7 +1404,8 @@ export const staticRestaurants = [
       cuisine: "Chinese",
       rating: 4.3,
       safeFor: ["peanut", "nut", "tree nut", "gluten", "soy", "sesame"],
-      image: "https://static.wixstatic.com/media/8f8abd_9d6c9421ab0e445b94c9f1377e57527d~mv2.jpg/v1/fill/w_640,h_464,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/8f8abd_9d6c9421ab0e445b94c9f1377e57527d~mv2.jpg"
+      image: "https://static.wixstatic.com/media/8f8abd_9d6c9421ab0e445b94c9f1377e57527d~mv2.jpg/v1/fill/w_640,h_464,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/8f8abd_9d6c9421ab0e445b94c9f1377e57527d~mv2.jpg",
+      coordinates: { lat: 40.71479240612895, lon: -73.99780300641571 }
     },
     //122
     {
@@ -1383,6 +1416,7 @@ export const staticRestaurants = [
       rating: 4.5,
       safeFor: ["peanut", "nut", "tree nut", "gluten", "dairy", "soy", "mustard"],
       image: "https://images.ctfassets.net/1aemqu6a6t65/47q3K4aaIwB0C7bvIMDj6t/c3fe4a45befb2bb210b847e37a3023a2/Junoon-Manhattan-NYC-Photo-Courtesy-1.jpg",
+      coordinates: { lat: 40.74344004409597, lon: -73.9908987370974 }
     },
     //123
     {
@@ -1393,6 +1427,7 @@ export const staticRestaurants = [
       rating: 4.6,
       safeFor: ["peanut", "nut", "tree nut", "gluten", "dairy", "soy", "corn"],
       image: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2a/19/d8/e7/caption.jpg?w=900&h=500&s=1",
+      coordinates: { lat: 40.742645960215675, lon: -74.00589373339973 }
     },
     //124
     {
@@ -1403,6 +1438,7 @@ export const staticRestaurants = [
       rating: 4.4,
       safeFor: ["peanut", "nut", "tree nut", "gluten", "soy", "sesame", "shellfish"],
       image:"https://media-cdn.tripadvisor.com/media/photo-s/0f/16/aa/e4/inside-pure-thai-cookhouse.jpg", 
+      coordinates: { lat: 40.76441307030113, lon: -73.9880461775755 }
     },
     //125
     {
@@ -1412,7 +1448,8 @@ export const staticRestaurants = [
       cuisine: "Japanese",
       rating: 4.8,
       safeFor: ["peanut", "nut", "tree nut", "soy", "fish", "shellfish"],
-      image: "https://media.timeout.com/images/101435865/750/422/image.jpg"
+      image: "https://media.timeout.com/images/101435865/750/422/image.jpg",
+      coordinates: { lat: 40.73190969150424, lon: -74.00451975059184 }
     },
     //126
     {
@@ -1423,6 +1460,7 @@ export const staticRestaurants = [
       rating: 4.5,
       safeFor: ["peanut", "nut", "tree nut", "gluten", "dairy", "soy", "egg"],
       image: "https://static01.nyt.com/images/2010/06/02/dining/02restspan-1/REST1-articleLarge.jpg?quality=75&auto=webp&disable=upscale",
+      coordinates: { lat: 40.73804989806621, lon: -73.98952676408457 }
     },
     //127
     {
@@ -1433,6 +1471,7 @@ export const staticRestaurants = [
       rating: 4.4,
       safeFor: ["peanut", "nut", "tree nut", "gluten", "dairy", "soy", "sesame"],
       image: "https://www.estiator.com/wp-content/uploads/2017/06/ESTIATOR-JUNE17-SCENE-LIVANOS.jpg",
+      coordinates: { lat: 40.75087963606216, lon: -73.97679520641226 }
     },
     //128
     {
@@ -1443,6 +1482,7 @@ export const staticRestaurants = [
       rating: 4.5,
       safeFor: ["peanut", "nut", "tree nut", "soy", "gluten", "sesame"],
       image: "https://cdn.prod.website-files.com/64dc46f3bd5126f2de6e5a04/65739b9b725aeb68ac5c985a_BUTCHERSFEAST-forweb.webp",
+      coordinates: { lat: 40.74129857544056, lon: -73.9913022775776 }
     },
     //129
     {
@@ -1453,6 +1493,7 @@ export const staticRestaurants = [
       rating: 4.6,
       safeFor: ["peanut", "nut", "tree nut", "shellfish", "gluten", "dairy", "soy"],
       image: "https://platform.ny.eater.com/wp-content/uploads/sites/6/chorus/uploads/chorus_asset/file/16295295/20190513_GH_MILOS_1015.jpg?quality=90&strip=all&crop=16.666666666667%2C0%2C66.666666666667%2C100&w=2400",
+      coordinates: { lat: 40.763931371655836, lon: -73.97888945058878 }
     },
     //130
     {
@@ -1463,6 +1504,7 @@ export const staticRestaurants = [
       rating: 4.5,
       safeFor: ["buckwheat", "gluten", "dairy", "nut", "egg"],
       image: "https://media.newyorker.com/photos/614cee9b831236d78429458c/master/pass/211004_r39103.jpg",
+      coordinates: { lat: 40.73199121139317, lon: -74.00437167942736 }
     },
     //131
     {
@@ -1473,7 +1515,7 @@ export const staticRestaurants = [
       rating: 4.5,
       safeFor: ["gluten", "dairy", "vegan", "egg"],
       image: "https://s3-media0.fl.yelpcdn.com/bphoto/P8lTLUP_C89JBv6qKOEAdQ/348s.jpg",
-    
+      coordinates: { lat: 40.715914586895025, lon: -73.99924215059333 }
     }, 
     //132
     {
@@ -1483,7 +1525,7 @@ export const staticRestaurants = [
       cuisine: "Other",
       rating: 4.7,
       image:"https://static.where-e.com/United_States/New_York/Queens_County/Tswirl-Crepe--Forest-Hills_3cde5267eb06ef3d6ad0d48da8b1adad.jpg",
-    
+      coordinates: { lat: 40.721033160892276, lon: -73.84604751805959 }
     },
     //133
     {
@@ -1494,7 +1536,7 @@ export const staticRestaurants = [
       rating: 4.1,
       safeFor: ["gluten"], 
       image: "https://lh3.googleusercontent.com/p/AF1QipOA3AaKa-5Hj4APxC_gtRhKpQyiMiNCTXjY7SvU=s1360-w1360-h1020",
-    
+      coordinates: { lat: 40.74204181956349, lon: -73.95460604874202 }
     },
     //134
     {
@@ -1505,7 +1547,7 @@ export const staticRestaurants = [
       rating: 4.5,
       safeFor: ["gluten", "dairy"], 
       image: "https://s3-media0.fl.yelpcdn.com/bphoto/XQ3vvp0hLw_dkctQOgzm_A/348s.jpg",
-    
+      coordinates: { lat: 40.72102074744175, lon: -73.98859053525065 }
     },
     //135
     {
@@ -1516,7 +1558,7 @@ export const staticRestaurants = [
       rating: 4.8,
       safeFor: ["gluten"], 
       image: "https://cdn.thespaces.com/wp-content/uploads/2024/04/Postcard-BWF-20240227-160-ret.jpg",
-    
+      coordinates: { lat: 40.73042377524395, lon: -74.00312151990758 }
     },
     //136
     {
@@ -1527,6 +1569,7 @@ export const staticRestaurants = [
       rating: 5.0,
       safeFor: ["gluten"],
       image: "https://c8.alamy.com/comp/2E3X23Y/petit-chou-229-first-ave-new-york-nyc-storefront-photo-of-a-patisserie-in-the-east-village-neighborhood-in-manhattan-2E3X23Y.jpg",
+      coordinates: { lat: 40.73123278296014, lon: -73.9830757929208 }
     },
     //137
     {
@@ -1537,7 +1580,7 @@ export const staticRestaurants = [
       rating: 4.0,
       safeFor: ["gluten"], 
       image: "https://yeahthatskosher.com/wp-content/uploads/2023/04/thyme-tonic-kosher-uws-nyc-new-menu-meat-uws9.jpg",
-    
+      coordinates: { lat: 40.78464731908585, lon: -73.97385073339574 }
     },
     //138
     {
@@ -1548,7 +1591,7 @@ export const staticRestaurants = [
       rating: 4.5,
       safeFor: ["gluten"], 
       image: "https://d2gi7vg84kjm7x.cloudfront.net/store/e609863a4ea324b4f3df20f7e3022ec8.jpg?vertical=",
-    
+      coordinates: { lat: 40.70742973046262, lon: -73.94283716038977 }
     },
     //139
     {
@@ -1559,6 +1602,7 @@ export const staticRestaurants = [
       rating: 4.8,
       safeFor: ["gluten"],
       image: "https://s3-media0.fl.yelpcdn.com/bphoto/Ar6N8EWl1O54tQNWWESe2g/348s.jpg",
+      coordinates: { lat: 40.79124884440944, lon: -73.97390830640842 }
     },
     //140
     {
@@ -1569,6 +1613,7 @@ export const staticRestaurants = [
       rating: 4.8, 
       safeFor: ["gluten", "vegan"],
       image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSM3AstQSPbT1P39tORYkSCS2qby_iMKZ3hrdZjl7scOXQvngPfInAL7s4Z5iZKi2O3LU&usqp=CAU",
+      coordinates: { lat: 40.67846070981081, lon: -73.98593687943246 }
     },
     //141
     {
@@ -1579,6 +1624,7 @@ export const staticRestaurants = [
       rating: 4.2,
       safeFor: ["lupin", "buckwheat", "dairy", "nut"],
       image: "https://tb-static.uber.com/prod/image-proc/processed_images/7b16425afe90a523819c9cc08686f6e0/df577d3a0807d3bb859f2fb53aefcd86.jpeg",
+      coordinates: { lat: 40.74055748222267, lon: -73.99863490641327 }
     },
     //142
     {
@@ -1589,6 +1635,7 @@ export const staticRestaurants = [
       rating: 4.5,
       safeFor: ["buckwheat", "gluten", "nut", "dairy"],
       image: "https://images.squarespace-cdn.com/content/v1/53cc1616e4b0f4361f8ace24/1474327559742-O8NM8CY3QRF40YBFIE4I/image-asset.jpeg",
+      coordinates: { lat: 40.73164995204423, lon: -74.00301596408515 }
     },
 
     //143
@@ -1600,6 +1647,7 @@ export const staticRestaurants = [
       rating: 4.4,
       safeFor: ["mollusk", "nut", "gluten", "dairy", "soy"],
       image: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/10/7a/57/6f/feasting.jpg?w=900&h=500&s=1",
+      coordinates: { lat: 40.72702528354892, lon: -73.98626213525013 }
     },
     //144
     {
@@ -1610,6 +1658,7 @@ export const staticRestaurants = [
       rating: 4.3,
       safeFor: ["mollusk", "lupin", "buckwheat", "nut", "soy", "gluten"],
       image: "https://theminagroup.com/wp-content/uploads/2024/11/restaurants-01.jpg",
+      coordinates: { lat: 40.73933414969448, lon: -74.00741206593335 }
     },
     //145
     {
@@ -1620,6 +1669,7 @@ export const staticRestaurants = [
       rating: 4.2,
       safeFor: ["peanut", "nut", "tree nut", "gluten", "dairy", "egg"],
       image: "https://media.timeout.com/images/106147491/750/562/image.jpg",
+      coordinates: { lat: 40.75647204947337, lon: -73.97143870826058 }
     },
     //146
     {
@@ -1630,6 +1680,7 @@ export const staticRestaurants = [
       rating: 4.1,
       safeFor: ["peanut", "nut", "tree nut", "sesame"],
       image: "https://southshorehomelifeandstyle.com/wp-content/uploads/2020/11/NZ6_0171-scaled.jpg",
+      coordinates: { lat: 40.73988500690024, lon: -73.98875589292 }
     },
 
 
