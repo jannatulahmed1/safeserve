@@ -1500,7 +1500,7 @@ export const staticRestaurants = [
       name: "Delice & Sarrasin",
       location: "17 Commerce St, New York, NY 10014",
       link: "https://delice-sarrasin.com/",
-      cuisine: "French (Gluten-free, Buckwheat specialties)",
+      cuisine: "French",
       rating: 4.5,
       safeFor: ["buckwheat", "gluten", "dairy", "nut", "egg"],
       image: "https://media.newyorker.com/photos/614cee9b831236d78429458c/master/pass/211004_r39103.jpg",
@@ -1524,7 +1524,8 @@ export const staticRestaurants = [
       link: "http://www.tswirlcrepeforesthills.com/",
       cuisine: "Other",
       rating: 4.7,
-      image:"https://static.where-e.com/United_States/New_York/Queens_County/Tswirl-Crepe--Forest-Hills_3cde5267eb06ef3d6ad0d48da8b1adad.jpg",
+      image: "https://static.where-e.com/United_States/New_York/Queens_County/Tswirl-Crepe--Forest-Hills_3cde5267eb06ef3d6ad0d48da8b1adad.jpg",
+      safeFor: ["gluten"],
       coordinates: { lat: 40.721033160892276, lon: -73.84604751805959 }
     },
     //133
