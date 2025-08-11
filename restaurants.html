@@ -65,6 +65,13 @@
       color: var(--maroon);
     }
 
+        .menu-toggle{
+      display: none;
+      font-size: 24px;
+      color: white;
+      cursor: pointer;
+    }
+
     .container {
       display: flex;
       justify-content: space-between;
@@ -72,6 +79,7 @@
       padding-top: 100px;
       gap: 20px;
     }
+
 
     .filterbox {
       width: 25%;
@@ -159,7 +167,7 @@
     .restaurant-card {
       background: white;
       width: 300px;
-      height: 420px;
+      height: 450px;
       border-radius: 12px;
       box-shadow: 0 4px 8px rgba(0,0,0,0.1);
       overflow: hidden;
@@ -295,7 +303,7 @@
     max-height: calc(100vh - 120px); 
     overflow-y: auto;
   }
-
+    }
   @media (max-width: 768px) {
   .result-container {
     width: 100% !important;   
@@ -312,8 +320,56 @@
 
 }
 
+ #map {
+      position: relative; /* ensures child controls are positioned correctly */
+    }
 
-}
+    .leaflet-control {
+      z-index: 1000 !important; /* make sure controls stay above tiles */
+    }
+
+    .leaflet-control-geocoder {
+      background: white;
+      padding: 4px;
+      border-radius: 4px;
+    }
+  
+
+
+  @media (max-width: 768px) {
+    nav{
+      position: fixed !important;
+      top: 70px !important;
+      left: 0 !important;
+      right: 0;
+      background: #ffffff; 
+      display: none;
+      flex-direction: column;
+      padding: 20px;
+      box-shadow: 0 6px 18px rgba(0,0,0,.12);
+      z-index: 1100; 
+    }
+    nav.open{ display:flex !important; }
+    nav a{
+      color: var(--accent);
+      padding: 10px 0;
+      margin-left: 0; 
+    }
+    .menu-toggle{ display:block; }
+
+    .container{ flex-direction: column; }
+    .filterbox, .resultbox{ width: 100%; }
+    .result-container{
+      width: 100% !important;   
+      max-width: 700px;         
+      margin: 0 auto;          
+      align-self: center;       
+    }
+    .resultbox{ justify-content: center; }
+  }
+
+
+
 
   </style>
 </head>
@@ -322,7 +378,8 @@
     <div class="logo">
       <img src="assets/updated logo 2.png" alt="SafeServe Logo" />
     </div>
-    <nav>
+    <i class="fas fa-bars menu-toggle" onclick="toggleMenu()" aria-label="Toggle menu" aria-expanded="false"></i>
+    <nav id="nav-links">
       <a href="index.html">Home</a>
       <a href="profile.html">Profile</a>
       <a href="restaurants.html" class="active">Restaurants</a>
@@ -387,7 +444,7 @@
     </div>
   </main>
 
-  <script>
+ <script>
     function toggleDropdown(id, header) {
       const content = document.getElementById(id);
       content.classList.toggle("open");
@@ -400,5 +457,14 @@
     }
   </script>
   <script type="module" src="./js/restaurants.js"></script>
+ 
+ <script>
+    function toggleMenu(){
+      const nav = document.getElementById('nav-links');
+      const btn = document.querySelector('.menu-toggle');
+      const isOpen = nav.classList.toggle('open');
+      btn.setAttribute('aria-expanded', isOpen);
+    }
+  </script>
 </body>
 </html>
