@@ -23,7 +23,14 @@ const db = getFirestore(app);
 
 //Profile Pic 
 const avatarURLs = [
-  "/assets/img1.png",
+  "https://randomuser.me/api/portraits/lego/0.jpg",
+  "https://randomuser.me/api/portraits/lego/1.jpg",
+  "https://randomuser.me/api/portraits/lego/4.jpg",
+  "https://randomuser.me/api/portraits/lego/5.jpg",
+  "https://randomuser.me/api/portraits/lego/6.jpg",
+  "https://randomuser.me/api/portraits/lego/7.jpg",
+  "https://randomuser.me/api/portraits/lego/8.jpg",
+  "https://randomuser.me/api/portraits/lego/9.jpg",
   "/assets/img2.png",
   "/assets/img3.png",
   "/assets/img5.png",
@@ -34,7 +41,6 @@ const avatarURLs = [
   "/assets/img10.png",
   "/assets/img12.png",
   "/assets/img13.png",
-  "/assets/img15.png",
   "/assets/img16.png",
 ];
 
